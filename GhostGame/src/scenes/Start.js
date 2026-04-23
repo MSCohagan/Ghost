@@ -28,7 +28,8 @@ export class Start extends Phaser.Scene {
             right: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D),
             jump: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE),
             possess: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E),
-            release: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q)
+            release: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q),
+            reload: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R)
         }
 
         this.player = new Player(this, 100, 500, {
@@ -96,6 +97,10 @@ export class Start extends Phaser.Scene {
 
         if(Phaser.Input.Keyboard.JustDown(this.controls.release)) {
             this.releasePossession()
+        }
+
+        if(Phaser.Input.Keyboard.JustDown(this.controls.reload)) {
+            this.this.scene.start('Start');
         }
 
         this.controlledEntity.update()
