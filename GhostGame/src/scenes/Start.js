@@ -109,7 +109,6 @@ export class Start extends Phaser.Scene {
         this.controlledEntity.update()
 
         if(this.player.x + 24 >= this.scale.width) {
-            console.log('start room2')
             this.scene.start('Room2')
         }
     }

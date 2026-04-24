@@ -109,7 +109,6 @@ export class Room2 extends Phaser.Scene {
         this.controlledEntity.update()
 
         if(this.player.x - 24 <= 0) {
-            console.log('start')
             this.scene.start('Start')
         }
     }
