@@ -19,7 +19,9 @@ export class Start extends Phaser.Scene {
         this.add.image(1280, 720, 'gray');
 
         this.platforms = this.physics.add.staticGroup()
-        this.createGroundRow(this.scale.height - 24, 1, 3)
+        this.ground = this.physics.add.staticGroup();
+        this.createPlatforms(this.ground, 0, this.scale.height - 24, this.scale.width, 1, 3)
+        this.createPlatforms(this.platforms, 400, this.scale.height - 240, this.scale.width * (Math.random() + .5) , 1, 3)
 
         this.controls = {
             up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W),
@@ -41,7 +43,7 @@ export class Start extends Phaser.Scene {
             gravityY: 0,
         })
 
-        this.box = new Box(this, 200, 600, {
+        this.box = new Box(this, 800, 0, {
             width: 24,
             height: 40,
             color: 0x000000,
@@ -52,8 +54,9 @@ export class Start extends Phaser.Scene {
 
         this.controlledEntity = this.player
 
-        this.physics.add.collider(this.player, this.platforms)
+        this.physics.add.collider(this.player, this.ground)
         this.physics.add.collider(this.box, this.platforms)
+        this.physics.add.collider(this.box, this.ground)
     }
 
     tryPossess() {
@@ -100,19 +103,18 @@ export class Start extends Phaser.Scene {
         }
 
         if(Phaser.Input.Keyboard.JustDown(this.controls.reload)) {
-            this.this.scene.start('Start');
+            this.scene.start('Start');
         }
 
         this.controlledEntity.update()
     }
 
-    createGroundRow(y, frame, scale = 3) {
+    createPlatforms(entity, x,  y, width, frame, scale = 3) {
         const tileSize = 16
         const step = tileSize * scale
-        const width = this.scale.width
 
-        for (let x = 0; x < width; x += step) {
-            const tile = this.platforms.create(x, y, 'platforms', frame)
+        for (x; x < width; x += step) {
+            const tile = entity.create(x, y, `platforms`, frame)
             tile.setOrigin(0, 0)
             tile.setScale(scale)
             tile.refreshBody()
