@@ -1,7 +1,7 @@
 import Player from '../gameObjects/Player.js'
 import Box from '../gameObjects/Box.js'
 
-export class Start extends Phaser.Scene {
+export class Room2 extends Phaser.Scene {
 
     constructor() {
         super('Room2');
@@ -21,7 +21,7 @@ export class Start extends Phaser.Scene {
         this.platforms = this.physics.add.staticGroup()
         this.ground = this.physics.add.staticGroup();
         this.createPlatforms(this.ground, 0, this.scale.height - 24, this.scale.width, 1, 3)
-        this.createPlatforms(this.platforms, 400, this.scale.height - 240, this.scale.width * (Math.random() + .5) , 1, 3)
+        this.createPlatforms(this.platforms, 400, this.scale.height - 480, this.scale.width * (Math.random() + .5) , 1, 3)
 
         this.controls = {
             up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W),
@@ -107,6 +107,11 @@ export class Start extends Phaser.Scene {
         }
 
         this.controlledEntity.update()
+
+        if(this.player.x - 24 <= 0) {
+            console.log('start')
+            this.scene.start('Start')
+        }
     }
 
     createPlatforms(entity, startX,  y, width, frame, scale = 3) {
