@@ -4,7 +4,7 @@ import Box from '../gameObjects/Box.js'
 export class Start extends Phaser.Scene {
 
     constructor() {
-        super('Start');
+        super('Room2');
     }
 
     preload() {
@@ -15,7 +15,7 @@ export class Start extends Phaser.Scene {
         });
     }
 
-    create() {
+   create() {
         this.add.image(1280, 720, 'gray');
 
         this.platforms = this.physics.add.staticGroup()
