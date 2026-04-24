@@ -23,17 +23,6 @@ export class Room2 extends Phaser.Scene {
         this.createPlatforms(this.ground, 0, this.scale.height - 24, this.scale.width, 1, 3)
         this.createPlatforms(this.platforms, 400, this.scale.height - 480, this.scale.width * (Math.random() + .5) , 1, 3)
 
-        this.controls = {
-            up: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W),
-            down: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S),
-            left: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A),
-            right: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D),
-            jump: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE),
-            possess: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E),
-            release: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q),
-            reload: this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R)
-        }
-
         this.player = new Player(this, 100, 500, {
             width: 24,
             height: 40,
