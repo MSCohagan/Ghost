@@ -4,12 +4,16 @@ import ControlsManager from '../controllers/ControlsManager.js'
 
 export default class BaseRoom extends Phaser.Scene {
 
-    constructor(key, options = {}) {
+    constructor(key, nextRoomLeft, nextRoomRight, spawnX, spawnY, options = {}) {
         super(key);
         this.roomWidth = options.width ?? 1280
         this.roomHeight = options.height ?? 720
         this.backgroundKey = options.backgroundKey ?? 'gray'
         this.roomKey = key
+        this.nextRoomLeft = nextRoomLeft ?? ''
+        this.nextRoomRight = nextRoomRight ?? ''
+        this.spawnX = spawnX ?? 300
+        this.spawnY = spawnY ?? 300
     }
 
     preload() {
@@ -19,16 +23,21 @@ export default class BaseRoom extends Phaser.Scene {
         });
     }
 
-    createBaseRoom() {
-        this.add.image(1280, 720, this.backgroundKey);
+    createBaseRoom(x, y) {
+        this.add.image(1280, 720, this.backgroundKey)
+
+        this.add.text(this.scale.width/2, 40, this.roomKey, {
+            fontSize: '24px',
+            color: '#ffffff'
+        }).setOrigin(0.5, 0)
 
         const controlsManager = new ControlsManager(this)
         this.controls = controlsManager.fetchControls()
 
         this.platforms = this.physics.add.staticGroup()
-        this.ground = this.physics.add.staticGroup();
+        this.ground = this.physics.add.staticGroup()
 
-        this.player = new Player(this, 100, 500, {
+        this.player = new Player(this, x, y, {
             width: 24,
             height: 40,
             color: 0x88ffff,
@@ -74,8 +83,8 @@ export default class BaseRoom extends Phaser.Scene {
 
         this.box.body.setVelocityX(0)
 
-        const spawnX = this.box.x + 30
-        const spawnY = this.box.y
+        this.spawnX = this.box.x + 30
+        this.spawnY = this.box.y
 
         this.player.setPosition(spawnX, spawnY)
         this.player.body.reset(spawnX, spawnY)
@@ -86,6 +95,19 @@ export default class BaseRoom extends Phaser.Scene {
 
         this.controlledEntity = this.player
     }
+
+    moveRoom() {
+        if(this.player.x + 24 >= this.scale.width && this.nextRoomRight) {
+            console.log('moving right to ' + this.nextRoomRight)
+            console.log('players position at time of movement is ' + this.player.x  + ', ' + this.player.y )
+            this.scene.start(this.nextRoomRight, { spawnX: 50, spawnY: this.player.y })
+        } else if (this.player.x - 24 <= 0  && this.nextRoomLeft) {
+            console.log('moving left to ' + this.nextRoomLeft)
+            console.log('players position at time of movement is ' + this.player.x  + ', ' + this.player.y )
+            this.scene.start(this.nextRoomLeft, { spawnX: this.scale.width - 40, spawnY: this.player.y })
+        }
+    }
+
 
     update() {
         if(Phaser.Input.Keyboard.JustDown(this.controls.possess)) {
@@ -102,9 +124,7 @@ export default class BaseRoom extends Phaser.Scene {
 
         this.controlledEntity.update()
 
-        if(this.player.x + 24 >= this.scale.width) {
-            this.scene.start(this.roomKey)
-        }
+        this.moveRoom();
     }
 
     createPlatforms(entity, startX,  y, width, frame, scale = 3) {
