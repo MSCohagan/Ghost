@@ -83,11 +83,11 @@ export default class BaseRoom extends Phaser.Scene {
 
         this.box.body.setVelocityX(0)
 
-        this.spawnX = this.box.x + 30
-        this.spawnY = this.box.y
+        this.releaseX = this.box.x + 30
+        this.releaseY = this.box.y
 
-        this.player.setPosition(spawnX, spawnY)
-        this.player.body.reset(spawnX, spawnY)
+        this.player.setPosition(this.releaseX, this.releaseY)
+        this.player.body.reset(this.releaseX, this.releaseY)
         this.player.setVisible(true)
         this.player.body.enable = true
 
