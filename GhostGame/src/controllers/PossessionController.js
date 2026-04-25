@@ -1,33 +1,44 @@
 export default class PossessionController {
 
-    constructor (scene, ghost) {
+    constructor (scene, player) {
         this.scene = scene
-        this.ghost = ghost
+        this.player = player
         this.currentHost = null
-        this.controlled = ghost
+        this.controlled = player
     }
 
-    possess(host) {
-        this.currentHost = host
-        this.controlled = host
-
-        this.ghost.setVisible(false)
-        this.ghost.body.enable = false
-    }
-
-    release() {
-        if (!this.currentHost) return
-
-        this.ghost.setPosition (
-            this.currentHost.x + 30,
-            this.currentHost.y
+    tryPossess(currentHost) {
+        const distance = Phaser.Math.Distance.Between(
+            this.player.x,
+            this.player.y,
+            currentHost.x,
+            currentHost.y
         )
 
-        this.ghost.setVisible(true)
-        this.ghost.body.enable = true
+        if(distance <= 40) {
+            this.controlledEntity = currentHost
+            this.player.setVisible(false)
+            this.player.body.enable = false
+            currentHost.setFillStyle(0xffffff)
+        }
+    }
 
-        this.currentHost = null
-        this.controlled = ghost
+    releasePossession(currentHost) {
+        if (this.controlledEntity !== this.currentHost) return
+
+        this.currentHost.body.setVelocityX(0)
+
+        this.releaseX = this.currentHost.x + 30
+        this.releaseY = this.currentHost.y
+
+        this.player.setPosition(this.releaseX, this.releaseY)
+        this.player.body.reset(this.releaseX, this.releaseY)
+        this.player.setVisible(true)
+        this.player.body.enable = true
+
+        this.box.setFillStyle(0x000000)
+
+        this.controlledEntity = this.player
     }
 
     update(keys) {

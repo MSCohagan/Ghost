@@ -1,6 +1,7 @@
 import Player from '../gameObjects/Player.js'
 import Box from '../gameObjects/Box.js'
 import ControlsManager from '../controllers/ControlsManager.js'
+import PossessionController from '../controllers/PossessionController.js'
 
 export default class BaseRoom extends Phaser.Scene {
 
@@ -46,6 +47,8 @@ export default class BaseRoom extends Phaser.Scene {
             gravityY: 0,
         })
 
+        this.possessables = []
+
         this.box = new Box(this, 800, 0, {
             width: 24,
             height: 40,
@@ -55,45 +58,20 @@ export default class BaseRoom extends Phaser.Scene {
             gravityY: 800,
         })
 
+        this.registerPossessable(this.box)
+
         this.controlledEntity = this.player
 
         this.physics.add.collider(this.player, this.ground)
-        this.physics.add.collider(this.box, this.platforms)
-        this.physics.add.collider(this.box, this.ground)
-    }
+        this.possessables.forEach(possessable => {
+            this.physics.add.collider(possessable, this.platforms)
+            this.physics.add.collider(possessable, this.ground)
+        })
 
-    tryPossess() {
-        const distance = Phaser.Math.Distance.Between(
-            this.player.x,
-            this.player.y,
-            this.box.x,
-            this.box.y
-        )
+        const possessionController = new PossessionController(this, this.player)
+        this.possess = possessionController.tryPossess
+        this.release = possessionController.releasePossession
 
-        if(distance <= 40) {
-            this.controlledEntity = this.box
-            this.player.setVisible(false)
-            this.player.body.enable = false
-            this.box.setFillStyle(0xffffff)
-        }
-    }
-    
-    releasePossession() {
-        if (this.controlledEntity !== this.box) return
-
-        this.box.body.setVelocityX(0)
-
-        this.releaseX = this.box.x + 30
-        this.releaseY = this.box.y
-
-        this.player.setPosition(this.releaseX, this.releaseY)
-        this.player.body.reset(this.releaseX, this.releaseY)
-        this.player.setVisible(true)
-        this.player.body.enable = true
-
-        this.box.setFillStyle(0x000000)
-
-        this.controlledEntity = this.player
     }
 
     moveRoom() {
@@ -111,11 +89,11 @@ export default class BaseRoom extends Phaser.Scene {
 
     update() {
         if(Phaser.Input.Keyboard.JustDown(this.controls.possess)) {
-            this.tryPossess()
+            this.possess(this.findNearestPossessable(this.player))
         }
 
         if(Phaser.Input.Keyboard.JustDown(this.controls.release)) {
-            this.releasePossession()
+            this.release()
         }
 
         if(Phaser.Input.Keyboard.JustDown(this.controls.reload)) {
@@ -138,5 +116,24 @@ export default class BaseRoom extends Phaser.Scene {
             tile.setScale(scale)
             tile.refreshBody()
         }
+    }
+
+    registerPossessable(possessable) {
+        this.possessables.push(possessable)
+    }
+
+    findNearestPossessable(player) {
+        let nearestPossessable = null
+        let nearestDistance = Infinity
+        let maxDistance = 60
+
+        this.possessables.forEach(possessable => {
+            const distance = Phaser.Math.Distance.Between(player.x, player.y, possessable.x, possessable.y)
+            if(distance < maxDistance) {
+                nearestDistance = distance
+                nearestPossessable = possessable
+            }
+        })
+        return nearestPossessable
     }
 }
