@@ -8,22 +8,25 @@ export default class PossessionController {
     }
 
     tryPossess(currentHost) {
+
+        this.currentHost = currentHost
+
         const distance = Phaser.Math.Distance.Between(
             this.player.x,
             this.player.y,
-            currentHost.x,
-            currentHost.y
+            this.currentHost.x,
+            this.currentHost.y
         )
 
         if(distance <= 40) {
-            this.controlledEntity = currentHost
+            this.controlledEntity = this.currentHost
             this.player.setVisible(false)
             this.player.body.enable = false
-            currentHost.setFillStyle(0xffffff)
+            this.currentHost.setFillStyle(0xffffff)
         }
     }
 
-    releasePossession(currentHost) {
+    releasePossession() {
         if (this.controlledEntity !== this.currentHost) return
 
         this.currentHost.body.setVelocityX(0)
@@ -36,7 +39,7 @@ export default class PossessionController {
         this.player.setVisible(true)
         this.player.body.enable = true
 
-        this.box.setFillStyle(0x000000)
+        this.currentHost.setFillStyle(0x000000)
 
         this.controlledEntity = this.player
     }
