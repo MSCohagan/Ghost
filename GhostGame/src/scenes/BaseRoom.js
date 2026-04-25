@@ -1,16 +1,25 @@
 import Player from '../gameObjects/Player.js'
+import Box from '../gameObjects/Box.js'
 import ControlsManager from '../controllers/ControlsManager.js'
 
-export class BaseRoom extends Phaser.Scene {
+export default class BaseRoom extends Phaser.Scene {
 
     constructor(key, options = {}) {
         super(key);
         this.roomWidth = options.width ?? 1280
-        this.roomHeight = option.height ?? 720
+        this.roomHeight = options.height ?? 720
         this.backgroundKey = options.backgroundKey ?? 'gray'
+        this.roomKey = key
     }
 
-    create() {
+    preload() {
+        this.load.spritesheet('platforms', 'assets/sprites/platforms.png', {
+            frameWidth: 16,
+            frameHeight: 16,
+        });
+    }
+
+    createBaseRoom() {
         this.add.image(1280, 720, this.backgroundKey);
 
         const controlsManager = new ControlsManager(this)
@@ -88,13 +97,13 @@ export class BaseRoom extends Phaser.Scene {
         }
 
         if(Phaser.Input.Keyboard.JustDown(this.controls.reload)) {
-            this.scene.start('Start');
+            this.scene.start(key);
         }
 
         this.controlledEntity.update()
 
         if(this.player.x + 24 >= this.scale.width) {
-            this.scene.start('Room2')
+            this.scene.start(this.roomKey)
         }
     }
 
@@ -104,7 +113,7 @@ export class BaseRoom extends Phaser.Scene {
         const endX = startX + width
 
         for (let x = startX; x < endX; x += step) {
-            const tile = entity.create(x, y, `platforms`, frame)
+            const tile = entity.create(x, y, 'platforms', frame)
             tile.setOrigin(0, 0)
             tile.setScale(scale)
             tile.refreshBody()
