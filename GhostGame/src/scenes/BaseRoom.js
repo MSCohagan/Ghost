@@ -97,7 +97,7 @@ export default class BaseRoom extends Phaser.Scene {
         }
 
         if(Phaser.Input.Keyboard.JustDown(this.controls.reload)) {
-            this.scene.start(key);
+            this.scene.start(this.roomKey);
         }
 
         this.controlledEntity.update()
