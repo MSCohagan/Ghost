@@ -7,7 +7,7 @@ import PossessionController from '../controllers/PossessionController.js'
 export default class BaseRoom extends Phaser.Scene {
 
     constructor(key, nextRoomLeft, nextRoomRight, spawnX, spawnY, options = {}) {
-        super(key);
+        super(key)
         this.roomWidth = options.width ?? 1280
         this.roomHeight = options.height ?? 720
         this.backgroundKey = options.backgroundKey ?? 'gray'
@@ -66,7 +66,6 @@ export default class BaseRoom extends Phaser.Scene {
         this.controlledEntity = this.player
 
         this.physics.add.collider(this.player, this.ground)
-        this.physics.add.collider(this.player, this.gates)
         this.possessables.forEach(possessable => {
             this.physics.add.collider(possessable, this.platforms)
             this.physics.add.collider(possessable, this.ground)
@@ -129,6 +128,12 @@ export default class BaseRoom extends Phaser.Scene {
             height: height,
             color: 0x88ffff,
         }))
+    }
+
+    setupGateCollision() {
+        this.gates.forEach(gate => {
+            this.physics.add.collider(gate, this.player)
+        })
     }
 
     registerPossessable(possessable) {

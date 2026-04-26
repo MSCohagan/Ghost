@@ -22,12 +22,12 @@ export default class Room1 extends BaseRoom {
     }
 
     create() {
-
         this.createBaseRoom(this.spawnX, this.spawnY)
 
         this.createPlatforms(this.ground, 0, this.scale.height - 24, this.scale.width, 1, 3)
         this.createPlatforms(this.platforms, 400, this.scale.height - 240, this.scale.width * (Math.random() + .5) , 1, 3)
         
-        this.createGates(this, this.scale.width - 240, this.scale.height, 24, 150, 'gateA')
+        this.createGates(this, this.scale.width, this.scale.height, 48, this.scale.height * 2, 'gateA')
+        this.setupGateCollision()
     }
 }
