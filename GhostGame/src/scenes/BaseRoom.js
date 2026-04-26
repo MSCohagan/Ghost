@@ -63,19 +63,14 @@ export default class BaseRoom extends Phaser.Scene {
 
         this.registerPossessable(this.box)
 
-        this.gates.push(new Gate(this, 'gate', this.scale.width - 12, this.scale.height - 52, {
-            key: 'gate',
-            width: 24,
-            height: 150,
-            color: 0x88ffff,
-        }))
-
         this.controlledEntity = this.player
 
         this.physics.add.collider(this.player, this.ground)
+        this.physics.add.collider(this.player, this.gates)
         this.possessables.forEach(possessable => {
             this.physics.add.collider(possessable, this.platforms)
             this.physics.add.collider(possessable, this.ground)
+            this.physics.add.collider(possessable, this.gates)
         })
 
         const possessionController = new PossessionController(this, this.player)
@@ -86,12 +81,8 @@ export default class BaseRoom extends Phaser.Scene {
 
     moveRoom() {
         if(this.player.x + 24 >= this.scale.width && this.nextRoomRight) {
-            console.log('moving right to ' + this.nextRoomRight)
-            console.log('players position at time of movement is ' + this.player.x  + ', ' + this.player.y )
             this.scene.start(this.nextRoomRight, { spawnX: 50, spawnY: this.player.y })
         } else if (this.player.x - 24 <= 0  && this.nextRoomLeft) {
-            console.log('moving left to ' + this.nextRoomLeft)
-            console.log('players position at time of movement is ' + this.player.x  + ', ' + this.player.y )
             this.scene.start(this.nextRoomLeft, { spawnX: this.scale.width - 40, spawnY: this.player.y })
         }
     }
@@ -129,6 +120,15 @@ export default class BaseRoom extends Phaser.Scene {
             tile.setScale(scale)
             tile.refreshBody()
         }
+    }
+
+    createGates(scene, x, y, width, height, key) {
+        this.gates.push(new Gate(scene, x , y , {
+            key: key,
+            width: width,
+            height: height,
+            color: 0x88ffff,
+        }))
     }
 
     registerPossessable(possessable) {

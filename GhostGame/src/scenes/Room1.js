@@ -25,9 +25,9 @@ export default class Room1 extends BaseRoom {
 
         this.createBaseRoom(this.spawnX, this.spawnY)
 
-        console.log('players position at time of render is ' + this.player.x  + ', ' + this.player.y )
-
         this.createPlatforms(this.ground, 0, this.scale.height - 24, this.scale.width, 1, 3)
         this.createPlatforms(this.platforms, 400, this.scale.height - 240, this.scale.width * (Math.random() + .5) , 1, 3)
+        
+        this.createGates(this, this.scale.width - 240, this.scale.height, 24, 150, 'gateA')
     }
 }
