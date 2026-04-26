@@ -1,5 +1,6 @@
 import Player from '../gameObjects/Player.js'
 import Box from '../gameObjects/Box.js'
+import Gate from '../gameObjects/Gate.js'
 import ControlsManager from '../controllers/ControlsManager.js'
 import PossessionController from '../controllers/PossessionController.js'
 
@@ -37,6 +38,7 @@ export default class BaseRoom extends Phaser.Scene {
 
         this.platforms = this.physics.add.staticGroup()
         this.ground = this.physics.add.staticGroup()
+        this.gates = this.physics.add.staticGroup()
 
         this.player = new Player(this, x, y, {
             width: 24,
@@ -48,6 +50,7 @@ export default class BaseRoom extends Phaser.Scene {
         })
 
         this.possessables = []
+        this.gates =[]
 
         this.box = new Box(this, 800, 0, {
             width: 24,
@@ -59,6 +62,13 @@ export default class BaseRoom extends Phaser.Scene {
         })
 
         this.registerPossessable(this.box)
+
+        this.gates.push(new Gate(this, 'gate', this.scale.width - 12, this.scale.height - 52, {
+            key: 'gate',
+            width: 24,
+            height: 150,
+            color: 0x88ffff,
+        }))
 
         this.controlledEntity = this.player
 
@@ -89,7 +99,10 @@ export default class BaseRoom extends Phaser.Scene {
 
     update() {
         if(Phaser.Input.Keyboard.JustDown(this.controls.possess)) {
-            this.possess(this.findNearestPossessable(this.player))
+            let nearest = this.findNearestPossessable(this.player)
+            if(nearest) {
+                this.possess(nearest)
+            }
         }
 
         if(Phaser.Input.Keyboard.JustDown(this.controls.release)) {

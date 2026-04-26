@@ -1,5 +1,4 @@
 import { applyPlatformerMovement } from '../helpers/movement.js'
-//import PossessionController from '../controllers/PossessionController.js'
 
 export default class Box extends Phaser.GameObjects.Rectangle {
 
@@ -29,7 +28,6 @@ export default class Box extends Phaser.GameObjects.Rectangle {
     };
 
     update() {
-        //if(this.release.isDown) PossessionController.release
         applyPlatformerMovement(this, this.scene.controls)
     };
 }
