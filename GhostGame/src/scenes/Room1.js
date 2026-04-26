@@ -28,6 +28,11 @@ export default class Room1 extends BaseRoom {
         this.createPlatforms(this.platforms, 400, this.scale.height - 240, this.scale.width * (Math.random() + .5) , 1, 3)
         
         this.createGates(this, this.scale.width, this.scale.height, 48, this.scale.height * 2, 'gateA')
-        this.setupGateCollision()
+        this.setupGateCollision(this.gates)
+
+        this.createPressurePlates(this, this.scale.width - 64, this.scale.height - 32, 64, 16, 'plateA')
+        this.setupPressurePlateCollision(this.pressurePlates)
+
+        this.colliderController.addCollider(this.pressurePlates, this.box)
     }
 }

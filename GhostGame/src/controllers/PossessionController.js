@@ -1,7 +1,6 @@
 export default class PossessionController {
 
-    constructor (scene, player) {
-        this.scene = scene
+    constructor (player) {
         this.player = player
         this.currentHost = null
         this.controlled = player

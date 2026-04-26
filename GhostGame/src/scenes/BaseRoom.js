@@ -1,8 +1,10 @@
 import Player from '../gameObjects/Player.js'
 import Box from '../gameObjects/Box.js'
 import Gate from '../gameObjects/Gate.js'
+import PressurePad from '../gameObjects/PressurePad.js'
 import ControlsManager from '../controllers/ControlsManager.js'
 import PossessionController from '../controllers/PossessionController.js'
+import ColliderController from '../controllers/ColliderController.js'
 
 export default class BaseRoom extends Phaser.Scene {
 
@@ -36,6 +38,8 @@ export default class BaseRoom extends Phaser.Scene {
         const controlsManager = new ControlsManager(this)
         this.controls = controlsManager.fetchControls()
 
+        this.colliderController = new ColliderController(this)
+
         this.platforms = this.physics.add.staticGroup()
         this.ground = this.physics.add.staticGroup()
         this.gates = this.physics.add.staticGroup()
@@ -51,6 +55,7 @@ export default class BaseRoom extends Phaser.Scene {
 
         this.possessables = []
         this.gates =[]
+        this.pressurePlates = []
 
         this.box = new Box(this, 800, 0, {
             width: 24,
@@ -65,11 +70,10 @@ export default class BaseRoom extends Phaser.Scene {
 
         this.controlledEntity = this.player
 
-        this.physics.add.collider(this.player, this.ground)
+        this.colliderController.addCollider(this.player, this.ground)
         this.possessables.forEach(possessable => {
-            this.physics.add.collider(possessable, this.platforms)
-            this.physics.add.collider(possessable, this.ground)
-            this.physics.add.collider(possessable, this.gates)
+            this.colliderController.addCollider(possessable, this.platforms)
+            this.colliderController.addCollider(possessable, this.ground)
         })
 
         const possessionController = new PossessionController(this, this.player)
@@ -130,9 +134,27 @@ export default class BaseRoom extends Phaser.Scene {
         }))
     }
 
+    createPressurePlates(scene, x, y, width, height, key) {
+        this.pressurePlates.push(new PressurePad(scene, x, y, {
+            key: key,
+            width: width,
+            height: height,
+            color: 0xf000000,
+        }))
+
+    }
+
     setupGateCollision() {
         this.gates.forEach(gate => {
-            this.physics.add.collider(gate, this.player)
+            this.colliderController.addCollider(gate, this.player)
+            this.colliderController.addCollider(gate, this.possessables)
+        })
+    }
+
+    setupPressurePlateCollision() {
+        this.pressurePlates.forEach(plate => {
+            this.colliderController.addCollider(plate, this.possessables)
+            this.colliderController.addCollider(plate, this.ground)
         })
     }
 
