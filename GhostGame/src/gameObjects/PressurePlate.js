@@ -35,7 +35,7 @@ export default class PressurePad extends Phaser.GameObjects.Rectangle {
 
     }
 
-    release() {
+    releasePlate() {
         if (!this.isPressed) return
         this.isPressed = false
 

@@ -1,7 +1,7 @@
 import Player from '../gameObjects/Player.js'
 import Box from '../gameObjects/Box.js'
 import Gate from '../gameObjects/Gate.js'
-import PressurePad from '../gameObjects/PressurePad.js'
+import PressurePad from '../gameObjects/PressurePlate.js'
 import ControlsManager from '../controllers/ControlsManager.js'
 import PossessionController from '../controllers/PossessionController.js'
 import ColliderController from '../controllers/ColliderController.js'
@@ -85,13 +85,18 @@ export default class BaseRoom extends Phaser.Scene {
     moveRoom() {
         if(this.player.x + 24 >= this.scale.width && this.nextRoomRight) {
             this.scene.start(this.nextRoomRight, { spawnX: 50, spawnY: this.player.y })
+            return true
         } else if (this.player.x - 24 <= 0  && this.nextRoomLeft) {
             this.scene.start(this.nextRoomLeft, { spawnX: this.scale.width - 40, spawnY: this.player.y })
+            return true
         }
+        return false
     }
 
 
     update() {
+        if(this.moveRoom()) return
+
         if(Phaser.Input.Keyboard.JustDown(this.controls.possess)) {
             let nearest = this.findNearestPossessable(this.player)
             if(nearest) {
@@ -109,15 +114,21 @@ export default class BaseRoom extends Phaser.Scene {
 
         this.controlledEntity.update()
 
-        const pressed = this.physics.overlap(this.box, this.pressurePlates[0])
+        const plate = this.pressurePlates[0]
+        const gate = this.gates[0]
+
+        if(!plate || !gate) return
+
+        const pressed = this.physics.overlap(this.box, plate)
 
         if(pressed) {
             this.pressurePlates[0].press()
+            this.gates[0].open()
         } else {
-            this.pressurePlates[0].release()
+            console.log(this.pressurePlates[0])
+            this.pressurePlates[0].releasePlate()
+            this.gates[0].close()
         }
-
-        this.moveRoom();
     }
 
     createPlatforms(entity, startX,  y, width, frame, scale = 3) {
@@ -139,6 +150,7 @@ export default class BaseRoom extends Phaser.Scene {
             width: width,
             height: height,
             color: 0x88ffff,
+            isOpen: false
         }))
     }
 
