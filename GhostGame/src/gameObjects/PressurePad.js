@@ -6,15 +6,43 @@ export default class PressurePad extends Phaser.GameObjects.Rectangle {
             height = 48,
             color = 0xf000000,
             key = '',
+            pressDepth = 8
         } = options
 
         super(scene, x, y, width, height, color)
 
         this.key = key
         this.color = color
+        this.scene = scene
+        this.isPressed = false
+        this.upY = y
+        this.downY = y + pressDepth
 
         this.scene.add.existing(this)
         this.scene.physics.add.existing(this, true)
         this.body.updateFromGameObject()
+    }
+
+    press() {
+        if(this.isPressed) return
+        this.isPressed = true
+        
+        this.scene.tweens.add({
+            targets: this,
+            y: this.downY,
+            duration: 100
+        })
+
+    }
+
+    release() {
+        if (!this.isPressed) return
+        this.isPressed = false
+
+        this.scene.tweens.add({
+            targets: this,
+            y: this.upY,
+            duration: 100
+        })
     }
 }

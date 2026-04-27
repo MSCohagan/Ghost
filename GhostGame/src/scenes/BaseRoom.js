@@ -109,6 +109,14 @@ export default class BaseRoom extends Phaser.Scene {
 
         this.controlledEntity.update()
 
+        const pressed = this.physics.overlap(this.box, this.pressurePlates[0])
+
+        if(pressed) {
+            this.pressurePlates[0].press()
+        } else {
+            this.pressurePlates[0].release()
+        }
+
         this.moveRoom();
     }
 
@@ -140,8 +148,8 @@ export default class BaseRoom extends Phaser.Scene {
             width: width,
             height: height,
             color: 0xf000000,
+            pressDepth: 8
         }))
-
     }
 
     setupGateCollision() {
@@ -151,9 +159,9 @@ export default class BaseRoom extends Phaser.Scene {
         })
     }
 
-    setupPressurePlateCollision() {
+    setupPressurePlateCollision(callback) {
         this.pressurePlates.forEach(plate => {
-            this.colliderController.addCollider(plate, this.possessables)
+            this.colliderController.addOverlap(plate, this.possessables, callback)
             this.colliderController.addCollider(plate, this.ground)
         })
     }

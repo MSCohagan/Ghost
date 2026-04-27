@@ -31,8 +31,6 @@ export default class Room1 extends BaseRoom {
         this.setupGateCollision(this.gates)
 
         this.createPressurePlates(this, this.scale.width - 64, this.scale.height - 32, 64, 16, 'plateA')
-        this.setupPressurePlateCollision(this.pressurePlates)
-
-        this.colliderController.addCollider(this.pressurePlates, this.box)
+        this.setupPressurePlateCollision(this.pressurePlates[0].press())
     }
 }
