@@ -1,5 +1,6 @@
 import Room1 from './scenes/Room1.js'
 import Room2 from './scenes/Room2.js'
+import Room3 from './scenes/Room3.js'
 
 const config = {
     type: Phaser.AUTO,
@@ -12,7 +13,8 @@ const config = {
     pixelArt: true,
     scene: [
         Room1,
-        Room2
+        Room2,
+        Room3,
     ],
     scale: {
         mode: Phaser.Scale.FIT,

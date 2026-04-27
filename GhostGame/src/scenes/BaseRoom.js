@@ -125,7 +125,6 @@ export default class BaseRoom extends Phaser.Scene {
             this.pressurePlates[0].press()
             this.gates[0].open()
         } else {
-            console.log(this.pressurePlates[0])
             this.pressurePlates[0].releasePlate()
             this.gates[0].close()
         }
