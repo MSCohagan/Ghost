@@ -5,7 +5,6 @@ import PressurePad from '../gameObjects/PressurePlate.js'
 import ControlsManager from '../controllers/ControlsManager.js'
 import PossessionController from '../controllers/PossessionController.js'
 import ColliderController from '../controllers/ColliderController.js'
-import LevelDesigner from '../tools/LevelDesigner.js'
 
 export default class BaseRoom extends Phaser.Scene {
 
@@ -106,9 +105,12 @@ export default class BaseRoom extends Phaser.Scene {
             this.scene.start(this.roomKey);
         }
 
-        if(Phaser.Input.Keyboard.JustDown(this.controls.design)) {
-            this.createLevelDesignerWindow()
-            this.scene.bringToTop('LevelDesigner')
+        if(Phaser.Input.Keyboard.JustDown(this.controls.edit)) {
+            if(this.scene.isActive('LevelEditor')) {
+                this.closeLevelEditor()
+            } else { 
+                this.createLevelEditorWindow()
+            }
         }
 
         this.controlledEntity.update()
@@ -129,10 +131,16 @@ export default class BaseRoom extends Phaser.Scene {
         }
     }
 
-    createLevelDesignerWindow() {
-        this.scene.launch('LevelDesigner', {
+    createLevelEditorWindow() {
+        this.scene.launch('LevelEditor', {
             hostScene: this
         })
+        console.log('create')
+        this.scene.bringToTop('LevelEditor')
+    }
+
+    closeLevelEditor() {
+        this.scene.stop('LevelEditor')
     }
 
     createPlatforms(entity, startX,  y, width, frame, scale = 3) {

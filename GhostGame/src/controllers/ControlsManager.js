@@ -11,7 +11,7 @@ export default class ControlsManager {
             possess: this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.E),
             release: this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q),
             reload: this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.R),
-            design: this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L)
+            edit: this.scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L)
         }
     }
 

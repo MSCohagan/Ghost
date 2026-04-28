@@ -1,9 +1,9 @@
 import AssetManager from '../controllers/AssetManager.js'
 
-export default class LevelDesigner extends Phaser.Scene {
+export default class LevelEditor extends Phaser.Scene {
     
     constructor() {
-        super('LevelDesigner')
+        super('LevelEditor')
     }
 
     create(data) { 
@@ -27,10 +27,8 @@ export default class LevelDesigner extends Phaser.Scene {
 
         this.assetItems = []
         this.scrollX = 0
-
-        console.log('before render')
+        
         this.renderAssetDock()
-        console.log('after render')
     }
 
     renderAssetDock()  {
