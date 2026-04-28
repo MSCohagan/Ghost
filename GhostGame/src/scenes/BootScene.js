@@ -6,6 +6,10 @@ export default class BootScene extends Phaser.Scene {
 
     preload() {
         this.load.json('assetManifest', 'assets/assetManifest.json')
+        this.load.spritesheet('ghost', 'assets/sprites/Ghost.png', {
+            frameWidth: 32,
+            frameHeight: 32
+        })
     }
 
     create() {
@@ -14,6 +18,17 @@ export default class BootScene extends Phaser.Scene {
         manifest.images.forEach(asset => {
             this.load.image(asset.key, asset.path)
         })
+
+        if(!this.anims.exists('ghostFloat')) {
+            this.anims.create({
+                key: 'ghostFloat',
+                frames: this.anims.generateFrameNumbers('ghost', {
+                    start: 0,
+                    end: 11
+                }),
+                frameRate: 12,
+                repeat: -1})
+            }
 
         this.load.once('complete', () => {
             this.scene.start('Room1')

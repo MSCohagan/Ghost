@@ -47,14 +47,7 @@ export default class BaseRoom extends Phaser.Scene {
         this.ground = this.physics.add.staticGroup()
         this.gates = this.physics.add.staticGroup()
 
-        this.player = new Player(this, x, y, {
-            width: 24,
-            height: 40,
-            color: 0x88ffff,
-            speed: 200,
-            jumpVelocity: -350,
-            gravityY: 0,
-        })
+        this.player = new Player(this, x, y, { })
 
         this.possessables = []
         this.gates =[]
