@@ -1,5 +1,4 @@
 import { applyGhostMovement } from '../helpers/movement.js'
-//import PossessionController from '../controllers/PossessionController.js'
 
 export default class Player extends Phaser.GameObjects.Rectangle {
 
@@ -31,7 +30,6 @@ export default class Player extends Phaser.GameObjects.Rectangle {
     update() {
         const controls = this.scene.controls
 
-        //if(this.possess.isDown) PossessionController.possess(this.scene.box)
         applyGhostMovement(this, controls)
     }
 }
