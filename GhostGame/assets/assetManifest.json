@@ -1,0 +1,44 @@
+{
+  "images": [
+    {
+      "key": "phaser",
+      "path": "assets/phaser.png"
+    },
+    {
+      "key": "space",
+      "path": "assets/space.png"
+    },
+    {
+      "key": "spaceship",
+      "path": "assets/spaceship.png"
+    },
+    {
+      "key": "sprites_coin",
+      "path": "assets/sprites/coin.png"
+    },
+    {
+      "key": "sprites_fruit",
+      "path": "assets/sprites/fruit.png"
+    },
+    {
+      "key": "sprites_knight",
+      "path": "assets/sprites/knight.png"
+    },
+    {
+      "key": "sprites_platforms",
+      "path": "assets/sprites/platforms.png"
+    },
+    {
+      "key": "sprites_slime_green",
+      "path": "assets/sprites/slime_green.png"
+    },
+    {
+      "key": "sprites_slime_purple",
+      "path": "assets/sprites/slime_purple.png"
+    },
+    {
+      "key": "sprites_world_tileset",
+      "path": "assets/sprites/world_tileset.png"
+    }
+  ]
+}

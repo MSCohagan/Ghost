@@ -1,3 +1,4 @@
+import BootScene from './scenes/BootScene.js'
 import Room1 from './scenes/Room1.js'
 import Room2 from './scenes/Room2.js'
 import Room3 from './scenes/Room3.js'
@@ -12,6 +13,7 @@ const config = {
     backgroundColor: '#000000',
     pixelArt: true,
     scene: [
+        BootScene,
         Room1,
         Room2,
         Room3,
