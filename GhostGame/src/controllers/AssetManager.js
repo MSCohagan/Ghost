@@ -18,6 +18,6 @@ export default class AssetManager {
     }
 
     listAssets() {
-        console.log(manifest)
+        console.log(this.manifest)
     }
 }

@@ -5,7 +5,7 @@ import PressurePad from '../gameObjects/PressurePlate.js'
 import ControlsManager from '../controllers/ControlsManager.js'
 import PossessionController from '../controllers/PossessionController.js'
 import ColliderController from '../controllers/ColliderController.js'
-import LevelDesigner from '../controllers/LevelDesigner.js'
+import AssetManager from '../controllers/AssetManager.js'
 
 export default class BaseRoom extends Phaser.Scene {
 
@@ -41,7 +41,7 @@ export default class BaseRoom extends Phaser.Scene {
 
         this.colliderController = new ColliderController(this)
 
-        this.levelDesigner = new LevelDesigner(this)
+        this.assetManager = new AssetManager(this)
 
         this.platforms = this.physics.add.staticGroup()
         this.ground = this.physics.add.staticGroup()
@@ -116,7 +116,7 @@ export default class BaseRoom extends Phaser.Scene {
         }
 
         if(Phaser.Input.Keyboard.JustDown(this.controls.design)) {
-            this.levelDesigner.listFiles()
+            this.assetManager.listAssets()
         }
 
         this.controlledEntity.update()
