@@ -43,6 +43,5 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
         if(controls.right.isDown) {
             this.setFlipX(false)
         }
-
     }
 }
