@@ -107,9 +107,12 @@ export default class BaseRoom extends Phaser.Scene {
 
         if(Phaser.Input.Keyboard.JustDown(this.controls.edit)) {
             if(this.scene.isActive('LevelEditor')) {
-                this.closeLevelEditor()
+                this.scene.stop('LevelEditor')
             } else { 
-                this.createLevelEditorWindow()
+                this.scene.launch('LevelEditor', {
+                    hostScene: this
+                })
+                this.scene.bringToTop('LevelEditor')
             }
         }
 
@@ -129,18 +132,6 @@ export default class BaseRoom extends Phaser.Scene {
             this.pressurePlates[0].releasePlate()
             this.gates[0].close()
         }
-    }
-
-    createLevelEditorWindow() {
-        this.scene.launch('LevelEditor', {
-            hostScene: this
-        })
-        console.log('create')
-        this.scene.bringToTop('LevelEditor')
-    }
-
-    closeLevelEditor() {
-        this.scene.stop('LevelEditor')
     }
 
     createPlatforms(entity, startX,  y, width, frame, scale = 3) {
