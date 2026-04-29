@@ -69,6 +69,10 @@ export default class LevelEditor extends Phaser.Scene {
             this.deleteMode = !this.deleteMode
             console.log('delete mode: ', this.deleteMode)
         })
+
+        this.input.keyboard.on('keydown-P', () => {
+            this.printLevelJson()
+        })
     }
 
     renderAssetDock()  {
@@ -192,6 +196,12 @@ export default class LevelEditor extends Phaser.Scene {
 
         this.placedObjects = this.placedObjects.filter(obj => obj !== clicked)
         clicked.destroy()
+    }
+
+    printLevelJson() {
+        const objects = this.placedObjects.map(obj => obj.editorData)
+
+        console.log(JSON.stringify({ objects }, null, 2))
     }
 
     update() {
