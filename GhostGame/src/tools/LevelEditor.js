@@ -15,7 +15,7 @@ export default class LevelEditor extends Phaser.Scene {
 
         this.dockOpen = true
         this.dockHeight = 96
-        const y = this.getDockTop
+        const y = this.getDockTop()
 
         this.dock = this.add.rectangle(
             0,
@@ -29,6 +29,8 @@ export default class LevelEditor extends Phaser.Scene {
         this.assetItems = []
         this.scrollX = 0
         this.placedObjects = []
+
+        this.selectedTool = 'place'
 
         this.renderAssetDock()
 
@@ -55,19 +57,22 @@ export default class LevelEditor extends Phaser.Scene {
         this.input.on('pointerdown', (pointer) => {
             if(this.isPointerInDock((pointer))) return
 
-            if(this.deleteMode) {
+            if(this.selectedTool === 'erase') {
                 this.deleteObjectAtPointer(pointer)
                 return
             }
 
-            if(!this.selectedAsset) return
+            if(this.selectedTool === 'place') {
+                if(!this.selectedAsset) return
 
-            this.placeSelectedAsset(pointer)
+                this.placeSelectedAsset(pointer)
+            }
         })
 
         this.input.keyboard.on('keydown-BACKSPACE', () => {
-            this.deleteMode = !this.deleteMode
-            console.log('delete mode: ', this.deleteMode)
+            this.selectedTool = 
+                this.selectedTool === 'erase' ? 'place' : 'erase'
+            console.log('selectedTool ', this.selectedTool)
         })
 
         this.input.keyboard.on('keydown-P', () => {
@@ -94,6 +99,7 @@ export default class LevelEditor extends Phaser.Scene {
 
             thumb.on('pointerdown', () => {
                 this.selectedAsset = asset
+                this.selectedTool = 'place'
                 this.createPreview(asset)
                 console.log('selected asset: ', asset)
             })
@@ -187,7 +193,9 @@ export default class LevelEditor extends Phaser.Scene {
     }
 
     deleteObjectAtPointer(pointer) {
-        const clicked = this.placedObjects.find(obj => {
+        const clicked = [...this.placedObjects]
+        .reverse()
+        .find(obj => {
             const bounds = obj.getBounds()
             return Phaser.Geom.Rectangle.Contains(bounds, pointer.x, pointer.y)
         })
@@ -204,10 +212,23 @@ export default class LevelEditor extends Phaser.Scene {
         console.log(JSON.stringify({ objects }, null, 2))
     }
 
-    update() {
+    update(time, delta) {
+        const pointer = this.input.activePointer
+
         if(this.previewImage) {
-            const pointer = this.input.activePointer
             this.previewImage.setPosition(pointer.x, pointer.y)
         }
+
+        if(this.selectedTool !== 'erase') return
+        if(!pointer.isDown) return
+
+        this.eraseTimer -= delta
+        if(this.eraseTimer > 0) return
+
+        if(this.deleteObjectAtPointer(pointer)) {
+            this.eraseTimer = 50
+        }
+
+        
     }
 }
