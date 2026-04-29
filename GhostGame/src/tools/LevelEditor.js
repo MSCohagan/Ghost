@@ -13,6 +13,7 @@ export default class LevelEditor extends Phaser.Scene {
 
         this.assets = this.AssetManager.getAllSelectableAssets()
 
+        this.dockOpen = true
         const dockHeight = 96
         const y = this.scale.height - dockHeight
 
@@ -32,6 +33,26 @@ export default class LevelEditor extends Phaser.Scene {
 
         this.input.on('wheel', (pointer, gameObjects, deltaX, deltaY) => {
             this.scrollDock(-deltaY * 0.5)
+        })
+
+        this.dockHandle = this.add.rectangle(
+            this.scale.width / 2,
+            this.getDockTop() + 8,
+            90,
+            12,
+            0Xffffff,
+            0.4
+        ).setInteractive()
+
+        this.dockHandle.on('pointerdown', () => {
+            this.toggleDock()
+        })
+
+        this.input.on('pointerdown', (pointer) => {
+            if(this.isPointerInDock((pointer))) return
+            if(!this.selectedAsset) return
+
+            this.placeSelectedAsset(pointer)
         })
     }
 
@@ -54,6 +75,7 @@ export default class LevelEditor extends Phaser.Scene {
 
             thumb.on('pointerdown', () => {
                 this.selectedAsset = asset
+                this.createPreview(asset)
                 console.log('selected asset: ', asset)
             })
 
@@ -81,5 +103,61 @@ export default class LevelEditor extends Phaser.Scene {
         this.assetItems.forEach((item, index) => {
             item.setX(16 + index * itemSpacing + this.scrollX)
         })
+    }
+
+    getDockTop() {
+        const height = this.dockOpen ? this.dockHeight : this.closedDockHeight
+        return this.scale.height - height
+    }
+
+    toggleDock() {
+        this.dockOpen = !this.dockOpen
+         
+        const y = this.getDockTop()
+        const height = this.dockOpen ? this.dockHeight : this.closedDockHeight
+
+        this.dock.setY(y)
+        this.dock.setSize(this.scale.width, height)
+
+        this.assetItems.forEach(item => {
+            item.setVisible(this.dockOpen)
+        })
+    }
+
+    isPointerInDock(pointer) {
+        return pointer.y >= this.getDockTop()
+    }
+
+    createPreview(asset) {
+        if(this.previewImage) {
+            this.previewImage.destroy
+        }
+
+        this.previewImage = this.add.image(
+            this.input.activePointer.x,
+            this.input.activePointer.y,
+            asset.texture,
+            asset.frame ?? undefined
+        )
+            .setAlpha(0.5)
+            .setDepth(10000)
+            .setDisplaySize(48, 48)
+            .setScrollFactor(0)
+    }
+
+    placeSelectedAsset(pointer) {
+        this.hostScene.add.image(
+            pointer.x,
+            pointer.y,
+            this.selectedAsset.texture,
+            this.selectedAsset.frame ?? undefined
+        )
+    }
+
+    update() {
+        if(this.previewImage) {
+            const pointer = this.input.activePointer
+            this.previewImage.setPosition(pointer.x, pointer.y)
+        }
     }
 }
