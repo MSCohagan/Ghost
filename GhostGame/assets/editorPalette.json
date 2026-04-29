@@ -1,0 +1,21 @@
+{
+    "palette" : [
+        {
+            "id": "grass_platform_tile",
+            "label": "Grass Platform",
+            "category": "terrain",
+            "preview": {
+                "texture": "sprites_platforms",
+                "frame": 1
+            },
+            "creates": {
+                "type": "platform",
+                "texture": "sprites_platforms",
+                "frame": 1,
+                "scale": 3,
+                "solid": true
+            }
+
+        }
+    ]
+}

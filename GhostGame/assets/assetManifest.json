@@ -2,47 +2,70 @@
   "images": [
     {
       "key": "phaser",
-      "path": "assets/phaser.png"
+      "path": "assets/phaser.png",
+      "category": "images"
     },
     {
       "key": "space",
-      "path": "assets/space.png"
+      "path": "assets/space.png",
+      "category": "images"
     },
     {
       "key": "spaceship",
-      "path": "assets/spaceship.png"
-    },
-    {
-      "key": "sprites_Ghost",
-      "path": "assets/sprites/Ghost.png"
+      "path": "assets/spaceship.png",
+      "category": "images"
     },
     {
       "key": "sprites_coin",
-      "path": "assets/sprites/coin.png"
+      "path": "assets/sprites/coin.png",
+      "category": "images"
     },
     {
       "key": "sprites_fruit",
-      "path": "assets/sprites/fruit.png"
+      "path": "assets/sprites/fruit.png",
+      "category": "images"
     },
     {
       "key": "sprites_knight",
-      "path": "assets/sprites/knight.png"
-    },
-    {
-      "key": "sprites_platforms",
-      "path": "assets/sprites/platforms.png"
+      "path": "assets/sprites/knight.png",
+      "category": "images"
     },
     {
       "key": "sprites_slime_green",
-      "path": "assets/sprites/slime_green.png"
+      "path": "assets/sprites/slime_green.png",
+      "category": "images"
     },
     {
       "key": "sprites_slime_purple",
-      "path": "assets/sprites/slime_purple.png"
+      "path": "assets/sprites/slime_purple.png",
+      "category": "images"
     },
     {
       "key": "sprites_world_tileset",
-      "path": "assets/sprites/world_tileset.png"
+      "path": "assets/sprites/world_tileset.png",
+      "category": "images"
+    }
+  ],
+  "spritesheets": [
+    {
+      "key": "ghost",
+      "path": "assets/sprites/Ghost.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 12,
+      "margin": 0,
+      "spacing": 0,
+      "category": "sprites"
+    },
+    {
+      "key": "platforms",
+      "path": "assets/sprites/platforms.png",
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "frames": 16,
+      "margin": 0,
+      "spacing": 0,
+      "category": "sprites"
     }
   ]
 }

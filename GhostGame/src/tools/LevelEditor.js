@@ -11,7 +11,9 @@ export default class LevelEditor extends Phaser.Scene {
         this.hostScene = data.hostScene
         this.AssetManager = new AssetManager(this.hostScene)
 
-        this.imagesKeys = this.AssetManager.getImagesKeys()
+        this.assets = this.AssetManager.getAllSelectableAssets()
+
+        console.log(this.assets)
 
         const dockHeight = 96
         const y = this.scale.height - dockHeight
@@ -27,21 +29,20 @@ export default class LevelEditor extends Phaser.Scene {
 
         this.assetItems = []
         this.scrollX = 0
-        
+
         this.renderAssetDock()
     }
 
     renderAssetDock()  {
-        const images = this.AssetManager.getImages()
         const itemSize = 48
         const gap = 12
         const startX = 16
         const y = this.scale.height - 72
 
-        images.forEach((asset, index) => {
+        this.assetItems.forEach((asset, index) => {
             const x = startX + index + (itemSize + gap)
 
-            const thumb = this.add.image(x, y, asset.key)
+            const thumb = this.add.image(x, y, asset.texture, asset.frame)
                 .setOrigin(0, 0)
                 .setDisplaySize(itemSize, itemSize)
                 .setInteractive()
