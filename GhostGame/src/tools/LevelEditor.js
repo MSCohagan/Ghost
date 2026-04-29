@@ -13,8 +13,6 @@ export default class LevelEditor extends Phaser.Scene {
 
         this.assets = this.AssetManager.getAllSelectableAssets()
 
-        console.log(this.assets)
-
         const dockHeight = 96
         const y = this.scale.height - dockHeight
 
@@ -33,17 +31,8 @@ export default class LevelEditor extends Phaser.Scene {
         this.renderAssetDock()
 
         this.input.on('wheel', (pointer, gameObjects, deltaX, deltaY) => {
-            console.log('wheel', deltaY)
-            this.scrollX -= deltaY * .5
-
-            this.assetItems.forEach((item, index) => {
-                const itemSize = 48
-                const gap = 12
-                item.x = 16 + index * (itemSize + gap) + this.scrollX
-            })
+            this.scrollDock(-deltaY * 0.5)
         })
-
-        console.log('assetItems', this.assetItems.length)
     }
 
     renderAssetDock()  {
@@ -70,5 +59,27 @@ export default class LevelEditor extends Phaser.Scene {
 
             this.assetItems.push(thumb)
         });
+    }
+
+    scrollDock(amount) {
+        const itemSize = 48
+        const gap = 12
+        const itemSpacing = itemSize + gap
+
+        const contentWidth = this.assetItems.length * itemSpacing
+        const visibleWidth = this.scale.width
+
+        const minScroll = Math.min(0, visibleWidth - contentWidth - 16)
+        const maxScroll = 0
+
+        this.scrollX = Phaser.Math.Clamp(
+            this.scrollX + amount,
+            minScroll,
+            maxScroll
+        )
+
+        this.assetItems.forEach((item, index) => {
+            item.setX(16 + index * itemSpacing + this.scrollX)
+        })
     }
 }
