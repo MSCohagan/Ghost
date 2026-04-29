@@ -14,17 +14,17 @@ export default class LevelEditor extends Phaser.Scene {
         this.assets = this.AssetManager.getAllSelectableAssets()
 
         this.dockOpen = true
-        const dockHeight = 96
-        const y = this.scale.height - dockHeight
+        this.dockHeight = 96
+        const y = this.getDockTop
 
         this.dock = this.add.rectangle(
             0,
             y,
             this.scale.width,
-            dockHeight,
+            this.dockHeight,
             0x000000,
             0.55
-        ).setOrigin(0, 0)
+        ).setOrigin(0, 0).setDepth(9000)
 
         this.assetItems = []
         this.scrollX = 0
@@ -43,7 +43,10 @@ export default class LevelEditor extends Phaser.Scene {
             12,
             0Xffffff,
             0.4
-        ).setInteractive()
+        )
+        .setInteractive()
+        .setDepth(10001)
+        .setScrollFactor(0)
 
         this.dockHandle.on('pointerdown', () => {
             this.toggleDock()
@@ -51,12 +54,13 @@ export default class LevelEditor extends Phaser.Scene {
 
         this.input.on('pointerdown', (pointer) => {
             if(this.isPointerInDock((pointer))) return
-            if(!this.selectedAsset) return
 
             if(this.deleteMode) {
                 this.deleteObjectAtPointer(pointer)
                 return
             }
+
+            if(!this.selectedAsset) return
 
             this.placeSelectedAsset(pointer)
         })
@@ -141,7 +145,7 @@ export default class LevelEditor extends Phaser.Scene {
 
     createPreview(asset) {
         if(this.previewImage) {
-            this.previewImage.destroy
+            this.previewImage.destroy()
         }
 
         this.previewImage = this.add.image(
