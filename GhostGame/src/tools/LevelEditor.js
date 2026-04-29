@@ -31,33 +31,9 @@ export default class LevelEditor extends Phaser.Scene {
         this.scrollX = 0
 
         this.renderAssetDock()
-    }
 
-    renderAssetDock()  {
-        const itemSize = 48
-        const gap = 12
-        const startX = 16
-        const y = this.scale.height - 72
-
-        this.assetItems.forEach((asset, index) => {
-            const x = startX + index + (itemSize + gap)
-
-            const thumb = this.add.image(x, y, asset.texture, asset.frame)
-                .setOrigin(0, 0)
-                .setDisplaySize(itemSize, itemSize)
-                .setInteractive()
-
-            thumb.on('pointerdown', () => {
-                this.selectedAsset = asset
-                console.log('selected asset: ', asset)
-            })
-
-            this.assetItems.push(thumb)
-        });
-    }
-
-    update() {
         this.input.on('wheel', (pointer, gameObjects, deltaX, deltaY) => {
+            console.log('wheel', deltaY)
             this.scrollX -= deltaY * .5
 
             this.assetItems.forEach((item, index) => {
@@ -66,5 +42,33 @@ export default class LevelEditor extends Phaser.Scene {
                 item.x = 16 + index * (itemSize + gap) + this.scrollX
             })
         })
+
+        console.log('assetItems', this.assetItems.length)
+    }
+
+    renderAssetDock()  {
+        const itemSize = 48
+        const gap = 12
+        const startX = 16
+        const y = this.scale.height - 72
+
+        this.assets.forEach((asset, index) => {
+            const x = startX + index * (itemSize + gap)
+            const frame = asset.frame ?? undefined
+
+            const thumb = this.add.image(x, y, asset.texture, frame)
+                .setOrigin(0, 0)
+                .setDisplaySize(itemSize, itemSize)
+                .setInteractive()
+                .setDepth(9999)
+                .setScrollFactor(0)
+
+            thumb.on('pointerdown', () => {
+                this.selectedAsset = asset
+                console.log('selected asset: ', asset)
+            })
+
+            this.assetItems.push(thumb)
+        });
     }
 }
