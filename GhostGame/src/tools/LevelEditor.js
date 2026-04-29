@@ -28,6 +28,7 @@ export default class LevelEditor extends Phaser.Scene {
 
         this.assetItems = []
         this.scrollX = 0
+        this.placedObjects = []
 
         this.renderAssetDock()
 
@@ -52,7 +53,17 @@ export default class LevelEditor extends Phaser.Scene {
             if(this.isPointerInDock((pointer))) return
             if(!this.selectedAsset) return
 
+            if(this.deleteMode) {
+                this.deleteObjectAtPointer(pointer)
+                return
+            }
+
             this.placeSelectedAsset(pointer)
+        })
+
+        this.input.keyboard.on('keydown-BACKSPACE', () => {
+            this.deleteMode = !this.deleteMode
+            console.log('delete mode: ', this.deleteMode)
         })
     }
 
@@ -146,12 +157,37 @@ export default class LevelEditor extends Phaser.Scene {
     }
 
     placeSelectedAsset(pointer) {
-        this.hostScene.add.image(
+        const placed = this.hostScene.add.image(
             pointer.x,
             pointer.y,
             this.selectedAsset.texture,
             this.selectedAsset.frame ?? undefined
         )
+
+        const data = {
+            type: 'image',
+            texture: this.selectedAsset.texture,
+            frame: this.selectedAsset.frame,
+            x: pointer.x,
+            y: pointer.y
+        }
+
+        placed.setInteractive()
+        placed.editorData = data
+
+        this.placedObjects.push(placed)
+    }
+
+    deleteObjectAtPointer(pointer) {
+        const clicked = this.placedObjects.find(obj => {
+            const bounds = obj.getBounds()
+            return Phaser.Geom.Rectangle.Contains(bounds, pointer.x, pointer.y)
+        })
+
+        if(!clicked) return
+
+        this.placedObjects = this.placedObjects.filter(obj => obj !== clicked)
+        clicked.destroy()
     }
 
     update() {
