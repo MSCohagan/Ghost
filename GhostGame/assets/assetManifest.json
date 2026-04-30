@@ -1,32 +1,21 @@
 {
-  "images": [
-    {
-      "key": "phaser",
-      "path": "assets/phaser.png",
-      "category": "images"
-    },
-    {
-      "key": "space",
-      "path": "assets/space.png",
-      "category": "images"
-    },
-    {
-      "key": "spaceship",
-      "path": "assets/spaceship.png",
-      "category": "images"
-    },
-    {
-      "key": "sprites_coin",
-      "path": "assets/sprites/coin.png",
-      "category": "images"
-    }
-  ],
+  "images": [],
   "spritesheets": [
     {
       "key": "ghost",
       "path": "assets/sprites/Ghost.png",
       "frameWidth": 32,
       "frameHeight": 32,
+      "frames": 12,
+      "margin": 0,
+      "spacing": 0,
+      "category": "sprites"
+    },
+    {
+      "key": "sprites_coin",
+      "path": "assets/sprites/coin.png",
+      "frameWidth": 16,
+      "frameHeight": 16,
       "frames": 12,
       "margin": 0,
       "spacing": 0,
@@ -67,7 +56,7 @@
       "path": "assets/sprites/slime_green.png",
       "frameWidth": 24,
       "frameHeight": 24,
-      "frames": 16,
+      "frames": 12,
       "margin": 0,
       "spacing": 0,
       "category": "sprites"
@@ -77,7 +66,7 @@
       "path": "assets/sprites/slime_purple.png",
       "frameWidth": 24,
       "frameHeight": 24,
-      "frames": 16,
+      "frames": 12,
       "margin": 0,
       "spacing": 0,
       "category": "sprites"
