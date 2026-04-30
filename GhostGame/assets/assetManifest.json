@@ -19,31 +19,6 @@
       "key": "sprites_coin",
       "path": "assets/sprites/coin.png",
       "category": "images"
-    },
-    {
-      "key": "sprites_fruit",
-      "path": "assets/sprites/fruit.png",
-      "category": "images"
-    },
-    {
-      "key": "sprites_knight",
-      "path": "assets/sprites/knight.png",
-      "category": "images"
-    },
-    {
-      "key": "sprites_slime_green",
-      "path": "assets/sprites/slime_green.png",
-      "category": "images"
-    },
-    {
-      "key": "sprites_slime_purple",
-      "path": "assets/sprites/slime_purple.png",
-      "category": "images"
-    },
-    {
-      "key": "sprites_world_tileset",
-      "path": "assets/sprites/world_tileset.png",
-      "category": "images"
     }
   ],
   "spritesheets": [
@@ -58,11 +33,61 @@
       "category": "sprites"
     },
     {
+      "key": "sprites_fruit",
+      "path": "assets/sprites/fruit.png",
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "frames": 16,
+      "margin": 0,
+      "spacing": 0,
+      "category": "sprites"
+    },
+    {
+      "key": "sprits_knight",
+      "path": "assets/sprites/knight.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 64,
+      "margin": 0,
+      "spacing": 0,
+      "category": "sprites"
+    },
+    {
       "key": "platforms",
       "path": "assets/sprites/platforms.png",
       "frameWidth": 16,
       "frameHeight": 16,
       "frames": 16,
+      "margin": 0,
+      "spacing": 0,
+      "category": "sprites"
+    },
+    {
+      "key": "sprites_slime_green",
+      "path": "assets/sprites/slime_green.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "frames": 16,
+      "margin": 0,
+      "spacing": 0,
+      "category": "sprites"
+    },
+    {
+      "key": "sprites_slime_purple",
+      "path": "assets/sprites/slime_purple.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "frames": 16,
+      "margin": 0,
+      "spacing": 0,
+      "category": "sprites"
+    },
+    {
+      "key": "sprites_world_tileset",
+      "path": "assets/sprites/world_tileset.png",
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "frames": 64,
       "margin": 0,
       "spacing": 0,
       "category": "sprites"

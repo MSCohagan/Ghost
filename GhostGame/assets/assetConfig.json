@@ -1,5 +1,12 @@
 {
     "spritesheets": {
+        "sprites/world_tileset.png": {
+            "key": "sprites_world_tileset",
+            "frameHeight": 16,
+            "frameWidth": 16,
+            "frames": 64,
+            "category": "terrain"
+        },
         "sprites/platforms.png": {
             "key": "platforms",
             "frameWidth" : 16,
@@ -13,6 +20,34 @@
             "frameHeight": 32,
             "frames": 12,
             "category": "characters"
+        },
+        "sprites/knight.png": {
+            "key": "sprits_knight",
+            "frameHeight": 32,
+            "frameWidth": 32,
+            "frames": 64,
+            "category": "characters"
+        },
+        "sprites/fruit.png": {
+            "key": "sprites_fruit",
+            "frameHeight": 16,
+            "frameWidth": 16,
+            "frames": 16,
+            "category": "items"
+        },
+        "sprites/slime_green.png": {
+            "key": "sprites_slime_green",
+            "frameHeight": 24,
+            "frameWidth": 24,
+            "frames": 16,
+            "category": "enemies"
+        },
+        "sprites/slime_purple.png": {
+            "key": "sprites_slime_purple",
+            "frameHeight": 24,
+            "frameWidth": 24,
+            "frames": 16,
+            "category": "enemies"
         }
     }
 }
