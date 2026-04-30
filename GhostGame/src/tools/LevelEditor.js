@@ -10,6 +10,9 @@ export default class LevelEditor extends Phaser.Scene {
 
         this.hostScene = data.hostScene
         this.AssetManager = new AssetManager(this.hostScene)
+        this.hostScene.editorPlacedObjects ??= []
+        this.placedObjects = this.hostScene.editorPlacedObjects
+
 
         this.assets = this.AssetManager.getAllSelectableAssets()
 
@@ -28,7 +31,6 @@ export default class LevelEditor extends Phaser.Scene {
 
         this.assetItems = []
         this.scrollX = 0
-        this.placedObjects = []
 
         this.selectedTool = 'place'
 
@@ -189,21 +191,27 @@ export default class LevelEditor extends Phaser.Scene {
         placed.setInteractive()
         placed.editorData = data
 
-        this.placedObjects.push(placed)
+        this.hostScene.editorPlacedObjects.push(placed)
+        this.hostScene.editorPlacedObjects = this.placedObjects
     }
 
     deleteObjectAtPointer(pointer) {
-        const clicked = [...this.placedObjects]
-        .reverse()
-        .find(obj => {
-            const bounds = obj.getBounds()
-            return Phaser.Geom.Rectangle.Contains(bounds, pointer.x, pointer.y)
+        const clicked = [...this.placedObjects].reverse().find(obj => {
+
+            return Phaser.Geom.Rectangle.Contains(obj.getBounds(), pointer.x, pointer.y)
+    
         })
 
-        if(!clicked) return
+        if (!clicked) return false
 
-        this.placedObjects = this.placedObjects.filter(obj => obj !== clicked)
         clicked.destroy()
+
+        this.hostScene.editorPlacedObjects =
+            this.hostScene.editorPlacedObjects.filter(obj => obj !== clicked)
+
+        this.placedObjects = this.hostScene.editorPlacedObjects
+
+        return true
     }
 
     printLevelJson() {
@@ -228,7 +236,6 @@ export default class LevelEditor extends Phaser.Scene {
         if(this.deleteObjectAtPointer(pointer)) {
             this.eraseTimer = 50
         }
-
         
     }
 }
