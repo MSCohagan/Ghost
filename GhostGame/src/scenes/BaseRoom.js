@@ -34,12 +34,13 @@ export default class BaseRoom extends Phaser.Scene {
         this.add.image(1280, 720, this.backgroundKey)
 
         const roomData = this.cache.json.get(`${this.roomKey}`)
-        if (!roomData?.objects) {
+
+        if (roomData?.objects) {
+            const roomRenderer = new RoomRenderer(this, this.roomKey)
+            roomRenderer.render(roomData)
+        } else {
             console.warn(`No room data found for ${this.roomKey}`)
-            return
         }
-        const roomRenderer = new RoomRenderer(this, this.roomKey)
-        roomRenderer.render(roomData)
 
         this.add.text(this.scale.width/2, 40, this.roomKey, {
             fontSize: '24px',
