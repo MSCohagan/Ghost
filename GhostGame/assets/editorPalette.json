@@ -5,15 +5,15 @@
             "label": "Grass Platform",
             "category": "terrain",
             "preview": {
-                "texture": "sprites_platforms",
-                "frame": 1
+              "texture": "platforms",
+              "frame": 1
             },
             "creates": {
-                "type": "platform",
-                "texture": "sprites_platforms",
-                "frame": 1,
-                "scale": 3,
-                "solid": true
+              "type": "platform",
+              "texture": "platforms",
+              "frame": 1,
+              "scale": 3,
+              "solid": true
             }
         }
     ]

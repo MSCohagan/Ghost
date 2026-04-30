@@ -7,17 +7,22 @@ export default class LevelEditor extends Phaser.Scene {
     }
 
     create(data) { 
-
         this.hostScene = data.hostScene
         this.AssetManager = new AssetManager(this.hostScene)
+        this.editorPalette = this.hostScene.cache.json.get('palette') ?? { palette: {}}
+        this.paletteEntries = []
+        this.selectedPaletteEntry = {}
         this.hostScene.editorPlacedObjects ??= []
+        this.occupiedCells = new Set()
         this.placedObjects = this.hostScene.editorPlacedObjects
-
 
         this.assets = this.AssetManager.getAllSelectableAssets()
 
         this.dockOpen = true
         this.dockHeight = 96
+        this.closedDockHeight = 16
+        this.drawTimer = 0
+
         const y = this.getDockTop()
 
         this.dock = this.add.rectangle(
@@ -35,6 +40,7 @@ export default class LevelEditor extends Phaser.Scene {
         this.selectedTool = 'place'
 
         this.renderAssetDock()
+        this.getPaletteEntries()
 
         this.input.on('wheel', (pointer, gameObjects, deltaX, deltaY) => {
             this.scrollDock(-deltaY * 0.5)
@@ -67,7 +73,7 @@ export default class LevelEditor extends Phaser.Scene {
             if(this.selectedTool === 'place') {
                 if(!this.selectedAsset) return
 
-                this.placeSelectedAsset(pointer)
+                this.placeSelectedPaletteEntry(pointer)
             }
         })
 
@@ -103,7 +109,7 @@ export default class LevelEditor extends Phaser.Scene {
                 this.selectedAsset = asset
                 this.selectedTool = 'place'
                 this.createPreview(asset)
-                console.log('selected asset: ', asset)
+                this.selectPaletteEntry(asset)
             })
 
             this.assetItems.push(thumb)
@@ -172,27 +178,65 @@ export default class LevelEditor extends Phaser.Scene {
             .setScrollFactor(0)
     }
 
-    placeSelectedAsset(pointer) {
+    getPaletteEntries() {
+        return this.editorPalette.palette.map(obj => {
+            this.paletteEntries.push(obj)
+        })
+    }
+
+    selectPaletteEntry(entry) {
+        const match = this.paletteEntries.find(paletteEntry => {
+            return (
+                entry.texture?.toLowerCase() === paletteEntry.creates.texture?.toLowerCase() &&
+                Number(entry.frame) === Number(paletteEntry.creates.frame)
+            )
+        })
+
+        this.selectedPaletteEntry = match ?? null
+
+        return this.selectedPaletteEntry
+    }
+
+    getSnappedPointerPosition(pointer) {
+        const gridSize = 48
+        return {
+            x: Math.floor(pointer.x / gridSize) * gridSize, 
+            y: Math.floor(pointer.y / gridSize) * gridSize, 
+        }
+    }
+
+    placeSelectedPaletteEntry(pointer) {
+        if(!this.selectedPaletteEntry?.creates) return false
+        const creates = this.selectedPaletteEntry.creates
+        const scale = creates.scale ?? 1
+        const cellKey = `${pointer.x}, ${pointer.y}, ${creates.type}, ${creates.frame}`
+        if(this.occupiedCells.has(cellKey)) return false
+        this.occupiedCells.add(cellKey)
+
         const placed = this.hostScene.add.image(
             pointer.x,
             pointer.y,
-            this.selectedAsset.texture,
-            this.selectedAsset.frame ?? undefined
+            creates.texture,
+            creates.frame ?? undefined,
         )
 
-        const data = {
-            type: 'image',
-            texture: this.selectedAsset.texture,
-            frame: this.selectedAsset.frame,
+        placed.setScale(scale)
+
+        placed.editorData = {
+            type: creates.type,
+            texture: creates.texture,
+            frame: creates.frame,
             x: pointer.x,
-            y: pointer.y
+            y: pointer.y,
+            scale,
+            solid: creates.solid?? false,
+            cellKey
         }
 
-        placed.setInteractive()
-        placed.editorData = data
-
         this.hostScene.editorPlacedObjects.push(placed)
-        this.hostScene.editorPlacedObjects = this.placedObjects
+        this.placedObjects = this.hostScene.editorPlacedObjects
+
+        return true
     }
 
     deleteObjectAtPointer(pointer) {
@@ -203,6 +247,10 @@ export default class LevelEditor extends Phaser.Scene {
         })
 
         if (!clicked) return false
+
+        if(clicked.editorData?.cellKey) {
+            this.occupiedCells.delete(clicked.editorData.cellKey)
+        }
 
         clicked.destroy()
 
@@ -215,27 +263,36 @@ export default class LevelEditor extends Phaser.Scene {
     }
 
     printLevelJson() {
-        const objects = this.placedObjects.map(obj => obj.editorData)
+        const objects = this.placedObjects.map(obj => {
+            const { cellKey, ...clean } = obj.editorData   
+            return clean
+        })
 
         console.log(JSON.stringify({ objects }, null, 2))
+        return objects
     }
 
     update(time, delta) {
-        const pointer = this.input.activePointer
+        const rawPointer = this.input.activePointer
+        const pointer = this.getSnappedPointerPosition(rawPointer)
 
         if(this.previewImage) {
             this.previewImage.setPosition(pointer.x, pointer.y)
         }
 
-        if(this.selectedTool !== 'erase') return
-        if(!pointer.isDown) return
+        if(!rawPointer.isDown) return
 
-        this.eraseTimer -= delta
-        if(this.eraseTimer > 0) return
+        this.drawTimer -= delta
+        if(this.drawTimer > 0) return
 
-        if(this.deleteObjectAtPointer(pointer)) {
-            this.eraseTimer = 50
+        if(this.selectedTool === 'erase') {
+            if(this.deleteObjectAtPointer(pointer)) this.drawTimer = 50
+            return
         }
         
+        if(this.selectedTool === 'place' && this.selectedPaletteEntry) {
+            this.placeSelectedPaletteEntry(pointer)
+            this.drawTimer = 50
+        }
     }
 }
