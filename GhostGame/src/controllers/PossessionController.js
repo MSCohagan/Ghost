@@ -22,6 +22,7 @@ export default class PossessionController {
             this.player.setVisible(false)
             this.player.body.enable = false
             this.currentHost.setFillStyle(0xffffff)
+            this.player.setGhostVisible(false)
         }
     }
 
@@ -35,10 +36,10 @@ export default class PossessionController {
 
         this.player.setPosition(this.releaseX, this.releaseY)
         this.player.body.reset(this.releaseX, this.releaseY)
-        this.player.setVisible(true)
         this.player.body.enable = true
 
         this.currentHost.setFillStyle(0x000000)
+        this.player.setGhostVisible(true)
 
         this.controlledEntity = this.player
     }

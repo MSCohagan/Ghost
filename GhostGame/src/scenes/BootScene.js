@@ -8,7 +8,11 @@ export default class BootScene extends Phaser.Scene {
         this.load.json('assetManifest', 'assets/assetManifest.json')
         this.load.json('palette', 'assets/editorPalette.json')
         this.load.json('assetConfig', 'assets/assetConfig.json')
-        this.load.spritesheet('ghost', 'assets/sprites/Ghost.png', {
+        this.load.spritesheet('ghostBody', 'assets/sprites/Ghost_orb.png', {
+            frameWidth: 32,
+            frameHeight: 32
+        })
+        this.load.spritesheet('ghostTail', 'assets/sprites/Ghost_tail.png', {
             frameWidth: 32,
             frameHeight: 32
         })
@@ -33,7 +37,7 @@ export default class BootScene extends Phaser.Scene {
         if(!this.anims.exists('ghostFloat')) {
             this.anims.create({
                 key: 'ghostFloat',
-                frames: this.anims.generateFrameNumbers('ghost', {
+                frames: this.anims.generateFrameNumbers('ghostBody', {
                     start: 0,
                     end: 11
                 }),
@@ -41,6 +45,16 @@ export default class BootScene extends Phaser.Scene {
                 repeat: -1})
             }
 
+            this.anims.create({
+                key: 'tailBounce',
+                frames: this.anims.generateFrameNumbers('ghostTail', {
+                    start: 0,
+                    end: 11
+                }),
+                frameRate: 12,
+                repeat: -1
+            })
+            
         this.load.once('complete', () => {
             this.scene.start('Room1')
         })
