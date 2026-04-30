@@ -2,6 +2,7 @@ import Player from '../gameObjects/Player.js'
 import Box from '../gameObjects/Box.js'
 import Gate from '../gameObjects/Gate.js'
 import PressurePad from '../gameObjects/PressurePlate.js'
+import RoomRenderer from '../controllers/RoomRenderer.js'
 import ControlsManager from '../controllers/ControlsManager.js'
 import PossessionController from '../controllers/PossessionController.js'
 import ColliderController from '../controllers/ColliderController.js'
@@ -25,10 +26,20 @@ export default class BaseRoom extends Phaser.Scene {
             frameWidth: 16,
             frameHeight: 16,
         });
+        this.load.json(`${this.roomKey}`, `assets/rooms/${this.roomKey}.json`)
+
     }
 
     createBaseRoom(x, y) {
         this.add.image(1280, 720, this.backgroundKey)
+
+        const roomData = this.cache.json.get(`${this.roomKey}`)
+        if (!roomData?.objects) {
+            console.warn(`No room data found for ${this.roomKey}`)
+            return
+        }
+        const roomRenderer = new RoomRenderer(this, this.roomKey)
+        roomRenderer.render(roomData)
 
         this.add.text(this.scale.width/2, 40, this.roomKey, {
             fontSize: '24px',
@@ -50,7 +61,7 @@ export default class BaseRoom extends Phaser.Scene {
         this.gates =[]
         this.pressurePlates = []
 
-        this.box = new Box(this, 800, 0, {
+        this.box = new Box(this, 400, 0, {
             width: 24,
             height: 40,
             color: 0x000000,

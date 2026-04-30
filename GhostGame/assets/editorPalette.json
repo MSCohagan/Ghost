@@ -6,12 +6,44 @@
             "category": "terrain",
             "preview": {
               "texture": "platforms",
+              "frame": 0
+            },
+            "creates": {
+              "type": "platform",
+              "texture": "platforms",
+              "frame": 0,
+              "scale": 3,
+              "solid": true
+            }
+        },
+        {
+            "id": "grass_platform_tile_1",
+            "label": "Grass Platform",
+            "category": "terrain",
+            "preview": {
+              "texture": "platforms",
               "frame": 1
             },
             "creates": {
               "type": "platform",
               "texture": "platforms",
               "frame": 1,
+              "scale": 3,
+              "solid": true
+            }
+        },
+        {
+            "id": "grass_platform_tile_2",
+            "label": "Grass Platform",
+            "category": "terrain",
+            "preview": {
+              "texture": "platforms",
+              "frame": 2
+            },
+            "creates": {
+              "type": "platform",
+              "texture": "platforms",
+              "frame": 2,
               "scale": 3,
               "solid": true
             }
