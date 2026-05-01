@@ -2,7 +2,7 @@ const express = require('express')
 const fs = require('fs')
 const path = require('path')
 
-const app = express
+const app = express()
 app.use(express.json())
 
 app.post('/save-room', (req, res) => {
@@ -10,7 +10,7 @@ app.post('/save-room', (req, res) => {
 
     const filePath = path.join(__dirname, "..", 'assets', 'rooms', `${roomKey}.json`)
 
-    fs.writeFileSync(filePath, JSON.stringify(data, 2, null))
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2))
 
     res.json({ success: true})
 })  

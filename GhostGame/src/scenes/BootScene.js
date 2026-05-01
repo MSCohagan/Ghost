@@ -5,14 +5,14 @@ export default class BootScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.json('assetManifest', 'public/assets/assetManifest.json')
-        this.load.json('palette', 'public/assets/editorPalette.json')
-        this.load.json('assetConfig', 'public/assets/assetConfig.json')
-        this.load.spritesheet('ghostBody', 'public/assets/sprites/Ghost_orb.png', {
+        this.load.json('assetManifest', '/assets/assetManifest.json')
+        this.load.json('palette', '/assets/editorPalette.json')
+        this.load.json('assetConfig', '/assets/assetConfig.json')
+        this.load.spritesheet('ghostBody', '/assets/sprites/Ghost_orb.png', {
             frameWidth: 32,
             frameHeight: 32
         })
-        this.load.spritesheet('ghostTail', 'public/assets/sprites/Ghost_tail.png', {
+        this.load.spritesheet('ghostTail', '/assets/sprites/Ghost_tail.png', {
             frameWidth: 32,
             frameHeight: 32
         })

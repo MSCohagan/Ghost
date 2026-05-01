@@ -3,12 +3,16 @@
         "manifest": "node scripts/generate-asset-manifest.mjs",
         "dev": "vite --port 5173",
         "build": "vite build",
-        "preview": "vite preview --port 4173"
+        "preview": "vite preview --port 4173",
+        "save-server": "node src/tools/SaveServer.js",
+        "dev:editor": "concurrently \"npm run dev\" \"npm run save-server\""
     },
     "dependencies": {
+        "cors": "^2.8.6",
         "express": "^5.2.1"
     },
     "devDependencies": {
+        "concurrently": "^9.2.1",
         "vite": "^8.0.10"
     }
 }

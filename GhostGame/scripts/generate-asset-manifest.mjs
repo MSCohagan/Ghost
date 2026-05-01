@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 
-const ASSETS_DIR = path.resolve('public/assets')
+const ASSETS_DIR = path.resolve('assets')
 const CONFIG_FILE = path.join(ASSETS_DIR, 'assetConfig.json')
 const OUTPUT_FILE = path.join(ASSETS_DIR, 'assetManifest.json')
 
