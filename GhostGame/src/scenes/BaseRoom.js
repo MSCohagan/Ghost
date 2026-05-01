@@ -88,11 +88,12 @@ export default class BaseRoom extends Phaser.Scene {
     }
 
     moveRoom() {
-        if(this.player.x + 24 >= this.scale.width && this.nextRoomRight) {
-            this.scene.start(this.nextRoomRight, { spawnX: 50, spawnY: this.player.y })
+        if(this.player.x + 72 >= this.scale.width && this.nextRoomRight) {
+            this.scene.start(this.nextRoomRight, { spawnX: 80, spawnY: this.player.y })
             return true
-        } else if (this.player.x - 24 <= 0  && this.nextRoomLeft) {
-            this.scene.start(this.nextRoomLeft, { spawnX: this.scale.width - 40, spawnY: this.player.y })
+        } else if (this.player.x - 72 <= 0  && this.nextRoomLeft) {
+            console.log(this.nextRoomLeft)
+            this.scene.start(this.nextRoomLeft, { spawnX: this.scale.width - 80, spawnY: this.player.y })
             return true
         }
         return false
@@ -128,7 +129,7 @@ export default class BaseRoom extends Phaser.Scene {
             }
         }
 
-        this.controlledEntity.update()
+        this.controlledEntity.update(this.time, this.delta)
 
         const plate = this.pressurePlates[0]
         const gate = this.gates[0]
