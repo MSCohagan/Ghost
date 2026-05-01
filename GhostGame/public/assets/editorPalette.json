@@ -1,33 +1,385 @@
 {
   "palette": [
     {
-      "id": "sprites_Ghost_orb",
-      "label": "Ghost Orb",
-      "category": "images",
+      "id": "ghost_0",
+      "label": "Ghost 0",
+      "category": "sprites",
       "preview": {
-        "texture": "sprites_Ghost_orb",
-        "frame": null
+        "texture": "ghost",
+        "frame": 0
       },
       "creates": {
-        "type": "image",
-        "texture": "sprites_Ghost_orb",
-        "frame": null,
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 0,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprites_Ghost_tail",
-      "label": "Ghost Tail",
-      "category": "images",
+      "id": "ghost_1",
+      "label": "Ghost 1",
+      "category": "sprites",
       "preview": {
-        "texture": "sprites_Ghost_tail",
-        "frame": null
+        "texture": "ghost",
+        "frame": 1
       },
       "creates": {
-        "type": "image",
-        "texture": "sprites_Ghost_tail",
-        "frame": null,
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 1,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_2",
+      "label": "Ghost 2",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 2
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 2,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_3",
+      "label": "Ghost 3",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 3
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 3,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_4",
+      "label": "Ghost 4",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 4
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 4,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_5",
+      "label": "Ghost 5",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 5
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 5,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_6",
+      "label": "Ghost 6",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 6
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 6,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_7",
+      "label": "Ghost 7",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 7
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 7,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_8",
+      "label": "Ghost 8",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 8
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 8,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_9",
+      "label": "Ghost 9",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 9
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 9,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_10",
+      "label": "Ghost 10",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 10
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 10,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_11",
+      "label": "Ghost 11",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 11
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 11,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_0",
+      "label": "Ghost 0",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 0
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 0,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_1",
+      "label": "Ghost 1",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 1
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 1,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_2",
+      "label": "Ghost 2",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 2
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 2,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_3",
+      "label": "Ghost 3",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 3
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 3,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_4",
+      "label": "Ghost 4",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 4
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 4,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_5",
+      "label": "Ghost 5",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 5
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 5,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_6",
+      "label": "Ghost 6",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 6
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 6,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_7",
+      "label": "Ghost 7",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 7
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 7,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_8",
+      "label": "Ghost 8",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 8
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 8,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_9",
+      "label": "Ghost 9",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 9
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 9,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_10",
+      "label": "Ghost 10",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 10
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 10,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "ghost_11",
+      "label": "Ghost 11",
+      "category": "sprites",
+      "preview": {
+        "texture": "ghost",
+        "frame": 11
+      },
+      "creates": {
+        "type": "sprite-frame",
+        "texture": "ghost",
+        "frame": 11,
         "scale": 1,
         "solid": false
       }

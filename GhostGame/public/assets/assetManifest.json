@@ -1,20 +1,29 @@
 {
-  "images": [
-    {
-      "key": "sprites_Ghost_orb",
-      "path": "assets/sprites/Ghost_orb.png",
-      "category": "images"
-    },
-    {
-      "key": "sprites_Ghost_tail",
-      "path": "assets/sprites/Ghost_tail.png",
-      "category": "images"
-    }
-  ],
+  "images": [],
   "spritesheets": [
     {
       "key": "ghost",
       "path": "assets/sprites/Ghost.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 12,
+      "margin": 0,
+      "spacing": 0,
+      "category": "sprites"
+    },
+    {
+      "key": "ghost",
+      "path": "assets/sprites/Ghost_orb.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 12,
+      "margin": 0,
+      "spacing": 0,
+      "category": "sprites"
+    },
+    {
+      "key": "ghost",
+      "path": "assets/sprites/Ghost_tail.png",
       "frameWidth": 32,
       "frameHeight": 32,
       "frames": 12,
