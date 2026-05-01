@@ -26,8 +26,7 @@ export default class BaseRoom extends Phaser.Scene {
             frameWidth: 16,
             frameHeight: 16,
         });
-        this.load.json(`${this.roomKey}`, `assets/rooms/${this.roomKey}.json`)
-
+        this.load.json(`${this.roomKey}`, `assets/rooms/${this.roomKey}.json`)     
     }
 
     createBaseRoom(x, y) {

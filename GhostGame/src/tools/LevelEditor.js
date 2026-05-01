@@ -272,6 +272,17 @@ export default class LevelEditor extends Phaser.Scene {
         return objects
     }
 
+    async saveRoom() {
+        await fetch('http://localhost:3001/save-room', {
+            method: 'POST',
+            haeders: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                roomKey: this.hostScene.roomKey,
+                data: this.printLevelJson()
+            })
+        })
+    }
+
     update(time, delta) {
         const rawPointer = this.input.activePointer
         const pointer = this.getSnappedPointerPosition(rawPointer)
