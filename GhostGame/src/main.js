@@ -1,4 +1,5 @@
 import BootScene from './scenes/BootScene.js'
+import PreloadScene from './scenes/PreloadScene.js'
 import LevelEditor from './tools/LevelEditor.js'
 import Room1 from './scenes/Room1.js'
 import Room2 from './scenes/Room2.js'
@@ -15,6 +16,7 @@ const config = {
     pixelArt: true,
     scene: [
         BootScene,
+        PreloadScene,
         LevelEditor,
         Room1,
         Room2,

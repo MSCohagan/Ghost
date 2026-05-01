@@ -18,7 +18,7 @@ export default class Room1 extends BaseRoom {
     preload() {
         super.preload()
 
-        this.load.image('gray', 'assets/gray.jpg')
+        this.load.image('gray', '/assets/gray.jpg')
     }
 
     create() {

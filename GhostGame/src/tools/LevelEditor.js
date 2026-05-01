@@ -21,6 +21,7 @@ export default class LevelEditor extends Phaser.Scene {
         this.dockOpen = true
         this.dockHeight = 96
         this.closedDockHeight = 16
+        this.paintCooldown = 80
         this.drawTimer = 0
 
         const y = this.getDockTop()
@@ -85,6 +86,7 @@ export default class LevelEditor extends Phaser.Scene {
 
         this.input.keyboard.on('keydown-P', () => {
             this.printLevelJson()
+            this.saveRoomJson()
         })
     }
 
@@ -105,12 +107,14 @@ export default class LevelEditor extends Phaser.Scene {
                 .setDepth(9999)
                 .setScrollFactor(0)
 
-            thumb.on('pointerdown', () => {
-                this.selectedAsset = asset
-                this.selectedTool = 'place'
-                this.createPreview(asset)
-                this.selectPaletteEntry(asset)
-            })
+                thumb.on('pointerdown', (pointer) => {
+                    pointer.event.stopPropagation()
+
+                    this.selectedAsset = asset
+                    this.selectedTool = 'place'
+                    this.createPreview(asset)
+                    this.selectPaletteEntry(asset)
+                })
 
             this.assetItems.push(thumb)
         });
@@ -158,7 +162,7 @@ export default class LevelEditor extends Phaser.Scene {
     }
 
     isPointerInDock(pointer) {
-        return pointer.y >= this.getDockTop()
+        return this.dockOpen && pointer.y >= this.getDockTop()
     }
 
     createPreview(asset) {
@@ -176,6 +180,7 @@ export default class LevelEditor extends Phaser.Scene {
             .setDepth(10000)
             .setDisplaySize(48, 48)
             .setScrollFactor(0)
+            .setOrigin(0,0)
     }
 
     getPaletteEntries() {
@@ -206,28 +211,32 @@ export default class LevelEditor extends Phaser.Scene {
     }
 
     placeSelectedPaletteEntry(pointer) {
+        const snapped = this.getSnappedPointerPosition(pointer)
+        const x = snapped.x
+        const y = snapped.y
         if(!this.selectedPaletteEntry?.creates) return false
         const creates = this.selectedPaletteEntry.creates
         const scale = creates.scale ?? 1
-        const cellKey = `${pointer.x}, ${pointer.y}, ${creates.type}, ${creates.frame}`
+        const cellKey = `${x}, ${y}, ${creates.type}`
         if(this.occupiedCells.has(cellKey)) return false
         this.occupiedCells.add(cellKey)
 
         const placed = this.hostScene.add.image(
-            pointer.x,
-            pointer.y,
+            x,
+            y,
             creates.texture,
             creates.frame ?? undefined,
         )
 
         placed.setScale(scale)
+        placed.setOrigin(0,0)
 
         placed.editorData = {
             type: creates.type,
             texture: creates.texture,
             frame: creates.frame,
-            x: pointer.x,
-            y: pointer.y,
+            x: x,
+            y: y,
             scale,
             solid: creates.solid?? false,
             cellKey
@@ -272,15 +281,33 @@ export default class LevelEditor extends Phaser.Scene {
         return objects
     }
 
-    async saveRoom() {
-        await fetch('http://localhost:3001/save-room', {
-            method: 'POST',
-            haeders: { 'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                roomKey: this.hostScene.roomKey,
-                data: this.printLevelJson()
-            })
+    getCleanLevelObjects() {
+        return this.placedObjects.map(({ editorData }) => {
+            const { cellKey, ...clean} = editorData
+            return clean
         })
+    }
+
+    async saveRoomJson() {
+        const objects = this.getCleanLevelObjects()
+
+        try {
+                const response = await fetch('http://localhost:3001/save-room', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    roomKey: this.hostScene.roomKey,
+                    data: { objects }
+                })
+                
+            })
+            const result = await response.json()
+            console.log(result)
+
+            window.location.reload()
+        } catch(err) {
+            console.error(err)
+        }
     }
 
     update(time, delta) {
@@ -292,6 +319,7 @@ export default class LevelEditor extends Phaser.Scene {
         }
 
         if(!rawPointer.isDown) return
+        if(this.isPointerInDock(rawPointer)) return
 
         this.drawTimer -= delta
         if(this.drawTimer > 0) return

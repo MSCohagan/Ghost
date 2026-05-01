@@ -22,11 +22,14 @@ export default class BaseRoom extends Phaser.Scene {
     }
 
     preload() {
-        this.load.spritesheet('platforms', 'assets/sprites/platforms.png', {
+        this.load.spritesheet('platforms', '/assets/sprites/platforms.png', {
             frameWidth: 16,
             frameHeight: 16,
         });
-        this.load.json(`${this.roomKey}`, `assets/rooms/${this.roomKey}.json`)     
+        this.load.json(
+            this.roomKey,
+            `/assets/rooms/${this.roomKey}.json?v=${Date.now()}`
+          ) 
     }
 
     createBaseRoom(x, y) {
@@ -48,8 +51,6 @@ export default class BaseRoom extends Phaser.Scene {
 
         const controlsManager = new ControlsManager(this)
         this.controls = controlsManager.fetchControls()
-
-        this.colliderController = new ColliderController(this)
 
         this.platforms = this.physics.add.staticGroup()
         this.ground = this.physics.add.staticGroup()
@@ -74,6 +75,7 @@ export default class BaseRoom extends Phaser.Scene {
 
         this.controlledEntity = this.player
 
+        this.colliderController = new ColliderController(this)
         this.colliderController.addCollider(this.player, this.ground)
         this.possessables.forEach(possessable => {
             this.colliderController.addCollider(possessable, this.platforms)
@@ -83,7 +85,6 @@ export default class BaseRoom extends Phaser.Scene {
         const possessionController = new PossessionController(this, this.player)
         this.possess = possessionController.tryPossess
         this.release = possessionController.releasePossession
-
     }
 
     moveRoom() {

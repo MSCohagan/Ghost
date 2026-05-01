@@ -7,13 +7,11 @@ export default class RoomRenderer {
             platform: this.createStaticSprite.bind(this),
             image: this.createImage.bind(this)
         }
-        console.log("now rendering " + this.scene.roomKey)
     }
 
     render(roomData) {
-        if(!`assets/rooms/${this.roomKey}.json`) return
+        if(!`/assets/rooms/${this.roomKey}.json`) return
         roomData.objects.forEach(obj => {
-            console.log(JSON.stringify(obj))
             const factory = this.factories[obj.type]
 
             if(!factory) {
@@ -54,7 +52,6 @@ export default class RoomRenderer {
     }
 
     createImage(obj) {
-        console.log(JSON.stringify(obj))
         const image = this.scene.add.image(
             obj.x,
             obj.y,
