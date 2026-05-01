@@ -1,5 +1,16 @@
 {
-  "images": [],
+  "images": [
+    {
+      "key": "sprites_Ghost_orb",
+      "path": "assets/sprites/Ghost_orb.png",
+      "category": "images"
+    },
+    {
+      "key": "sprites_Ghost_tail",
+      "path": "assets/sprites/Ghost_tail.png",
+      "category": "images"
+    }
+  ],
   "spritesheets": [
     {
       "key": "ghost",
