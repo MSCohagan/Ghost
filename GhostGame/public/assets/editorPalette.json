@@ -2060,7 +2060,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 0,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
@@ -2076,7 +2076,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 1,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
@@ -2092,7 +2092,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 2,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
@@ -2108,7 +2108,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 3,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
@@ -2124,7 +2124,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 4,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
@@ -2140,7 +2140,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 5,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
@@ -2156,7 +2156,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 6,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
@@ -2172,7 +2172,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 7,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
@@ -2188,7 +2188,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 8,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
@@ -2204,7 +2204,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 9,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
@@ -2220,7 +2220,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 10,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
@@ -2236,7 +2236,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 11,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
@@ -2252,7 +2252,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 12,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
@@ -2268,7 +2268,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 13,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
@@ -2284,7 +2284,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 14,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
@@ -2300,7 +2300,7 @@
         "type": "sprite-frame",
         "texture": "platforms",
         "frame": 15,
-        "scale": 1,
+        "scale": 3,
         "solid": false
       }
     },
