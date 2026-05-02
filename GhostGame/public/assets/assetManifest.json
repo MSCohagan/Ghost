@@ -2,104 +2,104 @@
   "images": [],
   "spritesheets": [
     {
-      "key": "ghost",
-      "path": "assets/sprites/Ghost.png",
-      "frameWidth": 32,
-      "frameHeight": 32,
-      "frames": 12,
-      "margin": 0,
-      "spacing": 0,
-      "category": "sprites"
-    },
-    {
-      "key": "ghost",
-      "path": "assets/sprites/Ghost_orb.png",
-      "frameWidth": 32,
-      "frameHeight": 32,
-      "frames": 12,
-      "margin": 0,
-      "spacing": 0,
-      "category": "sprites"
-    },
-    {
-      "key": "ghost",
-      "path": "assets/sprites/Ghost_tail.png",
-      "frameWidth": 32,
-      "frameHeight": 32,
-      "frames": 12,
-      "margin": 0,
-      "spacing": 0,
-      "category": "sprites"
-    },
-    {
-      "key": "sprites_coin",
-      "path": "assets/sprites/coin.png",
+      "key": "sprites_world_tileset",
+      "path": "/assets/sprites/world_tileset.png",
       "frameWidth": 16,
       "frameHeight": 16,
-      "frames": 12,
-      "margin": 0,
-      "spacing": 0,
-      "category": "sprites"
-    },
-    {
-      "key": "sprites_fruit",
-      "path": "assets/sprites/fruit.png",
-      "frameWidth": 16,
-      "frameHeight": 16,
-      "frames": 16,
-      "margin": 0,
-      "spacing": 0,
-      "category": "sprites"
-    },
-    {
-      "key": "sprits_knight",
-      "path": "assets/sprites/knight.png",
-      "frameWidth": 32,
-      "frameHeight": 32,
       "frames": 64,
       "margin": 0,
       "spacing": 0,
-      "category": "sprites"
+      "category": "terrain"
     },
     {
       "key": "platforms",
-      "path": "assets/sprites/platforms.png",
+      "path": "/assets/sprites/platforms.png",
       "frameWidth": 16,
       "frameHeight": 16,
       "frames": 16,
       "margin": 0,
       "spacing": 0,
-      "category": "sprites"
+      "category": "terrain"
     },
     {
-      "key": "sprites_slime_green",
-      "path": "assets/sprites/slime_green.png",
-      "frameWidth": 24,
-      "frameHeight": 24,
+      "key": "ghost",
+      "path": "/assets/sprites/Ghost.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
       "frames": 12,
       "margin": 0,
       "spacing": 0,
-      "category": "sprites"
+      "category": "characters"
     },
     {
-      "key": "sprites_slime_purple",
-      "path": "assets/sprites/slime_purple.png",
-      "frameWidth": 24,
-      "frameHeight": 24,
+      "key": "ghostOrb",
+      "path": "/assets/sprites/Ghost_orb.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
       "frames": 12,
       "margin": 0,
       "spacing": 0,
-      "category": "sprites"
+      "category": "characters"
     },
     {
-      "key": "sprites_world_tileset",
-      "path": "assets/sprites/world_tileset.png",
-      "frameWidth": 16,
-      "frameHeight": 16,
+      "key": "ghostTail",
+      "path": "/assets/sprites/Ghost_tail.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
+      "frames": 12,
+      "margin": 0,
+      "spacing": 0,
+      "category": "characters"
+    },
+    {
+      "key": "sprites_knight",
+      "path": "/assets/sprites/knight.png",
+      "frameWidth": 32,
+      "frameHeight": 32,
       "frames": 64,
       "margin": 0,
       "spacing": 0,
-      "category": "sprites"
+      "category": "characters"
+    },
+    {
+      "key": "sprites_fruit",
+      "path": "/assets/sprites/fruit.png",
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "frames": 16,
+      "margin": 0,
+      "spacing": 0,
+      "category": "items"
+    },
+    {
+      "key": "sprites_coin",
+      "path": "/assets/sprites/coin.png",
+      "frameWidth": 16,
+      "frameHeight": 16,
+      "frames": 12,
+      "margin": 0,
+      "spacing": 0,
+      "category": "items"
+    },
+    {
+      "key": "sprites_slime_green",
+      "path": "/assets/sprites/slime_green.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "frames": 12,
+      "margin": 0,
+      "spacing": 0,
+      "category": "enemies"
+    },
+    {
+      "key": "sprites_slime_purple",
+      "path": "/assets/sprites/slime_purple.png",
+      "frameWidth": 24,
+      "frameHeight": 24,
+      "frames": 12,
+      "margin": 0,
+      "spacing": 0,
+      "category": "enemies"
     }
   ]
 }

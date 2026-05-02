@@ -38,10 +38,9 @@ export default class BaseRoom extends Phaser.Scene {
         const roomData = this.cache.json.get(`${this.roomKey}`)
 
         if (roomData?.objects) {
-            const roomRenderer = new RoomRenderer(this, this.roomKey)
-            roomRenderer.render(roomData)
+            this.roomRenderer = new RoomRenderer(this)
+            this.roomObjects = this.roomRenderer.render(roomData)
         } else {
-            console.warn(`No room data found for ${this.roomKey}`)
         }
 
         this.add.text(this.scale.width/2, 40, this.roomKey, {
@@ -56,20 +55,21 @@ export default class BaseRoom extends Phaser.Scene {
         this.ground = this.physics.add.staticGroup()
         this.gates = this.physics.add.staticGroup()
 
-        this.player = new Player(this, x, y, { })
+        const spawn = this.roomObjects.playerSpawn ?? { x, y }
+        this.player = new Player(this, spawn.x, spawn.y)
 
-        this.possessables = []
         this.gates =[]
         this.pressurePlates = []
+        this.possessables = []
 
-        this.box = new Box(this, 400, 0, {
+        this.roomObjects.entities.possessables.push(this.box = new Box(this, 400, 0, {
             width: 24,
             height: 40,
             color: 0x000000,
             speed: 200,
             jumpVelocity: -350,
             gravityY: 800,
-        })
+        }))
 
         this.registerPossessable(this.box)
 
@@ -82,6 +82,12 @@ export default class BaseRoom extends Phaser.Scene {
             this.colliderController.addCollider(possessable, this.ground)
         })
 
+        this.colliderController.wireRoomCollisions({
+            player: this.player,
+            possessables: this.possessables,
+            groups: this.roomObjects.groups
+        })
+
         const possessionController = new PossessionController(this, this.player)
         this.possess = possessionController.tryPossess
         this.release = possessionController.releasePossession
@@ -92,7 +98,6 @@ export default class BaseRoom extends Phaser.Scene {
             this.scene.start(this.nextRoomRight, { spawnX: 80, spawnY: this.player.y })
             return true
         } else if (this.player.x - 72 <= 0  && this.nextRoomLeft) {
-            console.log(this.nextRoomLeft)
             this.scene.start(this.nextRoomLeft, { spawnX: this.scale.width - 80, spawnY: this.player.y })
             return true
         }

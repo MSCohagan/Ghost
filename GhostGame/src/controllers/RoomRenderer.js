@@ -1,3 +1,5 @@
+import Box from '../gameObjects/Box.js'
+
 export default class RoomRenderer {
 
     constructor(scene) {
@@ -10,12 +12,12 @@ export default class RoomRenderer {
         }
         this.factories = {
             platform: this.createStaticSprite.bind(this),
-            spriteframe: this.createStaticSprite.bind(this),
+            spriteFrame: this.createImage.bind(this),
             image: this.createImage.bind(this),
             possessableBox: this.createPossessableBox.bind(this),
             playerSpawn: this.createPlayerSpawn.bind(this),
             gate: this.createGate.bind(this),
-            pressurePlates: this.createPressurePlates.bind(this)
+            pressurePlate: this.createPressurePlate.bind(this)
         }
     }
 
@@ -63,8 +65,7 @@ export default class RoomRenderer {
     }
 
     createStaticSprite(obj) {
-        const groupName = obj.group ?? obj.type
-        const group = this.getGroup(groupName, 'static')
+        const group = this.getGroup(obj.group ?? obj.type, 'static')
 
         const item = group.create(
             obj.x,
@@ -87,25 +88,46 @@ export default class RoomRenderer {
             obj.x,
             obj.y,
             obj.texture,
-            obj.frame
+            obj.frame ?? undefined
         )
 
+        image.setOrigin(obj.originX ?? 0, obj.originY ?? 0)
         image.setScale(obj.scale ?? 1)
+
+        image.roomData = obj
+
+        return image
     }
 
     createPossessableBox(obj) {
-        console.log(obj)
+        const box = new Box(this.scene, obj.x, obj.y, {
+            width: 24,
+            height: 40,
+            color: 0x000000,
+            speed: 200,
+            jumpVelocity: -350,
+            gravityY: 800,
+        })
+
+        this.entities.possessables.push(box)
+        
+        return box
     }
 
     createPlayerSpawn(obj) {
-        console.log(obj)
+        this.playerSpawn = {
+            obj: obj.x,
+            obj: obj.y
+        }
+
+        return this.playerSpawn
     }
 
     createGate(obj) {
         console.log(obj)
     }
 
-    createPressurePlates(obj) {
+    createPressurePlate(obj) {
         console.log(obj)
     }
 }

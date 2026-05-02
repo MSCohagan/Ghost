@@ -1,15 +1,1376 @@
 {
   "palette": [
     {
+      "id": "sprites_world_tileset_0",
+      "label": "World Tileset 0",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 0
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 0,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_1",
+      "label": "World Tileset 1",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 1
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 1,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_2",
+      "label": "World Tileset 2",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 2
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 2,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_3",
+      "label": "World Tileset 3",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 3
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 3,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_4",
+      "label": "World Tileset 4",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 4
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 4,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_5",
+      "label": "World Tileset 5",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 5
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 5,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_6",
+      "label": "World Tileset 6",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 6
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 6,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_7",
+      "label": "World Tileset 7",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 7
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 7,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_8",
+      "label": "World Tileset 8",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 8
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 8,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_9",
+      "label": "World Tileset 9",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 9
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 9,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_10",
+      "label": "World Tileset 10",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 10
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 10,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_11",
+      "label": "World Tileset 11",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 11
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 11,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_12",
+      "label": "World Tileset 12",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 12
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 12,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_13",
+      "label": "World Tileset 13",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 13
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 13,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_14",
+      "label": "World Tileset 14",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 14
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 14,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_15",
+      "label": "World Tileset 15",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 15
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 15,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_16",
+      "label": "World Tileset 16",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 16
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 16,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_17",
+      "label": "World Tileset 17",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 17
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 17,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_18",
+      "label": "World Tileset 18",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 18
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 18,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_19",
+      "label": "World Tileset 19",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 19
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 19,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_20",
+      "label": "World Tileset 20",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 20
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 20,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_21",
+      "label": "World Tileset 21",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 21
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 21,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_22",
+      "label": "World Tileset 22",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 22
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 22,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_23",
+      "label": "World Tileset 23",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 23
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 23,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_24",
+      "label": "World Tileset 24",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 24
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 24,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_25",
+      "label": "World Tileset 25",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 25
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 25,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_26",
+      "label": "World Tileset 26",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 26
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 26,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_27",
+      "label": "World Tileset 27",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 27
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 27,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_28",
+      "label": "World Tileset 28",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 28
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 28,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_29",
+      "label": "World Tileset 29",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 29
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 29,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_30",
+      "label": "World Tileset 30",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 30
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 30,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_31",
+      "label": "World Tileset 31",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 31
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 31,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_32",
+      "label": "World Tileset 32",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 32
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 32,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_33",
+      "label": "World Tileset 33",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 33
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 33,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_34",
+      "label": "World Tileset 34",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 34
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 34,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_35",
+      "label": "World Tileset 35",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 35
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 35,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_36",
+      "label": "World Tileset 36",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 36
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 36,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_37",
+      "label": "World Tileset 37",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 37
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 37,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_38",
+      "label": "World Tileset 38",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 38
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 38,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_39",
+      "label": "World Tileset 39",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 39
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 39,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_40",
+      "label": "World Tileset 40",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 40
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 40,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_41",
+      "label": "World Tileset 41",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 41
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 41,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_42",
+      "label": "World Tileset 42",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 42
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 42,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_43",
+      "label": "World Tileset 43",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 43
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 43,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_44",
+      "label": "World Tileset 44",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 44
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 44,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_45",
+      "label": "World Tileset 45",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 45
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 45,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_46",
+      "label": "World Tileset 46",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 46
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 46,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_47",
+      "label": "World Tileset 47",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 47
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 47,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_48",
+      "label": "World Tileset 48",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 48
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 48,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_49",
+      "label": "World Tileset 49",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 49
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 49,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_50",
+      "label": "World Tileset 50",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 50
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 50,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_51",
+      "label": "World Tileset 51",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 51
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 51,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_52",
+      "label": "World Tileset 52",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 52
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 52,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_53",
+      "label": "World Tileset 53",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 53
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 53,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_54",
+      "label": "World Tileset 54",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 54
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 54,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_55",
+      "label": "World Tileset 55",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 55
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 55,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_56",
+      "label": "World Tileset 56",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 56
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 56,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_57",
+      "label": "World Tileset 57",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 57
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 57,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_58",
+      "label": "World Tileset 58",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 58
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 58,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_59",
+      "label": "World Tileset 59",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 59
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 59,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_60",
+      "label": "World Tileset 60",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 60
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 60,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_61",
+      "label": "World Tileset 61",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 61
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 61,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_62",
+      "label": "World Tileset 62",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 62
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 62,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "sprites_world_tileset_63",
+      "label": "World Tileset 63",
+      "category": "terrain",
+      "preview": {
+        "texture": "sprites_world_tileset",
+        "frame": 63
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "sprites_world_tileset",
+        "frame": 63,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_0",
+      "label": "Platforms 0",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 0
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 0,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_1",
+      "label": "Platforms 1",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 1
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 1,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_2",
+      "label": "Platforms 2",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 2
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 2,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_3",
+      "label": "Platforms 3",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 3
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 3,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_4",
+      "label": "Platforms 4",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 4
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 4,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_5",
+      "label": "Platforms 5",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 5
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 5,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_6",
+      "label": "Platforms 6",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 6
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 6,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_7",
+      "label": "Platforms 7",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 7
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 7,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_8",
+      "label": "Platforms 8",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 8
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 8,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_9",
+      "label": "Platforms 9",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 9
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 9,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_10",
+      "label": "Platforms 10",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 10
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 10,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_11",
+      "label": "Platforms 11",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 11
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 11,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_12",
+      "label": "Platforms 12",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 12
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 12,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_13",
+      "label": "Platforms 13",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 13
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 13,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_14",
+      "label": "Platforms 14",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 14
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 14,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
+      "id": "platforms_15",
+      "label": "Platforms 15",
+      "category": "terrain",
+      "preview": {
+        "texture": "platforms",
+        "frame": 15
+      },
+      "creates": {
+        "type": "platform",
+        "group": "platform",
+        "texture": "platforms",
+        "frame": 15,
+        "scale": 3,
+        "solid": true
+      }
+    },
+    {
       "id": "ghost_0",
       "label": "Ghost 0",
-      "category": "sprites",
+      "category": "characters",
       "preview": {
         "texture": "ghost",
         "frame": 0
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "ghost",
         "frame": 0,
         "scale": 1,
@@ -19,13 +1380,14 @@
     {
       "id": "ghost_1",
       "label": "Ghost 1",
-      "category": "sprites",
+      "category": "characters",
       "preview": {
         "texture": "ghost",
         "frame": 1
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "ghost",
         "frame": 1,
         "scale": 1,
@@ -35,13 +1397,14 @@
     {
       "id": "ghost_2",
       "label": "Ghost 2",
-      "category": "sprites",
+      "category": "characters",
       "preview": {
         "texture": "ghost",
         "frame": 2
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "ghost",
         "frame": 2,
         "scale": 1,
@@ -51,13 +1414,14 @@
     {
       "id": "ghost_3",
       "label": "Ghost 3",
-      "category": "sprites",
+      "category": "characters",
       "preview": {
         "texture": "ghost",
         "frame": 3
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "ghost",
         "frame": 3,
         "scale": 1,
@@ -67,13 +1431,14 @@
     {
       "id": "ghost_4",
       "label": "Ghost 4",
-      "category": "sprites",
+      "category": "characters",
       "preview": {
         "texture": "ghost",
         "frame": 4
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "ghost",
         "frame": 4,
         "scale": 1,
@@ -83,13 +1448,14 @@
     {
       "id": "ghost_5",
       "label": "Ghost 5",
-      "category": "sprites",
+      "category": "characters",
       "preview": {
         "texture": "ghost",
         "frame": 5
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "ghost",
         "frame": 5,
         "scale": 1,
@@ -99,13 +1465,14 @@
     {
       "id": "ghost_6",
       "label": "Ghost 6",
-      "category": "sprites",
+      "category": "characters",
       "preview": {
         "texture": "ghost",
         "frame": 6
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "ghost",
         "frame": 6,
         "scale": 1,
@@ -115,13 +1482,14 @@
     {
       "id": "ghost_7",
       "label": "Ghost 7",
-      "category": "sprites",
+      "category": "characters",
       "preview": {
         "texture": "ghost",
         "frame": 7
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "ghost",
         "frame": 7,
         "scale": 1,
@@ -131,13 +1499,14 @@
     {
       "id": "ghost_8",
       "label": "Ghost 8",
-      "category": "sprites",
+      "category": "characters",
       "preview": {
         "texture": "ghost",
         "frame": 8
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "ghost",
         "frame": 8,
         "scale": 1,
@@ -147,13 +1516,14 @@
     {
       "id": "ghost_9",
       "label": "Ghost 9",
-      "category": "sprites",
+      "category": "characters",
       "preview": {
         "texture": "ghost",
         "frame": 9
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "ghost",
         "frame": 9,
         "scale": 1,
@@ -163,13 +1533,14 @@
     {
       "id": "ghost_10",
       "label": "Ghost 10",
-      "category": "sprites",
+      "category": "characters",
       "preview": {
         "texture": "ghost",
         "frame": 10
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "ghost",
         "frame": 10,
         "scale": 1,
@@ -179,13 +1550,14 @@
     {
       "id": "ghost_11",
       "label": "Ghost 11",
-      "category": "sprites",
+      "category": "characters",
       "preview": {
         "texture": "ghost",
         "frame": 11
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "ghost",
         "frame": 11,
         "scale": 1,
@@ -193,577 +1565,1497 @@
       }
     },
     {
-      "id": "ghost_0",
-      "label": "Ghost 0",
-      "category": "sprites",
+      "id": "ghostOrb_0",
+      "label": "GhostOrb 0",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostOrb",
         "frame": 0
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostOrb",
         "frame": 0,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_1",
-      "label": "Ghost 1",
-      "category": "sprites",
+      "id": "ghostOrb_1",
+      "label": "GhostOrb 1",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostOrb",
         "frame": 1
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostOrb",
         "frame": 1,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_2",
-      "label": "Ghost 2",
-      "category": "sprites",
+      "id": "ghostOrb_2",
+      "label": "GhostOrb 2",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostOrb",
         "frame": 2
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostOrb",
         "frame": 2,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_3",
-      "label": "Ghost 3",
-      "category": "sprites",
+      "id": "ghostOrb_3",
+      "label": "GhostOrb 3",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostOrb",
         "frame": 3
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostOrb",
         "frame": 3,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_4",
-      "label": "Ghost 4",
-      "category": "sprites",
+      "id": "ghostOrb_4",
+      "label": "GhostOrb 4",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostOrb",
         "frame": 4
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostOrb",
         "frame": 4,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_5",
-      "label": "Ghost 5",
-      "category": "sprites",
+      "id": "ghostOrb_5",
+      "label": "GhostOrb 5",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostOrb",
         "frame": 5
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostOrb",
         "frame": 5,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_6",
-      "label": "Ghost 6",
-      "category": "sprites",
+      "id": "ghostOrb_6",
+      "label": "GhostOrb 6",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostOrb",
         "frame": 6
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostOrb",
         "frame": 6,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_7",
-      "label": "Ghost 7",
-      "category": "sprites",
+      "id": "ghostOrb_7",
+      "label": "GhostOrb 7",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostOrb",
         "frame": 7
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostOrb",
         "frame": 7,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_8",
-      "label": "Ghost 8",
-      "category": "sprites",
+      "id": "ghostOrb_8",
+      "label": "GhostOrb 8",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostOrb",
         "frame": 8
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostOrb",
         "frame": 8,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_9",
-      "label": "Ghost 9",
-      "category": "sprites",
+      "id": "ghostOrb_9",
+      "label": "GhostOrb 9",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostOrb",
         "frame": 9
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostOrb",
         "frame": 9,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_10",
-      "label": "Ghost 10",
-      "category": "sprites",
+      "id": "ghostOrb_10",
+      "label": "GhostOrb 10",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostOrb",
         "frame": 10
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostOrb",
         "frame": 10,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_11",
-      "label": "Ghost 11",
-      "category": "sprites",
+      "id": "ghostOrb_11",
+      "label": "GhostOrb 11",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostOrb",
         "frame": 11
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostOrb",
         "frame": 11,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_0",
-      "label": "Ghost 0",
-      "category": "sprites",
+      "id": "ghostTail_0",
+      "label": "GhostTail 0",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostTail",
         "frame": 0
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostTail",
         "frame": 0,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_1",
-      "label": "Ghost 1",
-      "category": "sprites",
+      "id": "ghostTail_1",
+      "label": "GhostTail 1",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostTail",
         "frame": 1
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostTail",
         "frame": 1,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_2",
-      "label": "Ghost 2",
-      "category": "sprites",
+      "id": "ghostTail_2",
+      "label": "GhostTail 2",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostTail",
         "frame": 2
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostTail",
         "frame": 2,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_3",
-      "label": "Ghost 3",
-      "category": "sprites",
+      "id": "ghostTail_3",
+      "label": "GhostTail 3",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostTail",
         "frame": 3
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostTail",
         "frame": 3,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_4",
-      "label": "Ghost 4",
-      "category": "sprites",
+      "id": "ghostTail_4",
+      "label": "GhostTail 4",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostTail",
         "frame": 4
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostTail",
         "frame": 4,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_5",
-      "label": "Ghost 5",
-      "category": "sprites",
+      "id": "ghostTail_5",
+      "label": "GhostTail 5",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostTail",
         "frame": 5
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostTail",
         "frame": 5,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_6",
-      "label": "Ghost 6",
-      "category": "sprites",
+      "id": "ghostTail_6",
+      "label": "GhostTail 6",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostTail",
         "frame": 6
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostTail",
         "frame": 6,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_7",
-      "label": "Ghost 7",
-      "category": "sprites",
+      "id": "ghostTail_7",
+      "label": "GhostTail 7",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostTail",
         "frame": 7
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostTail",
         "frame": 7,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_8",
-      "label": "Ghost 8",
-      "category": "sprites",
+      "id": "ghostTail_8",
+      "label": "GhostTail 8",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostTail",
         "frame": 8
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostTail",
         "frame": 8,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_9",
-      "label": "Ghost 9",
-      "category": "sprites",
+      "id": "ghostTail_9",
+      "label": "GhostTail 9",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostTail",
         "frame": 9
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostTail",
         "frame": 9,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_10",
-      "label": "Ghost 10",
-      "category": "sprites",
+      "id": "ghostTail_10",
+      "label": "GhostTail 10",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostTail",
         "frame": 10
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostTail",
         "frame": 10,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "ghost_11",
-      "label": "Ghost 11",
-      "category": "sprites",
+      "id": "ghostTail_11",
+      "label": "GhostTail 11",
+      "category": "characters",
       "preview": {
-        "texture": "ghost",
+        "texture": "ghostTail",
         "frame": 11
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "ghost",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "ghostTail",
         "frame": 11,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprites_coin_0",
-      "label": "Coin 0",
-      "category": "sprites",
+      "id": "sprites_knight_0",
+      "label": "Knight 0",
+      "category": "characters",
       "preview": {
-        "texture": "sprites_coin",
+        "texture": "sprites_knight",
         "frame": 0
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_coin",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
         "frame": 0,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprites_coin_1",
-      "label": "Coin 1",
-      "category": "sprites",
+      "id": "sprites_knight_1",
+      "label": "Knight 1",
+      "category": "characters",
       "preview": {
-        "texture": "sprites_coin",
+        "texture": "sprites_knight",
         "frame": 1
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_coin",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
         "frame": 1,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprites_coin_2",
-      "label": "Coin 2",
-      "category": "sprites",
+      "id": "sprites_knight_2",
+      "label": "Knight 2",
+      "category": "characters",
       "preview": {
-        "texture": "sprites_coin",
+        "texture": "sprites_knight",
         "frame": 2
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_coin",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
         "frame": 2,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprites_coin_3",
-      "label": "Coin 3",
-      "category": "sprites",
+      "id": "sprites_knight_3",
+      "label": "Knight 3",
+      "category": "characters",
       "preview": {
-        "texture": "sprites_coin",
+        "texture": "sprites_knight",
         "frame": 3
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_coin",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
         "frame": 3,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprites_coin_4",
-      "label": "Coin 4",
-      "category": "sprites",
+      "id": "sprites_knight_4",
+      "label": "Knight 4",
+      "category": "characters",
       "preview": {
-        "texture": "sprites_coin",
+        "texture": "sprites_knight",
         "frame": 4
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_coin",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
         "frame": 4,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprites_coin_5",
-      "label": "Coin 5",
-      "category": "sprites",
+      "id": "sprites_knight_5",
+      "label": "Knight 5",
+      "category": "characters",
       "preview": {
-        "texture": "sprites_coin",
+        "texture": "sprites_knight",
         "frame": 5
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_coin",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
         "frame": 5,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprites_coin_6",
-      "label": "Coin 6",
-      "category": "sprites",
+      "id": "sprites_knight_6",
+      "label": "Knight 6",
+      "category": "characters",
       "preview": {
-        "texture": "sprites_coin",
+        "texture": "sprites_knight",
         "frame": 6
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_coin",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
         "frame": 6,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprites_coin_7",
-      "label": "Coin 7",
-      "category": "sprites",
+      "id": "sprites_knight_7",
+      "label": "Knight 7",
+      "category": "characters",
       "preview": {
-        "texture": "sprites_coin",
+        "texture": "sprites_knight",
         "frame": 7
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_coin",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
         "frame": 7,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprites_coin_8",
-      "label": "Coin 8",
-      "category": "sprites",
+      "id": "sprites_knight_8",
+      "label": "Knight 8",
+      "category": "characters",
       "preview": {
-        "texture": "sprites_coin",
+        "texture": "sprites_knight",
         "frame": 8
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_coin",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
         "frame": 8,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprites_coin_9",
-      "label": "Coin 9",
-      "category": "sprites",
+      "id": "sprites_knight_9",
+      "label": "Knight 9",
+      "category": "characters",
       "preview": {
-        "texture": "sprites_coin",
+        "texture": "sprites_knight",
         "frame": 9
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_coin",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
         "frame": 9,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprites_coin_10",
-      "label": "Coin 10",
-      "category": "sprites",
+      "id": "sprites_knight_10",
+      "label": "Knight 10",
+      "category": "characters",
       "preview": {
-        "texture": "sprites_coin",
+        "texture": "sprites_knight",
         "frame": 10
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_coin",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
         "frame": 10,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprites_coin_11",
-      "label": "Coin 11",
-      "category": "sprites",
+      "id": "sprites_knight_11",
+      "label": "Knight 11",
+      "category": "characters",
       "preview": {
-        "texture": "sprites_coin",
+        "texture": "sprites_knight",
         "frame": 11
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_coin",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
         "frame": 11,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_12",
+      "label": "Knight 12",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 12
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 12,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_13",
+      "label": "Knight 13",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 13
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 13,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_14",
+      "label": "Knight 14",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 14
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 14,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_15",
+      "label": "Knight 15",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 15
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 15,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_16",
+      "label": "Knight 16",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 16
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 16,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_17",
+      "label": "Knight 17",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 17
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 17,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_18",
+      "label": "Knight 18",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 18
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 18,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_19",
+      "label": "Knight 19",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 19
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 19,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_20",
+      "label": "Knight 20",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 20
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 20,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_21",
+      "label": "Knight 21",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 21
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 21,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_22",
+      "label": "Knight 22",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 22
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 22,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_23",
+      "label": "Knight 23",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 23
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 23,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_24",
+      "label": "Knight 24",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 24
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 24,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_25",
+      "label": "Knight 25",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 25
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 25,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_26",
+      "label": "Knight 26",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 26
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 26,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_27",
+      "label": "Knight 27",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 27
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 27,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_28",
+      "label": "Knight 28",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 28
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 28,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_29",
+      "label": "Knight 29",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 29
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 29,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_30",
+      "label": "Knight 30",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 30
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 30,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_31",
+      "label": "Knight 31",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 31
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 31,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_32",
+      "label": "Knight 32",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 32
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 32,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_33",
+      "label": "Knight 33",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 33
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 33,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_34",
+      "label": "Knight 34",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 34
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 34,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_35",
+      "label": "Knight 35",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 35
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 35,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_36",
+      "label": "Knight 36",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 36
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 36,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_37",
+      "label": "Knight 37",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 37
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 37,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_38",
+      "label": "Knight 38",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 38
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 38,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_39",
+      "label": "Knight 39",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 39
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 39,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_40",
+      "label": "Knight 40",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 40
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 40,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_41",
+      "label": "Knight 41",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 41
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 41,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_42",
+      "label": "Knight 42",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 42
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 42,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_43",
+      "label": "Knight 43",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 43
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 43,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_44",
+      "label": "Knight 44",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 44
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 44,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_45",
+      "label": "Knight 45",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 45
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 45,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_46",
+      "label": "Knight 46",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 46
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 46,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_47",
+      "label": "Knight 47",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 47
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 47,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_48",
+      "label": "Knight 48",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 48
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 48,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_49",
+      "label": "Knight 49",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 49
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 49,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_50",
+      "label": "Knight 50",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 50
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 50,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_51",
+      "label": "Knight 51",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 51
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 51,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_52",
+      "label": "Knight 52",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 52
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 52,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_53",
+      "label": "Knight 53",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 53
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 53,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_54",
+      "label": "Knight 54",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 54
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 54,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_55",
+      "label": "Knight 55",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 55
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 55,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_56",
+      "label": "Knight 56",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 56
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 56,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_57",
+      "label": "Knight 57",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 57
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 57,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_58",
+      "label": "Knight 58",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 58
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 58,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_59",
+      "label": "Knight 59",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 59
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 59,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_60",
+      "label": "Knight 60",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 60
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 60,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_61",
+      "label": "Knight 61",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 61
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 61,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_62",
+      "label": "Knight 62",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 62
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 62,
+        "scale": 1,
+        "solid": false
+      }
+    },
+    {
+      "id": "sprites_knight_63",
+      "label": "Knight 63",
+      "category": "characters",
+      "preview": {
+        "texture": "sprites_knight",
+        "frame": 63
+      },
+      "creates": {
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_knight",
+        "frame": 63,
         "scale": 1,
         "solid": false
       }
@@ -771,13 +3063,14 @@
     {
       "id": "sprites_fruit_0",
       "label": "Fruit 0",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 0
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 0,
         "scale": 1,
@@ -787,13 +3080,14 @@
     {
       "id": "sprites_fruit_1",
       "label": "Fruit 1",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 1
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 1,
         "scale": 1,
@@ -803,13 +3097,14 @@
     {
       "id": "sprites_fruit_2",
       "label": "Fruit 2",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 2
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 2,
         "scale": 1,
@@ -819,13 +3114,14 @@
     {
       "id": "sprites_fruit_3",
       "label": "Fruit 3",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 3
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 3,
         "scale": 1,
@@ -835,13 +3131,14 @@
     {
       "id": "sprites_fruit_4",
       "label": "Fruit 4",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 4
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 4,
         "scale": 1,
@@ -851,13 +3148,14 @@
     {
       "id": "sprites_fruit_5",
       "label": "Fruit 5",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 5
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 5,
         "scale": 1,
@@ -867,13 +3165,14 @@
     {
       "id": "sprites_fruit_6",
       "label": "Fruit 6",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 6
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 6,
         "scale": 1,
@@ -883,13 +3182,14 @@
     {
       "id": "sprites_fruit_7",
       "label": "Fruit 7",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 7
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 7,
         "scale": 1,
@@ -899,13 +3199,14 @@
     {
       "id": "sprites_fruit_8",
       "label": "Fruit 8",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 8
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 8,
         "scale": 1,
@@ -915,13 +3216,14 @@
     {
       "id": "sprites_fruit_9",
       "label": "Fruit 9",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 9
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 9,
         "scale": 1,
@@ -931,13 +3233,14 @@
     {
       "id": "sprites_fruit_10",
       "label": "Fruit 10",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 10
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 10,
         "scale": 1,
@@ -947,13 +3250,14 @@
     {
       "id": "sprites_fruit_11",
       "label": "Fruit 11",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 11
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 11,
         "scale": 1,
@@ -963,13 +3267,14 @@
     {
       "id": "sprites_fruit_12",
       "label": "Fruit 12",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 12
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 12,
         "scale": 1,
@@ -979,13 +3284,14 @@
     {
       "id": "sprites_fruit_13",
       "label": "Fruit 13",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 13
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 13,
         "scale": 1,
@@ -995,13 +3301,14 @@
     {
       "id": "sprites_fruit_14",
       "label": "Fruit 14",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 14
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 14,
         "scale": 1,
@@ -1011,13 +3318,14 @@
     {
       "id": "sprites_fruit_15",
       "label": "Fruit 15",
-      "category": "sprites",
+      "category": "items",
       "preview": {
         "texture": "sprites_fruit",
         "frame": 15
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_fruit",
         "frame": 15,
         "scale": 1,
@@ -1025,1295 +3333,220 @@
       }
     },
     {
-      "id": "sprits_knight_0",
-      "label": "Sprits Knight 0",
-      "category": "sprites",
+      "id": "sprites_coin_0",
+      "label": "Coin 0",
+      "category": "items",
       "preview": {
-        "texture": "sprits_knight",
+        "texture": "sprites_coin",
         "frame": 0
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_coin",
         "frame": 0,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprits_knight_1",
-      "label": "Sprits Knight 1",
-      "category": "sprites",
+      "id": "sprites_coin_1",
+      "label": "Coin 1",
+      "category": "items",
       "preview": {
-        "texture": "sprits_knight",
+        "texture": "sprites_coin",
         "frame": 1
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_coin",
         "frame": 1,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprits_knight_2",
-      "label": "Sprits Knight 2",
-      "category": "sprites",
+      "id": "sprites_coin_2",
+      "label": "Coin 2",
+      "category": "items",
       "preview": {
-        "texture": "sprits_knight",
+        "texture": "sprites_coin",
         "frame": 2
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_coin",
         "frame": 2,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprits_knight_3",
-      "label": "Sprits Knight 3",
-      "category": "sprites",
+      "id": "sprites_coin_3",
+      "label": "Coin 3",
+      "category": "items",
       "preview": {
-        "texture": "sprits_knight",
+        "texture": "sprites_coin",
         "frame": 3
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_coin",
         "frame": 3,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprits_knight_4",
-      "label": "Sprits Knight 4",
-      "category": "sprites",
+      "id": "sprites_coin_4",
+      "label": "Coin 4",
+      "category": "items",
       "preview": {
-        "texture": "sprits_knight",
+        "texture": "sprites_coin",
         "frame": 4
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_coin",
         "frame": 4,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprits_knight_5",
-      "label": "Sprits Knight 5",
-      "category": "sprites",
+      "id": "sprites_coin_5",
+      "label": "Coin 5",
+      "category": "items",
       "preview": {
-        "texture": "sprits_knight",
+        "texture": "sprites_coin",
         "frame": 5
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_coin",
         "frame": 5,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprits_knight_6",
-      "label": "Sprits Knight 6",
-      "category": "sprites",
+      "id": "sprites_coin_6",
+      "label": "Coin 6",
+      "category": "items",
       "preview": {
-        "texture": "sprits_knight",
+        "texture": "sprites_coin",
         "frame": 6
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_coin",
         "frame": 6,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprits_knight_7",
-      "label": "Sprits Knight 7",
-      "category": "sprites",
+      "id": "sprites_coin_7",
+      "label": "Coin 7",
+      "category": "items",
       "preview": {
-        "texture": "sprits_knight",
+        "texture": "sprites_coin",
         "frame": 7
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_coin",
         "frame": 7,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprits_knight_8",
-      "label": "Sprits Knight 8",
-      "category": "sprites",
+      "id": "sprites_coin_8",
+      "label": "Coin 8",
+      "category": "items",
       "preview": {
-        "texture": "sprits_knight",
+        "texture": "sprites_coin",
         "frame": 8
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_coin",
         "frame": 8,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprits_knight_9",
-      "label": "Sprits Knight 9",
-      "category": "sprites",
+      "id": "sprites_coin_9",
+      "label": "Coin 9",
+      "category": "items",
       "preview": {
-        "texture": "sprits_knight",
+        "texture": "sprites_coin",
         "frame": 9
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_coin",
         "frame": 9,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprits_knight_10",
-      "label": "Sprits Knight 10",
-      "category": "sprites",
+      "id": "sprites_coin_10",
+      "label": "Coin 10",
+      "category": "items",
       "preview": {
-        "texture": "sprits_knight",
+        "texture": "sprites_coin",
         "frame": 10
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_coin",
         "frame": 10,
         "scale": 1,
         "solid": false
       }
     },
     {
-      "id": "sprits_knight_11",
-      "label": "Sprits Knight 11",
-      "category": "sprites",
+      "id": "sprites_coin_11",
+      "label": "Coin 11",
+      "category": "items",
       "preview": {
-        "texture": "sprits_knight",
+        "texture": "sprites_coin",
         "frame": 11
       },
       "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
+        "type": "spriteFrame",
+        "group": null,
+        "texture": "sprites_coin",
         "frame": 11,
         "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_12",
-      "label": "Sprits Knight 12",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 12
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 12,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_13",
-      "label": "Sprits Knight 13",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 13
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 13,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_14",
-      "label": "Sprits Knight 14",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 14
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 14,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_15",
-      "label": "Sprits Knight 15",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 15
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 15,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_16",
-      "label": "Sprits Knight 16",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 16
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 16,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_17",
-      "label": "Sprits Knight 17",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 17
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 17,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_18",
-      "label": "Sprits Knight 18",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 18
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 18,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_19",
-      "label": "Sprits Knight 19",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 19
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 19,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_20",
-      "label": "Sprits Knight 20",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 20
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 20,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_21",
-      "label": "Sprits Knight 21",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 21
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 21,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_22",
-      "label": "Sprits Knight 22",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 22
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 22,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_23",
-      "label": "Sprits Knight 23",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 23
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 23,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_24",
-      "label": "Sprits Knight 24",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 24
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 24,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_25",
-      "label": "Sprits Knight 25",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 25
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 25,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_26",
-      "label": "Sprits Knight 26",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 26
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 26,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_27",
-      "label": "Sprits Knight 27",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 27
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 27,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_28",
-      "label": "Sprits Knight 28",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 28
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 28,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_29",
-      "label": "Sprits Knight 29",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 29
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 29,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_30",
-      "label": "Sprits Knight 30",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 30
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 30,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_31",
-      "label": "Sprits Knight 31",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 31
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 31,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_32",
-      "label": "Sprits Knight 32",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 32
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 32,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_33",
-      "label": "Sprits Knight 33",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 33
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 33,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_34",
-      "label": "Sprits Knight 34",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 34
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 34,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_35",
-      "label": "Sprits Knight 35",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 35
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 35,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_36",
-      "label": "Sprits Knight 36",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 36
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 36,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_37",
-      "label": "Sprits Knight 37",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 37
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 37,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_38",
-      "label": "Sprits Knight 38",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 38
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 38,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_39",
-      "label": "Sprits Knight 39",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 39
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 39,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_40",
-      "label": "Sprits Knight 40",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 40
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 40,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_41",
-      "label": "Sprits Knight 41",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 41
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 41,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_42",
-      "label": "Sprits Knight 42",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 42
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 42,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_43",
-      "label": "Sprits Knight 43",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 43
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 43,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_44",
-      "label": "Sprits Knight 44",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 44
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 44,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_45",
-      "label": "Sprits Knight 45",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 45
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 45,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_46",
-      "label": "Sprits Knight 46",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 46
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 46,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_47",
-      "label": "Sprits Knight 47",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 47
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 47,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_48",
-      "label": "Sprits Knight 48",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 48
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 48,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_49",
-      "label": "Sprits Knight 49",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 49
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 49,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_50",
-      "label": "Sprits Knight 50",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 50
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 50,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_51",
-      "label": "Sprits Knight 51",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 51
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 51,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_52",
-      "label": "Sprits Knight 52",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 52
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 52,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_53",
-      "label": "Sprits Knight 53",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 53
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 53,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_54",
-      "label": "Sprits Knight 54",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 54
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 54,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_55",
-      "label": "Sprits Knight 55",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 55
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 55,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_56",
-      "label": "Sprits Knight 56",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 56
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 56,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_57",
-      "label": "Sprits Knight 57",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 57
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 57,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_58",
-      "label": "Sprits Knight 58",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 58
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 58,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_59",
-      "label": "Sprits Knight 59",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 59
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 59,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_60",
-      "label": "Sprits Knight 60",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 60
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 60,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_61",
-      "label": "Sprits Knight 61",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 61
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 61,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_62",
-      "label": "Sprits Knight 62",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 62
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 62,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprits_knight_63",
-      "label": "Sprits Knight 63",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprits_knight",
-        "frame": 63
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprits_knight",
-        "frame": 63,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_0",
-      "label": "Platforms 0",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 0
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 0,
-        "scale": 3,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_1",
-      "label": "Platforms 1",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 1
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 1,
-        "scale": 3,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_2",
-      "label": "Platforms 2",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 2
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 2,
-        "scale": 3,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_3",
-      "label": "Platforms 3",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 3
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 3,
-        "scale": 3,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_4",
-      "label": "Platforms 4",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 4
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 4,
-        "scale": 3,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_5",
-      "label": "Platforms 5",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 5
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 5,
-        "scale": 3,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_6",
-      "label": "Platforms 6",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 6
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 6,
-        "scale": 3,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_7",
-      "label": "Platforms 7",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 7
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 7,
-        "scale": 3,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_8",
-      "label": "Platforms 8",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 8
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 8,
-        "scale": 3,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_9",
-      "label": "Platforms 9",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 9
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 9,
-        "scale": 3,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_10",
-      "label": "Platforms 10",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 10
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 10,
-        "scale": 3,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_11",
-      "label": "Platforms 11",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 11
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 11,
-        "scale": 3,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_12",
-      "label": "Platforms 12",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 12
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 12,
-        "scale": 3,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_13",
-      "label": "Platforms 13",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 13
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 13,
-        "scale": 3,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_14",
-      "label": "Platforms 14",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 14
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 14,
-        "scale": 3,
-        "solid": false
-      }
-    },
-    {
-      "id": "platforms_15",
-      "label": "Platforms 15",
-      "category": "sprites",
-      "preview": {
-        "texture": "platforms",
-        "frame": 15
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "platforms",
-        "frame": 15,
-        "scale": 3,
         "solid": false
       }
     },
     {
       "id": "sprites_slime_green_0",
       "label": "Slime Green 0",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_green",
         "frame": 0
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_green",
         "frame": 0,
         "scale": 1,
@@ -2323,13 +3556,14 @@
     {
       "id": "sprites_slime_green_1",
       "label": "Slime Green 1",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_green",
         "frame": 1
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_green",
         "frame": 1,
         "scale": 1,
@@ -2339,13 +3573,14 @@
     {
       "id": "sprites_slime_green_2",
       "label": "Slime Green 2",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_green",
         "frame": 2
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_green",
         "frame": 2,
         "scale": 1,
@@ -2355,13 +3590,14 @@
     {
       "id": "sprites_slime_green_3",
       "label": "Slime Green 3",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_green",
         "frame": 3
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_green",
         "frame": 3,
         "scale": 1,
@@ -2371,13 +3607,14 @@
     {
       "id": "sprites_slime_green_4",
       "label": "Slime Green 4",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_green",
         "frame": 4
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_green",
         "frame": 4,
         "scale": 1,
@@ -2387,13 +3624,14 @@
     {
       "id": "sprites_slime_green_5",
       "label": "Slime Green 5",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_green",
         "frame": 5
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_green",
         "frame": 5,
         "scale": 1,
@@ -2403,13 +3641,14 @@
     {
       "id": "sprites_slime_green_6",
       "label": "Slime Green 6",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_green",
         "frame": 6
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_green",
         "frame": 6,
         "scale": 1,
@@ -2419,13 +3658,14 @@
     {
       "id": "sprites_slime_green_7",
       "label": "Slime Green 7",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_green",
         "frame": 7
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_green",
         "frame": 7,
         "scale": 1,
@@ -2435,13 +3675,14 @@
     {
       "id": "sprites_slime_green_8",
       "label": "Slime Green 8",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_green",
         "frame": 8
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_green",
         "frame": 8,
         "scale": 1,
@@ -2451,13 +3692,14 @@
     {
       "id": "sprites_slime_green_9",
       "label": "Slime Green 9",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_green",
         "frame": 9
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_green",
         "frame": 9,
         "scale": 1,
@@ -2467,13 +3709,14 @@
     {
       "id": "sprites_slime_green_10",
       "label": "Slime Green 10",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_green",
         "frame": 10
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_green",
         "frame": 10,
         "scale": 1,
@@ -2483,13 +3726,14 @@
     {
       "id": "sprites_slime_green_11",
       "label": "Slime Green 11",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_green",
         "frame": 11
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_green",
         "frame": 11,
         "scale": 1,
@@ -2499,13 +3743,14 @@
     {
       "id": "sprites_slime_purple_0",
       "label": "Slime Purple 0",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_purple",
         "frame": 0
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_purple",
         "frame": 0,
         "scale": 1,
@@ -2515,13 +3760,14 @@
     {
       "id": "sprites_slime_purple_1",
       "label": "Slime Purple 1",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_purple",
         "frame": 1
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_purple",
         "frame": 1,
         "scale": 1,
@@ -2531,13 +3777,14 @@
     {
       "id": "sprites_slime_purple_2",
       "label": "Slime Purple 2",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_purple",
         "frame": 2
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_purple",
         "frame": 2,
         "scale": 1,
@@ -2547,13 +3794,14 @@
     {
       "id": "sprites_slime_purple_3",
       "label": "Slime Purple 3",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_purple",
         "frame": 3
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_purple",
         "frame": 3,
         "scale": 1,
@@ -2563,13 +3811,14 @@
     {
       "id": "sprites_slime_purple_4",
       "label": "Slime Purple 4",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_purple",
         "frame": 4
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_purple",
         "frame": 4,
         "scale": 1,
@@ -2579,13 +3828,14 @@
     {
       "id": "sprites_slime_purple_5",
       "label": "Slime Purple 5",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_purple",
         "frame": 5
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_purple",
         "frame": 5,
         "scale": 1,
@@ -2595,13 +3845,14 @@
     {
       "id": "sprites_slime_purple_6",
       "label": "Slime Purple 6",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_purple",
         "frame": 6
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_purple",
         "frame": 6,
         "scale": 1,
@@ -2611,13 +3862,14 @@
     {
       "id": "sprites_slime_purple_7",
       "label": "Slime Purple 7",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_purple",
         "frame": 7
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_purple",
         "frame": 7,
         "scale": 1,
@@ -2627,13 +3879,14 @@
     {
       "id": "sprites_slime_purple_8",
       "label": "Slime Purple 8",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_purple",
         "frame": 8
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_purple",
         "frame": 8,
         "scale": 1,
@@ -2643,13 +3896,14 @@
     {
       "id": "sprites_slime_purple_9",
       "label": "Slime Purple 9",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_purple",
         "frame": 9
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_purple",
         "frame": 9,
         "scale": 1,
@@ -2659,13 +3913,14 @@
     {
       "id": "sprites_slime_purple_10",
       "label": "Slime Purple 10",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_purple",
         "frame": 10
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_purple",
         "frame": 10,
         "scale": 1,
@@ -2675,1039 +3930,16 @@
     {
       "id": "sprites_slime_purple_11",
       "label": "Slime Purple 11",
-      "category": "sprites",
+      "category": "enemies",
       "preview": {
         "texture": "sprites_slime_purple",
         "frame": 11
       },
       "creates": {
-        "type": "sprite-frame",
+        "type": "spriteFrame",
+        "group": null,
         "texture": "sprites_slime_purple",
         "frame": 11,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_0",
-      "label": "World Tileset 0",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 0
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 0,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_1",
-      "label": "World Tileset 1",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 1
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 1,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_2",
-      "label": "World Tileset 2",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 2
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 2,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_3",
-      "label": "World Tileset 3",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 3
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 3,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_4",
-      "label": "World Tileset 4",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 4
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 4,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_5",
-      "label": "World Tileset 5",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 5
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 5,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_6",
-      "label": "World Tileset 6",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 6
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 6,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_7",
-      "label": "World Tileset 7",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 7
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 7,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_8",
-      "label": "World Tileset 8",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 8
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 8,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_9",
-      "label": "World Tileset 9",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 9
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 9,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_10",
-      "label": "World Tileset 10",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 10
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 10,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_11",
-      "label": "World Tileset 11",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 11
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 11,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_12",
-      "label": "World Tileset 12",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 12
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 12,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_13",
-      "label": "World Tileset 13",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 13
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 13,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_14",
-      "label": "World Tileset 14",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 14
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 14,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_15",
-      "label": "World Tileset 15",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 15
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 15,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_16",
-      "label": "World Tileset 16",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 16
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 16,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_17",
-      "label": "World Tileset 17",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 17
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 17,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_18",
-      "label": "World Tileset 18",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 18
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 18,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_19",
-      "label": "World Tileset 19",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 19
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 19,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_20",
-      "label": "World Tileset 20",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 20
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 20,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_21",
-      "label": "World Tileset 21",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 21
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 21,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_22",
-      "label": "World Tileset 22",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 22
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 22,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_23",
-      "label": "World Tileset 23",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 23
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 23,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_24",
-      "label": "World Tileset 24",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 24
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 24,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_25",
-      "label": "World Tileset 25",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 25
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 25,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_26",
-      "label": "World Tileset 26",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 26
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 26,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_27",
-      "label": "World Tileset 27",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 27
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 27,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_28",
-      "label": "World Tileset 28",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 28
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 28,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_29",
-      "label": "World Tileset 29",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 29
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 29,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_30",
-      "label": "World Tileset 30",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 30
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 30,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_31",
-      "label": "World Tileset 31",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 31
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 31,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_32",
-      "label": "World Tileset 32",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 32
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 32,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_33",
-      "label": "World Tileset 33",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 33
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 33,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_34",
-      "label": "World Tileset 34",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 34
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 34,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_35",
-      "label": "World Tileset 35",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 35
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 35,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_36",
-      "label": "World Tileset 36",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 36
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 36,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_37",
-      "label": "World Tileset 37",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 37
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 37,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_38",
-      "label": "World Tileset 38",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 38
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 38,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_39",
-      "label": "World Tileset 39",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 39
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 39,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_40",
-      "label": "World Tileset 40",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 40
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 40,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_41",
-      "label": "World Tileset 41",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 41
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 41,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_42",
-      "label": "World Tileset 42",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 42
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 42,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_43",
-      "label": "World Tileset 43",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 43
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 43,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_44",
-      "label": "World Tileset 44",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 44
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 44,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_45",
-      "label": "World Tileset 45",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 45
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 45,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_46",
-      "label": "World Tileset 46",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 46
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 46,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_47",
-      "label": "World Tileset 47",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 47
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 47,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_48",
-      "label": "World Tileset 48",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 48
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 48,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_49",
-      "label": "World Tileset 49",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 49
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 49,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_50",
-      "label": "World Tileset 50",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 50
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 50,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_51",
-      "label": "World Tileset 51",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 51
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 51,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_52",
-      "label": "World Tileset 52",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 52
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 52,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_53",
-      "label": "World Tileset 53",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 53
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 53,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_54",
-      "label": "World Tileset 54",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 54
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 54,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_55",
-      "label": "World Tileset 55",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 55
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 55,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_56",
-      "label": "World Tileset 56",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 56
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 56,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_57",
-      "label": "World Tileset 57",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 57
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 57,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_58",
-      "label": "World Tileset 58",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 58
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 58,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_59",
-      "label": "World Tileset 59",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 59
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 59,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_60",
-      "label": "World Tileset 60",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 60
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 60,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_61",
-      "label": "World Tileset 61",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 61
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 61,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_62",
-      "label": "World Tileset 62",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 62
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 62,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "sprites_world_tileset_63",
-      "label": "World Tileset 63",
-      "category": "sprites",
-      "preview": {
-        "texture": "sprites_world_tileset",
-        "frame": 63
-      },
-      "creates": {
-        "type": "sprite-frame",
-        "texture": "sprites_world_tileset",
-        "frame": 63,
         "scale": 1,
         "solid": false
       }

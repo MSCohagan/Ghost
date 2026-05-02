@@ -22,21 +22,21 @@
             "category": "characters"
         },
         "sprites/Ghost_orb.png": {
-            "key": "ghost",
+            "key": "ghostOrb",
             "frameWidth": 32,
             "frameHeight": 32,
             "frames": 12,
             "category": "characters"
         },
         "sprites/Ghost_tail.png": {
-            "key": "ghost",
+            "key": "ghostTail",
             "frameWidth": 32,
             "frameHeight": 32,
             "frames": 12,
             "category": "characters"
         },
         "sprites/knight.png": {
-            "key": "sprits_knight",
+            "key": "sprites_knight",
             "frameHeight": 32,
             "frameWidth": 32,
             "frames": 64,

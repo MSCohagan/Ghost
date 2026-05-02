@@ -2,6 +2,7 @@
     "scripts": {
         "manifest": "node scripts/generate-asset-manifest.mjs",
         "palette": "node scripts/generate-editor-palette.mjs",
+        "normalize-assets": "node scripts/normalize-assets.mjs",
         "dev": "vite --port 5173",
         "build": "vite build",
         "preview": "vite preview --port 4173",
