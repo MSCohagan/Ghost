@@ -9,7 +9,7 @@ import ColliderController from '../controllers/ColliderController.js'
 
 export default class BaseRoom extends Phaser.Scene {
 
-    constructor(key, nextRoomLeft, nextRoomRight, spawnX, spawnY, options = {}) {
+    constructor(key, nextRoomLeft, nextRoomRight, options = {}) {
         super(key)
         this.roomWidth = options.width ?? 1280
         this.roomHeight = options.height ?? 720
@@ -17,8 +17,6 @@ export default class BaseRoom extends Phaser.Scene {
         this.roomKey = key
         this.nextRoomLeft = nextRoomLeft ?? ''
         this.nextRoomRight = nextRoomRight ?? ''
-        this.spawnX = spawnX ?? 300
-        this.spawnY = spawnY ?? 300
     }
 
     preload() {
@@ -35,19 +33,22 @@ export default class BaseRoom extends Phaser.Scene {
     createBaseRoom(x, y) {
         this.add.image(1280, 720, this.backgroundKey)
 
-        const roomData = this.cache.json.get(`${this.roomKey}`)
-        this.roomWidth = roomData.roomWidth ?? 1280
-        this.roomHeight = roomData.roomHeight ?? 720
+        this.roomData = this.cache.json.get(`${this.roomKey}`) ?? {}
 
-        console.log(this.roomWidth, this.roomHeight)
+        this.roomWidth = this.roomData.roomWidth ?? 1280
+        this.roomHeight = this.roomData.roomHeight ?? 720
+
+        const controlsManager = new ControlsManager(this)
+        this.controls = controlsManager.fetchControls()
 
         this.camera = this.cameras.main
         this.physics.world.setBounds(0, 0, this.roomWidth, this.roomHeight)
         this.camera.setBounds(0, 0, this.roomWidth, this.roomHeight)
 
-        if (roomData?.objects) {
+        if (this.roomData?.objects) {
             this.roomRenderer = new RoomRenderer(this)
-            this.roomObjects = this.roomRenderer.render(roomData)
+            this.roomObjects = this.roomRenderer.render(this.roomData)
+            this.editorPlacedObjects = this.roomObjects.createdObjects ?? []
         } else {
             this.roomObjects = { entities: {}, groups: {}}
         }
@@ -57,42 +58,25 @@ export default class BaseRoom extends Phaser.Scene {
             color: '#ffffff'
         }).setOrigin(0.5, 0)
 
-        const controlsManager = new ControlsManager(this)
-        this.controls = controlsManager.fetchControls()
 
         this.platforms = this.physics.add.staticGroup()
         this.ground = this.physics.add.staticGroup()
         this.gates = this.physics.add.staticGroup()
 
-        const spawn = this.roomObjects.playerSpawn ?? { x, y }
+        const spawn = this.roomData.playerSpawn ?? this.roomObjects.playerSpawn ?? { x, y }
         this.player = new Player(this, spawn.x, spawn.y)
 
         this.camera.startFollow(this.player, true, 0.08, 0.08)
 
-        this.gates =[]
-        this.pressurePlates = []
-        this.possessables = []
+        this.gates = this.roomObjects.entities.gates ?? []
+        this.pressurePlates = this.roomObjects.entities.pressurePlates ?? []
+        this.possessables = this.roomObjects.entities.possessables ?? []
 
-        this.roomObjects.entities = this.possessables.push(this.box = new Box(this, 400, 0, {
-            width: 24,
-            height: 40,
-            color: 0x000000,
-            speed: 200,
-            jumpVelocity: -350,
-            gravityY: 800,
-        }))
-
-        this.registerPossessable(this.box)
+        this.box = this.possessables[0]
 
         this.controlledEntity = this.player
 
         this.colliderController = new ColliderController(this)
-        this.colliderController.addCollider(this.player, this.ground)
-        this.possessables.forEach(possessable => {
-            this.colliderController.addCollider(possessable, this.platforms)
-            this.colliderController.addCollider(possessable, this.ground)
-        })
-
         this.colliderController.wireRoomCollisions({
             player: this.player,
             possessables: this.possessables,
@@ -101,8 +85,10 @@ export default class BaseRoom extends Phaser.Scene {
         })
 
         const possessionController = new PossessionController(this, this.player)
-        this.possess = possessionController.tryPossess
-        this.release = possessionController.releasePossession
+
+        this.possessionController = possessionController
+        this.possess = possessionController.tryPossess.bind(possessionController)
+        this.release = possessionController.releasePossession.bind(possessionController)
     }
 
     moveRoom() {
@@ -118,106 +104,90 @@ export default class BaseRoom extends Phaser.Scene {
 
 
     update() {
-        if(this.moveRoom()) return
-
-        if(Phaser.Input.Keyboard.JustDown(this.controls.possess)) {
-            let nearest = this.findNearestPossessable(this.player)
-            if(nearest) {
-                this.possess(nearest)
-            }
+        if (!this.player) return
+    
+        if (this.moveRoom()) return
+    
+        this.handleInput()
+    
+        if (!this.scene.isActive('LevelEditor') && this.controlledEntity?.update) {
+            this.controlledEntity.update(this.time.now, this.game.loop.delta)
         }
+    
+        this.updatePressurePlatePuzzles()
+    }
 
-        if(Phaser.Input.Keyboard.JustDown(this.controls.release)) {
+    registerEditorObject(gameObject, editorData) {
+        this.editorPlacedObjects ??= []
+    
+        gameObject.editorData = editorData
+        this.editorPlacedObjects.push(gameObject)
+    
+        return gameObject
+    }
+    
+    createPlatforms(entity, startX, y, width, frame, scale = 3, options = {}) {
+        const {
+            type = 'ground',
+            group = type,
+            collidesWith = type === 'ground'
+                ? ['player', 'possessables']
+                : ['possessables']
+        } = options
+    
+        const tileSize = 16
+        const step = tileSize * scale
+        const endX = startX + width
+    
+        for (let x = startX; x < endX; x += step) {
+            const tile = entity.create(x, y, 'platforms', frame)
+    
+            tile.setOrigin(0, 0)
+            tile.setScale(scale)
+            tile.refreshBody()
+    
+            this.registerEditorObject(tile, {
+                type,
+                group,
+                texture: 'platforms',
+                frame,
+                x,
+                y,
+                scale,
+                solid: true,
+                collidesWith
+            })
+        }
+    }
+
+    handleInput() {
+        if (Phaser.Input.Keyboard.JustDown(this.controls.possess)) {
+            const nearest = this.findNearestPossessable(this.player)
+            if (nearest) this.possess(nearest)
+        }
+    
+        if (Phaser.Input.Keyboard.JustDown(this.controls.release)) {
             this.release()
         }
-
-        if(Phaser.Input.Keyboard.JustDown(this.controls.reload)) {
-            this.scene.start(this.roomKey);
+    
+        if (Phaser.Input.Keyboard.JustDown(this.controls.reload)) {
+            this.scene.start(this.roomKey)
         }
-
-        if(Phaser.Input.Keyboard.JustDown(this.controls.edit)) {
-            if(this.scene.isActive('LevelEditor')) {
+    
+        if (Phaser.Input.Keyboard.JustDown(this.controls.edit)) {
+            if (this.scene.isActive('LevelEditor')) {
                 this.scene.stop('LevelEditor')
                 this.camera.startFollow(this.player, true, 0.08, 0.08)
             } else {
                 this.camera.stopFollow()
                 this.player.body.setVelocity(0, 0)
                 this.scene.launch('LevelEditor', {
-                    hostScene: this
+                    hostScene: this,
+                    roomData: this.roomData
                 })
                 this.scene.bringToTop('LevelEditor')
             }
         }
-
-        if(!this.scene.isActive('LevelEditor')) {
-            this.player.update(this.time.now, this.game.loop.delta)
-        }
-
-        const plate = this.pressurePlates[0]
-        const gate = this.gates[0]
-
-        if(!plate || !gate) return
-
-        const pressed = this.physics.overlap(this.box, plate)
-
-        if(pressed) {
-            this.pressurePlates[0].press()
-            this.gates[0].open()
-        } else {
-            this.pressurePlates[0].releasePlate()
-            this.gates[0].close()
-        }
-    }
-
-    createPlatforms(entity, startX,  y, width, frame, scale = 3) {
-        const tileSize = 16
-        const step = tileSize * scale
-        const endX = startX + width
-
-        for (let x = startX; x < endX; x += step) {
-            const tile = entity.create(x, y, 'platforms', frame)
-            tile.setOrigin(0, 0)
-            tile.setScale(scale)
-            tile.refreshBody()
-        }
-    }
-
-    createGates(scene, x, y, width, height, key) {
-        this.gates.push(new Gate(scene, x , y , {
-            key: key,
-            width: width,
-            height: height,
-            color: 0x88ffff,
-            isOpen: false
-        }))
-    }
-
-    createPressurePlates(scene, x, y, width, height, key) {
-        this.pressurePlates.push(new PressurePad(scene, x, y, {
-            key: key,
-            width: width,
-            height: height,
-            color: 0xf000000,
-            pressDepth: 8
-        }))
-    }
-
-    setupGateCollision() {
-        this.gates.forEach(gate => {
-            this.colliderController.addCollider(gate, this.player)
-            this.colliderController.addCollider(gate, this.possessables)
-        })
-    }
-
-    setupPressurePlateCollision(callback) {
-        this.pressurePlates.forEach(plate => {
-            this.colliderController.addOverlap(plate, this.possessables, callback)
-            this.colliderController.addCollider(plate, this.ground)
-        })
-    }
-
-    registerPossessable(possessable) {
-        this.possessables.push(possessable)
     }
 
     findNearestPossessable(player) {
@@ -234,4 +204,31 @@ export default class BaseRoom extends Phaser.Scene {
         })
         return nearestPossessable
     }
+
+    updatePressurePlatePuzzles() {
+        if(!this.pressurePlates?.length || !this.gates?.length) return
+        if(!this.possessables?.length) return
+
+        this.pressurePlates.forEach(plate => {
+            const pressed = this.possessables.some(possessable => {
+                return this.physics.overlap(possessable, plate)
+            })
+
+            const targetGate = this.gates.find(gate => {
+                return !plate.key || !gate.key || gate.key === plate.key
+            }) ?? this.gates[0]
+
+            if(!targetGate) return
+
+            if(pressed) {
+                plate.press?.()
+                targetGate.open?.()
+            } else {
+                plate.releasePlate?.()
+                targetGate.close?.()
+            }
+        })
+    }
+
+
 }

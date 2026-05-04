@@ -1,12 +1,14 @@
 export default class PossessionController {
 
-    constructor (player) {
+    constructor (scene, player) {
+        this.scene = scene
         this.player = player
         this.currentHost = null
-        this.controlled = player
     }
 
     tryPossess(currentHost) {
+
+        if(!currentHost) return
 
         this.currentHost = currentHost
 
@@ -18,7 +20,7 @@ export default class PossessionController {
         )
 
         if(distance <= 40) {
-            this.controlledEntity = this.currentHost
+            this.scene.controlledEntity = this.currentHost
             this.player.setVisible(false)
             this.player.body.enable = false
             this.currentHost.setFillStyle(0xffffff)
@@ -27,7 +29,7 @@ export default class PossessionController {
     }
 
     releasePossession() {
-        if (this.controlledEntity !== this.currentHost) return
+        if (this.scene.controlledEntity !== this.currentHost) return
 
         this.currentHost.body.setVelocityX(0)
 
@@ -41,10 +43,6 @@ export default class PossessionController {
 
         this.currentHost.setFillStyle(0x000000)
 
-        this.controlledEntity = this.player
-    }
-
-    update(keys) {
-        this.controlled.keys(keys)
+        this.scene.controlledEntity = this.player
     }
 }

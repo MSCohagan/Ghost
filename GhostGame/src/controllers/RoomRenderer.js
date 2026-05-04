@@ -1,4 +1,6 @@
 import Box from '../gameObjects/Box.js'
+import Gate from '../gameObjects/Gate.js'
+import PressurePad from '../gameObjects/PressurePlate.js'
 
 export default class RoomRenderer {
 
@@ -11,6 +13,7 @@ export default class RoomRenderer {
             gates: [],
             pressurePlates: []
         }
+        this.createdObjects = []
         this.factories = {
             platform: this.createStaticSprite.bind(this),
             ground: this.createStaticSprite.bind(this),
@@ -52,7 +55,8 @@ export default class RoomRenderer {
             groups: this.groups,
             entities: this.entities,
             playerSpawn: this.playerSpawn ?? null,
-            collisionRules: this.collisionRules
+            collisionRules: this.collisionRules,
+            createdObjects: this.createdObjects
         }
     }
     
@@ -89,6 +93,8 @@ export default class RoomRenderer {
         item.refreshBody()
 
         item.roomData = obj
+        item.editorData = { ...obj }
+        this.createdObjects.push(item)
 
         return item
     }
@@ -105,39 +111,67 @@ export default class RoomRenderer {
         image.setScale(obj.scale ?? 1)
 
         image.roomData = obj
+        image.editorData = { ...obj }
+        this.createdObjects.push(image)
 
         return image
     }
 
-    createPossessableBox(obj) {
-        const box = new Box(this.scene, obj.x, obj.y, {
-            width: 24,
-            height: 40,
-            color: 0x000000,
-            speed: 200,
-            jumpVelocity: -350,
-            gravityY: 800,
-        })
-
-        this.entities.possessables.push(box)
-        
-        return box
-    }
-
     createPlayerSpawn(obj) {
         this.playerSpawn = {
-            obj: obj.x,
-            obj: obj.y
+            x: obj.x,
+            y: obj.y
         }
-
+    
         return this.playerSpawn
     }
 
-    createGate(obj) {
-        console.log(obj)
+    createPossessableBox(obj) {
+        const box = new Box(this.scene, obj.x, obj.y, {
+            width: obj.width ?? 24,
+            height: obj.height ?? 40,
+            color: obj.color ?? 0x000000,
+            speed: obj.speed ?? 200,
+            jumpVelocity: obj.jumpVelocity ?? -350,
+            gravityY: obj.gravityY ?? 800
+        })
+    
+        box.editorData = { ...obj }
+        this.entities.possessables.push(box)
+        this.createdObjects.push(box)
+    
+        return box
     }
-
+    
+    createGate(obj) {
+        const gate = new Gate(this.scene, obj.x, obj.y, {
+            key: obj.key,
+            width: obj.width ?? 48,
+            height: obj.height ?? 96,
+            color: obj.color ?? 0x88ffff,
+            isOpen: obj.isOpen ?? false
+        })
+    
+        gate.editorData = { ...obj }
+        this.entities.gates.push(gate)
+        this.createdObjects.push(gate)
+    
+        return gate
+    }
+    
     createPressurePlate(obj) {
-        console.log(obj)
+        const plate = new PressurePad(this.scene, obj.x, obj.y, {
+            key: obj.key,
+            width: obj.width ?? 48,
+            height: obj.height ?? 12,
+            color: obj.color ?? 0xf00000,
+            pressDepth: obj.pressDepth ?? 8
+        })
+    
+        plate.editorData = { ...obj }
+        this.entities.pressurePlates.push(plate)
+        this.createdObjects.push(plate)
+    
+        return plate
     }
 }

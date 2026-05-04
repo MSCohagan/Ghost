@@ -27,7 +27,7 @@ export default class Box extends Phaser.GameObjects.Rectangle {
         this.body.setGravityY(gravityY)
     };
 
-    update() {
+    update(time, delta) {
         applyPlatformerMovement(this, this.scene.controls)
     };
 }

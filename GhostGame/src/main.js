@@ -7,7 +7,7 @@ import Room3 from './scenes/Room3.js'
 
 const config = {
     type: Phaser.AUTO,
-    title: 'Overlord Rising',
+    title: 'Will \'o the Wisp',
     description: '',
     parent: 'game-container',
     width: 1280,

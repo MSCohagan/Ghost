@@ -9,6 +9,8 @@ export default class LevelEditor extends Phaser.Scene {
 
     create(data) { 
         this.hostScene = data.hostScene
+        this.roomData = data.roomData
+
         const controls = new ControlsManager(this.hostScene)
         this.controls = controls.fetchControls()
         this.AssetManager = new AssetManager(this.hostScene)
@@ -233,13 +235,10 @@ export default class LevelEditor extends Phaser.Scene {
         const isTerrain = this.selectedPaletteEntry.category === 'terrain' ||
             creates.type === 'platform' ||
             creates.type === 'ground'
-            
+
         if(isTerrain) {
             creates.type = this.terrainMode
             creates.group = this.terrainMode
-
-            console.log(creates)
-
             creates.collidesWith =
                 this.terrainMode === 'ground'
                     ? ['player', 'possessables']
@@ -332,14 +331,14 @@ export default class LevelEditor extends Phaser.Scene {
     async saveRoomJson() {
         const objects = this.getCleanLevelObjects()
 
-        const existingRoomData = this.hostScene.cache.json.get(this.hostScene.roomKey) ?? {}
+        const existingRoomData = this.roomData
 
         const roomData = {
             ...existingRoomData,
             roomWidth: this.hostScene.roomWidth,
             roomHeight: this.hostScene.roomHeight,
             playerSpawn: { "x": 200, "y": 500 },
-            objects
+            objects: objects
         }
 
         try {
@@ -374,7 +373,7 @@ export default class LevelEditor extends Phaser.Scene {
 
         if(this.previewImage) {
             const previewPos = this.getSnappedPointerPosition(rawPointer)
-            this.previewImage.setPosition(pointer.x, pointer.y)
+            this.previewImage.setPosition(previewPos.x, previewPos.y)
         }
 
         if(!rawPointer.isDown) return
