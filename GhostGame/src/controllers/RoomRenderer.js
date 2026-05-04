@@ -12,6 +12,7 @@ export default class RoomRenderer {
         }
         this.factories = {
             platform: this.createStaticSprite.bind(this),
+            ground: this.createStaticSprite.bind(this),
             spriteFrame: this.createImage.bind(this),
             image: this.createImage.bind(this),
             possessableBox: this.createPossessableBox.bind(this),

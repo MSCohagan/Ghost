@@ -1,61 +1,35 @@
 {
-    "roomWidth": 3200,
-    "roomHeight": 720,
-    "playerSpawn": { "x": 200, "y": 500},
-    "objects": [
-        {
-            "type": "platform",
-            "texture": "sprites_world_tileset",
-            "frame": 5,
-            "x": 144,
-            "y": 384,
-            "scale": 3,
-            "solid": true
-        },
-        {
-            "type": "platform",
-            "texture": "sprites_world_tileset",
-            "frame": 5,
-            "x": 192,
-            "y": 432,
-            "scale": 3,
-            "solid": true
-        },
-        {
-            "type": "platform",
-            "texture": "sprites_world_tileset",
-            "frame": 5,
-            "x": 240,
-            "y": 384,
-            "scale": 3,
-            "solid": true
-        },
-        {
-            "type": "platform",
-            "texture": "sprites_world_tileset",
-            "frame": 5,
-            "x": 288,
-            "y": 384,
-            "scale": 3,
-            "solid": true
-        },
-        {
-            "type": "platform",
-            "texture": "sprites_world_tileset",
-            "frame": 5,
-            "x": 336,
-            "y": 384,
-            "scale": 3,
-            "solid": true
-        },
-        {
-            "type": "platform",
-            "texture": "sprites_world_tileset",
-            "frame": 5,
-            "x": 384,
-            "y": 384,
-            "scale": 3,
-            "solid": true
-        }
-    ]
+  "roomWidth": 3200,
+  "roomHeight": 720,
+  "playerSpawn": {
+    "x": 200,
+    "y": 500
+  },
+  "objects": [
+    {
+      "type": "platform",
+      "texture": "sprites_world_tileset",
+      "frame": 10,
+      "x": 576,
+      "y": 288,
+      "scale": 3,
+      "solid": true,
+      "collidesWith": [
+        "possessables"
+      ]
+    },
+    {
+      "type": "ground",
+      "texture": "sprites_world_tileset",
+      "frame": 10,
+      "x": 624,
+      "y": 288,
+      "scale": 3,
+      "solid": true,
+      "collidesWith": [
+        "player",
+        "possessables"
+      ]
+    }
+  ]
 }

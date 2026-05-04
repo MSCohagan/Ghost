@@ -78,18 +78,8 @@ export default class LevelEditor extends Phaser.Scene {
             if(this.selectedTool === 'place') {
                 if(!this.selectedAsset) return
 
-                const creates = { ...this.selectedPaletteEntry.creates}
-                if(creates.category === 'terrain' || creates.type === 'platform') {
-                    creates.type = this.terrainMode
-                    creates.group = this.terrainMode
-
-                    creates.collidesWith =
-                        this.terrainMode === 'ground'
-                            ? ['player', 'possessables']
-                            : ['possessables']
-                }
-
-                this.placeSelectedPaletteEntry(pointer)
+                const creates = this.getCreatesForCurrentTool()
+                this.placeSelectedPaletteEntry(pointer, creates)
             }
         })
 
@@ -236,12 +226,35 @@ export default class LevelEditor extends Phaser.Scene {
         }
     }
 
-    placeSelectedPaletteEntry(pointer) {
+    getCreatesForCurrentTool() {
+        const isTerrain = this.selectedPaletteEntry.category === 'terrain' ||
+            creates.type === 'platform' ||
+            creates.type === 'ground'
+
+        const creates = { ...this.selectedPaletteEntry.creates}
+            if(isTerrain) {
+                creates.type = this.terrainMode
+                creates.group = this.terrainMode
+
+                console.log(creates)
+
+                creates.collidesWith =
+                    this.terrainMode === 'ground'
+                        ? ['player', 'possessables']
+                        : ['possessables']
+            }
+        
+        return creates
+    }
+
+    placeSelectedPaletteEntry(pointer, creates = this.selectedPalletteEntry?.creates) {
         const { x, y } = this.getSnappedPointerPosition(pointer)
-        if(!this.selectedPaletteEntry?.creates) return false
-        const creates = this.selectedPaletteEntry.creates
+
+        if(!creates) return false
+
         const scale = creates.scale ?? 1
         const cellKey = `${x}, ${y}, ${creates.type}`
+
         if(this.occupiedCells.has(cellKey)) return false
         this.occupiedCells.add(cellKey)
 
@@ -263,6 +276,7 @@ export default class LevelEditor extends Phaser.Scene {
             y: y,
             scale,
             solid: creates.solid?? false,
+            collidesWith: creates.collidesWith ?? [],
             cellKey
         }
 
@@ -315,13 +329,23 @@ export default class LevelEditor extends Phaser.Scene {
     async saveRoomJson() {
         const objects = this.getCleanLevelObjects()
 
+        const existingRoomData = this.hostScene.cache.json.get(this.hostScene.roomKey) ?? {}
+
+        const roomData = {
+            ...existingRoomData,
+            roomWidth: this.hostScene.roomWidth,
+            roomHeight: this.hostScene.roomHeight,
+            playerSpawn: { "x": 200, "y": 500 },
+            objects
+        }
+
         try {
                 const response = await fetch('http://localhost:3001/save-room', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     roomKey: this.hostScene.roomKey,
-                    data: { objects }
+                    data: roomData
                 })
                 
             })
@@ -362,7 +386,8 @@ export default class LevelEditor extends Phaser.Scene {
         }
         
         if(this.selectedTool === 'place' && this.selectedPaletteEntry) {
-            this.placeSelectedPaletteEntry(pointer)
+            const creates = this.getCreatesForCurrentTool()
+            this.placeSelectedPaletteEntry(pointer, creates)
             this.drawTimer = 50
         }
     }
