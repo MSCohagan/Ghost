@@ -5,6 +5,7 @@ export default class RoomRenderer {
     constructor(scene) {
         this.scene = scene
         this.groups = {}
+        this.collisionRules = {}
         this.entities = {
             possessables: [],
             gates: [],
@@ -50,7 +51,8 @@ export default class RoomRenderer {
         return {
             groups: this.groups,
             entities: this.entities,
-            playerSpawn: this.playerSpawn ?? null
+            playerSpawn: this.playerSpawn ?? null,
+            collisionRules: this.collisionRules
         }
     }
     
@@ -66,7 +68,14 @@ export default class RoomRenderer {
     }
 
     createStaticSprite(obj) {
-        const group = this.getGroup(obj.group ?? obj.type, 'static')
+        const groupName = obj.group ?? obj.type
+        const group = this.getGroup(groupName, 'static')
+
+        this.collisionRules[groupName] ??= new Set()
+
+        for (const target of obj.collidesWith ?? []) {
+            this.collisionRules[groupName].add(target)
+        }
 
         const item = group.create(
             obj.x,

@@ -227,22 +227,24 @@ export default class LevelEditor extends Phaser.Scene {
     }
 
     getCreatesForCurrentTool() {
+
+        const creates = { ...this.selectedPaletteEntry.creates}
+
         const isTerrain = this.selectedPaletteEntry.category === 'terrain' ||
             creates.type === 'platform' ||
             creates.type === 'ground'
+            
+        if(isTerrain) {
+            creates.type = this.terrainMode
+            creates.group = this.terrainMode
 
-        const creates = { ...this.selectedPaletteEntry.creates}
-            if(isTerrain) {
-                creates.type = this.terrainMode
-                creates.group = this.terrainMode
+            console.log(creates)
 
-                console.log(creates)
-
-                creates.collidesWith =
-                    this.terrainMode === 'ground'
-                        ? ['player', 'possessables']
-                        : ['possessables']
-            }
+            creates.collidesWith =
+                this.terrainMode === 'ground'
+                    ? ['player', 'possessables']
+                    : ['possessables']
+        }
         
         return creates
     }
@@ -270,6 +272,7 @@ export default class LevelEditor extends Phaser.Scene {
 
         placed.editorData = {
             type: creates.type,
+            group: creates.group,
             texture: creates.texture,
             frame: creates.frame,
             x: x,

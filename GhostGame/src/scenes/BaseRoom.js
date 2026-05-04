@@ -96,7 +96,8 @@ export default class BaseRoom extends Phaser.Scene {
         this.colliderController.wireRoomCollisions({
             player: this.player,
             possessables: this.possessables,
-            groups: this.roomObjects.groups
+            groups: this.roomObjects.groups,
+            collisionRules: this.roomObjects.collisionRules
         })
 
         const possessionController = new PossessionController(this, this.player)
