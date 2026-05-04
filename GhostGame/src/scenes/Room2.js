@@ -17,17 +17,17 @@ export default class Room2 extends BaseRoom {
 
     preload() {
         super.preload()
-        this.load.image('gray', 'assets/gray.jpg')
+        this.load.image('gray', '/assets/gray.jpg')
     }
 
    create() {
 
         this.createBaseRoom(this.spawnX, this.spawnY)
 
-        this.createPlatforms(this.ground, 0, this.scale.height - 24, this.scale.width, 1, 3)
-        this.createPlatforms(this.platforms, 400, this.scale.height - 480, this.scale.width * (Math.random() + .5) , 1, 3)
+        this.createPlatforms(this.ground, 0, this.scale.height - 24, this.scale.width, 1, 3, { type: 'ground' })
+        this.createPlatforms(this.platforms, 400, this.scale.height - 480, this.scale.width * (Math.random() + .5) , 1, 3, { type: 'platform'})
 
-        this.createPlatforms(this.platforms, 0, this.scale.height - 240, this.scale.width / 2 , 1, 3)
+        this.createPlatforms(this.platforms, 0, this.scale.height - 240, this.scale.width / 2 , 1, 3, { type: 'platform'})
 
         this.createGates(this, this.scale.width, this.scale.height, 48, this.scale.height * 2, 'gateA')
         this.setupGateCollision(this.gates)

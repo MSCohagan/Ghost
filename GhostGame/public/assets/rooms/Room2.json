@@ -385,8 +385,8 @@
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 400,
@@ -394,13 +394,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 448,
@@ -408,13 +407,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 496,
@@ -422,13 +420,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 544,
@@ -436,13 +433,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 592,
@@ -450,13 +446,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 640,
@@ -464,13 +459,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 688,
@@ -478,13 +472,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 736,
@@ -492,13 +485,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 784,
@@ -506,13 +498,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 832,
@@ -520,13 +511,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 880,
@@ -534,13 +524,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 928,
@@ -548,13 +537,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 976,
@@ -562,13 +550,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1024,
@@ -576,13 +563,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1072,
@@ -590,13 +576,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1120,
@@ -604,13 +589,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1168,
@@ -618,13 +602,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1216,
@@ -632,13 +615,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1264,
@@ -646,13 +628,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1312,
@@ -660,13 +641,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1360,
@@ -674,13 +654,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1408,
@@ -688,13 +667,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1456,
@@ -702,13 +680,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1504,
@@ -716,13 +693,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1552,
@@ -730,13 +706,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1600,
@@ -744,13 +719,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1648,
@@ -758,13 +732,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1696,
@@ -772,13 +745,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 1744,
@@ -786,13 +758,25 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
+      "texture": "platforms",
+      "frame": 1,
+      "x": 1792,
+      "y": 240,
+      "scale": 3,
+      "solid": true,
+      "collidesWith": [
+        "possessables"
+      ]
+    },
+    {
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 0,
@@ -800,13 +784,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 48,
@@ -814,13 +797,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 96,
@@ -828,13 +810,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 144,
@@ -842,13 +823,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 192,
@@ -856,13 +836,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 240,
@@ -870,13 +849,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 288,
@@ -884,13 +862,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 336,
@@ -898,13 +875,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 384,
@@ -912,13 +888,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 432,
@@ -926,13 +901,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 480,
@@ -940,13 +914,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 528,
@@ -954,13 +927,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 576,
@@ -968,13 +940,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 624,
@@ -982,7 +953,6 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },

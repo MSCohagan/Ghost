@@ -7,6 +7,18 @@
   },
   "objects": [
     {
+      "type": "possessableBox",
+      "group": "possessable",
+      "x": 400,
+      "y": 0,
+      "width": 24,
+      "height": 40,
+      "color": 0,
+      "speed": 200,
+      "jumpVelocity": -350,
+      "gravityY": 800
+    },
+    {
       "type": "ground",
       "group": "ground",
       "texture": "platforms",
@@ -385,8 +397,8 @@
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 400,
@@ -394,13 +406,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 448,
@@ -408,13 +419,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 496,
@@ -422,13 +432,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 544,
@@ -436,13 +445,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 592,
@@ -450,13 +458,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 640,
@@ -464,13 +471,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 688,
@@ -478,13 +484,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 736,
@@ -492,13 +497,12 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
     {
-      "type": "ground",
-      "group": "ground",
+      "type": "platform",
+      "group": "platform",
       "texture": "platforms",
       "frame": 1,
       "x": 784,
@@ -506,7 +510,6 @@
       "scale": 3,
       "solid": true,
       "collidesWith": [
-        "player",
         "possessables"
       ]
     },
@@ -536,18 +539,6 @@
       "overlapsWith": [
         "possessables"
       ]
-    },
-    {
-        "type": "possessableBox",
-        "group": "possessable",   
-        "x": 400,   
-        "y": 0,   
-        "width": 24,  
-        "height": 40,  
-        "color": 0,  
-        "speed": 200,  
-        "jumpVelocity": -350,
-        "gravityY": 800  
-      }
+    }
   ]
 }

@@ -23,14 +23,18 @@ export default class Room1 extends BaseRoom {
 
     create() {
         this.createBaseRoom(this.spawnX, this.spawnY)
+    }
 
-        this.createPlatforms(this.ground, 0, this.scale.height - 24, this.scale.width, 1, 3)
-        this.createPlatforms(this.platforms, 400, this.scale.height - 360, this.scale.width * .33 , 1, 3)
-        
-        this.createGates(this, this.scale.width, this.scale.height, 48, this.scale.height * 2, 'gateA')
-        this.setupGateCollision(this.gates)
+    render(roomData) {
+        const result = {
+            groups: this.groups,
+            entities: this.entities,
+            playerSpawn: this.playerSpawn ?? null,
+            collisionRules: this.collisionRules
+        }
 
-        this.createPressurePlates(this, this.scale.width - 64, this.scale.height - 32, 64, 16, 'plateA')
-        this.setupPressurePlateCollision(this.pressurePlates[0].press())
+        this.scene.events.emit('room-render-complete', result)
+
+        return result
     }
 }
