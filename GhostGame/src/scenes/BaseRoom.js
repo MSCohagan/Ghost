@@ -34,13 +34,14 @@ export default class BaseRoom extends Phaser.Scene {
 
     createBaseRoom(x, y) {
         this.add.image(1280, 720, this.backgroundKey)
-
+        
         const roomData = this.cache.json.get(`${this.roomKey}`)
 
         if (roomData?.objects) {
             this.roomRenderer = new RoomRenderer(this)
             this.roomObjects = this.roomRenderer.render(roomData)
         } else {
+            this.roomObjects = { entities: {}, groups: {}}
         }
 
         this.add.text(this.scale.width/2, 40, this.roomKey, {
@@ -62,7 +63,7 @@ export default class BaseRoom extends Phaser.Scene {
         this.pressurePlates = []
         this.possessables = []
 
-        this.roomObjects.entities.possessables.push(this.box = new Box(this, 400, 0, {
+        this.roomObjects.entities = this.possessables.push(this.box = new Box(this, 400, 0, {
             width: 24,
             height: 40,
             color: 0x000000,
