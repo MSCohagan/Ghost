@@ -1,4 +1,5 @@
 import AssetManager from '../controllers/AssetManager.js'
+import ControlsManager from '../controllers/ControlsManager.js'
 
 export default class LevelEditor extends Phaser.Scene {
     
@@ -8,6 +9,8 @@ export default class LevelEditor extends Phaser.Scene {
 
     create(data) { 
         this.hostScene = data.hostScene
+        const controls = new ControlsManager(this.hostScene)
+        this.controls = controls.fetchControls()
         this.AssetManager = new AssetManager(this.hostScene)
         this.editorPalette = this.hostScene.cache.json.get('palette') ?? { palette: {}}
         this.paletteEntries = []
@@ -33,12 +36,13 @@ export default class LevelEditor extends Phaser.Scene {
             this.dockHeight,
             0x000000,
             0.55
-        ).setOrigin(0, 0).setDepth(9000)
+        ).setOrigin(0, 0).setDepth(9000).setScrollFactor(0)
 
         this.assetItems = []
         this.scrollX = 0
 
         this.selectedTool = 'place'
+        this.terrainMode = 'platform'
 
         this.renderAssetDock()
         this.getPaletteEntries()
@@ -74,6 +78,17 @@ export default class LevelEditor extends Phaser.Scene {
             if(this.selectedTool === 'place') {
                 if(!this.selectedAsset) return
 
+                const creates = { ...this.selectedPaletteEntry.creates}
+                if(creates.category === 'terrain' || creates.type === 'platform') {
+                    creates.type = this.terrainMode
+                    creates.group = this.terrainMode
+
+                    creates.collidesWith =
+                        this.terrainMode === 'ground'
+                            ? ['player', 'possessables']
+                            : ['possessables']
+                }
+
                 this.placeSelectedPaletteEntry(pointer)
             }
         })
@@ -87,6 +102,11 @@ export default class LevelEditor extends Phaser.Scene {
         this.input.keyboard.on('keydown-P', () => {
             this.printLevelJson()
             this.saveRoomJson()
+        })
+
+        this.input.keyboard.on('keydown-G', () => {
+            this.terrainMode = this.terrainMode === 'ground' ? 'platform' : 'ground'
+            console.log('terrainMode: ', this.terrainMode)
         })
     }
 
@@ -202,18 +222,22 @@ export default class LevelEditor extends Phaser.Scene {
         return this.selectedPaletteEntry
     }
 
+    getWorldPointerPosition(pointer) {
+        return this.hostScene.cameras.main.getWorldPoint(pointer.x, pointer.y)
+    }
+
     getSnappedPointerPosition(pointer) {
+        const worldPoint = this.getWorldPointerPosition(pointer)
         const gridSize = 48
+
         return {
-            x: Math.floor(pointer.x / gridSize) * gridSize, 
-            y: Math.floor(pointer.y / gridSize) * gridSize, 
+            x: Math.floor(worldPoint.x / gridSize) * gridSize, 
+            y: Math.floor(worldPoint.y / gridSize) * gridSize, 
         }
     }
 
     placeSelectedPaletteEntry(pointer) {
-        const snapped = this.getSnappedPointerPosition(pointer)
-        const x = snapped.x
-        const y = snapped.y
+        const { x, y } = this.getSnappedPointerPosition(pointer)
         if(!this.selectedPaletteEntry?.creates) return false
         const creates = this.selectedPaletteEntry.creates
         const scale = creates.scale ?? 1
@@ -311,10 +335,18 @@ export default class LevelEditor extends Phaser.Scene {
     }
 
     update(time, delta) {
+        const cam = this.hostScene.cameras.main
+        const speed = 8
         const rawPointer = this.input.activePointer
         const pointer = this.getSnappedPointerPosition(rawPointer)
 
+        if (this.controls.left.isDown) cam.scrollX -= speed
+        if (this.controls.right.isDown) cam.scrollX += speed
+        if (this.controls.up.isDown) cam.scrollY -= speed
+        if (this.controls.down.isDown) cam.scrollY += speed
+
         if(this.previewImage) {
+            const previewPos = this.getSnappedPointerPosition(rawPointer)
             this.previewImage.setPosition(pointer.x, pointer.y)
         }
 

@@ -34,8 +34,16 @@ export default class BaseRoom extends Phaser.Scene {
 
     createBaseRoom(x, y) {
         this.add.image(1280, 720, this.backgroundKey)
-        
+
         const roomData = this.cache.json.get(`${this.roomKey}`)
+        this.roomWidth = roomData.roomWidth ?? 1280
+        this.roomHeight = roomData.roomHeight ?? 720
+
+        console.log(this.roomWidth, this.roomHeight)
+
+        this.camera = this.cameras.main
+        this.physics.world.setBounds(0, 0, this.roomWidth, this.roomHeight)
+        this.camera.setBounds(0, 0, this.roomWidth, this.roomHeight)
 
         if (roomData?.objects) {
             this.roomRenderer = new RoomRenderer(this)
@@ -58,6 +66,8 @@ export default class BaseRoom extends Phaser.Scene {
 
         const spawn = this.roomObjects.playerSpawn ?? { x, y }
         this.player = new Player(this, spawn.x, spawn.y)
+
+        this.camera.startFollow(this.player, true, 0.08, 0.08)
 
         this.gates =[]
         this.pressurePlates = []
@@ -95,11 +105,11 @@ export default class BaseRoom extends Phaser.Scene {
     }
 
     moveRoom() {
-        if(this.player.x + 72 >= this.scale.width && this.nextRoomRight) {
+        if(this.player.x + 72 >= this.roomWidth && this.nextRoomRight) {
             this.scene.start(this.nextRoomRight, { spawnX: 80, spawnY: this.player.y })
             return true
         } else if (this.player.x - 72 <= 0  && this.nextRoomLeft) {
-            this.scene.start(this.nextRoomLeft, { spawnX: this.scale.width - 80, spawnY: this.player.y })
+            this.scene.start(this.nextRoomLeft, { spawnX: this.roomWidth - 80, spawnY: this.player.y })
             return true
         }
         return false
@@ -127,7 +137,10 @@ export default class BaseRoom extends Phaser.Scene {
         if(Phaser.Input.Keyboard.JustDown(this.controls.edit)) {
             if(this.scene.isActive('LevelEditor')) {
                 this.scene.stop('LevelEditor')
-            } else { 
+                this.camera.startFollow(this.player, true, 0.08, 0.08)
+            } else {
+                this.camera.stopFollow()
+                this.player.body.setVelocity(0, 0)
                 this.scene.launch('LevelEditor', {
                     hostScene: this
                 })
@@ -135,7 +148,9 @@ export default class BaseRoom extends Phaser.Scene {
             }
         }
 
-        this.controlledEntity.update(this.time, this.delta)
+        if(!this.scene.isActive('LevelEditor')) {
+            this.player.update(this.time.now, this.game.loop.delta)
+        }
 
         const plate = this.pressurePlates[0]
         const gate = this.gates[0]

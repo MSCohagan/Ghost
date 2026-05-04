@@ -1,0 +1,6 @@
+{
+    "roomWidth": 3200,
+    "roomHeight": 720,
+    "playerSpawn": { "x": 200, "y": 500},
+    "objects": []
+}
