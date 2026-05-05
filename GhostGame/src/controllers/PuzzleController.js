@@ -2,7 +2,7 @@ export default class PuzzleController {
 
     constructor(scene, options = {}) {
         this.scene = scene
-        
+
         const {
             gates = [],
             pressurePlates = [],
@@ -41,5 +41,9 @@ export default class PuzzleController {
                 targetGate.close?.()
             }
         })
+    }
+
+    update() {
+        this.updatePressurePlatePuzzles()
     }
 }

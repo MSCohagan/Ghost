@@ -48,21 +48,16 @@ export default class BaseRoom extends Phaser.Scene {
         if (this.roomData?.objects) {
             this.roomRenderer = new RoomRenderer(this)
             this.roomObjects = this.roomRenderer.render(this.roomData)
+            console.log(this.roomObjects.entities)
             this.editorPlacedObjects = this.roomObjects.createdObjects ?? []
         } else {
             this.roomObjects = { entities: {}, groups: {}}
         }
 
-        this.add.text(this.scale.width/2, 40, this.roomKey, {
-            fontSize: '24px',
-            color: '#ffffff'
-        }).setOrigin(0.5, 0)
-
         this.spawn = this.roomObjects.playerSpawn ?? { x, y }
         this.player = new Player(this, this.spawn.x, this.spawn.y)
-        this.possessables = this.roomObjects.entities.possessables ?? []
-        this.gates = this.roomObjects.entities.gates ?? []
-        this.pressurePlates = this.roomObjects.entities.pressurePlates ?? []
+        
+        this.setupRoomEntities()
 
         this.camera.startFollow(this.player, true, 0.08, 0.08)
 
@@ -86,13 +81,8 @@ export default class BaseRoom extends Phaser.Scene {
         this.controlledEntity = this.player
 
         this.possessionController = new PossessionController(this, this.player)
-        
 
-        this.puzzleController = new PuzzleController (this, {
-            gates: this.gates,
-            pressurePlates: this.pressurePlates,
-            possessables: this.possessables
-        })
+        this.puzzleController = new PuzzleController (this, this.entities)
 
         this.inputController = new InputController(this)
     }
@@ -108,6 +98,20 @@ export default class BaseRoom extends Phaser.Scene {
             this.controlledEntity.update(this.time.now, this.game.loop.delta)
         }
     
-        this.puzzleController.updatePressurePlatePuzzles()
+        this.puzzleController.update()
+    }
+
+    setupRoomEntities() {
+        const entities = this.roomObjects.entities ?? {}
+
+        this.entities = {
+            possessables: entities.possessables ?? [],
+            gates: entities.gates ??  [],
+            pressurePlates: entities.pressurePlates ?? []
+        }
+
+        this.possessables = this.entities.possessables
+        this.gates = this.entities.gates
+        this.pressurePlates = this.entities.pressurePlates
     }
 }

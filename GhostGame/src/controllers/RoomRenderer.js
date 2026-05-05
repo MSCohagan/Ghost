@@ -1,6 +1,7 @@
 import Box from '../gameObjects/Box.js'
 import Gate from '../gameObjects/Gate.js'
 import PressurePlate from '../gameObjects/PressurePlate.js'
+import { objectRegistry } from '../data/objectRegistry.js'
 
 export default class RoomRenderer {
 
@@ -38,19 +39,26 @@ export default class RoomRenderer {
         }
 
         roomData.objects.forEach(obj => {
-            let factoryType = obj.type
-            if(factoryType.includes('-')) {
-                factoryType = factoryType.slice(0, factoryType.indexOf('-')) + factoryType.slice(factoryType.indexOf('-')+1, factoryType.length)
+            const typeConfig = objectRegistry[obj.type]
+
+            if (!typeConfig) {
+                console.warn(`No registry entry for type: ${obj.type}`)
+                return
             }
 
-            const factory = this.factories[factoryType]
+            const factory = this[typeConfig.factory]
 
-            if(!factory) {
-                console.warn(`No factory for type: ${obj.type}`)
+            if (!factory) {
+                console.warn(`No factory method: ${typeConfig.factory}`)
                 return
             }
             
-            factory(obj)
+            const created = factory.call(this, obj, typeConfig)
+
+            if (typeConfig.entityType && created) {
+                this.entities[typeConfig.entityType] ??= []
+                this.entities[typeConfig.entityType].push(created)
+            }
         })
 
         return {
@@ -168,7 +176,6 @@ export default class RoomRenderer {
             gravityY: obj.gravityY ?? 800
         })
     
-        this.entities.possessables.push(box)
         this.createdObjects.push(box)
         this.registerCollisionObject(box, obj)
     
@@ -184,7 +191,6 @@ export default class RoomRenderer {
             isOpen: obj.isOpen ?? false
         })
     
-        this.entities.gates.push(gate)
         this.createdObjects.push(gate)
         this.registerCollisionObject(gate, obj)
     
@@ -201,7 +207,6 @@ export default class RoomRenderer {
             pressDepth: obj.pressDepth ?? 8
         })
     
-        this.entities.pressurePlates.push(plate)
         this.createdObjects.push(plate)
         this.registerCollisionObject(plate, obj)
     
