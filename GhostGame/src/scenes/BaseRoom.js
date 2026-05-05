@@ -4,6 +4,7 @@ import ControlsManager from '../controllers/ControlsManager.js'
 import PossessionController from '../controllers/PossessionController.js'
 import ColliderController from '../controllers/ColliderController.js'
 import PuzzleController from '../controllers/PuzzleController.js'
+import InputController from '../controllers/InputController.js'
 
 export default class BaseRoom extends Phaser.Scene {
 
@@ -56,8 +57,8 @@ export default class BaseRoom extends Phaser.Scene {
             color: '#ffffff'
         }).setOrigin(0.5, 0)
 
-        const spawn = this.roomData.playerSpawn ?? this.roomObjects.playerSpawn ?? { x, y }
-        this.player = new Player(this, spawn.x, spawn.y)
+        this.spawn = this.roomObjects.playerSpawn ?? { x, y }
+        this.player = new Player(this, this.spawn.x, this.spawn.y)
         this.possessables = this.roomObjects.entities.possessables
         this.gates = this.roomObjects.entities.gates
         this.pressurePlates = this.roomObjects.entities.pressurePlates
@@ -74,15 +75,17 @@ export default class BaseRoom extends Phaser.Scene {
         })
 
         this.controlledEntity = this.player
+
+        this.possessionController = new PossessionController(this, this.player)
         
-        const possessionController = new PossessionController(this, this.player)
-        this.possessionController = possessionController
 
         this.puzzleController = new PuzzleController (this, {
             gates: this.gates,
             pressurePlates: this.pressurePlates,
             possessables: this.possessables
         })
+
+        this.inputController = new InputController(this)
     }
 
     moveRoom() {
@@ -102,7 +105,7 @@ export default class BaseRoom extends Phaser.Scene {
     
         if (this.moveRoom()) return
     
-        this.handleInput()
+        this.inputController.update()
     
         if (!this.scene.isActive('LevelEditor') && this.controlledEntity?.update) {
             this.controlledEntity.update(this.time.now, this.game.loop.delta)
@@ -122,32 +125,6 @@ export default class BaseRoom extends Phaser.Scene {
     
 
     handleInput() {
-        if (Phaser.Input.Keyboard.JustDown(this.controls.possess)) {
-            const nearest = this.possessionController.findNearestPossessable(this.player)
-            if (nearest) this.possessionController.tryPossess(nearest)
-        }
-    
-        if (Phaser.Input.Keyboard.JustDown(this.controls.release)) {
-            this.possessionController.releasePossession()
-        }
-    
-        if (Phaser.Input.Keyboard.JustDown(this.controls.reload)) {
-            this.scene.start(this.roomKey)
-        }
-    
-        if (Phaser.Input.Keyboard.JustDown(this.controls.edit)) {
-            if (this.scene.isActive('LevelEditor')) {
-                this.scene.stop('LevelEditor')
-                this.camera.startFollow(this.player, true, 0.08, 0.08)
-            } else {
-                this.camera.stopFollow()
-                this.player.body.setVelocity(0, 0)
-                this.scene.launch('LevelEditor', {
-                    hostScene: this,
-                    roomData: this.roomData
-                })
-                this.scene.bringToTop('LevelEditor')
-            }
-        }
+        
     }
 }

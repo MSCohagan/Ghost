@@ -3,7 +3,10 @@
   "roomHeight": 720,
   "playerSpawn": {
     "x": 200,
-    "y": 500
+    "y": 500,
+    "width": 24,
+    "height": 40,
+    "color": "0x00ff00"
   },
   "objects": [
     {

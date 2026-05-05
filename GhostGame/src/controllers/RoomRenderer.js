@@ -28,15 +28,14 @@ export default class RoomRenderer {
     }
 
     render(roomData) {
-        if(!roomData?.objects) {
-            return {
-                groups: this.groups,
-                entities: this.entities,
-                playerSpawn: null
-            }
+        if (!roomData) {
+            return { groups: this.groups, entities: this.entities, playerSpawn: null }
         }
-
-        console.log(roomData.objects.filter(o => o.type === 'gate' || o.type === 'pressurePlate'))
+    
+    
+        if (roomData.playerSpawn) {
+            this.createPlayerSpawn(roomData.playerSpawn)
+        }
 
         roomData.objects.forEach(obj => {
             let factoryType = obj.type
@@ -88,6 +87,31 @@ export default class RoomRenderer {
         return gameObject
     }
 
+    createPlayerSpawn(obj) {
+        const spawn = this.scene.add.rectangle(
+            obj.x,
+            obj.y,
+            obj.width ?? 24,
+            obj.height ?? 40,
+            Number(obj.color ?? 0x00ff00)
+        )
+
+        spawn.setOrigin(0, 0)
+        spawn.setAlpha(0.5)
+        spawn.setVisible(false)
+
+        spawn.editorData = { ...obj }
+        this.createdObjects.push(spawn)
+
+        this.playerSpawn = {
+            x: obj.x,
+            y: obj.y,
+            marker: spawn
+        }
+
+        return spawn
+    }
+
     createStaticSprite(obj) {
         const groupName = obj.group ?? obj.type
         const group = this.getGroup(groupName, 'static')
@@ -132,15 +156,6 @@ export default class RoomRenderer {
         this.createdObjects.push(image)
 
         return image
-    }
-
-    createPlayerSpawn(obj) {
-        this.playerSpawn = {
-            x: obj.x,
-            y: obj.y
-        }
-    
-        return this.playerSpawn
     }
 
     createPossessableBox(obj) {
