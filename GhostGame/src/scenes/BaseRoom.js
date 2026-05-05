@@ -1,7 +1,4 @@
 import Player from '../gameObjects/Player.js'
-import Box from '../gameObjects/Box.js'
-import Gate from '../gameObjects/Gate.js'
-import PressurePad from '../gameObjects/PressurePlate.js'
 import RoomRenderer from '../controllers/RoomRenderer.js'
 import ControlsManager from '../controllers/ControlsManager.js'
 import PossessionController from '../controllers/PossessionController.js'
@@ -81,7 +78,8 @@ export default class BaseRoom extends Phaser.Scene {
             player: this.player,
             possessables: this.possessables,
             groups: this.roomObjects.groups,
-            collisionRules: this.roomObjects.collisionRules
+            collisionRules: this.roomObjects.collisionRules,
+            collisionObjects: this.roomObjects.collisionObjects
         })
 
         const possessionController = new PossessionController(this, this.player)
@@ -215,7 +213,11 @@ export default class BaseRoom extends Phaser.Scene {
             })
 
             const targetGate = this.gates.find(gate => {
-                return !plate.key || !gate.key || gate.key === plate.key
+                if(plate.targetGate) {
+                    return gate.key === plate.targetGate
+                }
+
+                return gate.key === plate.key
             }) ?? this.gates[0]
 
             if(!targetGate) return
@@ -229,6 +231,4 @@ export default class BaseRoom extends Phaser.Scene {
             }
         })
     }
-
-
 }

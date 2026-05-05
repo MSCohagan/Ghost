@@ -1,4 +1,4 @@
-export default class PressurePad extends Phaser.GameObjects.Rectangle {
+export default class PressurePlate extends Phaser.GameObjects.Rectangle {
 
     constructor(scene, x, y, options = {}) {
         const {
@@ -6,12 +6,14 @@ export default class PressurePad extends Phaser.GameObjects.Rectangle {
             height = 48,
             color = 0xf000000,
             key = '',
+            targetGate = '',
             pressDepth = 8
         } = options
 
         super(scene, x, y, width, height, color)
 
         this.key = key
+        this.targetGate = targetGate
         this.color = color
         this.scene = scene
         this.isPressed = false

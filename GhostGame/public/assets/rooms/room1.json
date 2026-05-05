@@ -926,6 +926,7 @@
       "width": 64,
       "height": 16,
       "key": "plateA",
+      "targetGate": "gateA",
       "solid": false,
       "overlapsWith": [
         "possessables"
@@ -1492,56 +1493,16 @@
       ]
     },
     {
-      "type": "gate",
-      "group": "gate",
-      "x": 1280,
-      "y": 720,
-      "width": 48,
-      "height": 1440,
-      "key": "gateA",
-      "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
-    },
-    {
-      "type": "pressurePlate",
-      "group": "pressurePlate",
-      "x": 1216,
-      "y": 688,
-      "width": 64,
-      "height": 16,
-      "key": "plateA",
-      "solid": false,
-      "overlapsWith": [
-        "possessables"
-      ]
-    },
-    {
-      "type": "platform",
-      "group": "platform",
-      "texture": "sprites_world_tileset",
-      "frame": 11,
-      "x": 528,
-      "y": 288,
-      "scale": 3,
-      "solid": true,
-      "collidesWith": [
-        "possessables"
-      ]
-    },
-    {
       "type": "possessableBox",
-      "group": "possessable",   
-      "x": 400,   
-      "y": 0,   
-      "width": 24,  
-      "height": 40,  
-      "color": 0,  
-      "speed": 200,  
+      "group": "possessable",
+      "x": 400,
+      "y": 0,
+      "width": 24,
+      "height": 40,
+      "color": 0,
+      "speed": 200,
       "jumpVelocity": -350,
-      "gravityY": 800  
+      "gravityY": 800
     }
   ]
 }

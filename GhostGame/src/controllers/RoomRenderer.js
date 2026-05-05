@@ -1,12 +1,13 @@
 import Box from '../gameObjects/Box.js'
 import Gate from '../gameObjects/Gate.js'
-import PressurePad from '../gameObjects/PressurePlate.js'
+import PressurePlate from '../gameObjects/PressurePlate.js'
 
 export default class RoomRenderer {
 
     constructor(scene) {
         this.scene = scene
         this.groups = {}
+        this.collisionObjects = []
         this.collisionRules = {}
         this.entities = {
             possessables: [],
@@ -35,6 +36,8 @@ export default class RoomRenderer {
             }
         }
 
+        console.log(roomData.objects.filter(o => o.type === 'gate' || o.type === 'pressurePlate'))
+
         roomData.objects.forEach(obj => {
             let factoryType = obj.type
             if(factoryType.includes('-')) {
@@ -56,6 +59,7 @@ export default class RoomRenderer {
             entities: this.entities,
             playerSpawn: this.playerSpawn ?? null,
             collisionRules: this.collisionRules,
+            collisionObjects: this.collisionObjects,
             createdObjects: this.createdObjects
         }
     }
@@ -69,6 +73,19 @@ export default class RoomRenderer {
                 : this.scene.physics.add.group()
 
         return this.groups[name]
+    }
+
+    registerCollisionObject(gameObject, obj) {
+        gameObject.roomData = obj
+        gameObject.editorData = { ...obj }
+
+        this.collisionObjects.push({
+            object: gameObject,
+            collidesWith: obj.collidesWith ?? [],
+            overlapsWith: obj.overlapsWith ?? []
+        })
+
+        return gameObject
     }
 
     createStaticSprite(obj) {
@@ -152,25 +169,26 @@ export default class RoomRenderer {
             isOpen: obj.isOpen ?? false
         })
     
-        gate.editorData = { ...obj }
         this.entities.gates.push(gate)
         this.createdObjects.push(gate)
+        this.registerCollisionObject(gate, obj)
     
         return gate
     }
     
     createPressurePlate(obj) {
-        const plate = new PressurePad(this.scene, obj.x, obj.y, {
+        const plate = new PressurePlate(this.scene, obj.x, obj.y, {
             key: obj.key,
+            targetGate: obj.targetGate,
             width: obj.width ?? 48,
             height: obj.height ?? 12,
             color: obj.color ?? 0xf00000,
             pressDepth: obj.pressDepth ?? 8
         })
     
-        plate.editorData = { ...obj }
         this.entities.pressurePlates.push(plate)
         this.createdObjects.push(plate)
+        this.registerCollisionObject(plate, obj)
     
         return plate
     }

@@ -12,19 +12,41 @@ export default class ColliderController {
         this.scene.physics.add.overlap(entityOne, entityTwo, callback)
     }
 
-    wireRoomCollisions({ player, possessables = [], groups = {}, collisionRules = {}}) {
+    wireRoomCollisions({ player, possessables = [], groups = {}, collisionRules = {}, collisionObjects = [] }) {
+
         Object.entries(collisionRules).forEach(([groupName, targets]) => {
             const group = groups[groupName]
-            if(!group) return
-            
-            if(targets.has('player')) {
+
+            if (!group) return
+
+            console.log(targets)
+
+            if (targets.has?.('player')) {
                 this.addCollider(player, group)
             }
+    
+            if (targets.has?.('possessables')) {
+                possessables.forEach(obj => this.addCollider(obj, group))
+            }
+        })
 
-            if(targets.has('possessables')) {
-                possessables.forEach(possessable => {
-                    this.addCollider(possessable, group)
-                })
+        console.log(collisionObjects)
+    
+        collisionObjects.forEach(({ object, collidesWith = [], overlapsWith = [] }) => {
+            if (collidesWith.includes('player')) {
+                this.addCollider(player, object)
+            }
+        
+            if (collidesWith.includes('possessables')) {
+                possessables.forEach(obj => this.addCollider(obj, object))
+            }
+
+            if (overlapsWith.includes('player')) {
+                this.addOverlap(player, object) 
+            }
+        
+            if (overlapsWith.includes('possessables')) {
+                possessables.forEach(obj => this.addOverlap(obj, object))
             }
         })
     }
