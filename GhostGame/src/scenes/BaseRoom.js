@@ -66,12 +66,6 @@ export default class BaseRoom extends Phaser.Scene {
 
         this.camera.startFollow(this.player, true, 0.08, 0.08)
 
-        this.gates = this.roomObjects.entities.gates ?? []
-        this.pressurePlates = this.roomObjects.entities.pressurePlates ?? []
-        this.possessables = this.roomObjects.entities.possessables ?? []
-
-        this.box = this.possessables[0]
-
         this.controlledEntity = this.player
 
         this.colliderController = new ColliderController(this)
@@ -84,10 +78,7 @@ export default class BaseRoom extends Phaser.Scene {
         })
 
         const possessionController = new PossessionController(this, this.player)
-
         this.possessionController = possessionController
-        this.possess = possessionController.tryPossess.bind(possessionController)
-        this.release = possessionController.releasePossession.bind(possessionController)
 
         this.puzzleController = new PuzzleController (this, {
             gates: this.gates,
@@ -131,48 +122,15 @@ export default class BaseRoom extends Phaser.Scene {
         return gameObject
     }
     
-    createPlatforms(entity, startX, y, width, frame, scale = 3, options = {}) {
-        const {
-            type = 'ground',
-            group = type,
-            collidesWith = type === 'ground'
-                ? ['player', 'possessables']
-                : ['possessables']
-        } = options
-    
-        const tileSize = 16
-        const step = tileSize * scale
-        const endX = startX + width
-    
-        for (let x = startX; x < endX; x += step) {
-            const tile = entity.create(x, y, 'platforms', frame)
-    
-            tile.setOrigin(0, 0)
-            tile.setScale(scale)
-            tile.refreshBody()
-    
-            this.registerEditorObject(tile, {
-                type,
-                group,
-                texture: 'platforms',
-                frame,
-                x,
-                y,
-                scale,
-                solid: true,
-                collidesWith
-            })
-        }
-    }
 
     handleInput() {
         if (Phaser.Input.Keyboard.JustDown(this.controls.possess)) {
-            const nearest = this.findNearestPossessable(this.player)
-            if (nearest) this.possess(nearest)
+            const nearest = this.possessionController.findNearestPossessable(this.player)
+            if (nearest) this.possessionController.tryPossess(nearest)
         }
     
         if (Phaser.Input.Keyboard.JustDown(this.controls.release)) {
-            this.release()
+            this.possessionController.releasePossession()
         }
     
         if (Phaser.Input.Keyboard.JustDown(this.controls.reload)) {
@@ -193,20 +151,5 @@ export default class BaseRoom extends Phaser.Scene {
                 this.scene.bringToTop('LevelEditor')
             }
         }
-    }
-
-    findNearestPossessable(player) {
-        let nearestPossessable = null
-        let nearestDistance = Infinity
-        let maxDistance = 60
-
-        this.possessables.forEach(possessable => {
-            const distance = Phaser.Math.Distance.Between(player.x, player.y, possessable.x, possessable.y)
-            if(distance < maxDistance) {
-                nearestDistance = distance
-                nearestPossessable = possessable
-            }
-        })
-        return nearestPossessable
     }
 }

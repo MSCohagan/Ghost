@@ -4,6 +4,22 @@ export default class PossessionController {
         this.scene = scene
         this.player = player
         this.currentHost = null
+        this.possessables = scene.roomObjects.entities.possessables
+    }
+
+    findNearestPossessable(player) {
+        let nearestPossessable = null
+        let nearestDistance = Infinity
+        let maxDistance = 60
+
+        this.possessables.forEach(possessable => {
+            const distance = Phaser.Math.Distance.Between(player.x, player.y, possessable.x, possessable.y)
+            if(distance < maxDistance) {
+                nearestDistance = distance
+                nearestPossessable = possessable
+            }
+        })
+        return nearestPossessable
     }
 
     tryPossess(currentHost) {
