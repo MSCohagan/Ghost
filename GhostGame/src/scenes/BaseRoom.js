@@ -122,9 +122,4 @@ export default class BaseRoom extends Phaser.Scene {
     
         return gameObject
     }
-    
-
-    handleInput() {
-        
-    }
 }
