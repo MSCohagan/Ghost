@@ -3,6 +3,7 @@ import RoomRenderer from '../controllers/RoomRenderer.js'
 import ControlsManager from '../controllers/ControlsManager.js'
 import PossessionController from '../controllers/PossessionController.js'
 import ColliderController from '../controllers/ColliderController.js'
+import PuzzleController from '../controllers/PuzzleController.js'
 
 export default class BaseRoom extends Phaser.Scene {
 
@@ -87,6 +88,12 @@ export default class BaseRoom extends Phaser.Scene {
         this.possessionController = possessionController
         this.possess = possessionController.tryPossess.bind(possessionController)
         this.release = possessionController.releasePossession.bind(possessionController)
+
+        this.puzzleController = new PuzzleController (this, {
+            gates: this.gates,
+            pressurePlates: this.pressurePlates,
+            possessables: this.possessables
+        })
     }
 
     moveRoom() {
@@ -112,7 +119,7 @@ export default class BaseRoom extends Phaser.Scene {
             this.controlledEntity.update(this.time.now, this.game.loop.delta)
         }
     
-        this.updatePressurePlatePuzzles()
+        this.puzzleController.updatePressurePlatePuzzles()
     }
 
     registerEditorObject(gameObject, editorData) {
@@ -201,34 +208,5 @@ export default class BaseRoom extends Phaser.Scene {
             }
         })
         return nearestPossessable
-    }
-
-    updatePressurePlatePuzzles() {
-        if(!this.pressurePlates?.length || !this.gates?.length) return
-        if(!this.possessables?.length) return
-
-        this.pressurePlates.forEach(plate => {
-            const pressed = this.possessables.some(possessable => {
-                return this.physics.overlap(possessable, plate)
-            })
-
-            const targetGate = this.gates.find(gate => {
-                if(plate.targetGate) {
-                    return gate.key === plate.targetGate
-                }
-
-                return gate.key === plate.key
-            }) ?? this.gates[0]
-
-            if(!targetGate) return
-
-            if(pressed) {
-                plate.press?.()
-                targetGate.open?.()
-            } else {
-                plate.releasePlate?.()
-                targetGate.close?.()
-            }
-        })
     }
 }

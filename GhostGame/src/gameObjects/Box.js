@@ -15,6 +15,7 @@ export default class Box extends Phaser.GameObjects.Rectangle {
         super(scene, x, y, width, height, color)
 
         this.scene = scene
+
         this.moveSpeed = speed
         this.jumpVelocity = jumpVelocity
         this.normalGravityY = gravityY
