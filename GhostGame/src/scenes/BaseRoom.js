@@ -56,17 +56,13 @@ export default class BaseRoom extends Phaser.Scene {
             color: '#ffffff'
         }).setOrigin(0.5, 0)
 
-
-        this.platforms = this.physics.add.staticGroup()
-        this.ground = this.physics.add.staticGroup()
-        this.gates = this.physics.add.staticGroup()
-
         const spawn = this.roomData.playerSpawn ?? this.roomObjects.playerSpawn ?? { x, y }
         this.player = new Player(this, spawn.x, spawn.y)
+        this.possessables = this.roomObjects.entities.possessables
+        this.gates = this.roomObjects.entities.gates
+        this.pressurePlates = this.roomObjects.entities.pressurePlates
 
         this.camera.startFollow(this.player, true, 0.08, 0.08)
-
-        this.controlledEntity = this.player
 
         this.colliderController = new ColliderController(this)
         this.colliderController.wireRoomCollisions({
@@ -77,6 +73,8 @@ export default class BaseRoom extends Phaser.Scene {
             collisionObjects: this.roomObjects.collisionObjects
         })
 
+        this.controlledEntity = this.player
+        
         const possessionController = new PossessionController(this, this.player)
         this.possessionController = possessionController
 

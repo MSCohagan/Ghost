@@ -1494,7 +1494,7 @@
     },
     {
       "type": "possessableBox",
-      "group": "possessable",
+      "group": "possessables",
       "x": 400,
       "y": 0,
       "width": 24,

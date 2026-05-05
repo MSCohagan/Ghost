@@ -153,9 +153,9 @@ export default class RoomRenderer {
             gravityY: obj.gravityY ?? 800
         })
     
-        box.editorData = { ...obj }
         this.entities.possessables.push(box)
         this.createdObjects.push(box)
+        this.registerCollisionObject(box, obj)
     
         return box
     }
