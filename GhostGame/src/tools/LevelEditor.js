@@ -10,7 +10,6 @@ export default class LevelEditor extends Phaser.Scene {
     create(data) { 
         this.hostScene = data.hostScene
         this.roomData = data.roomData
-        console.log(this.roomData)
 
         const controls = new ControlsManager(this.hostScene)
         this.controls = controls.fetchControls()
@@ -21,12 +20,23 @@ export default class LevelEditor extends Phaser.Scene {
         this.hostScene.editorPlacedObjects ??= []
         this.occupiedCells = new Set()
         this.placedObjects = this.hostScene.editorPlacedObjects
+        this.dedupePlacedObjects()
+        this.populateOccupiedCells()
+        this.placedObjects.forEach(obj => {
+            obj.setInteractive?.()
+            this.hostScene.input.setDraggable(obj)
+        })
+
+        this.hostScene.spawn.marker?.setInteractive()
+        this.hostScene.input.setDraggable(this.hostScene.spawn.marker)
+
+        this.selectedObject = null
 
         this.assets = this.AssetManager.getAllSelectableAssets()
 
         this.dockOpen = true
         this.dockHeight = 96
-        this.closedDockHeight = 16
+        this.closedDockHeight = 0
         this.paintCooldown = 80
         this.drawTimer = 0
 
@@ -44,7 +54,7 @@ export default class LevelEditor extends Phaser.Scene {
         this.assetItems = []
         this.scrollX = 0
 
-        this.tools = ['place', 'erase', 'spawn']
+        this.tools = ['place', 'erase', 'spawn', 'select']
         this.selectedToolIndex = 0
         this.selectedTool = this.tools[this.selectedToolIndex]
         this.toolText = this.add.text(16, this.getDockTop() - 24, `Tool: ${this.selectedTool}`, {
@@ -55,6 +65,15 @@ export default class LevelEditor extends Phaser.Scene {
 
         this.renderAssetDock()
         this.getPaletteEntries()
+        this.tooltip = this.add.text(0, 0, '', {
+            fontSize: '14px',
+            color: '#ffffff',
+            backgroundColor: '#000000',
+            padding: { x: 6, y: 4 }
+        })
+        .setDepth(10003)
+        .setScrollFactor(0)
+        .setVisible(false)
 
         this.input.on('wheel', (pointer, gameObjects, deltaX, deltaY) => {
             this.scrollDock(-deltaY * 0.5)
@@ -79,30 +98,77 @@ export default class LevelEditor extends Phaser.Scene {
         this.input.on('pointerdown', (pointer) => {
             if(this.isPointerInDock((pointer))) return
 
-            if(this.selectedTool === 'erase') {
+            if (this.selectedTool === 'erase') {
                 this.deleteObjectAtPointer(pointer)
                 return
             }
-
-            if(this.selectedTool === 'place') {
-                if(!this.selectedAsset) return
-
-                const creates = this.getCreatesForCurrentTool()
-                this.placeSelectedPaletteEntry(pointer, creates)
-            }
-
-            if(this.selectedTool === 'spawn') {
+            
+            if (this.selectedTool === 'spawn') {
                 this.placeSpawn(pointer)
+                return
+            }
+            
+            if (this.selectedTool === 'select') {
+                this.selectedObject = this.findObjectAtPointer(pointer)
                 return
             }
         })
 
+        this.isDraggingObject = false
+
+        this.onHostDragStart = (pointer, gameObject) => {
+            if (this.selectedTool !== 'select') return
+        
+            const isEditable =
+                gameObject?.editorData ||
+                gameObject === this.hostScene.spawn.marker
+        
+            if (!isEditable) return
+        
+            this.isDraggingObject = true
+        }
+        
+        this.onHostDragEnd = () => {
+            this.isDraggingObject = false
+        }
+        
+        this.onHostDrag = (pointer, gameObject) => {
+            if (this.selectedTool !== 'select') return
+            if (!gameObject?.editorData && gameObject !== this.hostScene.spawn.marker) return
+        
+            const { x, y } = this.getSnappedPointerPosition(pointer)
+        
+            gameObject.setPosition(x, y)
+        
+            if (gameObject === this.hostScene.spawn.marker) {
+                this.hostScene.roomData.playerSpawn.x = x
+                this.hostScene.roomData.playerSpawn.y = y
+                this.hostScene.spawn.x = x
+                this.hostScene.spawn.y = y
+                return
+            }
+        
+            gameObject.editorData.x = x
+            gameObject.editorData.y = y
+        
+            if (gameObject.body?.physicsType === Phaser.Physics.Arcade.STATIC_BODY) {
+                gameObject.refreshBody?.()
+            }
+        }
+        
+        this.hostScene.input.on('dragstart', this.onHostDragStart)
+        this.hostScene.input.on('dragend', this.onHostDragEnd)
+        this.hostScene.input.on('drag', this.onHostDrag)
+        
+        this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
+            this.hostScene.input.off('dragstart', this.onHostDragStart)
+            this.hostScene.input.off('dragend', this.onHostDragEnd)
+            this.hostScene.input.off('drag', this.onHostDrag)
+        })
+
         this.input.keyboard.on('keydown-BACKSPACE', () => {
             this.selectedToolIndex = (this.selectedToolIndex + 1) % this.tools.length
-            this.selectedTool = this.tools[this.selectedToolIndex]
-
-            this.toolText.setText(`Tool: ${this.selectedTool}`)
-            console.log('selectedTool', this.selectedTool)
+            this.setSelectedTool(this.tools[this.selectedToolIndex])
         })
 
         this.input.keyboard.on('keydown-P', () => {
@@ -113,6 +179,45 @@ export default class LevelEditor extends Phaser.Scene {
         this.input.keyboard.on('keydown-G', () => {
             this.terrainMode = this.terrainMode === 'ground' ? 'platform' : 'ground'
             console.log('terrainMode: ', this.terrainMode)
+        })
+    }
+
+    dedupePlacedObjects() {
+        const seen = new Set()
+        const deduped = []
+    
+        this.hostScene.editorPlacedObjects.forEach(obj => {
+            const data = obj.editorData
+            if (!data) {
+                deduped.push(obj)
+                return
+            }
+    
+            const key = `${data.type}:${data.x}:${data.y}:${data.texture ?? ''}:${data.frame ?? ''}`
+    
+            if (seen.has(key)) {
+                obj.destroy()
+                return
+            }
+    
+            seen.add(key)
+            deduped.push(obj)
+        })
+    
+        this.hostScene.editorPlacedObjects = deduped
+        this.placedObjects = deduped
+    }
+
+    populateOccupiedCells() {
+        this.occupiedCells.clear()
+    
+        this.placedObjects.forEach(obj => {
+            const data = obj.editorData
+            if (!data?.x || !data?.y || !data?.type) return
+    
+            const cellKey = data.cellKey ?? `${data.x}, ${data.y}, ${data.type}`
+            data.cellKey = cellKey
+            this.occupiedCells.add(cellKey)
         })
     }
 
@@ -137,9 +242,20 @@ export default class LevelEditor extends Phaser.Scene {
                     pointer.event.stopPropagation()
 
                     this.selectedAsset = asset
-                    this.selectedTool = 'place'
+                    this.setSelectedTool('place')
                     this.createPreview(asset)
                     this.selectPaletteEntry(asset)
+                })
+
+                thumb.on('pointerover', () => {
+                    this.tooltip
+                        .setText(asset.label ?? asset.id ?? `${asset.texture}:${asset.frame ?? ''}`)
+                        .setPosition(thumb.x, thumb.y - 28)
+                        .setVisible(true)
+                })
+
+                thumb.on('pointerout', () => {
+                    this.tooltip.setVisible(false)
                 })
 
             this.assetItems.push(thumb)
@@ -189,6 +305,19 @@ export default class LevelEditor extends Phaser.Scene {
 
     isPointerInDock(pointer) {
         return this.dockOpen && pointer.y >= this.getDockTop()
+    }
+
+    setSelectedTool(tool) {
+        this.selectedTool = tool
+        this.selectedToolIndex = this.tools.indexOf(tool)
+
+        this.toolText.setText(`Tool: ${this.selectedTool}`)
+
+        if(this.selectedTool !== 'place') {
+            this.previewImage?.setVisible(false)
+        } else {
+            this.previewImage?.setVisible(true)
+        }
     }
 
     createPreview(asset) {
@@ -296,6 +425,9 @@ export default class LevelEditor extends Phaser.Scene {
             cellKey
         }
 
+        placed.setInteractive()
+        this.hostScene.input.setDraggable(placed)
+
         this.hostScene.editorPlacedObjects.push(placed)
         this.placedObjects = this.hostScene.editorPlacedObjects
 
@@ -318,10 +450,27 @@ export default class LevelEditor extends Phaser.Scene {
         this.hostScene.spawn.marker?.setPosition(x, y)
     }
 
-    deleteObjectAtPointer(pointer) {
-        const clicked = [...this.placedObjects].reverse().find(obj => {
+    findObjectAtPointer(pointer) {
+        const worldPoint = this.getWorldPointerPosition(pointer)
+    
+        return [...this.placedObjects, this.hostScene.spawn.marker]
+            .filter(Boolean)
+            .reverse()
+            .find(obj =>
+                Phaser.Geom.Rectangle.Contains(
+                    obj.getBounds(),
+                    worldPoint.x,
+                    worldPoint.y
+                )
+            )
+    }
 
-            return Phaser.Geom.Rectangle.Contains(obj.getBounds(), pointer.x, pointer.y)
+    deleteObjectAtPointer(pointer) {
+        const worldPoint = this.getWorldPointerPosition(pointer)
+
+        const clicked = [...this.placedObjects].reverse().find(obj => {
+            
+            return Phaser.Geom.Rectangle.Contains(obj.getBounds(), worldPoint.x, worldPoint.y)
     
         })
 
@@ -394,7 +543,6 @@ export default class LevelEditor extends Phaser.Scene {
         const cam = this.hostScene.cameras.main
         const speed = 8
         const rawPointer = this.input.activePointer
-        const pointer = this.getSnappedPointerPosition(rawPointer)
 
         if (this.controls.left.isDown) cam.scrollX -= speed
         if (this.controls.right.isDown) cam.scrollX += speed
@@ -405,21 +553,24 @@ export default class LevelEditor extends Phaser.Scene {
             const previewPos = this.getSnappedPointerPosition(rawPointer)
             this.previewImage.setPosition(previewPos.x, previewPos.y)
         }
-
+        
         if(!rawPointer.isDown) return
         if(this.isPointerInDock(rawPointer)) return
+        if(this.isDraggingObject) return
 
         this.drawTimer -= delta
         if(this.drawTimer > 0) return
 
         if(this.selectedTool === 'erase') {
-            if(this.deleteObjectAtPointer(pointer)) this.drawTimer = 50
+            if(this.deleteObjectAtPointer(rawPointer)) this.drawTimer = 50
             return
         }
         
-        if(this.selectedTool === 'place' && this.selectedPaletteEntry) {
+        if (this.selectedTool !== 'place') return
+
+        if (this.selectedTool === 'place' && this.selectedPaletteEntry) {
             const creates = this.getCreatesForCurrentTool()
-            this.placeSelectedPaletteEntry(pointer, creates)
+            this.placeSelectedPaletteEntry(rawPointer, creates)
             this.drawTimer = 50
         }
     }
