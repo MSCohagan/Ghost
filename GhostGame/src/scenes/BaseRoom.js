@@ -110,13 +110,4 @@ export default class BaseRoom extends Phaser.Scene {
     
         this.puzzleController.updatePressurePlatePuzzles()
     }
-
-    registerEditorObject(gameObject, editorData) {
-        this.editorPlacedObjects ??= []
-    
-        gameObject.editorData = editorData
-        this.editorPlacedObjects.push(gameObject)
-    
-        return gameObject
-    }
 }
