@@ -10,6 +10,7 @@ export default class LevelEditor extends Phaser.Scene {
     create(data) { 
         this.hostScene = data.hostScene
         this.roomData = data.roomData
+        console.log(this.roomData)
 
         const controls = new ControlsManager(this.hostScene)
         this.controls = controls.fetchControls()
@@ -43,7 +44,13 @@ export default class LevelEditor extends Phaser.Scene {
         this.assetItems = []
         this.scrollX = 0
 
-        this.selectedTool = 'place'
+        this.tools = ['place', 'erase', 'spawn']
+        this.selectedToolIndex = 0
+        this.selectedTool = this.tools[this.selectedToolIndex]
+        this.toolText = this.add.text(16, this.getDockTop() - 24, `Tool: ${this.selectedTool}`, {
+            fontSize: '16px',
+            color: '#ffffff'
+        }).setScrollFactor(0).setDepth(10002)
         this.terrainMode = 'platform'
 
         this.renderAssetDock()
@@ -83,12 +90,19 @@ export default class LevelEditor extends Phaser.Scene {
                 const creates = this.getCreatesForCurrentTool()
                 this.placeSelectedPaletteEntry(pointer, creates)
             }
+
+            if(this.selectedTool === 'spawn') {
+                this.placeSpawn(pointer)
+                return
+            }
         })
 
         this.input.keyboard.on('keydown-BACKSPACE', () => {
-            this.selectedTool = 
-                this.selectedTool === 'erase' ? 'place' : 'erase'
-            console.log('selectedTool ', this.selectedTool)
+            this.selectedToolIndex = (this.selectedToolIndex + 1) % this.tools.length
+            this.selectedTool = this.tools[this.selectedToolIndex]
+
+            this.toolText.setText(`Tool: ${this.selectedTool}`)
+            console.log('selectedTool', this.selectedTool)
         })
 
         this.input.keyboard.on('keydown-P', () => {
@@ -288,6 +302,22 @@ export default class LevelEditor extends Phaser.Scene {
         return true
     }
 
+    placeSpawn(pointer) {
+        const { x, y } = this.getSnappedPointerPosition(pointer)
+    
+        this.hostScene.roomData.playerSpawn = {
+            x,
+            y,
+            width: 24,
+            height: 40,
+            color: "0x00ff00"
+        }
+    
+        this.hostScene.spawn.x = x
+        this.hostScene.spawn.y = y
+        this.hostScene.spawn.marker?.setPosition(x, y)
+    }
+
     deleteObjectAtPointer(pointer) {
         const clicked = [...this.placedObjects].reverse().find(obj => {
 
@@ -337,8 +367,8 @@ export default class LevelEditor extends Phaser.Scene {
             ...existingRoomData,
             roomWidth: this.hostScene.roomWidth,
             roomHeight: this.hostScene.roomHeight,
-            playerSpawn: { "x": 200, "y": 500 },
-            objects: objects
+            playerSpawn: this.hostScene.roomData.playerSpawn,
+            objects
         }
 
         try {

@@ -5,14 +5,14 @@ export default class InputController {
     }
 
     update() {
+        const hostScene = this.scene
         const {
             controls,
             possessionController,
             player,
-            scene,
             camera,
             spawn
-        } = this.scene
+        } = hostScene
 
         if (Phaser.Input.Keyboard.JustDown(controls.possess)) {
             const nearest = possessionController.findNearestPossessable(player)
@@ -24,12 +24,12 @@ export default class InputController {
         }
     
         if (Phaser.Input.Keyboard.JustDown(controls.reload)) {
-            scene.start(scene.roomKey)
+            hostScene.scene.start(hostScene.scene.roomKey)
         }
     
         if (Phaser.Input.Keyboard.JustDown(controls.edit)) {
-            if (scene.isActive('LevelEditor')) {
-                scene.stop('LevelEditor')
+            if (hostScene.scene.isActive('LevelEditor')) {
+                hostScene.scene.stop('LevelEditor')
                 camera.startFollow(player, true, 0.08, 0.08)
                 spawn.marker?.setVisible(false)
             } else {
@@ -38,12 +38,12 @@ export default class InputController {
 
                 spawn.marker?.setVisible(true)
 
-                scene.launch('LevelEditor', {
-                    hostScene: scene,
-                    roomData: scene.roomData
+                hostScene.scene.launch('LevelEditor', {
+                    hostScene,
+                    roomData: hostScene.scene.roomData
                 })
 
-                scene.bringToTop('LevelEditor')
+                hostScene.scene.bringToTop('LevelEditor')
             }
         }
     }
