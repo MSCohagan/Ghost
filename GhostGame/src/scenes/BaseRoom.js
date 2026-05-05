@@ -5,6 +5,7 @@ import PossessionController from '../controllers/PossessionController.js'
 import ColliderController from '../controllers/ColliderController.js'
 import PuzzleController from '../controllers/PuzzleController.js'
 import InputController from '../controllers/InputController.js'
+import RoomTransitionController from '../controllers/RoomTransitionController.js'
 
 export default class BaseRoom extends Phaser.Scene {
 
@@ -59,9 +60,9 @@ export default class BaseRoom extends Phaser.Scene {
 
         this.spawn = this.roomObjects.playerSpawn ?? { x, y }
         this.player = new Player(this, this.spawn.x, this.spawn.y)
-        this.possessables = this.roomObjects.entities.possessables
-        this.gates = this.roomObjects.entities.gates
-        this.pressurePlates = this.roomObjects.entities.pressurePlates
+        this.possessables = this.roomObjects.entities.possessables ?? []
+        this.gates = this.roomObjects.entities.gates ?? []
+        this.pressurePlates = this.roomObjects.entities.pressurePlates ?? []
 
         this.camera.startFollow(this.player, true, 0.08, 0.08)
 
@@ -72,6 +73,14 @@ export default class BaseRoom extends Phaser.Scene {
             groups: this.roomObjects.groups,
             collisionRules: this.roomObjects.collisionRules,
             collisionObjects: this.roomObjects.collisionObjects
+        })
+
+        this.roomTransitionController = new RoomTransitionController({
+            player: this.player,
+            roomWidth: this.roomWidth,
+            nextRoomLeft: this.nextRoomLeft,
+            nextRoomRight: this.nextRoomRight,
+            startScene: this.scene.start.bind(this.scene)
         })
 
         this.controlledEntity = this.player
@@ -88,22 +97,10 @@ export default class BaseRoom extends Phaser.Scene {
         this.inputController = new InputController(this)
     }
 
-    moveRoom() {
-        if(this.player.x + 72 >= this.roomWidth && this.nextRoomRight) {
-            this.scene.start(this.nextRoomRight, { spawnX: 80, spawnY: this.player.y })
-            return true
-        } else if (this.player.x - 72 <= 0  && this.nextRoomLeft) {
-            this.scene.start(this.nextRoomLeft, { spawnX: this.roomWidth - 80, spawnY: this.player.y })
-            return true
-        }
-        return false
-    }
-
-
     update() {
         if (!this.player) return
     
-        if (this.moveRoom()) return
+        if (this.roomTransitionController.moveRoom()) return
     
         this.inputController.update()
     
