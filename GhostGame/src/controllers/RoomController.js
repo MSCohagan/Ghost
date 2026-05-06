@@ -6,6 +6,7 @@ import ColliderController from '../controllers/ColliderController.js'
 import PuzzleController from '../controllers/PuzzleController.js'
 import InputController from '../controllers/InputController.js'
 import RoomTransitionController from '../controllers/RoomTransitionController.js'
+import DevToolsController from './DevToolsController.js'
 
 export default class RoomController {
     constructor (scene, options = {}) {
@@ -125,11 +126,12 @@ export default class RoomController {
             startScene: scene.scene.start.bind(scene.scene)
         })
 
+        scene.devToolsController = new DevToolsController(scene)
+
         scene.possessionController = new PossessionController(scene, scene.player)
 
         scene.puzzleController = new PuzzleController (scene, scene.entities)
 
         scene.inputController = new InputController(scene)
     }
-
 }
