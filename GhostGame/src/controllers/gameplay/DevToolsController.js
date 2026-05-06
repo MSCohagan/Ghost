@@ -6,6 +6,9 @@ export default class DevToolsController {
 
   installGlobals() {
     window.gotoRoom = (roomKey, x = 200, y = 500) => {
+      if (this.scene.scene.isActive('LevelEditor')) {
+        this.scene.scene.stop('LevelEditor')
+      }
       this.scene.scene.start(roomKey, { spawnX: x, spawnY: y })
     }
 

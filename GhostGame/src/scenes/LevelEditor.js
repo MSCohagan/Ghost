@@ -1,5 +1,5 @@
-import AssetManager from '../controllers/AssetManager.js'
-import ControlsManager from '../controllers/ControlsManager.js'
+import AssetManager from '../controllers/render/AssetManager.js'
+import ControlsManager from '../controllers/input/ControlsManager.js'
 
 export default class LevelEditor extends Phaser.Scene {
   constructor() {
@@ -348,6 +348,7 @@ export default class LevelEditor extends Phaser.Scene {
   }
 
   getWorldPointerPosition(pointer) {
+    if (!this.hostScene?.cameras?.main) return { x: pointer.x, y: pointer.y }
     return this.hostScene.cameras.main.getWorldPoint(pointer.x, pointer.y)
   }
 

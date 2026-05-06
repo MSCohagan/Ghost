@@ -1,12 +1,12 @@
-import Player from '../gameObjects/Player.js'
-import RoomRenderer from '../controllers/RoomRenderer.js'
-import ControlsManager from '../controllers/ControlsManager.js'
-import PossessionController from '../controllers/PossessionController.js'
-import ColliderController from '../controllers/ColliderController.js'
-import PuzzleController from '../controllers/PuzzleController.js'
-import InputController from '../controllers/InputController.js'
-import RoomTransitionController from '../controllers/RoomTransitionController.js'
-import DevToolsController from './DevToolsController.js'
+import Player from '../../gameObjects/Player.js'
+import RoomRenderer from '../render/RoomRenderer.js'
+import ControlsManager from '../input/ControlsManager.js'
+import PossessionController from '../gameplay/PossessionController.js'
+import ColliderController from '../physics/ColliderController.js'
+import PuzzleController from '../gameplay/PuzzleController.js'
+import InputController from '../input/InputController.js'
+import RoomTransitionController from './RoomTransitionController.js'
+import DevToolsController from '../gameplay/DevToolsController.js'
 
 export default class RoomController {
   constructor(scene, options = {}) {

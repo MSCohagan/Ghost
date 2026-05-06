@@ -1,7 +1,7 @@
-import Box from '../gameObjects/Box.js'
-import Gate from '../gameObjects/Gate.js'
-import PressurePlate from '../gameObjects/PressurePlate.js'
-import { objectRegistry } from '../data/objectRegistry.js'
+import Box from '../../gameObjects/Box.js'
+import Gate from '../../gameObjects/Gate.js'
+import PressurePlate from '../../gameObjects/PressurePlate.js'
+import { objectRegistry } from '../../data/objectRegistry.js'
 
 export default class RoomRenderer {
   constructor(scene) {
