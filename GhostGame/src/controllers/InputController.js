@@ -1,5 +1,4 @@
 export default class InputController {
-
     constructor(scene) {
         this.scene = scene
     }

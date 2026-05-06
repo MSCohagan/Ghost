@@ -1,7 +1,6 @@
-import RoomController from "../controllers/RoomController"
+import RoomController from "../controllers/RoomController.js"
 
 export default class BaseRoom extends Phaser.Scene {
-
     constructor(key, nextRoomLeft, nextRoomRight, options = {}) {
         super(key)
         this.roomWidth = options.width ?? 1280
@@ -27,5 +26,4 @@ export default class BaseRoom extends Phaser.Scene {
     update(time, delta) {
         this.roomController?.update(time, delta)
     }
-        
 }

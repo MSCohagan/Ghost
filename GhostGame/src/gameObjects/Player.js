@@ -1,7 +1,6 @@
 import { applyGhostMovement } from '../helpers/movement.js'
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
-
     constructor(scene, x, y, options = {}) {
         const {
             texture = 'ghost',

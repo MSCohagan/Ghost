@@ -1,5 +1,4 @@
 export default class PuzzleController {
-
     constructor(scene, entities = {}) {
         this.scene = scene
         this.gates = entities.gates ?? []

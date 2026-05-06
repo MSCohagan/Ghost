@@ -1,5 +1,4 @@
 export default class ColliderController {
-    
     constructor(scene) {
         this.scene = scene
     }

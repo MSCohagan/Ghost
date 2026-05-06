@@ -34,7 +34,7 @@ export default class RoomController {
         scene.inputController.update()
 
         if (!scene.scene.isActive('LevelEditor') && scene.controlledEntity?.update) {
-            scene.controlledEntity.update(scene.time.now, scene.game.loop.delta)
+            scene.controlledEntity.update(time, delta)
         }
     
         scene.puzzleController.update()
@@ -81,7 +81,7 @@ export default class RoomController {
     createPlayer() {
         const scene = this.scene
 
-        scene.spawn = scene.roomObjects.playerSpawn ?? { x, y }
+        scene.spawn = scene.roomObjects.playerSpawn ?? this.spawnFallback
         scene.player = new Player(scene, scene.spawn.x, scene.spawn.y)
 
         scene.camera.startFollow(scene.player, true, 0.08, 0.08)

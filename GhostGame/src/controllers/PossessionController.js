@@ -1,5 +1,4 @@
 export default class PossessionController {
-
     constructor (scene, player) {
         this.scene = scene
         this.player = player

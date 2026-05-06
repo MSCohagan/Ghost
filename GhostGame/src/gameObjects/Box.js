@@ -1,7 +1,6 @@
 import { applyPlatformerMovement } from '../helpers/movement.js'
 
 export default class Box extends Phaser.GameObjects.Rectangle {
-
     constructor(scene, x, y, options = {})  {
         const {
             width = 24,

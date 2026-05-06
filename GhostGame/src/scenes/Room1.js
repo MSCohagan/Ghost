@@ -1,7 +1,6 @@
 import BaseRoom from './BaseRoom.js'
 
 export default class Room1 extends BaseRoom {
-
     constructor() {
         super('Room1', '', 'Room2');
     }

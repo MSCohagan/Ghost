@@ -2,7 +2,6 @@ import AssetManager from '../controllers/AssetManager.js'
 import ControlsManager from '../controllers/ControlsManager.js'
 
 export default class LevelEditor extends Phaser.Scene {
-    
     constructor() {
         super('LevelEditor')
     }

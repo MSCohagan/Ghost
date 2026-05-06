@@ -1,5 +1,4 @@
 export default class Gate extends Phaser.GameObjects.Rectangle {
-
     constructor (scene, x, y, options = {}) {
         const {
             width = 24,

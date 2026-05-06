@@ -4,7 +4,6 @@ import PressurePlate from '../gameObjects/PressurePlate.js'
 import { objectRegistry } from '../data/objectRegistry.js'
 
 export default class RoomRenderer {
-
     constructor(scene) {
         this.scene = scene
         this.groups = {}

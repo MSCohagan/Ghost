@@ -1,5 +1,4 @@
 export default class ControlsManager {
-    
     constructor(scene) {
         this.scene = scene
         this.controls = {

@@ -1,7 +1,6 @@
 import BaseRoom from './BaseRoom.js'
 
 export default class Room2 extends BaseRoom {
-
     constructor() {
         super('Room2', 'Room1', 'Room3', {
             width: 1280,
