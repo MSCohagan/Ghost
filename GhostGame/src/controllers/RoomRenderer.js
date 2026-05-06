@@ -106,9 +106,7 @@ export default class RoomRenderer {
         spawn.setOrigin(0, 0)
         spawn.setAlpha(0.5)
         spawn.setVisible(false)
-
         spawn.editorData = { ...obj }
-        this.createdObjects.push(spawn)
 
         this.playerSpawn = {
             x: obj.x,

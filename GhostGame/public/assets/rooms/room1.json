@@ -10,13 +10,6 @@
   },
   "objects": [
     {
-      "x": 192,
-      "y": 240,
-      "width": 24,
-      "height": 40,
-      "color": "0x00ff00"
-    },
-    {
       "type": "ground",
       "group": "ground",
       "texture": "platforms",
