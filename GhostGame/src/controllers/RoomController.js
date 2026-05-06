@@ -1,0 +1,135 @@
+import Player from '../gameObjects/Player.js'
+import RoomRenderer from '../controllers/RoomRenderer.js'
+import ControlsManager from '../controllers/ControlsManager.js'
+import PossessionController from '../controllers/PossessionController.js'
+import ColliderController from '../controllers/ColliderController.js'
+import PuzzleController from '../controllers/PuzzleController.js'
+import InputController from '../controllers/InputController.js'
+import RoomTransitionController from '../controllers/RoomTransitionController.js'
+
+export default class RoomController {
+    constructor (scene, options = {}) {
+        this.scene = scene
+        this.spawnFallback = {
+            x: options.x ?? 300,
+            y: options.y ?? 300,
+        }
+    }
+
+    create() {
+        this.loadRoomData()
+        this.setupWorld()
+        this.setupControls()
+        this.renderRoom()
+        this.createPlayer()
+        this.setupEntities()
+        this.setupControllers()
+    }
+
+    update(time, delta) {
+        const scene = this.scene
+        if(!scene.player) return
+        if(scene.roomTransitionController.moveRoom()) return
+
+        scene.inputController.update()
+
+        if (!scene.scene.isActive('LevelEditor') && scene.controlledEntity?.update) {
+            scene.controlledEntity.update(scene.time.now, scene.game.loop.delta)
+        }
+    
+        scene.puzzleController.update()
+    }
+
+    loadRoomData() {
+        const scene = this.scene
+
+        scene.add.image(1280, 720, scene.backgroundKey)
+
+        scene.roomData = scene.cache.json.get(`${scene.roomKey}`) ?? {}
+
+        scene.roomWidth = scene.roomData.roomWidth ?? 1280
+        scene.roomHeight = scene.roomData.roomHeight ?? 720
+    }
+
+    setupWorld() {
+        const scene = this.scene
+
+        scene.camera = scene.cameras.main
+        scene.physics.world.setBounds(0, 0, scene.roomWidth, scene.roomHeight)
+        scene.camera.setBounds(0, 0, scene.roomWidth, scene.roomHeight)
+    }
+
+    setupControls() {
+        const scene = this.scene
+
+        const controlsManager = new ControlsManager(scene)
+        scene.controls = controlsManager.fetchControls()
+    }
+
+    renderRoom() {
+        const scene = this.scene
+
+        if (scene.roomData?.objects) {
+            scene.roomRenderer = new RoomRenderer(scene)
+            scene.roomObjects = scene.roomRenderer.render(scene.roomData)
+            scene.editorPlacedObjects = scene.roomObjects.createdObjects ?? []
+        } else {
+            scene.roomObjects = { entities: {}, groups: {}}
+        }
+    }
+
+    createPlayer() {
+        const scene = this.scene
+
+        scene.spawn = scene.roomObjects.playerSpawn ?? { x, y }
+        scene.player = new Player(scene, scene.spawn.x, scene.spawn.y)
+
+        scene.camera.startFollow(scene.player, true, 0.08, 0.08)
+
+        scene.controlledEntity = scene.player
+    }
+
+    setupEntities() {
+        const scene = this.scene
+
+        const entities = scene.roomObjects.entities ?? {}
+
+        scene.entities = {
+            possessables: entities.possessables ?? [],
+            gates: entities.gates ??  [],
+            pressurePlates: entities.pressurePlates ?? []
+        }
+
+        scene.possessables = scene.entities.possessables
+        scene.gates = scene.entities.gates
+        scene.pressurePlates = scene.entities.pressurePlates
+    }
+
+    setupControllers() {
+        const scene = this.scene
+
+        scene.colliderController = new ColliderController(scene)
+        scene.colliderController.wireRoomCollisions({
+            player: scene.player,
+            possessables: scene.possessables,
+            groups: scene.roomObjects.groups,
+            collisionRules: scene.roomObjects.collisionRules,
+            collisionObjects: scene.roomObjects.collisionObjects
+        })
+
+        scene.roomTransitionController = new RoomTransitionController({
+            player: scene.player,
+            roomWidth: scene.roomWidth,
+            nextRoomLeft: scene.nextRoomLeft,
+            nextRoomRight: scene.nextRoomRight,
+            startScene: scene.scene.start.bind(scene.scene)
+        })
+
+        scene.possessionController = new PossessionController(scene, scene.player)
+
+        scene.puzzleController = new PuzzleController (scene, scene.entities)
+
+        scene.inputController = new InputController(scene)
+    }
+
+}
