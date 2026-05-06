@@ -5,6 +5,6 @@ export default defineConfig({
   root: process.cwd(),
   publicDir: path.resolve(process.cwd(), 'public'),
   server: {
-    port: 5173
-  }
+    port: 5173,
+  },
 })

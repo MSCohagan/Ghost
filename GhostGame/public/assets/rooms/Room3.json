@@ -27,10 +27,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -41,10 +38,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -55,10 +49,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -69,10 +60,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -83,10 +71,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -97,10 +82,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -111,10 +93,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -125,10 +104,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -139,10 +115,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -153,10 +126,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -167,10 +137,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -181,10 +148,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -195,10 +159,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -209,10 +170,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -223,10 +181,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -237,10 +192,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -251,10 +203,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -265,10 +214,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -279,10 +225,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -293,10 +236,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -307,10 +247,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -321,10 +258,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -335,10 +269,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -349,10 +280,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -363,10 +291,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -377,10 +302,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "ground",
@@ -391,10 +313,7 @@
       "y": 696,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "platform",
@@ -405,9 +324,7 @@
       "y": 360,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "possessables"
-      ]
+      "collidesWith": ["possessables"]
     },
     {
       "type": "platform",
@@ -418,9 +335,7 @@
       "y": 360,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "possessables"
-      ]
+      "collidesWith": ["possessables"]
     },
     {
       "type": "platform",
@@ -431,9 +346,7 @@
       "y": 360,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "possessables"
-      ]
+      "collidesWith": ["possessables"]
     },
     {
       "type": "platform",
@@ -444,9 +357,7 @@
       "y": 360,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "possessables"
-      ]
+      "collidesWith": ["possessables"]
     },
     {
       "type": "platform",
@@ -457,9 +368,7 @@
       "y": 360,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "possessables"
-      ]
+      "collidesWith": ["possessables"]
     },
     {
       "type": "platform",
@@ -470,9 +379,7 @@
       "y": 360,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "possessables"
-      ]
+      "collidesWith": ["possessables"]
     },
     {
       "type": "platform",
@@ -483,9 +390,7 @@
       "y": 360,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "possessables"
-      ]
+      "collidesWith": ["possessables"]
     },
     {
       "type": "platform",
@@ -496,9 +401,7 @@
       "y": 360,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "possessables"
-      ]
+      "collidesWith": ["possessables"]
     },
     {
       "type": "platform",
@@ -509,9 +412,7 @@
       "y": 360,
       "scale": 3,
       "solid": true,
-      "collidesWith": [
-        "possessables"
-      ]
+      "collidesWith": ["possessables"]
     },
     {
       "type": "gate",
@@ -522,10 +423,7 @@
       "height": 1440,
       "key": "gateA",
       "solid": true,
-      "collidesWith": [
-        "player",
-        "possessables"
-      ]
+      "collidesWith": ["player", "possessables"]
     },
     {
       "type": "pressurePlate",
@@ -536,9 +434,7 @@
       "height": 16,
       "key": "plateA",
       "solid": false,
-      "overlapsWith": [
-        "possessables"
-      ]
+      "overlapsWith": ["possessables"]
     }
   ]
 }

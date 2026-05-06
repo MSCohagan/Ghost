@@ -1,20 +1,22 @@
 {
-    "scripts": {
-        "manifest": "node scripts/generate-asset-manifest.mjs",
-        "palette": "node scripts/generate-editor-palette.mjs",
-        "normalize-assets": "node scripts/normalize-assets.mjs",
-        "dev": "vite --port 5173",
-        "build": "vite build",
-        "preview": "vite preview --port 4173",
-        "save-server": "node src/tools/SaveServer.js",
-        "dev:editor": "concurrently \"npm run dev\" \"npm run save-server\""
-    },
-    "dependencies": {
-        "cors": "^2.8.6",
-        "express": "^5.2.1"
-    },
-    "devDependencies": {
-        "concurrently": "^9.2.1",
-        "vite": "^8.0.10"
-    }
+  "scripts": {
+    "manifest": "node scripts/generate-asset-manifest.mjs",
+    "palette": "node scripts/generate-editor-palette.mjs",
+    "normalize-assets": "node scripts/normalize-assets.mjs",
+    "dev": "vite --port 5173",
+    "build": "vite build",
+    "preview": "vite preview --port 4173",
+    "save-server": "node src/tools/SaveServer.js",
+    "dev:editor": "concurrently \"npm run dev\" \"npm run save-server\"",
+    "format": "prettier . --write"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "prettier": "^3.8.3",
+    "vite": "^8.0.10"
+  }
 }
