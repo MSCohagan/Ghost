@@ -1,5 +1,6 @@
 import AssetManager from '../controllers/render/AssetManager.js'
 import ControlsManager from '../controllers/input/ControlsManager.js'
+import EditorToolController from '../controllers/editor/EditorToolController.js'
 
 export default class LevelEditor extends Phaser.Scene {
   constructor() {
@@ -50,16 +51,10 @@ export default class LevelEditor extends Phaser.Scene {
     this.assetItems = []
     this.scrollX = 0
 
-    this.tools = ['place', 'erase', 'spawn', 'select']
-    this.selectedToolIndex = 0
-    this.selectedTool = this.tools[this.selectedToolIndex]
-    this.toolText = this.add
-      .text(16, this.getDockTop() - 24, `Tool: ${this.selectedTool}`, {
-        fontSize: '16px',
-        color: '#ffffff',
-      })
-      .setScrollFactor(0)
-      .setDepth(10002)
+    this.toolController = new EditorToolController(this)
+    this.toolController.createText()
+    this.toolController.setTool('place')
+
     this.terrainMode = 'platform'
 
     this.renderAssetDock()
@@ -92,17 +87,17 @@ export default class LevelEditor extends Phaser.Scene {
     this.input.on('pointerdown', (pointer) => {
       if (this.isPointerInDock(pointer)) return
 
-      if (this.selectedTool === 'erase') {
+      if (this.toolController.is('erase')) {
         this.deleteObjectAtPointer(pointer)
         return
       }
 
-      if (this.selectedTool === 'spawn') {
+      if (this.toolController.is('spawn')) {
         this.placeSpawn(pointer)
         return
       }
 
-      if (this.selectedTool === 'select') {
+      if (this.toolController.is('select')) {
         this.selectedObject = this.findObjectAtPointer(pointer)
         return
       }
@@ -159,8 +154,7 @@ export default class LevelEditor extends Phaser.Scene {
     })
 
     this.input.keyboard.on('keydown-BACKSPACE', () => {
-      this.selectedToolIndex = (this.selectedToolIndex + 1) % this.tools.length
-      this.setSelectedTool(this.tools[this.selectedToolIndex])
+      this.toolController.cycleTool()
     })
 
     this.input.keyboard.on('keydown-P', () => {
@@ -294,19 +288,6 @@ export default class LevelEditor extends Phaser.Scene {
 
   isPointerInDock(pointer) {
     return this.dockOpen && pointer.y >= this.getDockTop()
-  }
-
-  setSelectedTool(tool) {
-    this.selectedTool = tool
-    this.selectedToolIndex = this.tools.indexOf(tool)
-
-    this.toolText.setText(`Tool: ${this.selectedTool}`)
-
-    if (this.selectedTool !== 'place') {
-      this.previewImage?.setVisible(false)
-    } else {
-      this.previewImage?.setVisible(true)
-    }
   }
 
   createPreview(asset) {
