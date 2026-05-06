@@ -1,49 +1,41 @@
 export default class PuzzleController {
 
-    constructor(scene, options = {}) {
+    constructor(scene, entities = {}) {
         this.scene = scene
+        this.gates = entities.gates ?? []
+        this.pressurePlates = entities.pressurePlates ?? []
+        this.possessables = entities.possessables ?? []
 
-        const {
-            gates = [],
-            pressurePlates = [],
-            possessables = []
-        } = options
-
-        this.gates = gates
-        this.pressurePlates = pressurePlates
-        this.possessables = possessables
+        this.setupPressurePlateEvents()
     }
 
-    updatePressurePlatePuzzles() {
-        if(!this.pressurePlates?.length || !this.gates?.length) return
-        if(!this.possessables?.length) return
-
+    setupPressurePlateEvents() {
         this.pressurePlates.forEach(plate => {
-            const pressed = this.possessables.some(possessable => {
-                return this.scene.physics.overlap(possessable, plate)
+            plate.on('pressed', () => {
+                const gate = this.findGateForPlate(plate)
+                gate?.open()
             })
 
-            const targetGate = this.gates.find(gate => {
-                if(plate.targetGate) {
-                    return gate.key === plate.targetGate
-                }
-
-                return gate.key === plate.key
-            }) ?? this.gates[0]
-
-            if(!targetGate) return
-
-            if(pressed) {
-                plate.press?.()
-                targetGate.open?.()
-            } else {
-                plate.releasePlate?.()
-                targetGate.close?.()
-            }
+            plate.on('released', () => {
+                const gate = this.findGateForPlate(plate)
+                gate?.close()
+            })
         })
     }
 
+    findGateForPlate(plate) {
+        return this.gates.find(gate => {
+            if(plate.targetGate) return gate.key === plate.targetGate
+            return gate.key === plate.key
+        }) ?? this.gates[0]
+    }
+
     update() {
-        this.updatePressurePlatePuzzles()
+        this.pressurePlates.forEach(plate => {
+            const pressed = this.possessables.some(obj => 
+                this.scene.physics.overlap(obj, plate)
+            )
+            plate.setPressed(pressed)
+        })
     }
 }

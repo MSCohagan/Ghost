@@ -47,4 +47,18 @@ export default class PressurePlate extends Phaser.GameObjects.Rectangle {
             duration: 100
         })
     }
+
+    setPressed(isPressed) {
+        if(this.isPressed === isPressed) return
+        
+        this.isPressed = isPressed
+
+        if(isPressed) {
+            this.emit('pressed', this)
+            this.press?.()
+        } else {
+            this.emit('released', this)
+            this.releasePlate?.()
+        }
+    }
 }
