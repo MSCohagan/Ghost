@@ -105,7 +105,7 @@ export default class EditorSelectionController {
     if (!clicked) return false
 
     if (clicked.editorData?.cellKey) {
-      editor.occupiedCells.delete(clicked.editorData.cellKey)
+      editor.placementController.occupiedCells.delete(clicked.editorData.cellKey)
     }
 
     clicked.destroy()
