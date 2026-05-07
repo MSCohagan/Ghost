@@ -36,7 +36,7 @@ export default class EditorControlsController {
     })
 
     editor.input.keyboard.on('keydown-G', () => {
-      editor.terrainMode = editor.terrainMode === 'ground' ? 'platform' : 'ground'
+      editor.placementController.toggleTerrainMode()
     })
   }
 

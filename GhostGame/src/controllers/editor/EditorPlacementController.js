@@ -39,13 +39,18 @@ export default class EditorPlacementController {
       creates.type === 'ground'
 
     if (isTerrain) {
-      creates.type = this.editor.terrainMode
-      creates.group = this.editor.terrainMode
+      creates.type = this.terrainMode
+      creates.group = this.terrainMode
       creates.collidesWith =
         this.terrainMode === 'ground' ? ['player', 'possessables'] : ['possessables']
     }
 
     return creates
+  }
+
+  toggleTerrainMode() {
+    this.terrainMode = this.terrainMode === 'ground' ? 'platform' : 'ground'
+    console.log('terrainMode: ', this.terrainMode)
   }
 
   placeSelectedPaletteEntry(
