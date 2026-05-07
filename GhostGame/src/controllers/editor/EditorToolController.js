@@ -8,9 +8,8 @@ export default class EditorToolController {
 
   createText() {
     const editor = this.editor
-
-    this.toolText = this.add
-      .text(16, this.getDockTop() - 24, `Tool: ${this.selectedTool}`, {
+    this.toolText = editor.add
+      .text(16, editor.getDockTop() - 24, `Tool: ${this.selectedTool}`, {
         fontSize: '16px',
         color: '#ffffff',
       })

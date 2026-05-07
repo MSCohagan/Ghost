@@ -106,7 +106,7 @@ export default class LevelEditor extends Phaser.Scene {
     this.isDraggingObject = false
 
     this.onHostDragStart = (pointer, gameObject) => {
-      if (this.selectedTool !== 'select') return
+      if (!this.toolController.is('select')) return
 
       const isEditable = gameObject?.editorData || gameObject === this.hostScene.spawn.marker
 
@@ -120,7 +120,7 @@ export default class LevelEditor extends Phaser.Scene {
     }
 
     this.onHostDrag = (pointer, gameObject) => {
-      if (this.selectedTool !== 'select') return
+      if (!this.toolController.is('select')) return
       if (!gameObject?.editorData && gameObject !== this.hostScene.spawn.marker) return
 
       const { x, y } = this.getSnappedPointerPosition(pointer)
@@ -144,7 +144,7 @@ export default class LevelEditor extends Phaser.Scene {
     }
 
     this.hostScene.input.on('dragstart', this.onHostDragStart)
-    this.hostScene.input.on('dragend', this.onHostDragEnd)
+    this.hostScene.input.on('dragend', () => this.isDraggingObject = false )
     this.hostScene.input.on('drag', this.onHostDrag)
 
     this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
@@ -164,8 +164,10 @@ export default class LevelEditor extends Phaser.Scene {
 
     this.input.keyboard.on('keydown-G', () => {
       this.terrainMode = this.terrainMode === 'ground' ? 'platform' : 'ground'
-      console.log('terrainMode: ', this.terrainMode)
     })
+
+    this.debugEditorState('editor open')
+    
   }
 
   dedupePlacedObjects() {
@@ -229,7 +231,7 @@ export default class LevelEditor extends Phaser.Scene {
         pointer.event.stopPropagation()
 
         this.selectedAsset = asset
-        this.setSelectedTool('place')
+        this.toolController.setTool('place')
         this.createPreview(asset)
         this.selectPaletteEntry(asset)
       })
@@ -518,14 +520,14 @@ export default class LevelEditor extends Phaser.Scene {
     this.drawTimer -= delta
     if (this.drawTimer > 0) return
 
-    if (this.selectedTool === 'erase') {
+    if (this.toolController.is('erase')) {
       if (this.deleteObjectAtPointer(rawPointer)) this.drawTimer = 50
       return
     }
 
-    if (this.selectedTool !== 'place') return
+    if (!this.toolController.is('place')) return
 
-    if (this.selectedTool === 'place' && this.selectedPaletteEntry) {
+    if (this.selectedPaletteEntry) {
       const creates = this.getCreatesForCurrentTool()
       this.placeSelectedPaletteEntry(rawPointer, creates)
       this.drawTimer = 50
