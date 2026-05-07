@@ -1,4 +1,4 @@
-import RoomController from '../controllers/room/RoomController.js'
+import RoomController from '@/controllers/room/RoomController.js'
 
 export default class BaseRoom extends Phaser.Scene {
   constructor(key, nextRoomLeft, nextRoomRight, options = {}) {

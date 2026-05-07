@@ -1,9 +1,9 @@
-import BootScene from './scenes/BootScene.js'
-import PreloadScene from './scenes/PreloadScene.js'
-import LevelEditor from './scenes/LevelEditor.js'
-import Room1 from './scenes/Room1.js'
-import Room2 from './scenes/Room2.js'
-import Room3 from './scenes/Room3.js'
+import BootScene from './scenes/boot/BootScene.js'
+import PreloadScene from './scenes/boot/PreloadScene.js'
+import LevelEditor from './scenes/editor/LevelEditor.js'
+import Room1 from './scenes/gameplay/Room1.js'
+import Room2 from './scenes/gameplay/Room2.js'
+import Room3 from './scenes/gameplay/Room3.js'
 
 const config = {
   type: Phaser.AUTO,

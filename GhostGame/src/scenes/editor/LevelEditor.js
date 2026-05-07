@@ -32,10 +32,6 @@ export default class LevelEditor extends Phaser.Scene {
       controls: new EditorControlsController(this),
     }
 
-    Object.values(this.controllers).forEach((controller) => {
-      controller.create?.()
-    })
-
     this.dockController = this.controllers.dock
     this.pointerController = this.controllers.pointer
     this.saveController = this.controllers.save
@@ -43,6 +39,10 @@ export default class LevelEditor extends Phaser.Scene {
     this.toolController = this.controllers.tool
     this.selectionController = this.controllers.selection
     this.controlsController = this.controllers.controls
+
+    Object.values(this.controllers).forEach((controller) => {
+      controller.create?.()
+    })
   }
 
   update(time, delta) {

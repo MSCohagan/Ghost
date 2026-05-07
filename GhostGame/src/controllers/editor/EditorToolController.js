@@ -4,6 +4,9 @@ export default class EditorToolController {
     this.tools = ['place', 'erase', 'spawn', 'select']
     this.selectedToolIndex = 0
     this.selectedTool = this.tools[this.selectedToolIndex]
+  }
+
+  create() {
     this.createText()
     this.setTool('place')
   }
@@ -20,6 +23,7 @@ export default class EditorToolController {
   }
 
   setTool(tool) {
+    const editor = this.editor
     if (!this.tools.includes(tool)) return
 
     this.selectedTool = tool
@@ -27,7 +31,7 @@ export default class EditorToolController {
 
     this.toolText?.setText(`Tool: ${this.selectedTool}`)
 
-    const preview = this.editor.dockController?.previewImage
+    const preview = editor.dockController?.previewImage
 
     preview?.setVisible(this.selectedTool === 'place')
   }
