@@ -2,10 +2,10 @@ import ControlsManager from '@/controllers/input/ControlsManager.js'
 import EditorToolController from '@/controllers/editor/EditorToolController.js'
 import EditorSelectionController from '@/controllers/editor/EditorSelectionController.js'
 import EditorDockController from '@/controllers/editor/EditorDockController.js'
-import EditorPlacementController from '@/controllers/editor/EditorPlacementController'
-import EditorSaveController from '@/controllers/editor/EditorSaveController'
-import EditorControlsController from '@/controllers/editor/EditorControlsController'
-import EditorPointerController from '@/controllers/editor/EditorPointerController'
+import EditorPlacementController from '@/controllers/editor/EditorPlacementController.js'
+import EditorSaveController from '@/controllers/editor/EditorSaveController.js'
+import EditorControlsController from '@/controllers/editor/EditorControlsController.js'
+import EditorPointerController from '@/controllers/editor/EditorPointerController.js'
 
 export default class LevelEditor extends Phaser.Scene {
   constructor() {
@@ -22,33 +22,27 @@ export default class LevelEditor extends Phaser.Scene {
     this.hostScene.spawn.marker?.setInteractive()
     this.hostScene.input.setDraggable(this.hostScene.spawn.marker)
 
-    this.dockController = new EditorDockController(this)
-    this.dockController.create()
+    this.controllers = {
+      dock: new EditorDockController(this),
+      pointer: new EditorPointerController(this),
+      save: new EditorSaveController(this),
+      placement: new EditorPlacementController(this),
+      tool: new EditorToolController(this),
+      selection: new EditorSelectionController(this),
+      controls: new EditorControlsController(this),
+    }
 
-    this.saveController = new EditorSaveController(this)
-    this.saveController.create()
+    Object.values(this.controllers).forEach((controller) => {
+      controller.create?.()
+    })
 
-    this.placementController = new EditorPlacementController(this)
-    this.placementController.create()
-
-    this.toolController = new EditorToolController(this)
-    this.toolController.createText()
-    this.toolController.setTool('place')
-
-    this.selectionController = new EditorSelectionController(this)
-    this.selectionController.create()
-
-    this.terrainMode = 'platform'
-
-    this.dockController.renderAssetDock()
-    this.dockController.getPaletteEntries()
-
-    this.pointerController = new EditorPointerController(this)
-
-    this.selectionController.isDraggingObject = false
-
-    this.controlsController = new EditorControlsController(this)
-    this.controlsController.create()
+    this.dockController = this.controllers.dock
+    this.pointerController = this.controllers.pointer
+    this.saveController = this.controllers.save
+    this.placementController = this.controllers.placement
+    this.toolController = this.controllers.tool
+    this.selectionController = this.controllers.selection
+    this.controlsController = this.controllers.controls
   }
 
   update(time, delta) {

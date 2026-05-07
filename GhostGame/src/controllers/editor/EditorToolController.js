@@ -4,6 +4,8 @@ export default class EditorToolController {
     this.tools = ['place', 'erase', 'spawn', 'select']
     this.selectedToolIndex = 0
     this.selectedTool = this.tools[this.selectedToolIndex]
+    this.createText()
+    this.setTool('place')
   }
 
   createText() {

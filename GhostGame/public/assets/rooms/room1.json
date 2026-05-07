@@ -946,19 +946,6 @@
       "speed": 200,
       "jumpVelocity": -350,
       "gravityY": 800
-    },
-    {
-      "type": "platform",
-      "group": "platform",
-      "texture": "sprites_world_tileset",
-      "frame": 9,
-      "x": 480,
-      "y": 240,
-      "scale": 3,
-      "solid": true,
-      "collidesWith": [
-        "possessables"
-      ]
     }
   ]
 }

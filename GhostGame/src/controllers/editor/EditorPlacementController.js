@@ -2,6 +2,7 @@ export default class EditorPlacementController {
   constructor(editor) {
     this.editor = editor
     this.host = editor.hostScene
+    this.terrainMode = 'platform'
   }
 
   create() {
