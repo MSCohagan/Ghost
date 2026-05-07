@@ -1,6 +1,7 @@
 import AssetManager from '../controllers/render/AssetManager.js'
 import ControlsManager from '../controllers/input/ControlsManager.js'
 import EditorToolController from '../controllers/editor/EditorToolController.js'
+import EditorSelectionController from '../controllers/editor/EditorSelectionController.js'
 
 export default class LevelEditor extends Phaser.Scene {
   constructor() {
@@ -30,8 +31,6 @@ export default class LevelEditor extends Phaser.Scene {
     this.hostScene.spawn.marker?.setInteractive()
     this.hostScene.input.setDraggable(this.hostScene.spawn.marker)
 
-    this.selectedObject = null
-
     this.assets = this.AssetManager.getAllSelectableAssets()
 
     this.dockOpen = true
@@ -54,6 +53,9 @@ export default class LevelEditor extends Phaser.Scene {
     this.toolController = new EditorToolController(this)
     this.toolController.createText()
     this.toolController.setTool('place')
+
+    this.selectionController = new EditorSelectionController(this)
+    this.selectionController.create()
 
     this.terrainMode = 'platform'
 
@@ -88,7 +90,7 @@ export default class LevelEditor extends Phaser.Scene {
       if (this.isPointerInDock(pointer)) return
 
       if (this.toolController.is('erase')) {
-        this.deleteObjectAtPointer(pointer)
+        this.selectionController.deleteObjectAtPointer(pointer)
         return
       }
 
@@ -98,12 +100,12 @@ export default class LevelEditor extends Phaser.Scene {
       }
 
       if (this.toolController.is('select')) {
-        this.selectedObject = this.findObjectAtPointer(pointer)
+        this.selectionController.findObjectAtPointer(pointer)
         return
       }
     })
 
-    this.isDraggingObject = false
+    this.selectionController.isDraggingObject = false
 
     this.onHostDragStart = (pointer, gameObject) => {
       if (!this.toolController.is('select')) return
@@ -112,11 +114,11 @@ export default class LevelEditor extends Phaser.Scene {
 
       if (!isEditable) return
 
-      this.isDraggingObject = true
+      this.selectionController.isDraggingObject = true
     }
 
     this.onHostDragEnd = () => {
-      this.isDraggingObject = false
+      this.selectionController.isDraggingObject = false
     }
 
     this.onHostDrag = (pointer, gameObject) => {
@@ -143,16 +145,6 @@ export default class LevelEditor extends Phaser.Scene {
       }
     }
 
-    this.hostScene.input.on('dragstart', this.onHostDragStart)
-    this.hostScene.input.on('dragend', () => this.isDraggingObject = false )
-    this.hostScene.input.on('drag', this.onHostDrag)
-
-    this.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
-      this.hostScene.input.off('dragstart', this.onHostDragStart)
-      this.hostScene.input.off('dragend', this.onHostDragEnd)
-      this.hostScene.input.off('drag', this.onHostDrag)
-    })
-
     this.input.keyboard.on('keydown-BACKSPACE', () => {
       this.toolController.cycleTool()
     })
@@ -167,7 +159,6 @@ export default class LevelEditor extends Phaser.Scene {
     })
 
     this.debugEditorState('editor open')
-    
   }
 
   dedupePlacedObjects() {
@@ -417,39 +408,6 @@ export default class LevelEditor extends Phaser.Scene {
     this.hostScene.spawn.marker?.setPosition(x, y)
   }
 
-  findObjectAtPointer(pointer) {
-    const worldPoint = this.getWorldPointerPosition(pointer)
-
-    return [...this.placedObjects, this.hostScene.spawn.marker]
-      .filter(Boolean)
-      .reverse()
-      .find((obj) => Phaser.Geom.Rectangle.Contains(obj.getBounds(), worldPoint.x, worldPoint.y))
-  }
-
-  deleteObjectAtPointer(pointer) {
-    const worldPoint = this.getWorldPointerPosition(pointer)
-
-    const clicked = [...this.placedObjects].reverse().find((obj) => {
-      return Phaser.Geom.Rectangle.Contains(obj.getBounds(), worldPoint.x, worldPoint.y)
-    })
-
-    if (!clicked) return false
-
-    if (clicked.editorData?.cellKey) {
-      this.occupiedCells.delete(clicked.editorData.cellKey)
-    }
-
-    clicked.destroy()
-
-    this.hostScene.editorPlacedObjects = this.hostScene.editorPlacedObjects.filter(
-      (obj) => obj !== clicked
-    )
-
-    this.placedObjects = this.hostScene.editorPlacedObjects
-
-    return true
-  }
-
   printLevelJson() {
     const objects = this.placedObjects.map((obj) => {
       const { cellKey, ...clean } = obj.editorData
@@ -498,6 +456,14 @@ export default class LevelEditor extends Phaser.Scene {
     }
   }
 
+  debugEditorState(label = '') {
+    console.log(label, {
+      placedObjectsLength: this.placedObjects?.length,
+      editorPlacedObjectsLength: this.hostScene.editorPlacedObjects?.length,
+      occupiedCells: this.occupiedCells?.size,
+    })
+  }
+
   update(time, delta) {
     const cam = this.hostScene.cameras.main
     const speed = 8
@@ -515,13 +481,13 @@ export default class LevelEditor extends Phaser.Scene {
 
     if (!rawPointer.isDown) return
     if (this.isPointerInDock(rawPointer)) return
-    if (this.isDraggingObject) return
+    if (this.selectionController.isDraggingObject) return
 
     this.drawTimer -= delta
     if (this.drawTimer > 0) return
 
     if (this.toolController.is('erase')) {
-      if (this.deleteObjectAtPointer(rawPointer)) this.drawTimer = 50
+      if (this.selectionController.deleteObjectAtPointer(rawPointer)) this.drawTimer = 50
       return
     }
 

@@ -157452,7 +157452,6 @@
         var Contact = {}
 
         module.exports = Contact
-
         ;(function () {
           /**
            * Creates a new contact.
@@ -159024,7 +159023,6 @@
         var Common = {}
 
         module.exports = Common
-
         ;(function () {
           Common._baseDelta = 1000 / 60
           Common._nextId = 0
@@ -160917,7 +160915,6 @@
           Runner.run = function (runner, engine) {
             // create runner if engine is first argument
             runner.timeBuffer = Runner._frameDeltaFallback
-
             ;(function onFrame(time) {
               runner.frameRequestId = Runner._onNextFrame(runner, onFrame)
 
@@ -162208,7 +162205,6 @@
         var Bounds = {}
 
         module.exports = Bounds
-
         ;(function () {
           /**
            * Creates a new axis-aligned bounding box (AABB) for the given vertices.
@@ -162633,7 +162629,6 @@
         var Vector = {}
 
         module.exports = Vector
-
         ;(function () {
           /**
            * Creates a new vector.
