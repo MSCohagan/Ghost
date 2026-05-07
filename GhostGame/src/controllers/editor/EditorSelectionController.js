@@ -10,12 +10,12 @@ export default class EditorSelectionController {
     const host = editor.hostScene
 
     host.input.on('dragstart', this.onDragStart)
-    host.input.on('dragnend', this.onDragEnd)
+    host.input.on('dragend', this.onDragEnd)
     host.input.on('drag', this.onDrag)
 
     editor.events.once(Phaser.Scenes.Events.SHUTDOWN, () => {
       host.input.off('dragstart', this.onDragStart)
-      host.input.off('dragnend', this.offDragEnd)
+      host.input.off('dragend', this.onDragEnd)
       host.input.off('drag', this.onDrag)
     })
   }
@@ -29,11 +29,25 @@ export default class EditorSelectionController {
     if (!isEditable) return
 
     this.isDraggingObject = true
+
+    if (gameObject.body && !this.isStaticBody(gameObject)) {
+      gameObject.body.enable = false
+    }
   }
 
-  onDragEnd = () => {
-    this.isDraggingObejct = false
-    this.editor.degbugEditorState?.('after drag')
+  onDragEnd = (pointer, gameObject) => {
+    this.isDraggingObject = false
+
+    if (gameObject?.body) {
+      gameObject.body.enable = true
+      gameObject.body?.reset(gameObject.x, gameObject.y)
+      gameObject.body.setVelocity?.(0, 0)
+    }
+
+    if (this.isStaticBody(gameObject)) {
+      gameObject.refreshBody?.()
+    }
+    this.editor.debugEditorState?.('after drag')
   }
 
   onDrag = (pointer, gameObject) => {
@@ -47,6 +61,10 @@ export default class EditorSelectionController {
 
     gameObject.setPosition(x, y)
 
+    if (this.isStaticBody(gameObject)) {
+      gameObject.refreshBody?.()
+    }
+
     if (gameObject === host.spawn.marker) {
       host.roomData.playerSpawn.x = x
       host.roomData.playerSpawn.y = y
@@ -55,11 +73,9 @@ export default class EditorSelectionController {
       return
     }
 
-    gameObject.editorData.x = x
-    gameObject.editorData.y = y
-
-    if (gameObject.bod?.physicsType === Phaser.Physics.Arcade.STATIC_BODY) {
-      gameObject.refreshBody?.()
+    if (gameObject.editorData) {
+      gameObject.editorData.x = x
+      gameObject.editorData.y = y
     }
   }
 
@@ -75,9 +91,7 @@ export default class EditorSelectionController {
     return [...editor.placedObjects, editor.hostScene.spawn.marker]
       .filter(Boolean)
       .reverse()
-      .find((obj) => {
-        Phaser.Geom.Rectangle.Contains(obj.getBounds(), worldPoint.x, worldPoint.y)
-      })
+      .find((obj) => Phaser.Geom.Rectangle.Contains(obj.getBounds(), worldPoint.x, worldPoint.y))
   }
 
   deleteObjectAtPointer(pointer) {
@@ -105,5 +119,9 @@ export default class EditorSelectionController {
     editor.debugEditorState?.('after delete')
 
     return true
+  }
+
+  isStaticBody(gameObject) {
+    return gameObject.body?.physicsType === Phaser.Physics.Arcade.STATIC_BODY
   }
 }
