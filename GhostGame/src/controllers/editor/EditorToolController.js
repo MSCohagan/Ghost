@@ -9,7 +9,7 @@ export default class EditorToolController {
   createText() {
     const editor = this.editor
     this.toolText = editor.add
-      .text(16, editor.getDockTop() - 24, `Tool: ${this.selectedTool}`, {
+      .text(16, editor.dockController.getDockTop() - 24, `Tool: ${this.selectedTool}`, {
         fontSize: '16px',
         color: '#ffffff',
       })
@@ -25,11 +25,9 @@ export default class EditorToolController {
 
     this.toolText?.setText(`Tool: ${this.selectedTool}`)
 
-    if (this.selectedTool !== 'place') {
-      this.editor.previewImage?.setVisible(false)
-    } else {
-      this.editor.previewImage?.setVisible(true)
-    }
+    const preview = this.editor.dockController?.previewImage
+
+    preview?.setVisible(this.selectedTool === 'place')
   }
 
   cycleTool() {

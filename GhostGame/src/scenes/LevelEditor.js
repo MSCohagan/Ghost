@@ -1,7 +1,7 @@
-import AssetManager from '../controllers/render/AssetManager.js'
 import ControlsManager from '../controllers/input/ControlsManager.js'
 import EditorToolController from '../controllers/editor/EditorToolController.js'
 import EditorSelectionController from '../controllers/editor/EditorSelectionController.js'
+import EditorDockController from '../controllers/editor/EditorDockController.js'
 
 export default class LevelEditor extends Phaser.Scene {
   constructor() {
@@ -14,10 +14,7 @@ export default class LevelEditor extends Phaser.Scene {
 
     const controls = new ControlsManager(this.hostScene)
     this.controls = controls.fetchControls()
-    this.AssetManager = new AssetManager(this.hostScene)
-    this.editorPalette = this.hostScene.cache.json.get('palette') ?? { palette: {} }
-    this.paletteEntries = []
-    this.selectedPaletteEntry = {}
+
     this.hostScene.editorPlacedObjects ??= []
     this.occupiedCells = new Set()
     this.placedObjects = this.hostScene.editorPlacedObjects
@@ -31,24 +28,8 @@ export default class LevelEditor extends Phaser.Scene {
     this.hostScene.spawn.marker?.setInteractive()
     this.hostScene.input.setDraggable(this.hostScene.spawn.marker)
 
-    this.assets = this.AssetManager.getAllSelectableAssets()
-
-    this.dockOpen = true
-    this.dockHeight = 96
-    this.closedDockHeight = 0
-    this.paintCooldown = 80
-    this.drawTimer = 0
-
-    const y = this.getDockTop()
-
-    this.dock = this.add
-      .rectangle(0, y, this.scale.width, this.dockHeight, 0x000000, 0.55)
-      .setOrigin(0, 0)
-      .setDepth(9000)
-      .setScrollFactor(0)
-
-    this.assetItems = []
-    this.scrollX = 0
+    this.dockController = new EditorDockController(this)
+    this.dockController.create()
 
     this.toolController = new EditorToolController(this)
     this.toolController.createText()
@@ -59,35 +40,11 @@ export default class LevelEditor extends Phaser.Scene {
 
     this.terrainMode = 'platform'
 
-    this.renderAssetDock()
-    this.getPaletteEntries()
-    this.tooltip = this.add
-      .text(0, 0, '', {
-        fontSize: '14px',
-        color: '#ffffff',
-        backgroundColor: '#000000',
-        padding: { x: 6, y: 4 },
-      })
-      .setDepth(10003)
-      .setScrollFactor(0)
-      .setVisible(false)
-
-    this.input.on('wheel', (pointer, gameObjects, deltaX, deltaY) => {
-      this.scrollDock(-deltaY * 0.5)
-    })
-
-    this.dockHandle = this.add
-      .rectangle(this.scale.width / 2, this.getDockTop() + 8, 90, 12, 0xffffff, 0.4)
-      .setInteractive()
-      .setDepth(10001)
-      .setScrollFactor(0)
-
-    this.dockHandle.on('pointerdown', () => {
-      this.toggleDock()
-    })
+    this.dockController.renderAssetDock()
+    this.dockController.getPaletteEntries()
 
     this.input.on('pointerdown', (pointer) => {
-      if (this.isPointerInDock(pointer)) return
+      if (this.dockController.isPointerInDock(pointer)) return
 
       if (this.toolController.is('erase')) {
         this.selectionController.deleteObjectAtPointer(pointer)
@@ -200,127 +157,6 @@ export default class LevelEditor extends Phaser.Scene {
     })
   }
 
-  renderAssetDock() {
-    const itemSize = 48
-    const gap = 12
-    const startX = 16
-    const y = this.scale.height - 72
-
-    this.assets.forEach((asset, index) => {
-      const x = startX + index * (itemSize + gap)
-      const frame = asset.frame ?? undefined
-
-      const thumb = this.add
-        .image(x, y, asset.texture, frame)
-        .setOrigin(0, 0)
-        .setDisplaySize(itemSize, itemSize)
-        .setInteractive()
-        .setDepth(9999)
-        .setScrollFactor(0)
-
-      thumb.on('pointerdown', (pointer) => {
-        pointer.event.stopPropagation()
-
-        this.selectedAsset = asset
-        this.toolController.setTool('place')
-        this.createPreview(asset)
-        this.selectPaletteEntry(asset)
-      })
-
-      thumb.on('pointerover', () => {
-        this.tooltip
-          .setText(asset.label ?? asset.id ?? `${asset.texture}:${asset.frame ?? ''}`)
-          .setPosition(thumb.x, thumb.y - 28)
-          .setVisible(true)
-      })
-
-      thumb.on('pointerout', () => {
-        this.tooltip.setVisible(false)
-      })
-
-      this.assetItems.push(thumb)
-    })
-  }
-
-  scrollDock(amount) {
-    const itemSize = 48
-    const gap = 12
-    const itemSpacing = itemSize + gap
-
-    const contentWidth = this.assetItems.length * itemSpacing
-    const visibleWidth = this.scale.width
-
-    const minScroll = Math.min(0, visibleWidth - contentWidth - 16)
-    const maxScroll = 0
-
-    this.scrollX = Phaser.Math.Clamp(this.scrollX + amount, minScroll, maxScroll)
-
-    this.assetItems.forEach((item, index) => {
-      item.setX(16 + index * itemSpacing + this.scrollX)
-    })
-  }
-
-  getDockTop() {
-    const height = this.dockOpen ? this.dockHeight : this.closedDockHeight
-    return this.scale.height - height
-  }
-
-  toggleDock() {
-    this.dockOpen = !this.dockOpen
-
-    const y = this.getDockTop()
-    const height = this.dockOpen ? this.dockHeight : this.closedDockHeight
-
-    this.dock.setY(y)
-    this.dock.setSize(this.scale.width, height)
-
-    this.assetItems.forEach((item) => {
-      item.setVisible(this.dockOpen)
-    })
-  }
-
-  isPointerInDock(pointer) {
-    return this.dockOpen && pointer.y >= this.getDockTop()
-  }
-
-  createPreview(asset) {
-    if (this.previewImage) {
-      this.previewImage.destroy()
-    }
-
-    this.previewImage = this.add
-      .image(
-        this.input.activePointer.x,
-        this.input.activePointer.y,
-        asset.texture,
-        asset.frame ?? undefined
-      )
-      .setAlpha(0.5)
-      .setDepth(10000)
-      .setDisplaySize(48, 48)
-      .setScrollFactor(0)
-      .setOrigin(0, 0)
-  }
-
-  getPaletteEntries() {
-    return this.editorPalette.palette.map((obj) => {
-      this.paletteEntries.push(obj)
-    })
-  }
-
-  selectPaletteEntry(entry) {
-    const match = this.paletteEntries.find((paletteEntry) => {
-      return (
-        entry.texture?.toLowerCase() === paletteEntry.creates.texture?.toLowerCase() &&
-        Number(entry.frame) === Number(paletteEntry.creates.frame)
-      )
-    })
-
-    this.selectedPaletteEntry = match ?? null
-
-    return this.selectedPaletteEntry
-  }
-
   getWorldPointerPosition(pointer) {
     if (!this.hostScene?.cameras?.main) return { x: pointer.x, y: pointer.y }
     return this.hostScene.cameras.main.getWorldPoint(pointer.x, pointer.y)
@@ -337,10 +173,10 @@ export default class LevelEditor extends Phaser.Scene {
   }
 
   getCreatesForCurrentTool() {
-    const creates = { ...this.selectedPaletteEntry.creates }
+    const creates = { ...this.dockController.selectedPaletteEntry.creates }
 
     const isTerrain =
-      this.selectedPaletteEntry.category === 'terrain' ||
+      this.dockController.selectedPaletteEntry.category === 'terrain' ||
       creates.type === 'platform' ||
       creates.type === 'ground'
 
@@ -474,13 +310,13 @@ export default class LevelEditor extends Phaser.Scene {
     if (this.controls.up.isDown) cam.scrollY -= speed
     if (this.controls.down.isDown) cam.scrollY += speed
 
-    if (this.previewImage) {
+    if (this.dockController.previewImage) {
       const previewPos = this.getSnappedPointerPosition(rawPointer)
-      this.previewImage.setPosition(previewPos.x, previewPos.y)
+      this.dockController.previewImage.setPosition(previewPos.x, previewPos.y)
     }
 
     if (!rawPointer.isDown) return
-    if (this.isPointerInDock(rawPointer)) return
+    if (this.dockController.isPointerInDock(rawPointer)) return
     if (this.selectionController.isDraggingObject) return
 
     this.drawTimer -= delta
@@ -493,7 +329,7 @@ export default class LevelEditor extends Phaser.Scene {
 
     if (!this.toolController.is('place')) return
 
-    if (this.selectedPaletteEntry) {
+    if (this.dockController.selectedPaletteEntry) {
       const creates = this.getCreatesForCurrentTool()
       this.placeSelectedPaletteEntry(rawPointer, creates)
       this.drawTimer = 50
