@@ -51,7 +51,7 @@ export default class EditorPlacementController {
     pointer,
     creates = this.editor.dockController.selectedPalletteEntry?.creates
   ) {
-    const { x, y } = this.editor.getSnappedPointerPosition(pointer)
+    const { x, y } = this.editor.pointerController.getSnappedPosition(pointer)
 
     if (!creates) return false
 
@@ -89,7 +89,7 @@ export default class EditorPlacementController {
   }
 
   placeSpawn(pointer) {
-    const { x, y } = this.editor.getSnappedPointerPosition(pointer)
+    const { x, y } = this.editor.pointerController.getSnappedPosition(pointer)
 
     this.host.roomData.playerSpawn = {
       x,

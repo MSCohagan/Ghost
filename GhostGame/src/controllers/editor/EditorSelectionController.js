@@ -47,7 +47,6 @@ export default class EditorSelectionController {
     if (this.isStaticBody(gameObject)) {
       gameObject.refreshBody?.()
     }
-    this.editor.debugEditorState?.('after drag')
   }
 
   onDrag = (pointer, gameObject) => {
@@ -57,8 +56,7 @@ export default class EditorSelectionController {
     if (!editor.toolController.is('select')) return
     if (!gameObject?.editorData && gameObject !== host.spawn.marker) return
 
-    const { x, y } = editor.getSnappedPointerPosition(pointer)
-
+    const { x, y } = editor.pointerController.getSnappedPosition(pointer)
     gameObject.setPosition(x, y)
 
     if (this.isStaticBody(gameObject)) {
@@ -86,7 +84,7 @@ export default class EditorSelectionController {
 
   findObjectAtPointer(pointer) {
     const editor = this.editor
-    const worldPoint = editor.getWorldPointerPosition(pointer)
+    const worldPoint = editor.pointerController.getWorldPosition(pointer)
 
     return [...editor.placementController.placedObjects, editor.hostScene.spawn.marker]
       .filter(Boolean)
@@ -96,7 +94,7 @@ export default class EditorSelectionController {
 
   deleteObjectAtPointer(pointer) {
     const editor = this.editor
-    const worldPoint = editor.getWorldPointerPosition(pointer)
+    const worldPoint = editor.pointerController.getWorldPosition(pointer)
 
     const clicked = [...editor.placementController.placedObjects]
       .reverse()
@@ -115,8 +113,6 @@ export default class EditorSelectionController {
     )
 
     editor.placementController.placedObjects = editor.hostScene.editorPlacedObjects
-
-    editor.debugEditorState?.('after delete')
 
     return true
   }
