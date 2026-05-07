@@ -4,6 +4,7 @@ import EditorSelectionController from '@/controllers/editor/EditorSelectionContr
 import EditorDockController from '@/controllers/editor/EditorDockController.js'
 import EditorPlacementController from '@/controllers/editor/EditorPlacementController'
 import EditorSaveController from '@/controllers/editor/EditorSaveController'
+import EditorControlsController from '@/controllers/editor/EditorControlsController'
 
 export default class LevelEditor extends Phaser.Scene {
   constructor() {
@@ -41,26 +42,10 @@ export default class LevelEditor extends Phaser.Scene {
     this.dockController.renderAssetDock()
     this.dockController.getPaletteEntries()
 
-    this.input.on('pointerdown', (pointer) => {
-      if (this.dockController.isPointerInDock(pointer)) return
-
-      if (this.toolController.is('erase')) {
-        this.selectionController.deleteObjectAtPointer(pointer)
-        return
-      }
-
-      if (this.toolController.is('spawn')) {
-        this.placementController.placeSpawn(pointer)
-        return
-      }
-
-      if (this.toolController.is('select')) {
-        this.selectionController.findObjectAtPointer(pointer)
-        return
-      }
-    })
-
     this.selectionController.isDraggingObject = false
+
+    this.controlsController = new EditorControlsController(this)
+    this.controlsController.create()
 
     this.onHostDragStart = (pointer, gameObject) => {
       if (!this.toolController.is('select')) return
@@ -100,19 +85,6 @@ export default class LevelEditor extends Phaser.Scene {
       }
     }
 
-    this.input.keyboard.on('keydown-BACKSPACE', () => {
-      this.toolController.cycleTool()
-    })
-
-    this.input.keyboard.on('keydown-P', () => {
-      this.saveController.printLevelJson()
-      this.saveController.saveRoomJson()
-    })
-
-    this.input.keyboard.on('keydown-G', () => {
-      this.terrainMode = this.terrainMode === 'ground' ? 'platform' : 'ground'
-    })
-
     this.debugEditorState('editor open')
   }
 
@@ -140,24 +112,6 @@ export default class LevelEditor extends Phaser.Scene {
   }
 
   update(time, delta) {
-    const cam = this.hostScene.cameras.main
-    const speed = 8
-    const rawPointer = this.input.activePointer
-
-    if (this.controls.left.isDown) cam.scrollX -= speed
-    if (this.controls.right.isDown) cam.scrollX += speed
-    if (this.controls.up.isDown) cam.scrollY -= speed
-    if (this.controls.down.isDown) cam.scrollY += speed
-
-    if (this.dockController.previewImage) {
-      const previewPos = this.getSnappedPointerPosition(rawPointer)
-      this.dockController.previewImage.setPosition(previewPos.x, previewPos.y)
-    }
-
-    if (!rawPointer.isDown) return
-    if (this.dockController.isPointerInDock(rawPointer)) return
-    if (this.selectionController.isDraggingObject) return
-
-    this.placementController.update(time, delta)
+    this.controlsController.update(time, delta)
   }
 }

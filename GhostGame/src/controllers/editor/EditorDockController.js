@@ -163,6 +163,11 @@ export default class EditorDockController {
       .setOrigin(0, 0)
   }
 
+  updatePreviewPosition(pointer) {
+    if (!this.previewImage) return
+    this.previewImage.setPosition(pointer.x, pointer.y)
+  }
+
   getPaletteEntries() {
     return this.editorPalette.palette.map((obj) => {
       this.paletteEntries.push(obj)

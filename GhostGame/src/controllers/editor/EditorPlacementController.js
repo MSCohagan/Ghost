@@ -104,10 +104,9 @@ export default class EditorPlacementController {
     this.host.spawn.marker?.setPosition(x, y)
   }
 
-  update(time, delta) {
-    const rawPointer = this.editor.input.activePointer
-
+  update(time, delta, pointer) {
     this.drawTimer ??= 0
+
     this.drawTimer -= delta
     if (this.drawTimer > 0) return
 
@@ -115,7 +114,7 @@ export default class EditorPlacementController {
     if (!this.editor.dockController.selectedPaletteEntry) return
 
     const creates = this.getCreatesForCurrentTool()
-    this.placeSelectedPaletteEntry(rawPointer, creates)
+    this.placeSelectedPaletteEntry(pointer, creates)
     this.drawTimer = 50
   }
 }
