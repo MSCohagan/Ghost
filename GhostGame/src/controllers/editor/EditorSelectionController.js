@@ -88,7 +88,7 @@ export default class EditorSelectionController {
     const editor = this.editor
     const worldPoint = editor.getWorldPointerPosition(pointer)
 
-    return [...editor.placedObjects, editor.hostScene.spawn.marker]
+    return [...editor.placementController.placedObjects, editor.hostScene.spawn.marker]
       .filter(Boolean)
       .reverse()
       .find((obj) => Phaser.Geom.Rectangle.Contains(obj.getBounds(), worldPoint.x, worldPoint.y))
@@ -98,7 +98,7 @@ export default class EditorSelectionController {
     const editor = this.editor
     const worldPoint = editor.getWorldPointerPosition(pointer)
 
-    const clicked = [...editor.placedObjects]
+    const clicked = [...editor.placementController.placedObjects]
       .reverse()
       .find((obj) => Phaser.Geom.Rectangle.Contains(obj.getBounds(), worldPoint.x, worldPoint.y))
 
@@ -114,7 +114,7 @@ export default class EditorSelectionController {
       (obj) => obj !== clicked
     )
 
-    editor.placedObjects = editor.hostScene.editorPlacedObjects
+    editor.placementController.placedObjects = editor.hostScene.editorPlacedObjects
 
     editor.debugEditorState?.('after delete')
 

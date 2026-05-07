@@ -3,6 +3,7 @@ import EditorToolController from '@/controllers/editor/EditorToolController.js'
 import EditorSelectionController from '@/controllers/editor/EditorSelectionController.js'
 import EditorDockController from '@/controllers/editor/EditorDockController.js'
 import EditorPlacementController from '@/controllers/editor/EditorPlacementController'
+import EditorSaveController from '@/controllers/editor/EditorSaveController'
 
 export default class LevelEditor extends Phaser.Scene {
   constructor() {
@@ -16,13 +17,14 @@ export default class LevelEditor extends Phaser.Scene {
     const controls = new ControlsManager(this.hostScene)
     this.controls = controls.fetchControls()
 
-    this.dedupePlacedObjects()
-
     this.hostScene.spawn.marker?.setInteractive()
     this.hostScene.input.setDraggable(this.hostScene.spawn.marker)
 
     this.dockController = new EditorDockController(this)
     this.dockController.create()
+
+    this.saveController = new EditorSaveController(this)
+    this.saveController.create()
 
     this.placementController = new EditorPlacementController(this)
     this.placementController.create()
@@ -103,8 +105,8 @@ export default class LevelEditor extends Phaser.Scene {
     })
 
     this.input.keyboard.on('keydown-P', () => {
-      this.printLevelJson()
-      this.saveRoomJson()
+      this.saveController.printLevelJson()
+      this.saveController.saveRoomJson()
     })
 
     this.input.keyboard.on('keydown-G', () => {
@@ -112,32 +114,6 @@ export default class LevelEditor extends Phaser.Scene {
     })
 
     this.debugEditorState('editor open')
-  }
-
-  dedupePlacedObjects() {
-    const seen = new Set()
-    const deduped = []
-
-    this.hostScene.editorPlacedObjects.forEach((obj) => {
-      const data = obj.editorData
-      if (!data) {
-        deduped.push(obj)
-        return
-      }
-
-      const key = `${data.type}:${data.x}:${data.y}:${data.texture ?? ''}:${data.frame ?? ''}`
-
-      if (seen.has(key)) {
-        obj.destroy()
-        return
-      }
-
-      seen.add(key)
-      deduped.push(obj)
-    })
-
-    this.hostScene.editorPlacedObjects = deduped
-    this.placedObjects = deduped
   }
 
   getWorldPointerPosition(pointer) {
@@ -152,54 +128,6 @@ export default class LevelEditor extends Phaser.Scene {
     return {
       x: Math.floor(worldPoint.x / gridSize) * gridSize,
       y: Math.floor(worldPoint.y / gridSize) * gridSize,
-    }
-  }
-
-  printLevelJson() {
-    const objects = this.placedObjects.map((obj) => {
-      const { cellKey, ...clean } = obj.editorData
-      return clean
-    })
-
-    console.log(JSON.stringify({ objects }, null, 2))
-    return objects
-  }
-
-  getCleanLevelObjects() {
-    return this.placedObjects.map(({ editorData }) => {
-      const { cellKey, ...clean } = editorData
-      return clean
-    })
-  }
-
-  async saveRoomJson() {
-    const objects = this.getCleanLevelObjects()
-
-    const existingRoomData = this.roomData
-
-    const roomData = {
-      ...existingRoomData,
-      roomWidth: this.hostScene.roomWidth,
-      roomHeight: this.hostScene.roomHeight,
-      playerSpawn: this.hostScene.roomData.playerSpawn,
-      objects,
-    }
-
-    try {
-      const response = await fetch('http://localhost:3001/save-room', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          roomKey: this.hostScene.roomKey,
-          data: roomData,
-        }),
-      })
-      const result = await response.json()
-      console.log(result)
-
-      window.location.reload()
-    } catch (err) {
-      console.error(err)
     }
   }
 
