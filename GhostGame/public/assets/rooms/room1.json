@@ -1038,6 +1038,26 @@
       "collidesWith": [
         "possessables"
       ]
+    },
+    {
+      "type": "loadingZone",
+      "group": "loadingZone",
+      "width": 96,
+      "height": 720,
+      "color": "0xff88ff",
+      "targetRoom": "Room2",
+      "direction": "right",
+      "offsetX": 1280,
+      "offsetY": 0,
+      "overlapsWith": [
+        "player",
+        "possessables"
+      ],
+      "x": 960,
+      "y": 0,
+      "scale": 1,
+      "solid": false,
+      "collidesWith": []
     }
   ]
 }

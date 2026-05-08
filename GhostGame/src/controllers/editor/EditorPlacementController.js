@@ -87,15 +87,14 @@ export default class EditorPlacementController {
     }
 
     placed.editorData = {
-      type: creates.type,
-      group: creates.group,
-      texture: creates.texture,
-      frame: creates.frame,
+      ...creates,
+
       x: x,
       y: y,
       scale,
       solid: creates.solid ?? false,
       collidesWith: creates.collidesWith ?? [],
+      overlapsWith: creates.overlapsWith ?? [],
       cellKey,
     }
 
