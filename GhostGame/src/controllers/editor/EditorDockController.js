@@ -97,10 +97,12 @@ export default class EditorDockController {
         this.selectedPaletteEntry = entry
       })
 
-      thumb.on('pointerover', () => {
+      thumb.on('pointerover', (pointer) => {
         this.tooltip
-          .setText(entry.label ?? entry.id ?? `${entry.texture}:${entry.frame ?? ''}`)
-          .setPosition(thumb.x, thumb.y - 28)
+          .setText(
+            entry.label ?? entry.id ?? `${entry.preview?.texture}:${entry.preview?.frame ?? ''}`
+          )
+          .setPosition(pointer.x + 12, pointer.y - 28)
           .setVisible(true)
       })
 
