@@ -17,7 +17,10 @@ export default class InputController {
     }
 
     if (Phaser.Input.Keyboard.JustDown(controls.reload)) {
-      hostScene.scene.start(hostScene.scene.roomKey)
+      if (hostScene.scene.isActive('LevelEditor')) {
+        hostScene.scene.stop('LevelEditor')
+      }
+      hostScene.scene.start(hostScene.roomKey)
     }
 
     if (Phaser.Input.Keyboard.JustDown(controls.edit)) {
@@ -33,7 +36,7 @@ export default class InputController {
 
         hostScene.scene.launch('LevelEditor', {
           hostScene,
-          roomData: hostScene.scene.roomData,
+          roomData: hostScene.roomData,
         })
 
         hostScene.scene.bringToTop('LevelEditor')
