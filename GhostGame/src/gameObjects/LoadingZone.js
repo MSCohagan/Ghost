@@ -1,8 +1,8 @@
 export default class LoadingZone extends Phaser.GameObjects.Rectangle {
   constructor(scene, x, y, options = {}) {
     const {
-      width = 24,
-      height = 32,
+      width = 96,
+      height = 720,
       color = 0xff88ff,
       alpha = 0.25,
       targetRoom = '',

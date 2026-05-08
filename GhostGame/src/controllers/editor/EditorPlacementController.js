@@ -63,14 +63,28 @@ export default class EditorPlacementController {
 
     const scale = creates.scale ?? 1
     const cellKey = `${x}, ${y}, ${creates.type}`
+    let placed
 
     if (this.occupiedCells.has(cellKey)) return false
     this.occupiedCells.add(cellKey)
 
-    const placed = this.host.add.image(x, y, creates.texture, creates.frame ?? undefined)
+    if (creates.type === 'loadingZone' || creates.icon?.type === 'rectangle') {
+      placed = this.host.add.rectangle(
+        x,
+        y,
+        creates.width ?? 48,
+        creates.height ?? 48,
+        Number(creates.color ?? 0xff88ff),
+        0.35
+      )
 
-    placed.setScale(scale)
-    placed.setOrigin(0, 0)
+      placed.setOrigin(0, 0)
+    } else {
+      placed = this.host.add.image(x, y, creates.texture, creates.frame ?? undefined)
+
+      placed.setScale(scale)
+      placed.setOrigin(0, 0)
+    }
 
     placed.editorData = {
       type: creates.type,

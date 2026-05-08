@@ -38,4 +38,9 @@ export const objectRegistry = {
     factory: 'createPlayerSpawn',
     entityType: null,
   },
+
+  loadingZone: {
+    factory: 'createLoadingZone',
+    entityType: 'loadingZones',
+  },
 }

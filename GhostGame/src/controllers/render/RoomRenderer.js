@@ -1,6 +1,7 @@
 import Box from '../../gameObjects/Box.js'
 import Gate from '../../gameObjects/Gate.js'
 import PressurePlate from '../../gameObjects/PressurePlate.js'
+import LoadingZone from '../../gameObjects/LoadingZone.js'
 import { objectRegistry } from '../../data/objectRegistry.js'
 
 export default class RoomRenderer {
@@ -13,6 +14,7 @@ export default class RoomRenderer {
       possessables: [],
       gates: [],
       pressurePlates: [],
+      loadingZones: [],
     }
     this.createdObjects = []
     this.factories = {
@@ -24,6 +26,7 @@ export default class RoomRenderer {
       playerSpawn: this.createPlayerSpawn.bind(this),
       gate: this.createGate.bind(this),
       pressurePlate: this.createPressurePlate.bind(this),
+      loadingZones: this.createLoadingZone.bind(this),
     }
   }
 
@@ -195,5 +198,22 @@ export default class RoomRenderer {
     this.registerCollisionObject(plate, obj)
 
     return plate
+  }
+
+  createLoadingZone(obj) {
+    const zone = new LoadingZone(this.scene, obj.x, obj.y, {
+      width: obj.width ?? 96,
+      height: obj.height ?? 720,
+      color: obj.color ?? 0xff88ff,
+      targetRoom: obj.targetRoom,
+      direction: obj.direction ?? 'right',
+      offsetX: obj.offsetX ?? 0,
+      offsetY: obj.offsetY ?? 0,
+    })
+
+    zone.editorData = { ...obj }
+    this.createdObjects.push(zone)
+
+    return zone
   }
 }

@@ -100,6 +100,7 @@ export default class RoomController {
       possessables: entities.possessables ?? [],
       gates: entities.gates ?? [],
       pressurePlates: entities.pressurePlates ?? [],
+      loadingZones: entities.loadingZones ?? [],
     }
 
     scene.possessables = scene.entities.possessables

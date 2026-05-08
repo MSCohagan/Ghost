@@ -66,18 +66,33 @@ export default class EditorDockController {
     const gap = 12
     const startX = 16
     const y = this.editor.scale.height - 72
+    let thumb
 
     this.assets.forEach((asset, index) => {
       const x = startX + index * (itemSize + gap)
       const frame = asset.frame ?? undefined
 
-      const thumb = this.editor.add
-        .image(x, y, asset.texture, frame)
-        .setOrigin(0, 0)
-        .setDisplaySize(itemSize, itemSize)
-        .setInteractive()
-        .setDepth(9999)
-        .setScrollFactor(0)
+      if (asset.icon?.type === 'rectangle') {
+        thumb = this.editor.add
+          .rectangle(
+            x,
+            y,
+            itemSize,
+            itemSize,
+            Number(asset.icon.color ?? 0xff88ff),
+            asset.icon.alpha ?? 0.6
+          )
+          .setOrigin(0, 0)
+        console.log('added rectangle')
+      } else {
+        thumb = this.editor.add
+          .image(x, y, asset.texture, frame)
+          .setOrigin(0, 0)
+          .setDisplaySize(itemSize, itemSize)
+          .setInteractive()
+          .setDepth(9999)
+          .setScrollFactor(0)
+      }
 
       thumb.on('pointerdown', (pointer) => {
         pointer.event.stopPropagation()
@@ -149,18 +164,28 @@ export default class EditorDockController {
       this.previewImage.destroy()
     }
 
-    this.previewImage = this.editor.add
-      .image(
-        this.editor.input.activePointer.x,
-        this.editor.input.activePointer.y,
-        asset.texture,
-        asset.frame ?? undefined
-      )
-      .setAlpha(0.5)
-      .setDepth(10000)
-      .setDisplaySize(48, 48)
-      .setScrollFactor(0)
-      .setOrigin(0, 0)
+    if (asset.icon?.type === 'rectangle') {
+      thumb = this.editor.add
+        .rectangle(x, y, itemSize, itemSize, Number(asset.icon.color ?? 0xffffff), 0.6)
+        .setAlpha(0.5)
+        .setDepth(10000)
+        .setDisplaySize(48, 48)
+        .setScrollFactor(0)
+        .setOrigin(0, 0)
+    } else {
+      this.previewImage = this.editor.add
+        .image(
+          this.editor.input.activePointer.x,
+          this.editor.input.activePointer.y,
+          asset.texture,
+          asset.frame ?? undefined
+        )
+        .setAlpha(0.5)
+        .setDepth(10000)
+        .setDisplaySize(48, 48)
+        .setScrollFactor(0)
+        .setOrigin(0, 0)
+    }
   }
 
   updatePreviewPosition(pointer) {
