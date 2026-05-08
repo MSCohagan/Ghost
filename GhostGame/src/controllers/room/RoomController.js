@@ -1,12 +1,13 @@
-import Player from '../../gameObjects/Player.js'
-import RoomRenderer from '../render/RoomRenderer.js'
-import ControlsManager from '../input/ControlsManager.js'
-import PossessionController from '../gameplay/PossessionController.js'
-import ColliderController from '../physics/ColliderController.js'
-import PuzzleController from '../gameplay/PuzzleController.js'
-import InputController from '../input/InputController.js'
-import RoomTransitionController from './RoomTransitionController.js'
-import DevToolsController from '../gameplay/DevToolsController.js'
+import Player from '@/gameObjects/Player.js'
+import RoomRenderer from '@/controllers/render/RoomRenderer.js'
+import ControlsManager from '@/controllers/input/ControlsManager.js'
+import PossessionController from '@/controllers/gameplay/PossessionController.js'
+import ColliderController from '@/controllers/physics/ColliderController.js'
+import PuzzleController from '@/controllers/gameplay/PuzzleController.js'
+import InputController from '@/controllers/input/InputController.js'
+import RoomTransitionController from '@/controllers/room/RoomTransitionController.js'
+import RoomStreamingController from '@/controllers/room/RoomStreamingController.js'
+import DevToolsController from '@/controllers/gameplay/DevToolsController.js'
 
 export default class RoomController {
   constructor(scene, options = {}) {
@@ -40,6 +41,8 @@ export default class RoomController {
     }
 
     scene.puzzleController.update()
+
+    scene.roomStreamingController.update()
   }
 
   loadRoomData() {
@@ -127,6 +130,8 @@ export default class RoomController {
       nextRoomRight: scene.nextRoomRight,
       startScene: scene.scene.start.bind(scene.scene),
     })
+
+    scene.roomStreamingController = new RoomStreamingController(scene, scene.entities)
 
     scene.devToolsController = new DevToolsController(scene)
 

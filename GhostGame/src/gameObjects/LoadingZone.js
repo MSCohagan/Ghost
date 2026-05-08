@@ -30,7 +30,7 @@ export default class LoadingZone extends Phaser.GameObjects.Rectangle {
     if (!this.targetRoom || this.inLoadingZone) return
 
     this.inLoadingZone = true
-    this.emit('enteredLoadizngZone', this)
+    this.emit('enteredLoadingZone', this)
   }
 
   exitLoadingZone() {
