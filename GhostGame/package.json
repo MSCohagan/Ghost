@@ -7,7 +7,7 @@
     "build": "vite build",
     "preview": "vite preview --port 4173",
     "save-server": "node src/tools/SaveServer.js",
-    "predev:editor": "npm run manifest && npm run palette && npm run normalize-assets",
+    "predev:editor": "npm run manifest && npm run normalize-assets && npm run palette ",
     "dev:editor": "concurrently \"npm run dev\" \"npm run save-server\"",
     "format": "prettier . --write"
   },

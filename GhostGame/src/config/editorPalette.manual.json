@@ -1,0 +1,26 @@
+{
+  "palette": [
+    {
+      "id": "loading-zone",
+      "label": "Loading Zone",
+      "category": "trigger",
+      "icon": {
+        "type": "rectangle",
+        "color": "0xff88ff",
+        "alpha": 0.6
+      },
+      "creates": {
+        "type": "loadingZone",
+        "group": "loadingZone",
+        "width": 96,
+        "height": 720,
+        "color": "0xff88ff",
+        "targetRoom": "Room2",
+        "direction": "right",
+        "offsetX": 1280,
+        "offsetY": 0,
+        "overlapsWith": ["player", "possessables"]
+      }
+    }
+  ]
+}

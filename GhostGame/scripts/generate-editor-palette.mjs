@@ -96,12 +96,16 @@ const generated = [
   ...(manifest.images ?? []).map(makeImageEntry),
   ...(manifest.spritesheets ?? []).flatMap(makeSpritesheetEntries),
 ]
+const manualPalette = JSON.parse(fs.readFileSync('src/config/editorPalette.manual.json', 'utf8'))
 
 const output = {
-  palette: generated,
+  palette: [...manualPalette.palette, ...generated],
 }
 
 fs.writeFileSync(outputPath, JSON.stringify(output, null, 2))
 
-console.log(`Generated ${generated.length} palette entries`)
-console.log(`Wrote ${outputPath}`)
+console.log(`Generated ${generated.length} asset palette entries`)
+console.log(`Loaded ${manualPalette.palette?.length ?? 0} manual palette entries`)
+console.log(
+  `Wrote ${(manualPalette.palette?.length ?? 0) + generated.length} total palette entries`
+)

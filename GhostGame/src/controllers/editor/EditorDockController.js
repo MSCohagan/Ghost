@@ -62,50 +62,44 @@ export default class EditorDockController {
   }
 
   renderAssetDock() {
+    const entries = this.editorPalette.palette ?? []
     const itemSize = 48
     const gap = 12
     const startX = 16
     const y = this.editor.scale.height - 72
     let thumb
 
-    this.assets.forEach((asset, index) => {
+    entries.forEach((entry, index) => {
       const x = startX + index * (itemSize + gap)
-      const frame = asset.frame ?? undefined
+      const frame = entry.frame ?? undefined
+      const preview = entry.preview
+      const icon = entry.icon
 
-      if (asset.icon?.type === 'rectangle') {
+      if (icon?.type === 'rectangle') {
         thumb = this.editor.add
-          .rectangle(
-            x,
-            y,
-            itemSize,
-            itemSize,
-            Number(asset.icon.color ?? 0xff88ff),
-            asset.icon.alpha ?? 0.6
-          )
+          .rectangle(x, y, itemSize, itemSize, Number(icon?.color ?? 0xff88ff), icon?.alpha ?? 0.6)
           .setOrigin(0, 0)
-        console.log('added rectangle')
       } else {
         thumb = this.editor.add
-          .image(x, y, asset.texture, frame)
+          .image(x, y, preview.texture, preview.frame ?? undefined)
           .setOrigin(0, 0)
           .setDisplaySize(itemSize, itemSize)
-          .setInteractive()
-          .setDepth(9999)
-          .setScrollFactor(0)
       }
+
+      thumb.setInteractive().setDepth(9999).setScrollFactor(0)
 
       thumb.on('pointerdown', (pointer) => {
         pointer.event.stopPropagation()
 
-        this.selectedAsset = asset
+        this.selectedAsset = entry
         this.editor.toolController.setTool('place')
-        this.createPreview(asset)
-        this.selectPaletteEntry(asset)
+        this.createPreview(entry)
+        this.selectedPaletteEntry = entry
       })
 
       thumb.on('pointerover', () => {
         this.tooltip
-          .setText(asset.label ?? asset.id ?? `${asset.texture}:${asset.frame ?? ''}`)
+          .setText(entry.label ?? entry.id ?? `${entry.texture}:${entry.frame ?? ''}`)
           .setPosition(thumb.x, thumb.y - 28)
           .setVisible(true)
       })
@@ -164,9 +158,11 @@ export default class EditorDockController {
       this.previewImage.destroy()
     }
 
+    const pointer = this.editor.input.activePointer
+
     if (asset.icon?.type === 'rectangle') {
-      thumb = this.editor.add
-        .rectangle(x, y, itemSize, itemSize, Number(asset.icon.color ?? 0xffffff), 0.6)
+      this.previewImage = this.editor.add
+        .rectangle(pointer.x, pointer.y, 48, 48, Number(asset.icon.color ?? 0xffffff), 0.6)
         .setAlpha(0.5)
         .setDepth(10000)
         .setDisplaySize(48, 48)
@@ -174,12 +170,7 @@ export default class EditorDockController {
         .setOrigin(0, 0)
     } else {
       this.previewImage = this.editor.add
-        .image(
-          this.editor.input.activePointer.x,
-          this.editor.input.activePointer.y,
-          asset.texture,
-          asset.frame ?? undefined
-        )
+        .image(pointer.x, pointer.y, asset.preview.texture, asset.frame ?? undefined)
         .setAlpha(0.5)
         .setDepth(10000)
         .setDisplaySize(48, 48)
@@ -197,18 +188,5 @@ export default class EditorDockController {
     return this.editorPalette.palette.map((obj) => {
       this.paletteEntries.push(obj)
     })
-  }
-
-  selectPaletteEntry(entry) {
-    const match = this.paletteEntries.find((paletteEntry) => {
-      return (
-        entry.texture?.toLowerCase() === paletteEntry.creates.texture?.toLowerCase() &&
-        Number(entry.frame) === Number(paletteEntry.creates.frame)
-      )
-    })
-
-    this.selectedPaletteEntry = match ?? null
-
-    return this.selectedPaletteEntry
   }
 }
