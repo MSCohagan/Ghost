@@ -30,16 +30,24 @@ export default class RoomRenderer {
     }
   }
 
-  render(roomData) {
+  render(roomData, { offsetX = 0, offsetY = 0 } = {}) {
     if (!roomData) {
       return { groups: this.groups, entities: this.entities, playerSpawn: null }
     }
 
-    if (roomData.playerSpawn) {
+    if (roomData.playerSpawn && offsetX === 0 && offsetY === 0) {
       this.createPlayerSpawn(roomData.playerSpawn)
     }
 
+    console.log('Rendering room with data: ', roomData)
+
     roomData.objects.forEach((obj) => {
+      const objectWithOffset = {
+        ...obj,
+        x: obj.x + offsetX,
+        y: obj.y + offsetY,
+      }
+
       const typeConfig = objectRegistry[obj.type]
 
       if (!typeConfig) {
@@ -54,7 +62,7 @@ export default class RoomRenderer {
         return
       }
 
-      const created = factory.call(this, obj, typeConfig)
+      const created = factory.call(this, objectWithOffset, typeConfig)
 
       if (typeConfig.entityType && created) {
         this.entities[typeConfig.entityType] ??= []

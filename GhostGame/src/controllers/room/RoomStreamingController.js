@@ -1,6 +1,10 @@
 export default class RoomStreamingController {
   constructor(scene, entities = {}) {
     this.scene = scene
+
+    this.roomCache = new Map()
+    this.loadedRooms = new Map()
+
     this.targetRoom = null
     this.inLoadingZone = false
     this.loadingZones = entities.loadingZones ?? []
@@ -17,6 +21,7 @@ export default class RoomStreamingController {
         this.inLoadingZone = true
         this.targetRoom = zone.targetRoom
         console.log(`Entered loading zone for room: ${zone.targetRoom}`)
+        this.loadRoom(zone)
       })
 
       zone.on('exitedLoadingZone', () => {
@@ -25,6 +30,41 @@ export default class RoomStreamingController {
         console.log('Exited loading zone')
       })
     })
+  }
+
+  async getRoomData(roomKey) {
+    if (this.roomCache.has(roomKey)) {
+      return this.roomCache.get(roomKey)
+    }
+
+    const response = await fetch(`/assets/rooms/${roomKey}.json?v=${Date.now()}`)
+    const roomData = await response.json()
+
+    this.roomCache.set(roomKey, roomData)
+    return roomData
+  }
+
+  async loadRoom(zone) {
+    if (!zone.targetRoom || !zone.inLoadingZone) {
+      console.warn('No target room specified for loading zone')
+      return
+    }
+
+    if(this.loadedRooms.has(zone.targetRoom)) return
+
+    const roomData = await this.getRoomData(zone.targetRoom)
+
+    console.log('room data loaded: ', roomData)
+    console.log('load room', zone.targetRoom, zone.direction, zone.offsetX, zone.offsetY)
+
+    console.log('calling room renderer')
+    const roomObjects = this.scene.roomRenderer.render(roomData, {
+      offsetX: zone.offsetX,
+      offsetY: zone.offsetY,
+    })
+
+    this.loadedRooms.set(zone.targetRoom, roomObjects)
+    console.log('streamed room: ', zone.targetRoom)
   }
 
   update() {
