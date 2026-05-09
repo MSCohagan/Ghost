@@ -50,7 +50,7 @@ export default class RoomStreamingController {
       return
     }
 
-    if(this.loadedRooms.has(zone.targetRoom)) return
+    if (this.loadedRooms.has(zone.targetRoom)) return
 
     const roomData = await this.getRoomData(zone.targetRoom)
 
@@ -64,7 +64,38 @@ export default class RoomStreamingController {
     })
 
     this.loadedRooms.set(zone.targetRoom, roomObjects)
+    this.registerStreamedRoom(roomObjects, roomData, zone)
     console.log('streamed room: ', zone.targetRoom)
+    console.log('scene possessables', this.scene.possessables)
+    console.log('controller possesables', this.scene.possessionController.possessables)
+  }
+
+  registerStreamedRoom(roomObjects, roomData, zone) {
+    const newPossessables = roomObjects.entities.possessables ?? []
+    this.scene.possessables.push(...newPossessables)
+
+    this.scene.possessionController?.refreshPossessables?.(this.scene.possessables)
+
+    this.scene.colliderController.wireRoomCollisions({
+      player: this.scene.player,
+      possessables: this.scene.possessables,
+      groups: roomObjects.groups,
+      collisionRules: roomObjects.collisionRules,
+      collisionObjects: roomObjects.collisionObjects,
+    })
+
+    const worldWidth = Math.max(
+      this.scene.physics.world.bounds.width,
+      zone.offsetX + (roomData.roomWidth ?? this.scene.roomWidth)
+    )
+
+    const worldHeight = Math.max(
+      this.scene.physics.world.bounds.height,
+      zone.offsetY + (roomData.roomHeight ?? this.scene.roomHeight)
+    )
+
+    this.scene.physics.world.setBounds(0, 0, worldWidth, worldHeight)
+    this.scene.camera.setBounds(0, 0, worldWidth, worldHeight)
   }
 
   update() {

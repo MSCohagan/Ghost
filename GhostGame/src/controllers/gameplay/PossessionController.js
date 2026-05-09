@@ -6,6 +6,10 @@ export default class PossessionController {
     this.possessables = scene.roomObjects.entities.possessables
   }
 
+  refreshPossessables(possessables) {
+    this.possessables = possessables
+  }
+
   findNearestPossessable(player) {
     let nearestPossessable = null
     let nearestDistance = Infinity
@@ -44,6 +48,7 @@ export default class PossessionController {
       this.player.body.enable = false
       this.currentHost.setFillStyle(0xffffff)
       this.player.setGhostVisible(false)
+      this.scene.camera.startFollow(this.currentHost, true, 0.08, 0.08)
     }
   }
 
@@ -63,5 +68,6 @@ export default class PossessionController {
     this.currentHost.setFillStyle(0x000000)
 
     this.scene.controlledEntity = this.player
+    this.scene.camera.startFollow(this.player, true, 0.08, 0.08)
   }
 }
