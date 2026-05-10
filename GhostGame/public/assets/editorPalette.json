@@ -26,6 +26,74 @@
       }
     },
     {
+      "id": "gate",
+      "label": "Gate",
+      "category": "puzzle",
+      "icon": {
+        "type": "rectangle",
+        "color": "0x88ffff",
+        "alpha": 0.6
+      },
+      "creates": {
+        "type": "gate",
+        "group": "gate",
+        "width": 48,
+        "height": 96,
+        "color": "0x88ffff",
+        "isOpen": false,
+        "collidesWith": [
+          "player",
+          "possessables"
+        ]
+      }
+    },
+    {
+      "id": "pressure-plate",
+      "label": "Pressure Plate",
+      "category": "puzzle",
+      "icon": {
+        "type": "rectangle",
+        "color": "0xf00000",
+        "alpha": 0.6
+      },
+      "creates": {
+        "type": "pressurePlate",
+        "group": "pressurePlate",
+        "width": 64,
+        "height": 16,
+        "color": "0xf00000",
+        "pressDepth": 8,
+        "targetGate": "",
+        "overlapsWith": [
+          "possessables"
+        ]
+      }
+    },
+    {
+      "id": "possessable-box",
+      "label": "Possessable Box",
+      "category": "dynamic",
+      "icon": {
+        "type": "rectangle",
+        "color": "0x000000",
+        "alpha": 0.7
+      },
+      "creates": {
+        "type": "possessableBox",
+        "group": "possessables",
+        "width": 24,
+        "height": 40,
+        "color": "0x000000",
+        "speed": 200,
+        "jumpVelocity": -350,
+        "gravityY": 800,
+        "collidesWith": [
+          "player",
+          "possessables"
+        ]
+      }
+    },
+    {
       "id": "sprites_world_tileset_0",
       "label": "World Tileset 0",
       "category": "terrain",

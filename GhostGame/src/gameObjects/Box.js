@@ -5,7 +5,7 @@ export default class Box extends Phaser.GameObjects.Rectangle {
     const {
       width = 24,
       height = 32,
-      color = f000000,
+      color = 0xf00000,
       speed = 180,
       jumpVelocity = -300,
       gravityY = 700,
