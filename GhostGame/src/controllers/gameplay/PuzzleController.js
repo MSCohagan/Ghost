@@ -60,7 +60,7 @@ export default class PuzzleController {
       this.gates.find((gate) => {
         if (plate.targetGate) return gate.key === plate.targetGate
         return gate.key === plate.key
-      }) ?? this.gates[0]
+      }) ?? null
 
     if (!resolved) {
       console.warn('[PuzzleController] no gate resolved for plate', {

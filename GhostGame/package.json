@@ -9,7 +9,9 @@
     "save-server": "node src/tools/SaveServer.js",
     "predev:editor": "npm run manifest && npm run normalize-assets && npm run palette ",
     "dev:editor": "concurrently \"npm run dev\" \"npm run save-server\"",
-    "format": "prettier . --write"
+    "format": "prettier . --write",
+    "test": "vitest run",
+    "test:watch": "vitest watch"
   },
   "dependencies": {
     "cors": "^2.8.6",
@@ -18,6 +20,7 @@
   "devDependencies": {
     "concurrently": "^9.2.1",
     "prettier": "^3.8.3",
-    "vite": "^8.0.10"
+    "vite": "^8.0.10",
+    "vitest": "^4.1.5"
   }
 }
