@@ -1,3 +1,4 @@
+import { objectContractRules } from '@/data/objectContractRules.js'
 export default class EditorPlacementController {
   constructor(editor) {
     this.editor = editor
@@ -55,7 +56,7 @@ export default class EditorPlacementController {
 
   placeSelectedPaletteEntry(
     pointer,
-    creates = this.editor.dockController.selectedPalletteEntry?.creates
+    creates = this.editor.dockController.selectedPaletteEntry?.creates
   ) {
     const { x, y } = this.editor.pointerController.getSnappedPosition(pointer)
 
@@ -67,6 +68,11 @@ export default class EditorPlacementController {
 
     if (this.occupiedCells.has(cellKey)) return false
     this.occupiedCells.add(cellKey)
+
+    const rules = objectContractRules[creates.type]
+    if (rules?.requiresId) {
+      creates.key = this.setIdForObjects(creates, creates.type)
+    }
 
     if (creates.type === 'loadingZone' || creates.icon?.type === 'rectangle') {
       placed = this.host.add.rectangle(
@@ -105,6 +111,25 @@ export default class EditorPlacementController {
     this.placedObjects = this.host.editorPlacedObjects
 
     return true
+  }
+
+  setIdForObjects(creates, type) {
+    const roomKey = this.host.roomKey ?? 'Room'
+    const prefix = `${roomKey}_${type}_`
+
+    const maxIndex = this.host.editorPlacedObjects.reduce((max, obj) => {
+      const key = obj?.editorData?.key
+      const objType = obj?.editorData?.type
+      if (objType !== type || typeof key !== 'string' || !key.startsWith(prefix)) return max
+
+      const raw = key.slice(prefix.length)
+      const n = Number.parseInt(raw, 10)
+      return Number.isFinite(n) ? Math.max(max, n) : max
+    }, 0)
+
+    const next = maxIndex + 1
+    const padded = String(next).padStart(2, '0')
+    return `${prefix}${padded}`
   }
 
   placeSpawn(pointer) {
