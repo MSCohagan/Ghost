@@ -1,15 +1,24 @@
 export default class PuzzleController {
   constructor(scene, entities = {}) {
     this.scene = scene
-    this.gates = entities.gates ?? []
-    this.pressurePlates = entities.pressurePlates ?? []
-    this.possessables = entities.possessables ?? []
 
-    this.setupPressurePlateEvents()
+    this.setupPressurePlateEventsFor(this.pressurePlates)
   }
 
-  setupPressurePlateEvents() {
-    this.pressurePlates.forEach((plate) => {
+  get gates() {
+    return this.scene.gates ?? []
+  }
+
+  get pressurePlates() {
+    return this.scene.pressurePlates ?? []
+  }
+
+  get possessables() {
+    return this.scene.possessables ?? []
+  }
+
+  setupPressurePlateEventsFor(pressurePlates) {
+    pressurePlates.forEach((plate) => {
       plate.on('pressed', () => {
         const gate = this.findGateForPlate(plate)
         gate?.open()
