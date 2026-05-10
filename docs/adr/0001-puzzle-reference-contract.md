@@ -64,6 +64,7 @@ For current phase:
 Current contract defines **graph connectivity** only (`id` <-> `targetIds`).
 
 Behavior semantics for multi-input/multi-output logic are acknowledged and deferred:
+
 - `any` (any trigger activates target)
 - `all` (all required triggers must be active)
 - `threshold` (N-of-M, e.g. 5 balls open 2 doors)
