@@ -1,11 +1,11 @@
 import BaseRoom from './BaseRoom.js'
 
-export default class Room1 extends BaseRoom {
+export default class Room3 extends BaseRoom {
   constructor() {
     super('Room3', 'Room2', '', {
       width: 1280,
       height: 720,
-      backgroundKey: 'gray',
+      backgroundKey: '',
     })
   }
 
@@ -16,8 +16,6 @@ export default class Room1 extends BaseRoom {
 
   preload() {
     super.preload()
-
-    this.load.image('gray', '/assets/gray.jpg')
   }
 
   create() {

@@ -5,7 +5,7 @@ export default class BaseRoom extends Phaser.Scene {
     super(key)
     this.roomWidth = options.width ?? 1280
     this.roomHeight = options.height ?? 720
-    this.backgroundKey = options.backgroundKey ?? 'gray'
+    this.backgroundKey = options.backgroundKey ?? ''
     this.roomKey = key
     this.nextRoomLeft = nextRoomLeft ?? ''
     this.nextRoomRight = nextRoomRight ?? ''

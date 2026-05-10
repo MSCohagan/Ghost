@@ -5,7 +5,7 @@ const ASSETS_DIR = path.resolve('public/assets')
 const CONFIG_FILE = path.join(ASSETS_DIR, 'assetConfig.json')
 const OUTPUT_FILE = path.join(ASSETS_DIR, 'assetManifest.json')
 
-const imageExtensions = new Set(['.png', 'jpg', 'jpeg', '.webp'])
+const imageExtensions = new Set(['.png', '.jpg', '.jpeg', '.webp'])
 
 function walk(dir) {
   const results = []
@@ -62,7 +62,7 @@ files
         frames: spritesheetConfig.frames,
         margin: spritesheetConfig.margin ?? 0,
         spacing: spritesheetConfig.spacing ?? 0,
-        category: spritesheetConfig.cathegory ?? 'sprites',
+        category: spritesheetConfig.category ?? spritesheetConfig.cathegory ?? 'sprites',
       })
     } else {
       images.push({
