@@ -5,14 +5,12 @@ export default class Room2 extends BaseRoom {
     super('Room2', 'Room1', 'Room3', {
       width: 1280,
       height: 720,
-      backgroundKey: 'gray',
+      backgroundKey: '',
     })
   }
 
   preload() {
     super.preload()
-
-    this.load.image('gray', '/assets/gray.jpg')
   }
 
   create() {

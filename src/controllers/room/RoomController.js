@@ -48,12 +48,35 @@ export default class RoomController {
   loadRoomData() {
     const scene = this.scene
 
-    scene.add.image(1280, 720, scene.backgroundKey)
+    this.renderBackground(scene)
 
     scene.roomData = scene.cache.json.get(`${scene.roomKey}`) ?? {}
 
     scene.roomWidth = scene.roomData.roomWidth ?? 1280
     scene.roomHeight = scene.roomData.roomHeight ?? 720
+  }
+
+  renderBackground(scene) {
+    if (scene.backgroundKey && scene.textures.exists(scene.backgroundKey)) {
+      scene.add.image(1280, 720, scene.backgroundKey)
+      return
+    }
+
+    const camera = scene.cameras.main
+    const width = camera?.width ?? 2560
+    const height = camera?.height ?? 1440
+
+    const sky = scene.add.graphics()
+    sky.fillGradientStyle(0x111827, 0x111827, 0x1f2937, 0x1f2937, 1)
+    sky.fillRect(0, 0, width, height)
+    sky.setDepth(-1000)
+    sky.setScrollFactor(0)
+
+    const haze = scene.add.graphics()
+    haze.fillStyle(0x334155, 0.2)
+    haze.fillEllipse(width * 0.5, height * 0.25, width * 1.1, height * 0.6)
+    haze.setDepth(-999)
+    haze.setScrollFactor(0)
   }
 
   setupWorld() {
