@@ -74,7 +74,10 @@ export default class EditorPlacementController {
       creates.key = this.setIdForObjects(creates, creates.type)
     }
 
-    if (creates.type === 'loadingZone' || creates.icon?.type === 'rectangle') {
+    const selectedEntry = this.editor.dockController.selectedPaletteEntry
+    const useRectangle = creates.type === 'loadingZone' || selectedEntry?.icon?.type === 'rectangle'
+
+    if (useRectangle) {
       placed = this.host.add.rectangle(
         x,
         y,
