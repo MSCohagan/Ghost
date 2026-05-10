@@ -32,6 +32,7 @@ export default class Gate extends Phaser.GameObjects.Rectangle {
     this.setVisible(true)
 
     this.body.enable = true
+    this.body.checkCollision.none = false
     this.body.updateFromGameObject()
   }
 }
