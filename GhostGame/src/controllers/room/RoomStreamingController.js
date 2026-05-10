@@ -116,6 +116,8 @@ export default class RoomStreamingController {
     const newPressurePlates = roomObjects.entities.pressurePlates ?? []
     this.scene.pressurePlates.push(...newPressurePlates)
 
+    this.scene.puzzleController?.setupPressurePlateEventsFor?.(newPressurePlates)
+
     const newLoadingZones = roomObjects.entities.loadingZones ?? []
     this.loadingZones.push(...newLoadingZones)
     this.setupLoadingZoneEventsFor(newLoadingZones)

@@ -21,7 +21,7 @@ export function applyPlatformerMovement(entity, controls, speed = 180, jumpVeloc
     body.setVelocityX(speed)
   }
 
-  const isOnFloor = body.blocked.down || body.touching.down
+  const isOnFloor = body.onFloor?.() || body.blocked.down
 
   if (Phaser.Input.Keyboard.JustDown(controls.jump) && isOnFloor) {
     body.setVelocityY(jumpVelocity)
