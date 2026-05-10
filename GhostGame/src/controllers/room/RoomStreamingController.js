@@ -7,16 +7,20 @@ export default class RoomStreamingController {
 
     this.targetRoom = null
     this.inLoadingZone = false
+    this.loadRequestCounter = 0
+    this.inflightLoads = new Set()
     this.loadingZones = entities.loadingZones ?? []
     this.possessables = entities.possessables ?? []
 
-    this.setupLoadingZoneEvents()
+    this.setupLoadingZoneEventsFor(this.loadingZones)
   }
 
-  setupLoadingZoneEvents() {
+  setupLoadingZoneEventsFor(loadingZones) {
     console.log('Setting up loading zone events')
     console.log('loadingZones = ', this.loadingZones)
-    this.loadingZones.forEach((zone) => {
+    if (!loadingZones || loadingZones.length === 0) return
+    loadingZones.forEach((zone) => {
+      if (zone._streamListenersBound) return
       zone.on('enteredLoadingZone', (zone) => {
         this.inLoadingZone = true
         this.targetRoom = zone.targetRoom
@@ -29,6 +33,7 @@ export default class RoomStreamingController {
         this.targetRoom = null
         console.log('Exited loading zone')
       })
+      zone._streamListenersBound = true
     })
   }
 
@@ -45,12 +50,28 @@ export default class RoomStreamingController {
   }
 
   async loadRoom(zone) {
+    const requestId = ++this.loadRequestCounter
+    const target = zone.targetRoom
+    console.log(
+      `[RoomStreaming][${requestId}] loadRoom start target=${target} inZone=${zone.inLoadingZone}`
+    )
+
     if (!zone.targetRoom || !zone.inLoadingZone) {
       console.warn('No target room specified for loading zone')
       return
     }
 
-    if (this.loadedRooms.has(zone.targetRoom)) return
+    if (this.loadedRooms.has(zone.targetRoom)) {
+      console.log(`[RoomStreaming][${requestId}] skip already loaded target=${target}`)
+      return
+    }
+
+    if (this.inflightLoads.has(zone.targetRoom)) {
+      console.log(`[RoomStreaming][${requestId}] skip in-flight target=${target}`)
+      return
+    }
+
+    this.inflightLoads.add(zone.targetRoom)
 
     const roomData = await this.getRoomData(zone.targetRoom)
 
@@ -64,15 +85,40 @@ export default class RoomStreamingController {
     })
 
     this.loadedRooms.set(zone.targetRoom, roomObjects)
+    this.inflightLoads.delete(zone.targetRoom)
     this.registerStreamedRoom(roomObjects, roomData, zone)
     console.log('streamed room: ', zone.targetRoom)
-    console.log('scene possessables', this.scene.possessables)
-    console.log('controller possesables', this.scene.possessionController.possessables)
+    console.log(
+      `[RoomStreaming][${requestId}] scene possessables length=${this.scene.possessables.length}`
+    )
+    console.log(
+      `[RoomStreaming][${requestId}] controller possessables length=${this.scene.possessionController.possessables.length}`
+    )
   }
 
   registerStreamedRoom(roomObjects, roomData, zone) {
+    console.log(
+      `[RoomStreaming] pre-register scene.possessables length=${this.scene.possessables.length}`
+    )
+
     const newPossessables = roomObjects.entities.possessables ?? []
+    console.log(
+      `[RoomStreaming] roomObjects.entities.possessables length=${newPossessables.length}`
+    )
     this.scene.possessables.push(...newPossessables)
+    console.log(
+      `[RoomStreaming] post-push scene.possessables length=${this.scene.possessables.length}`
+    )
+
+    const newGates = roomObjects.entities.gates ?? []
+    this.scene.gates.push(...newGates)
+
+    const newPressurePlates = roomObjects.entities.pressurePlates ?? []
+    this.scene.pressurePlates.push(...newPressurePlates)
+
+    const newLoadingZones = roomObjects.entities.loadingZones ?? []
+    this.loadingZones.push(...newLoadingZones)
+    this.setupLoadingZoneEventsFor(newLoadingZones)
 
     this.scene.possessionController?.refreshPossessables?.(this.scene.possessables)
 
@@ -102,7 +148,7 @@ export default class RoomStreamingController {
     this.loadingZones.forEach((zone) => {
       if (
         this.scene.physics.overlap(this.scene.player, zone) ||
-        this.possessables.some((obj) => this.scene.physics.overlap(obj, zone))
+        this.scene.possessables.some((obj) => this.scene.physics.overlap(obj, zone))
       ) {
         zone.enterLoadingZone()
       } else {

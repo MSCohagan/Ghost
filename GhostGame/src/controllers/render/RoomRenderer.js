@@ -8,15 +8,6 @@ export default class RoomRenderer {
   constructor(scene) {
     this.scene = scene
     this.groups = {}
-    this.collisionObjects = []
-    this.collisionRules = {}
-    this.entities = {
-      possessables: [],
-      gates: [],
-      pressurePlates: [],
-      loadingZones: [],
-    }
-    this.createdObjects = []
     this.factories = {
       platform: this.createStaticSprite.bind(this),
       ground: this.createStaticSprite.bind(this),
@@ -32,7 +23,42 @@ export default class RoomRenderer {
 
   render(roomData, { offsetX = 0, offsetY = 0 } = {}) {
     if (!roomData) {
-      return { groups: this.groups, entities: this.entities, playerSpawn: null }
+      return {
+        groups: this.groups,
+        entities: { possessables: [], gates: [], pressurePlates: [], loadingZones: [] },
+        playerSpawn: null,
+        collisionRules: {},
+        collisionObjects: [],
+        createdObjects: [],
+      }
+    }
+
+    const entities = {
+      possessables: [],
+      gates: [],
+      pressurePlates: [],
+      loadingZones: [],
+    }
+
+    const collisionRules = {}
+    const collisionObjects = []
+    const createdObjects = []
+
+    const registerCollisionObject = (gameObject, obj) => {
+      gameObject.roomData = obj
+      gameObject.editorData = { ...obj }
+
+      collisionObjects.push({
+        object: gameObject,
+        collidesWith: obj.collidesWith ?? [],
+        overlapsWith: obj.overlapsWith ?? [],
+      })
+    }
+
+    const context = {
+      createdObjects,
+      collisionRules,
+      registerCollisionObject,
     }
 
     if (roomData.playerSpawn && offsetX === 0 && offsetY === 0) {
@@ -62,21 +88,23 @@ export default class RoomRenderer {
         return
       }
 
-      const created = factory.call(this, objectWithOffset, typeConfig)
+      const created = factory.call(this, objectWithOffset, context)
 
       if (typeConfig.entityType && created) {
-        this.entities[typeConfig.entityType] ??= []
-        this.entities[typeConfig.entityType].push(created)
+        entities[typeConfig.entityType] ??= []
+        entities[typeConfig.entityType].push(created)
       }
     })
 
+    console.log(`[RoomRenderer] createdObjects length=${createdObjects.length}`)
+
     return {
       groups: this.groups,
-      entities: this.entities,
+      entities,
       playerSpawn: this.playerSpawn ?? null,
-      collisionRules: this.collisionRules,
-      collisionObjects: this.collisionObjects,
-      createdObjects: this.createdObjects,
+      collisionRules,
+      collisionObjects,
+      createdObjects,
     }
   }
 
@@ -87,19 +115,6 @@ export default class RoomRenderer {
       type === 'static' ? this.scene.physics.add.staticGroup() : this.scene.physics.add.group()
 
     return this.groups[name]
-  }
-
-  registerCollisionObject(gameObject, obj) {
-    gameObject.roomData = obj
-    gameObject.editorData = { ...obj }
-
-    this.collisionObjects.push({
-      object: gameObject,
-      collidesWith: obj.collidesWith ?? [],
-      overlapsWith: obj.overlapsWith ?? [],
-    })
-
-    return gameObject
   }
 
   createPlayerSpawn(obj) {
@@ -125,14 +140,14 @@ export default class RoomRenderer {
     return spawn
   }
 
-  createStaticSprite(obj) {
+  createStaticSprite(obj, { createdObjects, collisionRules }) {
     const groupName = obj.group ?? obj.type
     const group = this.getGroup(groupName, 'static')
 
-    this.collisionRules[groupName] ??= new Set()
+    collisionRules[groupName] ??= new Set()
 
     for (const target of obj.collidesWith ?? []) {
-      this.collisionRules[groupName].add(target)
+      collisionRules[groupName].add(target)
     }
 
     const item = group.create(obj.x, obj.y, obj.texture, obj.frame ?? undefined)
@@ -143,12 +158,12 @@ export default class RoomRenderer {
 
     item.roomData = obj
     item.editorData = { ...obj }
-    this.createdObjects.push(item)
+    createdObjects.push(item)
 
     return item
   }
 
-  createImage(obj) {
+  createImage(obj, { createdObjects }) {
     const image = this.scene.add.image(obj.x, obj.y, obj.texture, obj.frame ?? undefined)
 
     image.setOrigin(obj.originX ?? 0, obj.originY ?? 0)
@@ -156,12 +171,12 @@ export default class RoomRenderer {
 
     image.roomData = obj
     image.editorData = { ...obj }
-    this.createdObjects.push(image)
+    createdObjects.push(image)
 
     return image
   }
 
-  createPossessableBox(obj) {
+  createPossessableBox(obj, { createdObjects, registerCollisionObject }) {
     const box = new Box(this.scene, obj.x, obj.y, {
       width: obj.width ?? 24,
       height: obj.height ?? 40,
@@ -171,13 +186,13 @@ export default class RoomRenderer {
       gravityY: obj.gravityY ?? 800,
     })
 
-    this.createdObjects.push(box)
-    this.registerCollisionObject(box, obj)
+    createdObjects.push(box)
+    registerCollisionObject(box, obj)
 
     return box
   }
 
-  createGate(obj) {
+  createGate(obj, { createdObjects, registerCollisionObject }) {
     const gate = new Gate(this.scene, obj.x, obj.y, {
       key: obj.key,
       width: obj.width ?? 48,
@@ -186,13 +201,13 @@ export default class RoomRenderer {
       isOpen: obj.isOpen ?? false,
     })
 
-    this.createdObjects.push(gate)
-    this.registerCollisionObject(gate, obj)
+    createdObjects.push(gate)
+    registerCollisionObject(gate, obj)
 
     return gate
   }
 
-  createPressurePlate(obj) {
+  createPressurePlate(obj, { createdObjects, registerCollisionObject }) {
     const plate = new PressurePlate(this.scene, obj.x, obj.y, {
       key: obj.key,
       targetGate: obj.targetGate,
@@ -202,13 +217,13 @@ export default class RoomRenderer {
       pressDepth: obj.pressDepth ?? 8,
     })
 
-    this.createdObjects.push(plate)
-    this.registerCollisionObject(plate, obj)
+    createdObjects.push(plate)
+    registerCollisionObject(plate, obj)
 
     return plate
   }
 
-  createLoadingZone(obj) {
+  createLoadingZone(obj, { createdObjects }) {
     const zone = new LoadingZone(this.scene, obj.x, obj.y, {
       width: obj.width ?? 96,
       height: obj.height ?? 720,
@@ -220,7 +235,7 @@ export default class RoomRenderer {
     })
 
     zone.editorData = { ...obj }
-    this.createdObjects.push(zone)
+    createdObjects.push(zone)
 
     return zone
   }
