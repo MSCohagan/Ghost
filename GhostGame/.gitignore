@@ -1,6 +1,8 @@
 .DS_Store
 **/.DS_Store
 .vscode
+node_modules/
+dist/
 PROJECT_CONTEXT.md
 WORKING_AGREEMENT.md
-dist/
+.clocignore
