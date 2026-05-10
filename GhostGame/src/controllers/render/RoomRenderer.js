@@ -1,8 +1,9 @@
-import Box from '../../gameObjects/Box.js'
-import Gate from '../../gameObjects/Gate.js'
-import PressurePlate from '../../gameObjects/PressurePlate.js'
-import LoadingZone from '../../gameObjects/LoadingZone.js'
-import { objectRegistry } from '../../data/objectRegistry.js'
+import Box from '@/gameObjects/Box.js'
+import Gate from '@/gameObjects/Gate.js'
+import PressurePlate from '@/gameObjects/PressurePlate.js'
+import LoadingZone from '@/gameObjects/LoadingZone.js'
+import { objectRegistry } from '@/data/objectRegistry.js'
+import { objectContractRules } from '@/data/objectContractRules.js'
 
 export default class RoomRenderer {
   constructor(scene) {
@@ -68,6 +69,10 @@ export default class RoomRenderer {
     console.log('Rendering room with data: ', roomData)
 
     roomData.objects.forEach((obj) => {
+      const rules = objectContractRules[obj.type]
+      if (rules?.requiresId) {
+        this.validateObjectContract(obj, rules)
+      }
       const objectWithOffset = {
         ...obj,
         x: obj.x + offsetX,
@@ -105,6 +110,39 @@ export default class RoomRenderer {
       collisionRules,
       collisionObjects,
       createdObjects,
+    }
+  }
+
+  validateObjectContract(object, rules = {}) {
+    if (!object) return
+    if (rules.requiresId && !object.key) {
+      console.warn('Object is missing key:', object)
+      return
+    }
+
+    if (Array.isArray(rules.requiresFields)) {
+      const missingFields = rules.requiresFields.filter((field) => !(field in object))
+      if (missingFields.length > 0) {
+        console.warn(`Object is missing required fields: ${missingFields.join(', ')}`, object)
+        return
+      }
+    }
+
+    if (rules.referencesTargets) {
+      const primaryField = rules.targetField ?? 'targetIds'
+      const legacyField = rules.allowLegacyTargetField
+
+      const primaryTargets = Array.isArray(object[primaryField]) ? object[primaryField] : []
+      const legacyTargets = legacyField && object[legacyField] ? [object[legacyField]] : []
+
+      const targets = primaryTargets.length > 0 ? primaryTargets : legacyTargets
+
+      if (targets.length === 0) {
+        console.warn(
+          `Object references targets but has no '${primaryField}' (or legacy fallback) values:`,
+          object
+        )
+      }
     }
   }
 
