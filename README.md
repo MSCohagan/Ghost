@@ -32,6 +32,12 @@ The project is in active prototype development. Current phase priorities:
 - `LevelEditor` delegates behavior to editor-focused controllers.
 - Runtime systems are moving toward validated object contracts (`id`, `targetIds`) with legacy fallback support where needed.
 
+## Architecture Diagrams
+
+![Architecture Overview](./docs/diagrams/architecture-overview.png)
+
+![Architecture Deep Dive](./docs/diagrams/architecture-deep-dive.png)
+
 ## Tech Stack
 
 - Phaser 4

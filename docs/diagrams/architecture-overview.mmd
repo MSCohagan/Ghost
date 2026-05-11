@@ -1,0 +1,21 @@
+flowchart TD
+  A[BaseRoom] --> B[RoomController]
+
+  B --> C[RoomRenderer]
+  C --> D[objectRegistry factories]
+  C --> E[roomObjects output]
+
+  B --> F[Player + scene entities]
+  B --> G[ColliderController]
+  B --> H[RoomStreamingController]
+  B --> I[PuzzleController]
+  B --> J[PossessionController]
+  B --> K[InputController]
+
+  H --> L[Fetch adjacent room JSON]
+  L --> M[Render streamed room with offset]
+  M --> N[Register streamed entities]
+  N --> G
+
+  I --> O[Live entity reads]
+  O --> P[gates / pressurePlates / possessables]
