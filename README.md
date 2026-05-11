@@ -102,11 +102,10 @@ npm run test:watch
 
 ## Project Docs
 
-- [Project Context](./PROJECT_CONTEXT.md)
-- [Working Agreement](./WORKING_AGREEMENT.md)
+- [Project Overview](./docs/PROJECT_OVERVIEW.md)
 - [ADR Index](./docs/adr)
-- [Session Notes](./docs/SESSION_NOTES.md)
 - [Asset Attribution](./docs/ASSET_ATTRIBUTION.md)
+- [Working Agreement](./WORKING_AGREEMENT.md)
 
 ## Source Availability and Rights
 
