@@ -121,6 +121,52 @@ npm run test:watch
 - [Asset Attribution](./docs/ASSET_ATTRIBUTION.md)
 - [Working Agreement](./WORKING_AGREEMENT.md)
 
+## Roadmap
+
+This project is actively evolving from a streaming/editor prototype into a full puzzle-platformer experience.
+The near-term goal is to stabilize the core systems so future gameplay content can scale cleanly.
+
+### Near-Term Priorities (Current Phase)
+
+- finalize streamed collision consistency
+- lock down gate/pressure-plate behavior across room boundaries
+- formalize loaded room lifecycle metadata (`loadedRooms`)
+- complete multi-room editor save ownership (`activeEditRoomKey`)
+- add room-key normalization guard in save flow
+
+### Upcoming Gameplay and World Systems
+
+- enemy movement/pathing
+- enemy spawn and encounter logic
+- enemy attack patterns
+- boss-room structure and pacing
+- environmental puzzle bosses
+- chandelier possession boss concept
+- connected room map and world navigation
+
+### Save/State and UI Foundations
+
+- save game state
+- persistent world state
+- main menu
+- pause menu
+- config/options
+
+### Editor Expansion
+
+- multi-select
+- grouped editing
+- improved placement preview
+- room-to-room editor navigation
+- undo/redo
+
+### Custom Content (Long-Term)
+
+- custom level support
+- room import/export workflows
+- deeper JSON-driven content authoring
+- mod support (if there is audience demand)
+
 ## Source Availability and Rights
 
 This source is published for portfolio review and development progress visibility.
