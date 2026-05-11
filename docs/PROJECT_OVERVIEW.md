@@ -113,3 +113,17 @@ This repository is maintained as a professional portfolio artifact to demonstrat
 - iterative refactoring discipline
 - tooling/testing workflows
 - practical game-system implementation in progress
+
+## What’s Next
+
+The foundation phase has focused on architecture and tooling discipline: JSON-driven runtime content, controller ownership boundaries, same-scene room streaming, and in-game authoring workflows.
+
+The next phase is about turning that foundation into richer gameplay:
+
+- stabilize streaming and cross-room interaction consistency
+- expand puzzle mechanics and encounter systems
+- introduce enemy behavior and boss-room progression
+- build save/state and menu infrastructure
+- continue scaling editor capabilities toward multi-room authoring and future custom-content workflows
+
+This is where the project shifts from “engine foundations” into “playable world depth,” while preserving the architectural guardrails established so far.
