@@ -56,6 +56,7 @@ When helping with a bug, use this sequence:
 - Be concise, technical, and reasoning-focused.
 - Explain tradeoffs when decisions have non-obvious consequences.
 - Emphasize learning by clarifying ownership and data flow, not just final code.
+- When asked for a PR summary, Codex should default to the repository PR template (`.github/pull_request_template.md`) unless the user explicitly requests a different format.
 
 ## Review Preference
 
