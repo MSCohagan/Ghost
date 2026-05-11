@@ -12,7 +12,10 @@
     "format": "prettier . --write",
     "lint": "prettier . --check",
     "test": "vitest run",
-    "test:watch": "vitest watch"
+    "test:watch": "vitest watch",
+    "cloc": "cloc . --exclude-list-file=.clocignore",
+    "cloc:code": "cloc src scripts --exclude-list-file=.clocignore",
+    "cloc:docs": "cloc docs"
   },
   "dependencies": {
     "cors": "^2.8.6",

@@ -19,10 +19,7 @@
         "direction": "right",
         "offsetX": 1280,
         "offsetY": 0,
-        "overlapsWith": [
-          "player",
-          "possessables"
-        ]
+        "overlapsWith": ["player", "possessables"]
       }
     },
     {
@@ -41,10 +38,7 @@
         "height": 96,
         "color": "0x88ffff",
         "isOpen": false,
-        "collidesWith": [
-          "player",
-          "possessables"
-        ]
+        "collidesWith": ["player", "possessables"]
       }
     },
     {
@@ -64,9 +58,7 @@
         "color": "0xf00000",
         "pressDepth": 8,
         "targetGate": "",
-        "overlapsWith": [
-          "possessables"
-        ]
+        "overlapsWith": ["possessables"]
       }
     },
     {
@@ -87,10 +79,7 @@
         "speed": 200,
         "jumpVelocity": -350,
         "gravityY": 800,
-        "collidesWith": [
-          "player",
-          "possessables"
-        ]
+        "collidesWith": ["player", "possessables"]
       }
     },
     {
