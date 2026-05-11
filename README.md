@@ -23,6 +23,12 @@ The project is in active prototype development. Current phase priorities:
 - Stream adjacent rooms without scene resets
 - Keep collisions, entities, and controllers consistent after streaming
 
+## Gameplay Preview
+
+### Core Movement and Possession
+
+![Core Movement and Possession](./docs/media/GhostMovementAndPossession.gif)
+
 ## Architecture Highlights
 
 - `BaseRoom` stays lean and delegates to room controllers.

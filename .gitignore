@@ -6,3 +6,4 @@ dist/
 PROJECT_CONTEXT.md
 SESSION_NOTES.md
 .clocignore
+*.mov
