@@ -5,6 +5,9 @@
     "normalize-assets": "node scripts/normalize-assets.mjs",
     "format:assets": "prettier --write public/assets/assetConfig.json public/assets/assetManifest.json public/assets/editorPalette.json",
     "generate:assets": "npm run manifest && npm run normalize-assets && npm run palette && npm run format:assets",
+    "diagram:overview": "mmdc -i docs/diagrams/architecture-overview.mmd -o docs/diagrams/architecture-overview.svg && mmdc -i docs/diagrams/architecture-overview.mmd -o docs/diagrams/architecture-overview.png -w 2000 -s 2",
+    "diagram:deep": "mmdc -i docs/diagrams/architecture-deep-dive.mmd -o docs/diagrams/architecture-deep-dive.svg && mmdc -i docs/diagrams/architecture-deep-dive.mmd -o docs/diagrams/architecture-deep-dive.png -w 2400 -s 2",
+    "diagram:export": "npm run diagram:overview && npm run diagram:deep",
     "dev": "vite --port 5173",
     "build": "vite build",
     "preview": "vite preview --port 4173",
@@ -24,6 +27,7 @@
     "express": "^5.2.1"
   },
   "devDependencies": {
+    "@mermaid-js/mermaid-cli": "^11.14.0",
     "concurrently": "^9.2.1",
     "prettier": "^3.8.3",
     "vite": "^8.0.10",
