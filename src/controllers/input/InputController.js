@@ -7,6 +7,14 @@ export default class InputController {
     const hostScene = this.scene
     const { controls, possessionController, player, camera, spawn } = hostScene
 
+    if (Phaser.Input.Keyboard.JustDown(controls.fullscreen)) {
+      if (hostScene.scale.isFullscreen) {
+        hostScene.scale.stopFullscreen()
+      } else {
+        hostScene.scale.startFullscreen()
+      }
+    }
+
     if (Phaser.Input.Keyboard.JustDown(controls.possess)) {
       const nearest = possessionController.findNearestPossessable(player)
       if (nearest) possessionController.tryPossess(nearest)
