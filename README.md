@@ -104,6 +104,8 @@ npm run test:watch
 
 - [Project Overview](./docs/PROJECT_OVERVIEW.md)
 - [ADR Index](./docs/adr)
+- [Architecture Overview](./docs/ARCHITECTURE_OVERVIEW.md)
+- [Architecture Deep Dive](./docs/ARCHITECTURE_DEEP_DIVE.md)
 - [Asset Attribution](./docs/ASSET_ATTRIBUTION.md)
 - [Working Agreement](./WORKING_AGREEMENT.md)
 
