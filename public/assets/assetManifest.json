@@ -1,41 +1,5 @@
 {
-  "images": [
-    {
-      "key": "third_party_brackeys_platformer_assets_sprites_coin",
-      "path": "assets/third_party/brackeys_platformer_assets/sprites/coin.png",
-      "category": "images"
-    },
-    {
-      "key": "third_party_brackeys_platformer_assets_sprites_fruit",
-      "path": "assets/third_party/brackeys_platformer_assets/sprites/fruit.png",
-      "category": "images"
-    },
-    {
-      "key": "third_party_brackeys_platformer_assets_sprites_knight",
-      "path": "assets/third_party/brackeys_platformer_assets/sprites/knight.png",
-      "category": "images"
-    },
-    {
-      "key": "third_party_brackeys_platformer_assets_sprites_platforms",
-      "path": "assets/third_party/brackeys_platformer_assets/sprites/platforms.png",
-      "category": "images"
-    },
-    {
-      "key": "third_party_brackeys_platformer_assets_sprites_slime_green",
-      "path": "assets/third_party/brackeys_platformer_assets/sprites/slime_green.png",
-      "category": "images"
-    },
-    {
-      "key": "third_party_brackeys_platformer_assets_sprites_slime_purple",
-      "path": "assets/third_party/brackeys_platformer_assets/sprites/slime_purple.png",
-      "category": "images"
-    },
-    {
-      "key": "third_party_brackeys_platformer_assets_sprites_world_tileset",
-      "path": "assets/third_party/brackeys_platformer_assets/sprites/world_tileset.png",
-      "category": "images"
-    }
-  ],
+  "images": [],
   "spritesheets": [
     {
       "key": "ghost",
@@ -69,7 +33,7 @@
     },
     {
       "key": "sprites_coin",
-      "path": "assets/sprites/coin.png",
+      "path": "assets/third_party/brackeys_platformer_assets/sprites/coin.png",
       "frameWidth": 16,
       "frameHeight": 16,
       "frames": 12,
@@ -79,7 +43,7 @@
     },
     {
       "key": "sprites_fruit",
-      "path": "assets/sprites/fruit.png",
+      "path": "assets/third_party/brackeys_platformer_assets/sprites/fruit.png",
       "frameWidth": 16,
       "frameHeight": 16,
       "frames": 16,
@@ -89,7 +53,7 @@
     },
     {
       "key": "sprites_knight",
-      "path": "assets/sprites/knight.png",
+      "path": "assets/third_party/brackeys_platformer_assets/sprites/knight.png",
       "frameWidth": 32,
       "frameHeight": 32,
       "frames": 64,
@@ -99,7 +63,7 @@
     },
     {
       "key": "platforms",
-      "path": "assets/sprites/platforms.png",
+      "path": "assets/third_party/brackeys_platformer_assets/sprites/platforms.png",
       "frameWidth": 16,
       "frameHeight": 16,
       "frames": 16,
@@ -109,7 +73,7 @@
     },
     {
       "key": "sprites_slime_green",
-      "path": "assets/sprites/slime_green.png",
+      "path": "assets/third_party/brackeys_platformer_assets/sprites/slime_green.png",
       "frameWidth": 24,
       "frameHeight": 24,
       "frames": 12,
@@ -119,7 +83,7 @@
     },
     {
       "key": "sprites_slime_purple",
-      "path": "assets/sprites/slime_purple.png",
+      "path": "assets/third_party/brackeys_platformer_assets/sprites/slime_purple.png",
       "frameWidth": 24,
       "frameHeight": 24,
       "frames": 12,
@@ -129,7 +93,7 @@
     },
     {
       "key": "sprites_world_tileset",
-      "path": "assets/sprites/world_tileset.png",
+      "path": "assets/third_party/brackeys_platformer_assets/sprites/world_tileset.png",
       "frameWidth": 16,
       "frameHeight": 16,
       "frames": 64,

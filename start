@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+FAST_MODE="false"
+
+for arg in "$@"; do
+  case "$arg" in
+    --fast)
+      FAST_MODE="true"
+      ;;
+    *)
+      echo "Unknown argument: $arg"
+      echo "Usage: ./start [--fast]"
+      exit 1
+      ;;
+  esac
+done
+
+if [ "$FAST_MODE" = "false" ]; then
+  echo "==> Installing dependencies"
+  npm install
+else
+  echo "==> Fast mode enabled: skipping npm install"
+fi
+
+echo "==> Generating assets"
+npm run generate:assets
+
+echo "==> Auditing assets (warning-only)"
+audit_output="$(npm run -s assets:audit 2>&1 || true)"
+echo "$audit_output"
+
+warnings="$(printf "%s" "$audit_output" | sed -n 's/^Warnings: \([0-9]\+\)$/\1/p' | tail -n1)"
+warnings="${warnings:-0}"
+
+if [ "$warnings" -gt 0 ]; then
+  echo "==> Warnings detected ($warnings). Running rewrite..."
+  npm run assets:audit:rewrite
+
+  echo "==> Re-generating assets after rewrite"
+  npm run generate:assets
+
+  echo "==> Re-auditing assets"
+  npm run assets:audit
+fi
+
+if [ "$FAST_MODE" = "false" ]; then
+  echo "==> Lint"
+  npm run lint
+
+  echo "==> Test"
+  npm run test
+else
+  echo "==> Fast mode enabled: skipping lint/test"
+fi
+
+echo "==> Starting editor dev servers"
+npm run dev:editor

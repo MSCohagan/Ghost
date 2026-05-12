@@ -83,118 +83,6 @@
       }
     },
     {
-      "id": "third_party_brackeys_platformer_assets_sprites_coin",
-      "label": "Third Party Brackeys Platformer Assets Sprites Coin",
-      "category": "images",
-      "preview": {
-        "texture": "third_party_brackeys_platformer_assets_sprites_coin",
-        "frame": null
-      },
-      "creates": {
-        "type": "image",
-        "texture": "third_party_brackeys_platformer_assets_sprites_coin",
-        "frame": null,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "third_party_brackeys_platformer_assets_sprites_fruit",
-      "label": "Third Party Brackeys Platformer Assets Sprites Fruit",
-      "category": "images",
-      "preview": {
-        "texture": "third_party_brackeys_platformer_assets_sprites_fruit",
-        "frame": null
-      },
-      "creates": {
-        "type": "image",
-        "texture": "third_party_brackeys_platformer_assets_sprites_fruit",
-        "frame": null,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "third_party_brackeys_platformer_assets_sprites_knight",
-      "label": "Third Party Brackeys Platformer Assets Sprites Knight",
-      "category": "images",
-      "preview": {
-        "texture": "third_party_brackeys_platformer_assets_sprites_knight",
-        "frame": null
-      },
-      "creates": {
-        "type": "image",
-        "texture": "third_party_brackeys_platformer_assets_sprites_knight",
-        "frame": null,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "third_party_brackeys_platformer_assets_sprites_platforms",
-      "label": "Third Party Brackeys Platformer Assets Sprites Platforms",
-      "category": "images",
-      "preview": {
-        "texture": "third_party_brackeys_platformer_assets_sprites_platforms",
-        "frame": null
-      },
-      "creates": {
-        "type": "image",
-        "texture": "third_party_brackeys_platformer_assets_sprites_platforms",
-        "frame": null,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "third_party_brackeys_platformer_assets_sprites_slime_green",
-      "label": "Third Party Brackeys Platformer Assets Sprites Slime Green",
-      "category": "images",
-      "preview": {
-        "texture": "third_party_brackeys_platformer_assets_sprites_slime_green",
-        "frame": null
-      },
-      "creates": {
-        "type": "image",
-        "texture": "third_party_brackeys_platformer_assets_sprites_slime_green",
-        "frame": null,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "third_party_brackeys_platformer_assets_sprites_slime_purple",
-      "label": "Third Party Brackeys Platformer Assets Sprites Slime Purple",
-      "category": "images",
-      "preview": {
-        "texture": "third_party_brackeys_platformer_assets_sprites_slime_purple",
-        "frame": null
-      },
-      "creates": {
-        "type": "image",
-        "texture": "third_party_brackeys_platformer_assets_sprites_slime_purple",
-        "frame": null,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
-      "id": "third_party_brackeys_platformer_assets_sprites_world_tileset",
-      "label": "Third Party Brackeys Platformer Assets Sprites World Tileset",
-      "category": "images",
-      "preview": {
-        "texture": "third_party_brackeys_platformer_assets_sprites_world_tileset",
-        "frame": null
-      },
-      "creates": {
-        "type": "image",
-        "texture": "third_party_brackeys_platformer_assets_sprites_world_tileset",
-        "frame": null,
-        "scale": 1,
-        "solid": false
-      }
-    },
-    {
       "id": "ghost_0",
       "label": "Ghost 0",
       "category": "characters",
@@ -779,7 +667,7 @@
         "frame": 0
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_coin",
         "frame": 0,
         "scale": 1,
@@ -795,7 +683,7 @@
         "frame": 1
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_coin",
         "frame": 1,
         "scale": 1,
@@ -811,7 +699,7 @@
         "frame": 2
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_coin",
         "frame": 2,
         "scale": 1,
@@ -827,7 +715,7 @@
         "frame": 3
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_coin",
         "frame": 3,
         "scale": 1,
@@ -843,7 +731,7 @@
         "frame": 4
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_coin",
         "frame": 4,
         "scale": 1,
@@ -859,7 +747,7 @@
         "frame": 5
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_coin",
         "frame": 5,
         "scale": 1,
@@ -875,7 +763,7 @@
         "frame": 6
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_coin",
         "frame": 6,
         "scale": 1,
@@ -891,7 +779,7 @@
         "frame": 7
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_coin",
         "frame": 7,
         "scale": 1,
@@ -907,7 +795,7 @@
         "frame": 8
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_coin",
         "frame": 8,
         "scale": 1,
@@ -923,7 +811,7 @@
         "frame": 9
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_coin",
         "frame": 9,
         "scale": 1,
@@ -939,7 +827,7 @@
         "frame": 10
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_coin",
         "frame": 10,
         "scale": 1,
@@ -955,7 +843,7 @@
         "frame": 11
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_coin",
         "frame": 11,
         "scale": 1,
@@ -971,7 +859,7 @@
         "frame": 0
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 0,
         "scale": 1,
@@ -987,7 +875,7 @@
         "frame": 1
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 1,
         "scale": 1,
@@ -1003,7 +891,7 @@
         "frame": 2
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 2,
         "scale": 1,
@@ -1019,7 +907,7 @@
         "frame": 3
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 3,
         "scale": 1,
@@ -1035,7 +923,7 @@
         "frame": 4
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 4,
         "scale": 1,
@@ -1051,7 +939,7 @@
         "frame": 5
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 5,
         "scale": 1,
@@ -1067,7 +955,7 @@
         "frame": 6
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 6,
         "scale": 1,
@@ -1083,7 +971,7 @@
         "frame": 7
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 7,
         "scale": 1,
@@ -1099,7 +987,7 @@
         "frame": 8
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 8,
         "scale": 1,
@@ -1115,7 +1003,7 @@
         "frame": 9
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 9,
         "scale": 1,
@@ -1131,7 +1019,7 @@
         "frame": 10
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 10,
         "scale": 1,
@@ -1147,7 +1035,7 @@
         "frame": 11
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 11,
         "scale": 1,
@@ -1163,7 +1051,7 @@
         "frame": 12
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 12,
         "scale": 1,
@@ -1179,7 +1067,7 @@
         "frame": 13
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 13,
         "scale": 1,
@@ -1195,7 +1083,7 @@
         "frame": 14
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 14,
         "scale": 1,
@@ -1211,7 +1099,7 @@
         "frame": 15
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_fruit",
         "frame": 15,
         "scale": 1,
@@ -1227,7 +1115,7 @@
         "frame": 0
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 0,
         "scale": 1,
@@ -1243,7 +1131,7 @@
         "frame": 1
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 1,
         "scale": 1,
@@ -1259,7 +1147,7 @@
         "frame": 2
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 2,
         "scale": 1,
@@ -1275,7 +1163,7 @@
         "frame": 3
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 3,
         "scale": 1,
@@ -1291,7 +1179,7 @@
         "frame": 4
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 4,
         "scale": 1,
@@ -1307,7 +1195,7 @@
         "frame": 5
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 5,
         "scale": 1,
@@ -1323,7 +1211,7 @@
         "frame": 6
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 6,
         "scale": 1,
@@ -1339,7 +1227,7 @@
         "frame": 7
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 7,
         "scale": 1,
@@ -1355,7 +1243,7 @@
         "frame": 8
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 8,
         "scale": 1,
@@ -1371,7 +1259,7 @@
         "frame": 9
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 9,
         "scale": 1,
@@ -1387,7 +1275,7 @@
         "frame": 10
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 10,
         "scale": 1,
@@ -1403,7 +1291,7 @@
         "frame": 11
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 11,
         "scale": 1,
@@ -1419,7 +1307,7 @@
         "frame": 12
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 12,
         "scale": 1,
@@ -1435,7 +1323,7 @@
         "frame": 13
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 13,
         "scale": 1,
@@ -1451,7 +1339,7 @@
         "frame": 14
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 14,
         "scale": 1,
@@ -1467,7 +1355,7 @@
         "frame": 15
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 15,
         "scale": 1,
@@ -1483,7 +1371,7 @@
         "frame": 16
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 16,
         "scale": 1,
@@ -1499,7 +1387,7 @@
         "frame": 17
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 17,
         "scale": 1,
@@ -1515,7 +1403,7 @@
         "frame": 18
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 18,
         "scale": 1,
@@ -1531,7 +1419,7 @@
         "frame": 19
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 19,
         "scale": 1,
@@ -1547,7 +1435,7 @@
         "frame": 20
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 20,
         "scale": 1,
@@ -1563,7 +1451,7 @@
         "frame": 21
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 21,
         "scale": 1,
@@ -1579,7 +1467,7 @@
         "frame": 22
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 22,
         "scale": 1,
@@ -1595,7 +1483,7 @@
         "frame": 23
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 23,
         "scale": 1,
@@ -1611,7 +1499,7 @@
         "frame": 24
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 24,
         "scale": 1,
@@ -1627,7 +1515,7 @@
         "frame": 25
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 25,
         "scale": 1,
@@ -1643,7 +1531,7 @@
         "frame": 26
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 26,
         "scale": 1,
@@ -1659,7 +1547,7 @@
         "frame": 27
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 27,
         "scale": 1,
@@ -1675,7 +1563,7 @@
         "frame": 28
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 28,
         "scale": 1,
@@ -1691,7 +1579,7 @@
         "frame": 29
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 29,
         "scale": 1,
@@ -1707,7 +1595,7 @@
         "frame": 30
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 30,
         "scale": 1,
@@ -1723,7 +1611,7 @@
         "frame": 31
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 31,
         "scale": 1,
@@ -1739,7 +1627,7 @@
         "frame": 32
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 32,
         "scale": 1,
@@ -1755,7 +1643,7 @@
         "frame": 33
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 33,
         "scale": 1,
@@ -1771,7 +1659,7 @@
         "frame": 34
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 34,
         "scale": 1,
@@ -1787,7 +1675,7 @@
         "frame": 35
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 35,
         "scale": 1,
@@ -1803,7 +1691,7 @@
         "frame": 36
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 36,
         "scale": 1,
@@ -1819,7 +1707,7 @@
         "frame": 37
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 37,
         "scale": 1,
@@ -1835,7 +1723,7 @@
         "frame": 38
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 38,
         "scale": 1,
@@ -1851,7 +1739,7 @@
         "frame": 39
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 39,
         "scale": 1,
@@ -1867,7 +1755,7 @@
         "frame": 40
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 40,
         "scale": 1,
@@ -1883,7 +1771,7 @@
         "frame": 41
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 41,
         "scale": 1,
@@ -1899,7 +1787,7 @@
         "frame": 42
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 42,
         "scale": 1,
@@ -1915,7 +1803,7 @@
         "frame": 43
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 43,
         "scale": 1,
@@ -1931,7 +1819,7 @@
         "frame": 44
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 44,
         "scale": 1,
@@ -1947,7 +1835,7 @@
         "frame": 45
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 45,
         "scale": 1,
@@ -1963,7 +1851,7 @@
         "frame": 46
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 46,
         "scale": 1,
@@ -1979,7 +1867,7 @@
         "frame": 47
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 47,
         "scale": 1,
@@ -1995,7 +1883,7 @@
         "frame": 48
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 48,
         "scale": 1,
@@ -2011,7 +1899,7 @@
         "frame": 49
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 49,
         "scale": 1,
@@ -2027,7 +1915,7 @@
         "frame": 50
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 50,
         "scale": 1,
@@ -2043,7 +1931,7 @@
         "frame": 51
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 51,
         "scale": 1,
@@ -2059,7 +1947,7 @@
         "frame": 52
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 52,
         "scale": 1,
@@ -2075,7 +1963,7 @@
         "frame": 53
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 53,
         "scale": 1,
@@ -2091,7 +1979,7 @@
         "frame": 54
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 54,
         "scale": 1,
@@ -2107,7 +1995,7 @@
         "frame": 55
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 55,
         "scale": 1,
@@ -2123,7 +2011,7 @@
         "frame": 56
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 56,
         "scale": 1,
@@ -2139,7 +2027,7 @@
         "frame": 57
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 57,
         "scale": 1,
@@ -2155,7 +2043,7 @@
         "frame": 58
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 58,
         "scale": 1,
@@ -2171,7 +2059,7 @@
         "frame": 59
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 59,
         "scale": 1,
@@ -2187,7 +2075,7 @@
         "frame": 60
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 60,
         "scale": 1,
@@ -2203,7 +2091,7 @@
         "frame": 61
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 61,
         "scale": 1,
@@ -2219,7 +2107,7 @@
         "frame": 62
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 62,
         "scale": 1,
@@ -2235,7 +2123,7 @@
         "frame": 63
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_knight",
         "frame": 63,
         "scale": 1,
@@ -2507,7 +2395,7 @@
         "frame": 0
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_green",
         "frame": 0,
         "scale": 1,
@@ -2523,7 +2411,7 @@
         "frame": 1
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_green",
         "frame": 1,
         "scale": 1,
@@ -2539,7 +2427,7 @@
         "frame": 2
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_green",
         "frame": 2,
         "scale": 1,
@@ -2555,7 +2443,7 @@
         "frame": 3
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_green",
         "frame": 3,
         "scale": 1,
@@ -2571,7 +2459,7 @@
         "frame": 4
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_green",
         "frame": 4,
         "scale": 1,
@@ -2587,7 +2475,7 @@
         "frame": 5
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_green",
         "frame": 5,
         "scale": 1,
@@ -2603,7 +2491,7 @@
         "frame": 6
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_green",
         "frame": 6,
         "scale": 1,
@@ -2619,7 +2507,7 @@
         "frame": 7
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_green",
         "frame": 7,
         "scale": 1,
@@ -2635,7 +2523,7 @@
         "frame": 8
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_green",
         "frame": 8,
         "scale": 1,
@@ -2651,7 +2539,7 @@
         "frame": 9
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_green",
         "frame": 9,
         "scale": 1,
@@ -2667,7 +2555,7 @@
         "frame": 10
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_green",
         "frame": 10,
         "scale": 1,
@@ -2683,7 +2571,7 @@
         "frame": 11
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_green",
         "frame": 11,
         "scale": 1,
@@ -2699,7 +2587,7 @@
         "frame": 0
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_purple",
         "frame": 0,
         "scale": 1,
@@ -2715,7 +2603,7 @@
         "frame": 1
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_purple",
         "frame": 1,
         "scale": 1,
@@ -2731,7 +2619,7 @@
         "frame": 2
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_purple",
         "frame": 2,
         "scale": 1,
@@ -2747,7 +2635,7 @@
         "frame": 3
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_purple",
         "frame": 3,
         "scale": 1,
@@ -2763,7 +2651,7 @@
         "frame": 4
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_purple",
         "frame": 4,
         "scale": 1,
@@ -2779,7 +2667,7 @@
         "frame": 5
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_purple",
         "frame": 5,
         "scale": 1,
@@ -2795,7 +2683,7 @@
         "frame": 6
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_purple",
         "frame": 6,
         "scale": 1,
@@ -2811,7 +2699,7 @@
         "frame": 7
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_purple",
         "frame": 7,
         "scale": 1,
@@ -2827,7 +2715,7 @@
         "frame": 8
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_purple",
         "frame": 8,
         "scale": 1,
@@ -2843,7 +2731,7 @@
         "frame": 9
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_purple",
         "frame": 9,
         "scale": 1,
@@ -2859,7 +2747,7 @@
         "frame": 10
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_purple",
         "frame": 10,
         "scale": 1,
@@ -2875,7 +2763,7 @@
         "frame": 11
       },
       "creates": {
-        "type": "spriteFrame",
+        "type": "sprite-frame",
         "texture": "sprites_slime_purple",
         "frame": 11,
         "scale": 1,
