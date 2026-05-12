@@ -70,10 +70,16 @@ Run game:
 npm run dev
 ```
 
-Run game + local save server:
+Run game + local save server (servers only, no pre-generation):
 
 ```bash
 npm run dev:editor
+```
+
+Run game + local save server with asset generation prep:
+
+```bash
+npm run dev:editor:prep
 ```
 
 Build:
@@ -181,3 +187,4 @@ Use these helper commands from repo root:
 
 - `./start`: full preflight (install, generate assets, audit/rewrite, lint, test, then `dev:editor`)
 - `./start --fast`: iteration mode (generate assets + audit/rewrite, then `dev:editor`; skips install, lint, and test)
+- `npm run dev:editor:prep`: package-script equivalent for generation prep + server startup
