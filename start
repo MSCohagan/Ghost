@@ -1,8 +1,27 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-echo "==> Installing dependencies"
-npm install
+FAST_MODE="false"
+
+for arg in "$@"; do
+  case "$arg" in
+    --fast)
+      FAST_MODE="true"
+      ;;
+    *)
+      echo "Unknown argument: $arg"
+      echo "Usage: ./start [--fast]"
+      exit 1
+      ;;
+  esac
+done
+
+if [ "$FAST_MODE" = "false" ]; then
+  echo "==> Installing dependencies"
+  npm install
+else
+  echo "==> Fast mode enabled: skipping npm install"
+fi
 
 echo "==> Generating assets"
 npm run generate:assets
@@ -25,11 +44,15 @@ if [ "$warnings" -gt 0 ]; then
   npm run assets:audit
 fi
 
-echo "==> Lint"
-npm run lint
+if [ "$FAST_MODE" = "false" ]; then
+  echo "==> Lint"
+  npm run lint
 
-echo "==> Test"
-npm run test
+  echo "==> Test"
+  npm run test
+else
+  echo "==> Fast mode enabled: skipping lint/test"
+fi
 
 echo "==> Starting editor dev servers"
 npm run dev:editor

@@ -174,3 +174,10 @@ This source is published for portfolio review and development progress visibilit
 All rights are reserved. No permission is granted to copy, modify, redistribute, or use this codebase or assets for commercial or non-commercial purposes without explicit written permission.
 
 See [LICENSE](./LICENSE) for details.
+
+## Startup Shortcuts
+
+Use these helper commands from repo root:
+
+- `./start`: full preflight (install, generate assets, audit/rewrite, lint, test, then `dev:editor`)
+- `./start --fast`: iteration mode (generate assets + audit/rewrite, then `dev:editor`; skips install, lint, and test)
