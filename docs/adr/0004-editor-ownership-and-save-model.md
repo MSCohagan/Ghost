@@ -36,6 +36,8 @@ Editing must always resolve a target room key (for example `activeEditRoomKey`) 
 
 Edits must be applied to that room’s dataset, not implicitly to whichever room was originally bootstrapped as the base scene.
 
+In streamed single-scene runtime, room ownership is derived from streamed-room metadata and owner-room tags on runtime objects, not from base scene identity alone.
+
 ### 3) Runtime Unload Does Not Equal Data Loss
 
 When streamed rooms unload, only runtime instances are removed. Authored room content remains in persisted JSON (plus any editor-owned unsaved session state for that room).
@@ -45,6 +47,8 @@ When streamed rooms unload, only runtime instances are removed. Authored room co
 The editor save flow sends normalized room payloads to the local save server. The server writes room JSON in the canonical runtime-readable format.
 
 Save/reload must round-trip without shape drift in object contracts.
+
+Room-key and filename casing must be normalized at save/load boundaries so canonical runtime keys and persisted room JSON paths cannot drift (`Room1.json` vs `room1.json` class of issues).
 
 ### 5) Identity and References Persist Through Save
 
@@ -69,6 +73,7 @@ Deterministic IDs are assigned/maintained at the editor boundary. Reference fiel
 - introduces additional bookkeeping for unsaved per-room edits
 - increases coordination requirements between editor/runtime/persistence layers
 - migration work is needed for legacy assumptions that “current scene room” equals “current edit room”
+- requires compatibility handling while legacy room-key/casing and fallback adjacency assumptions are phased out
 
 ## Deferred / Follow-Up Decisions
 
@@ -83,3 +88,5 @@ Deterministic IDs are assigned/maintained at the editor boundary. Reference fiel
 1. Introduce explicit room-target resolution for all edit mutations (place/update/delete).
 2. Keep save payload generation centralized and normalized before API write.
 3. Ensure reload path reproduces the same contract shape consumed by `RoomRenderer`.
+4. Use streamed ownership metadata (and object owner-room tags) to resolve `activeEditRoomKey` in streamed spaces.
+5. Normalize room-key casing consistently at editor save and save-server write boundaries.
