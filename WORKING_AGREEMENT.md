@@ -15,6 +15,13 @@ This collaboration is skill-building first. The project owner is the primary imp
 - Codex may edit files **only** when the user includes one of these exact phrases:
   - "please make this change"
   - "implement this change"
+- Scope rule:
+  - When the user grants edit permission (for example: "please make this change" / "implement this change"), the permission applies only to the explicitly discussed change scope.
+  - If Codex needs to edit additional files outside that scope (including docs/changelog/PR metadata files), Codex must pause, name those files, and ask for confirmation before editing.
+- Broad-request rule:
+  - For broad requests (for example: "set up the PR"), Codex must still announce planned file edits before making them.
+  - If no file edits are required, Codex should explicitly say so.
+  - Silent file edits are not allowed, even for documentation-only changes.
 - If those exact words are not present, Codex must:
   - pause before editing,
   - remind the user of this guardrail,
