@@ -9,6 +9,7 @@ export default class RoomStreamingController {
     this.inLoadingZone = false
     this.loadRequestCounter = 0
     this.inflightLoads = new Set()
+    this.streamMarginPx = 384
     this.loadingZones = entities.loadingZones ?? []
     this.possessables = entities.possessables ?? []
 
@@ -22,10 +23,11 @@ export default class RoomStreamingController {
     loadingZones.forEach((zone) => {
       if (zone._streamListenersBound) return
       zone.on('enteredLoadingZone', (zone) => {
+        if (this.loadedRooms.has(zone.targetRoom) || this.inflightLoads.has(zone.targetRoom)) return
         this.inLoadingZone = true
         this.targetRoom = zone.targetRoom
         console.log(`Entered loading zone for room: ${zone.targetRoom}`)
-        this.loadRoom(zone)
+        this.loadRoom(this.targetRoom, zone)
       })
 
       zone.on('exitedLoadingZone', () => {
@@ -49,45 +51,103 @@ export default class RoomStreamingController {
     return roomData
   }
 
-  async loadRoom(zone) {
+  checkPrefetchZones(zone) {
+    const scene = this.scene
+    const player = scene.player
+    if (!player?.body) return
+
+    if (!this.loadingZones?.length) return
+
+    const playerBounds = player.getBounds()
+
+    const targetRoom = zone.targetRoom
+    if (!targetRoom) return
+    if (this.loadedRooms.has(targetRoom)) return
+    if (this.inflightLoads.has(targetRoom)) return
+
+    const shouldPrefetch = this.isWithinPrefetchMargin(playerBounds, zone)
+
+    if (shouldPrefetch) {
+      this.loadRoom(targetRoom, zone, { requireZoneEntry: false })
+    }
+  }
+
+  isWithinPrefetchMargin(playerBounds, zone) {
+    const margin = this.streamMarginPx
+
+    const zoneBounds = zone.getBounds ? zone.getBounds() : zone
+
+    switch (zone.direction) {
+      case 'right': {
+        const distance = zoneBounds.left - playerBounds.right
+        return distance <= margin && distance >= -32
+      }
+      case 'left': {
+        const distance = playerBounds.left - zoneBounds.right
+        return distance <= margin && distance >= -32
+      }
+      case 'down': {
+        const distance = zoneBounds.top - playerBounds.bottom
+        return distance <= margin && distance >= -32
+      }
+      case 'up': {
+        const distance = playerBounds.top - zoneBounds.bottom
+        return distance <= margin && distance >= -32
+      }
+      default:
+        return false
+    }
+  }
+
+  async loadRoom(targetRoom, zone, { requireZoneEntry = false } = {}) {
+    if (!targetRoom || !zone) return
+
     const requestId = ++this.loadRequestCounter
     const target = zone.targetRoom
-    console.log(
-      `[RoomStreaming][${requestId}] loadRoom start target=${target} inZone=${zone.inLoadingZone}`
-    )
 
-    if (!zone.targetRoom || !zone.inLoadingZone) {
-      console.warn('No target room specified for loading zone')
-      return
-    }
-
-    if (this.loadedRooms.has(zone.targetRoom)) {
+    if (this.loadedRooms.has(targetRoom)) {
       console.log(`[RoomStreaming][${requestId}] skip already loaded target=${target}`)
       return
     }
 
-    if (this.inflightLoads.has(zone.targetRoom)) {
+    if (this.inflightLoads.has(targetRoom)) {
       console.log(`[RoomStreaming][${requestId}] skip in-flight target=${target}`)
       return
     }
 
-    this.inflightLoads.add(zone.targetRoom)
+    if (requireZoneEntry && !zone.inLoadingZone) return
 
-    const roomData = await this.getRoomData(zone.targetRoom)
+    console.log(
+      `[RoomStreaming][${requestId}] loadRoom start target=${target} inZone=${zone.inLoadingZone}`
+    )
 
-    console.log('room data loaded: ', roomData)
-    console.log('load room', zone.targetRoom, zone.direction, zone.offsetX, zone.offsetY)
+    this.inflightLoads.add(targetRoom)
 
-    console.log('calling room renderer')
-    const roomObjects = this.scene.roomRenderer.render(roomData, {
-      offsetX: zone.offsetX,
-      offsetY: zone.offsetY,
-    })
+    try {
+      const roomData = await this.getRoomData(targetRoom)
+      const streamContext = {
+        offsetX: zone.offsetX ?? 0,
+        offsetY: zone.offsetY ?? 0,
+        targetRoom,
+      }
 
-    this.loadedRooms.set(zone.targetRoom, roomObjects)
-    this.inflightLoads.delete(zone.targetRoom)
-    this.registerStreamedRoom(roomObjects, roomData, zone)
-    console.log('streamed room: ', zone.targetRoom)
+      console.log('room data loaded: ', roomData)
+      console.log('load room', targetRoom, zone.direction, zone.offsetX, zone.offsetY)
+
+      console.log('calling room renderer')
+      const roomObjects = this.scene.roomRenderer.render(roomData, {
+        offsetX: zone.offsetX,
+        offsetY: zone.offsetY,
+      })
+
+      this.registerStreamedRoom(roomData, roomObjects, streamContext)
+
+      this.loadedRooms.set(targetRoom, roomObjects)
+    } finally {
+      this.inflightLoads.delete(targetRoom)
+    }
+
+    console.log('streamed room: ', targetRoom)
     console.log(
       `[RoomStreaming][${requestId}] scene possessables length=${this.scene.possessables.length}`
     )
@@ -96,7 +156,9 @@ export default class RoomStreamingController {
     )
   }
 
-  registerStreamedRoom(roomObjects, roomData, zone) {
+  registerStreamedRoom(roomData, roomObjects, streamContext) {
+    const { targetRoom, offsetX, offsetY } = streamContext
+    console.log(`[RoomStreaming] registering streamed room: ${targetRoom}`)
     console.log(
       `[RoomStreaming] pre-register scene.possessables length=${this.scene.possessables.length}`
     )
@@ -134,12 +196,12 @@ export default class RoomStreamingController {
 
     const worldWidth = Math.max(
       this.scene.physics.world.bounds.width,
-      zone.offsetX + (roomData.roomWidth ?? this.scene.roomWidth)
+      offsetX + (roomData.roomWidth ?? this.scene.roomWidth)
     )
 
     const worldHeight = Math.max(
       this.scene.physics.world.bounds.height,
-      zone.offsetY + (roomData.roomHeight ?? this.scene.roomHeight)
+      offsetY + (roomData.roomHeight ?? this.scene.roomHeight)
     )
 
     this.scene.physics.world.setBounds(0, 0, worldWidth, worldHeight)
@@ -148,6 +210,7 @@ export default class RoomStreamingController {
 
   update() {
     this.loadingZones.forEach((zone) => {
+      this.checkPrefetchZones(zone)
       if (
         this.scene.physics.overlap(this.scene.player, zone) ||
         this.scene.possessables.some((obj) => this.scene.physics.overlap(obj, zone))
