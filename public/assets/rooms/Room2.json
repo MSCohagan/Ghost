@@ -9,10 +9,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 0,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -20,10 +20,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 48,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -31,10 +31,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 96,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -42,10 +42,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 144,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -53,10 +53,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 192,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -64,10 +64,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 240,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -75,10 +75,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 288,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -86,10 +86,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 336,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -97,10 +97,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 384,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -108,10 +108,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 432,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -119,10 +119,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 480,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -130,10 +130,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 528,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -141,10 +141,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 576,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -152,10 +152,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 624,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -163,10 +163,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 672,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -174,10 +174,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 720,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -185,10 +185,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 768,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -196,10 +196,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 816,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -207,10 +207,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 864,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -218,10 +218,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 912,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -229,10 +229,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 960,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -240,10 +240,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 1008,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -251,10 +251,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 1056,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -262,10 +262,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 1104,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -273,10 +273,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 1152,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -284,10 +284,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 1200,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -295,10 +295,10 @@
     {
       "type": "ground",
       "group": "ground",
-      "texture": "platforms",
-      "frame": 1,
+      "texture": "sprites_world_tileset",
+      "frame": 8,
       "x": 1248,
-      "y": 696,
+      "y": 672,
       "scale": 3,
       "solid": true,
       "collidesWith": ["player", "possessables"]
@@ -791,7 +791,7 @@
       "type": "gate",
       "group": "gate",
       "x": 1280,
-      "y": 720,
+      "y": 0,
       "width": 48,
       "height": 1440,
       "key": "gateA",

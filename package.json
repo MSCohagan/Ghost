@@ -18,6 +18,7 @@
     "dev:editor:prep": "npm run generate:assets && npm run dev:editor",
     "format": "prettier . --write",
     "lint": "prettier . --check",
+    "lint:fix": "npm run lint || (npm run format && npm run lint)",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "cloc": "cloc . --exclude-list-file=.clocignore",

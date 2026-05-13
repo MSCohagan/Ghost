@@ -16,7 +16,23 @@ This project currently uses a manual, milestone-oriented changelog format. As ve
   - added prefetch-margin loading pass to reduce visible pop-in at room boundaries
   - unified per-zone update handling for prefetch + overlap enter/exit checks
   - clarified loaded/in-flight guard behavior to keep stream loads idempotent
-  - added stream context payload (target room + offsets) for registration-time room ownership context
+  - added stream context payload (target room + offsets) for registration-time room ownership conte- Room seam cleanup and grid/alignment pass:
+  - adjusted Room1 -> Room2 loading-zone offset baseline to `1296` for seam calibration
+  - normalized Room1 seam-adjacent platform coordinates to strict 48px lane
+  - removed seam-overlap platform artifacts and resolved visible seam gap/overlap churn
+- Ground presentation and baseline alignment updates:
+  - switched Room1/Room2 bottom ground rows to `sprites_world_tileset` gray-stone tile (`frame: 8`)
+  - moved bottom ground row to `y=672` so tile bottoms align with 720px room bottom
+- Puzzle object anchoring consistency update:
+  - `PressurePlate` now uses top-left origin (`setOrigin(0, 0)`) for placement parity testing
+
+### Added
+
+- `RoomStreamingController` regression tests:
+  - prefetch trigger/skip behavior
+  - loaded/in-flight duplicate-load guards
+  - zone-entry requirement gating
+  - unsupported-direction safety fallback
 
 ### Notes
 

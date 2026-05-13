@@ -9,6 +9,7 @@ export default class Gate extends Phaser.GameObjects.Rectangle {
     this.isOpen = isOpen
 
     this.scene.add.existing(this)
+    this.setOrigin(0, 0)
     this.scene.physics.add.existing(this, true)
     this.body.updateFromGameObject()
   }

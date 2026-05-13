@@ -45,8 +45,8 @@ if [ "$warnings" -gt 0 ]; then
 fi
 
 if [ "$FAST_MODE" = "false" ]; then
-  echo "==> Lint"
-  npm run lint
+  echo "==> Lint (auto-fix with Prettier if needed)"
+  npm run lint:fix
 
   echo "==> Test"
   npm run test
