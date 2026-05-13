@@ -16,8 +16,7 @@ This project currently uses a manual, milestone-oriented changelog format. As ve
   - added prefetch-margin loading pass to reduce visible pop-in at room boundaries
   - unified per-zone update handling for prefetch + overlap enter/exit checks
   - clarified loaded/in-flight guard behavior to keep stream loads idempotent
-  - added stream context payload (target room + offsets) for registration-time room ownership context
-- Room seam cleanup and grid/alignment pass:
+  - added stream context payload (target room + offsets) for registration-time room ownership conte- Room seam cleanup and grid/alignment pass:
   - adjusted Room1 -> Room2 loading-zone offset baseline to `1296` for seam calibration
   - normalized Room1 seam-adjacent platform coordinates to strict 48px lane
   - removed seam-overlap platform artifacts and resolved visible seam gap/overlap churn
