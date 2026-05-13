@@ -10,6 +10,19 @@ This project currently uses a manual, milestone-oriented changelog format. As ve
 
 - Repository process/docs hardening in progress.
 
+### Changed
+
+- `RoomStreamingController` streaming flow hardened:
+  - added prefetch-margin loading pass to reduce visible pop-in at room boundaries
+  - unified per-zone update handling for prefetch + overlap enter/exit checks
+  - clarified loaded/in-flight guard behavior to keep stream loads idempotent
+  - added stream context payload (target room + offsets) for registration-time room ownership context
+
+### Notes
+
+- ADR policy updates for streaming adjacency authority and editor room ownership landed in PR `#14`.
+- Streaming implementation changes are tracked in PR `#15`.
+
 ## [2026-05-10] - Repository Professionalization Milestone
 
 ### Added
