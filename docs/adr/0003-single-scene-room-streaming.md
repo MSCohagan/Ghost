@@ -32,7 +32,26 @@ Room/world systems own room graph and loading behavior:
 - `RoomStreamingController` manages room loading triggers, cache lookups, and streamed room registration.
 - The Player object does not own room graph state or scene transition policy.
 
-### 4) Data Path
+### 4) Adjacency Source of Truth and Fallback
+
+For runtime streaming decisions, loading-zone graph edges are primary:
+
+- `loadingZone.targetRoom` (with zone direction/offset context) is the canonical runtime adjacency edge.
+
+Room-level adjacency metadata is a fallback and validation layer:
+
+- optional room JSON adjacency map may provide backup links when no usable zone edge exists.
+- legacy `nextRoomLeft` / `nextRoomRight` remains transitional fallback support for hard transitions and compatibility.
+
+When zone-edge and room-level adjacency disagree, runtime streaming prefers zone-edge data and emits a warning for diagnostics.
+
+### 5) Streamed Room Metadata and Ownership Tags
+
+Loaded streamed rooms should be tracked as metadata entries (room key, offsets, and room extents) rather than only raw render outputs.
+
+Streamed runtime instances should be tagged with owner-room identity so downstream systems (especially editor flows) can resolve room-aware behavior in single-scene traversal.
+
+### 6) Data Path
 
 Streaming consumes room JSON and renders through existing runtime creation boundaries (`RoomRenderer` + contracts), keeping authored data and runtime behavior aligned.
 
@@ -51,6 +70,8 @@ Streaming consumes room JSON and renders through existing runtime creation bound
 - collisions/controllers must be re-wired for streamed content at consistent boundaries
 - camera bounds/world bounds must expand or coordinate with streamed chunks
 - requires explicit policy for unloading distant rooms to avoid long-session memory growth
+- requires explicit conflict-handling when room-level adjacency and zone-level adjacency diverge
+- increases metadata bookkeeping for streamed-room ownership and editor interoperability
 
 ## Deferred / Follow-Up Decisions
 
@@ -64,3 +85,5 @@ Streaming consumes room JSON and renders through existing runtime creation bound
 1. Keep streamed room rendering in the active scene via JSON fetch + `RoomRenderer`.
 2. Ensure post-stream registration re-wires collisions, puzzle links, and entity access paths.
 3. Keep room-cache, loaded-room instances, and persistent save-state conceptually separate.
+4. Prefer zone-edge adjacency for runtime stream decisions; use room-level/legacy adjacency as fallback.
+5. Track streamed-room metadata (room key, offset, extents) and propagate owner-room tags to streamed objects.
