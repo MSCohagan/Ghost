@@ -23,7 +23,7 @@ function makeZone(overrides = {}) {
 function makeScene(overrides = {}) {
   return {
     player: {
-      body: {},
+      body: { enable: true },
       getBounds: vi.fn(() => ({
         left: 900,
         right: 950,
@@ -91,6 +91,31 @@ describe('RoomStreamingController', () => {
       top: 0,
       bottom: 64,
     })
+    zone.getBounds.mockReturnValue({
+      left: 1000,
+      right: 1096,
+      top: 0,
+      bottom: 720,
+    })
+
+    controller.checkPrefetchZones(zone)
+
+    expect(loadSpy).toHaveBeenCalledWith('Room2', zone, { requireZoneEntry: false })
+  })
+
+  it('prefetches from currentHost bounds while possessing', () => {
+    const loadSpy = vi.spyOn(controller, 'loadRoom').mockResolvedValue()
+    const hostBounds = {
+      left: 600,
+      right: 700,
+      top: 0,
+      bottom: 64,
+    }
+    scene.player.body.enable = false
+    scene.possessionController.currentHost = {
+      body: { enable: true },
+      getBounds: vi.fn(() => hostBounds),
+    }
     zone.getBounds.mockReturnValue({
       left: 1000,
       right: 1096,
