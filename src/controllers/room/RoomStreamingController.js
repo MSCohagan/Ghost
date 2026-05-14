@@ -54,18 +54,24 @@ export default class RoomStreamingController {
   checkPrefetchZones(zone) {
     const scene = this.scene
     const player = scene.player
-    if (!player?.body) return
+    const currentHost = scene.possessionController.currentHost
 
     if (!this.loadingZones?.length) return
 
-    const playerBounds = player.getBounds()
+    const sourceBounds = currentHost?.body?.enable
+      ? currentHost.getBounds()
+      : player?.body?.enable
+        ? player.getBounds()
+        : null
+
+    if (!sourceBounds) return
 
     const targetRoom = zone.targetRoom
     if (!targetRoom) return
     if (this.loadedRooms.has(targetRoom)) return
     if (this.inflightLoads.has(targetRoom)) return
 
-    const shouldPrefetch = this.isWithinPrefetchMargin(playerBounds, zone)
+    const shouldPrefetch = this.isWithinPrefetchMargin(sourceBounds, zone)
 
     if (shouldPrefetch) {
       this.loadRoom(targetRoom, zone, { requireZoneEntry: false })
