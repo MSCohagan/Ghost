@@ -76,13 +76,14 @@ export default class EditorPlacementController {
 
     const selectedEntry = this.editor.dockController.selectedPaletteEntry
     const useRectangle = creates.type === 'loadingZone' || selectedEntry?.icon?.type === 'rectangle'
+    const gridSize = this.host.gridSize ?? this.host.roomData?.gridSize ?? 48
 
     if (useRectangle) {
       placed = this.host.add.rectangle(
         x,
         y,
-        creates.width ?? 48,
-        creates.height ?? 48,
+        creates.width ?? gridSize,
+        creates.height ?? gridSize,
         Number(creates.color ?? 0xff88ff),
         0.35
       )

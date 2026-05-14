@@ -1,8 +1,9 @@
 export default class PressurePlate extends Phaser.GameObjects.Rectangle {
   constructor(scene, x, y, options = {}) {
+    const defaultGridSize = scene.gridSize ?? 48
     const {
       width = 12,
-      height = 48,
+      height = defaultGridSize,
       color = 0xf000000,
       key = '',
       targetGate = '',

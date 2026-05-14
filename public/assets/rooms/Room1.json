@@ -1,6 +1,7 @@
 {
   "roomWidth": 3200,
   "roomHeight": 720,
+  "gridSize": 48,
   "playerSpawn": {
     "x": 192,
     "y": 240,

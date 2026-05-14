@@ -2,7 +2,7 @@ export default class EditorPointerController {
   constructor(editor) {
     this.editor = editor
     this.host = editor.hostScene
-    this.gridSize = 48
+    this.gridSize = this.host.gridSize ?? this.host.roomData?.gridSize ?? 48
   }
 
   getWorldPosition(pointer) {
@@ -12,10 +12,11 @@ export default class EditorPointerController {
 
   getSnappedPosition(pointer) {
     const world = this.getWorldPosition(pointer)
+    const gridSize = this.host.gridSize ?? this.host.roomData?.gridSize ?? this.gridSize ?? 48
 
     return {
-      x: Math.floor(world.x / this.gridSize) * this.gridSize,
-      y: Math.floor(world.y / this.gridSize) * this.gridSize,
+      x: Math.floor(world.x / gridSize) * gridSize,
+      y: Math.floor(world.y / gridSize) * gridSize,
     }
   }
 

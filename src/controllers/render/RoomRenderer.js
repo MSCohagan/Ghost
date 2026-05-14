@@ -231,10 +231,11 @@ export default class RoomRenderer {
   }
 
   createGate(obj, { createdObjects, registerCollisionObject }) {
+    const gridSize = this.scene.gridSize ?? 48
     const gate = new Gate(this.scene, obj.x, obj.y, {
       key: obj.key,
-      width: obj.width ?? 48,
-      height: obj.height ?? 96,
+      width: obj.width ?? gridSize,
+      height: obj.height ?? gridSize * 2,
       color: obj.color ?? 0x88ffff,
       isOpen: obj.isOpen ?? false,
     })
@@ -246,10 +247,11 @@ export default class RoomRenderer {
   }
 
   createPressurePlate(obj, { createdObjects, registerCollisionObject }) {
+    const gridSize = this.scene.gridSize ?? 48
     const plate = new PressurePlate(this.scene, obj.x, obj.y, {
       key: obj.key,
       targetGate: obj.targetGate,
-      width: obj.width ?? 48,
+      width: obj.width ?? gridSize,
       height: obj.height ?? 12,
       color: obj.color ?? 0xf00000,
       pressDepth: obj.pressDepth ?? 8,
@@ -262,9 +264,10 @@ export default class RoomRenderer {
   }
 
   createLoadingZone(obj, { createdObjects }) {
+    const gridSize = this.scene.gridSize ?? 48
     const zone = new LoadingZone(this.scene, obj.x, obj.y, {
-      width: obj.width ?? 96,
-      height: obj.height ?? 720,
+      width: obj.width ?? gridSize * 2,
+      height: obj.height ?? this.scene.roomHeight ?? 720,
       color: obj.color ?? 0xff88ff,
       targetRoom: obj.targetRoom,
       direction: obj.direction ?? 'right',

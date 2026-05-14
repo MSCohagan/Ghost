@@ -54,6 +54,7 @@ export default class RoomController {
 
     scene.roomWidth = scene.roomData.roomWidth ?? 1280
     scene.roomHeight = scene.roomData.roomHeight ?? 720
+    scene.gridSize = scene.roomData.gridSize ?? 48
   }
 
   renderBackground(scene) {
