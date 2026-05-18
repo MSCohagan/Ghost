@@ -58,6 +58,18 @@ When helping with a bug, use this sequence:
 - If no ADR exists for a major architectural decision, create or update one before merging.
 - PRs that affect architecture should reference the relevant ADR(s).
 
+## Spec Trigger Policy (Lightweight)
+
+- We create a short feature spec only when at least one condition is true:
+  - the change modifies a persisted data contract (for example room JSON, IDs, save schema)
+  - the change modifies behavior across controller boundaries
+  - the change has high regression risk in core gameplay flow
+- Spec timebox: 10-15 minutes maximum.
+- Spec length cap: one page.
+- If none of the trigger conditions apply, we skip spec authoring and proceed with ticket + implementation.
+- Each spec should link to related Jira issue(s), ADR(s) if applicable, and PR(s).
+- Specs are living alignment artifacts, not permanent blockers; if implementation reveals a better approach, update the spec or record the change in the PR/ADR.
+
 ## Communication Commitments
 
 - Be concise, technical, and reasoning-focused.
