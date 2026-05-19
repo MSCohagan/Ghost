@@ -162,6 +162,18 @@ export default class RoomStreamingController {
     )
   }
 
+  tagTargetRoomObjects(entities, sourceRoomKey) {
+    for (const [key, value] of Object.entries(entities)) {
+      if (Array.isArray(value)) {
+        value.forEach((obj) => {
+          obj.sourceRoomKey = sourceRoomKey
+        })
+      } else {
+        value.sourceRoomKey = sourceRoomKey
+      }
+    }
+  }
+
   registerStreamedRoom(roomData, roomObjects, streamContext) {
     const { targetRoom, offsetX, offsetY } = streamContext
     console.log(`[RoomStreaming] registering streamed room: ${targetRoom}`)
@@ -169,7 +181,13 @@ export default class RoomStreamingController {
       `[RoomStreaming] pre-register scene.possessables length=${this.scene.possessables.length}`
     )
 
+    this.tagTargetRoomObjects(roomObjects.entities, targetRoom)
+
     const newPossessables = roomObjects.entities.possessables ?? []
+    const newGates = roomObjects.entities.gates ?? []
+    const newPressurePlates = roomObjects.entities.pressurePlates ?? []
+    const newLoadingZones = roomObjects.entities.loadingZones ?? []
+
     console.log(
       `[RoomStreaming] roomObjects.entities.possessables length=${newPossessables.length}`
     )
@@ -177,16 +195,9 @@ export default class RoomStreamingController {
     console.log(
       `[RoomStreaming] post-push scene.possessables length=${this.scene.possessables.length}`
     )
-
-    const newGates = roomObjects.entities.gates ?? []
     this.scene.gates.push(...newGates)
-
-    const newPressurePlates = roomObjects.entities.pressurePlates ?? []
     this.scene.pressurePlates.push(...newPressurePlates)
-
     this.scene.puzzleController?.setupPressurePlateEventsFor?.(newPressurePlates)
-
-    const newLoadingZones = roomObjects.entities.loadingZones ?? []
     this.loadingZones.push(...newLoadingZones)
     this.setupLoadingZoneEventsFor(newLoadingZones)
 
