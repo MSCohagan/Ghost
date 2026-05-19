@@ -6,6 +6,7 @@ import EditorPlacementController from '@/controllers/editor/EditorPlacementContr
 import EditorSaveController from '@/controllers/editor/EditorSaveController.js'
 import EditorControlsController from '@/controllers/editor/EditorControlsController.js'
 import EditorPointerController from '@/controllers/editor/EditorPointerController.js'
+import EditorRoomContextController from '@/controllers/editor/EditorRoomContextController.js'
 
 export default class LevelEditor extends Phaser.Scene {
   constructor() {
@@ -30,6 +31,7 @@ export default class LevelEditor extends Phaser.Scene {
       tool: new EditorToolController(this),
       selection: new EditorSelectionController(this),
       controls: new EditorControlsController(this),
+      context: new EditorRoomContextController(this),
     }
 
     this.dockController = this.controllers.dock
@@ -39,6 +41,7 @@ export default class LevelEditor extends Phaser.Scene {
     this.toolController = this.controllers.tool
     this.selectionController = this.controllers.selection
     this.controlsController = this.controllers.controls
+    this.contextController = this.controllers.context
 
     Object.values(this.controllers).forEach((controller) => {
       controller.create?.()

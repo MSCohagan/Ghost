@@ -1,8 +1,25 @@
+/**
+ * @typedef {Object} StreamedRoomBounds
+ * @property {number} offsetX
+ * @property {number} offsetY
+ * @property {number} roomWidth
+ * @property {number} roomHeight
+ */
+
+/**
+ * @typedef {Object} RoomInstanceMeta
+ * @property {string} roomKey
+ * @property {string} sourceRoomKey
+ * @property {StreamedRoomBounds} bounds
+ * @property {unknown} roomObjects
+ */
+
 export default class RoomStreamingController {
   constructor(scene, entities = {}) {
     this.scene = scene
 
     this.roomCache = new Map()
+    /** @type {Map<string, RoomInstanceMeta>} */
     this.loadedRooms = new Map()
 
     this.targetRoom = null
@@ -148,12 +165,26 @@ export default class RoomStreamingController {
 
       this.registerStreamedRoom(roomData, roomObjects, streamContext)
 
-      this.loadedRooms.set(targetRoom, roomObjects)
+      /** @type {RoomInstanceMeta} */
+      const roomMeta = {
+        roomKey: targetRoom,
+        sourceRoomKey: targetRoom,
+        bounds: {
+          offsetX: streamContext.offsetX,
+          offsetY: streamContext.offsetY,
+          roomWidth: roomData.roomWidth ?? this.scene.roomWidth,
+          roomHeight: roomData.roomHeight ?? this.scene.roomHeight,
+        },
+        roomObjects,
+      }
+
+      this.loadedRooms.set(targetRoom, roomMeta)
+      console.log('room loaded and registered: ', roomMeta)
     } finally {
       this.inflightLoads.delete(targetRoom)
     }
 
-    console.log('streamed room: ', targetRoom)
+    console.log('loaded rooms after load ', Array.from(this.loadedRooms.keys()))
     console.log(
       `[RoomStreaming][${requestId}] scene possessables length=${this.scene.possessables.length}`
     )
