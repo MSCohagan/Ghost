@@ -54,9 +54,29 @@ Room-key and filename casing must be normalized at save/load boundaries so canon
 
 Deterministic IDs are assigned/maintained at the editor boundary. Reference fields (`targetIds`, with migration-era legacy compatibility where needed) must survive save/reload unchanged unless explicitly edited.
 
+Canonical persisted fields for streamed/editor interoperability are:
+
+- `objectId` (stable unique identity)
+- `sourceRoomKey` (room ownership)
+- `targetIds` (authoritative puzzle links)
+
+Legacy fields (for example `key`, `targetGate`) remain compatibility-read paths during migration but are not canonical linkage fields.
+
 ### 6) Orchestration Boundary
 
 `LevelEditor` remains orchestration-focused and delegates behavior to editor controllers. Controllerized subsystems continue to own tool-specific behavior, while the editor/save model remains contract-first.
+
+### 7) Validation and Save Semantics
+
+The editor validates room payloads at save time and surfaces at least:
+
+- duplicate `objectId` values
+- missing/unresolvable `targetIds`
+- invalid references under configured room-link policies
+
+Unlinked puzzle objects use explicit unlinked state (`targetIds: []` or `null`, chosen consistently by policy), not sentinel values.
+
+During migration, validation may run in warning-first mode. Canonical fields are always the write path for newly saved content.
 
 ## Consequences
 
@@ -74,14 +94,16 @@ Deterministic IDs are assigned/maintained at the editor boundary. Reference fiel
 - increases coordination requirements between editor/runtime/persistence layers
 - migration work is needed for legacy assumptions that “current scene room” equals “current edit room”
 - requires compatibility handling while legacy room-key/casing and fallback adjacency assumptions are phased out
+- requires ID/link validation policy decisions (warning-only vs save-blocking)
 
 ## Deferred / Follow-Up Decisions
 
 - final `activeEditRoomKey` lifecycle and UX semantics
 - unsaved-change policy across room switches/unloads
 - conflict strategy if runtime mutates objects while editor changes are pending
-- editor tooling for managing object references (`targetIds`) at scale
+- editor tooling for managing object references (`targetIds`) at scale (selection UI, target preview/highlight)
 - eventual server-side validation/schema checks for saved room payloads
+- final policy on cross-room `targetIds` (allow vs restrict)
 
 ## Implementation Notes (Initial)
 
@@ -90,3 +112,5 @@ Deterministic IDs are assigned/maintained at the editor boundary. Reference fiel
 3. Ensure reload path reproduces the same contract shape consumed by `RoomRenderer`.
 4. Use streamed ownership metadata (and object owner-room tags) to resolve `activeEditRoomKey` in streamed spaces.
 5. Normalize room-key casing consistently at editor save and save-server write boundaries.
+6. Ensure newly saved puzzle links write canonical `targetIds` keyed to `objectId`, with legacy read fallback only.
+7. Preserve canonical fields during runtime streaming; runtime may augment but must not overwrite persisted ownership/link data.

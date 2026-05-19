@@ -51,6 +51,14 @@ Loaded streamed rooms should be tracked as metadata entries (room key, offsets, 
 
 Streamed runtime instances should be tagged with owner-room identity so downstream systems (especially editor flows) can resolve room-aware behavior in single-scene traversal.
 
+Editor-authored identity/link fields are canonical in streamed runtime:
+
+- `objectId` (stable object identity)
+- `sourceRoomKey` (room ownership)
+- `targetIds` (puzzle link references)
+
+Streaming/runtime systems may attach transient in-memory metadata for lifecycle or performance reasons, but they must not overwrite valid persisted contract fields.
+
 ### 6) Data Path
 
 Streaming consumes room JSON and renders through existing runtime creation boundaries (`RoomRenderer` + contracts), keeping authored data and runtime behavior aligned.
@@ -72,6 +80,7 @@ Streaming consumes room JSON and renders through existing runtime creation bound
 - requires explicit policy for unloading distant rooms to avoid long-session memory growth
 - requires explicit conflict-handling when room-level adjacency and zone-level adjacency diverge
 - increases metadata bookkeeping for streamed-room ownership and editor interoperability
+- requires migration compatibility while legacy `key` / `targetGate` link patterns are phased out
 
 ## Deferred / Follow-Up Decisions
 
@@ -87,3 +96,9 @@ Streaming consumes room JSON and renders through existing runtime creation bound
 3. Keep room-cache, loaded-room instances, and persistent save-state conceptually separate.
 4. Prefer zone-edge adjacency for runtime stream decisions; use room-level/legacy adjacency as fallback.
 5. Track streamed-room metadata (room key, offset, extents) and propagate owner-room tags to streamed objects.
+6. Prefer `targetIds -> objectId` puzzle resolution and keep legacy key-based fallback read-only during migration.
+7. Preserve canonical metadata (`objectId`, `sourceRoomKey`, `targetIds`) through stream-in/stream-out cycles.
+
+## Compatibility / Migration
+
+Legacy room JSON that depends on reused puzzle keys (for example `gateA`) is supported temporarily through compatibility fallback behavior. Canonical identity/link fields remain the required write path and long-term source of truth.
