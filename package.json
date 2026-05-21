@@ -10,7 +10,7 @@
     "diagram:overview": "mmdc -i docs/diagrams/architecture-overview.mmd -o docs/diagrams/architecture-overview.svg && mmdc -i docs/diagrams/architecture-overview.mmd -o docs/diagrams/architecture-overview.png -w 2000 -s 2",
     "diagram:deep": "mmdc -i docs/diagrams/architecture-deep-dive.mmd -o docs/diagrams/architecture-deep-dive.svg && mmdc -i docs/diagrams/architecture-deep-dive.mmd -o docs/diagrams/architecture-deep-dive.png -w 2400 -s 2",
     "diagram:export": "npm run diagram:overview && npm run diagram:deep",
-    "dev": "vite --port 5173",
+    "dev": "vite --host 0.0.0.0 --port 5173",
     "build": "vite build",
     "preview": "vite preview --port 4173",
     "save-server": "node src/tools/SaveServer.js",
