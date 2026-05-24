@@ -4,7 +4,7 @@ export default class EditorRoomContextController {
     this.host = editor.hostScene
     this.worldBounds = [
       {
-        roomKey: 'room1',
+        roomKey: 'Room1',
         bounds: {
           offsetX: 0,
           offsetY: 0,
