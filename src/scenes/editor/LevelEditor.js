@@ -50,5 +50,6 @@ export default class LevelEditor extends Phaser.Scene {
 
   update(time, delta) {
     this.controlsController.update(time, delta)
+    this.contextController.update()
   }
 }
