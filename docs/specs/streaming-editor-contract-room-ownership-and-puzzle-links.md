@@ -15,6 +15,7 @@ The current data model allows non-unique puzzle identifiers across rooms (for ex
 - Ensure puzzle links (`targetIds`) resolve to the intended objects, even when similarly named objects exist in other rooms.
 - Make editor-authored metadata the source of truth, with runtime only validating/augmenting (not replacing) that data.
 - Prevent cross-room binding collisions and regressions during load, stream, unload, and re-save cycles.
+- Ensure editor room-at-pointer resolution uses explicit room bounds contracts, not ambiguous overlap-first heuristics.
 
 ## Proposed Approach
 
@@ -34,6 +35,11 @@ The current data model allows non-unique puzzle identifiers across rooms (for ex
   - invalid cross-room references (if disallowed by design).
 - Runtime streaming consumes editor-authored metadata as authoritative; it may enrich in-memory data for performance, but must not overwrite valid saved ownership/link fields.
 - Legacy room JSON is normalized through a migration/backfill pass so reused identifiers (for example `gateA` in multiple rooms) are replaced with stable room-safe identities before or during load.
+- Editor room-context resolution contract:
+  - base-room bounds and streamed-room bounds are merged into a single snapshot used by room-at-pointer checks.
+  - effective bounds should be non-overlapping where possible.
+  - if overlap is unavoidable, resolver precedence must be deterministic and explicit (for example, priority ordering policy), never implicit “first array match” behavior.
+  - per-frame evaluation is acceptable in editor mode while bounds count remains small; optimize later only if needed.
 
 ## Data Model / Contracts
 
@@ -116,6 +122,7 @@ The current data model allows non-unique puzzle identifiers across rooms (for ex
 - Runtime fallback policy: define behavior when target resolution fails at runtime (no-op, disable, or hard warning).
 - Save-time enforcement: decide whether validation errors block save or permit warning-only save during transition.
 - Performance: determine whether indexed lookup maps by `objectId` are needed at load time to avoid repeated linear scans in large streamed scenes.
+- Bounds precedence policy: choose and document final deterministic overlap precedence rule if non-overlap cannot be guaranteed in authored/runtime effective bounds.
 
 ## Acceptance Criteria
 
@@ -128,3 +135,4 @@ The current data model allows non-unique puzzle identifiers across rooms (for ex
 - Runtime logs clear, actionable warnings for invalid contract data without silently rebinding to wrong targets.
 - Legacy room data can load without crash during migration window, with canonical fields present after migration/backfill.
 - At least one integration test (or equivalent playtest checklist) verifies correct binding after stream-in + stream-out + reload cycle.
+- Editor room-at-pointer resolves to intended room key in seam/transition regions according to explicit effective bounds policy (including deterministic overlap behavior if overlap exists).
