@@ -38,7 +38,11 @@ The current data model allows non-unique puzzle identifiers across rooms (for ex
 - Editor room-context resolution contract:
   - base-room bounds and streamed-room bounds are merged into a single snapshot used by room-at-pointer checks.
   - effective bounds should be non-overlapping where possible.
-  - if overlap is unavoidable, resolver precedence must be deterministic and explicit (for example, priority ordering policy), never implicit “first array match” behavior.
+  - if overlap is unavoidable, resolver precedence must be deterministic and explicit, never implicit “first array match” behavior.
+  - deterministic precedence order:
+    1) prefer non-base room matches over base room matches
+    2) among non-base matches, prefer highest `offsetX`
+    3) if still tied, prefer lexicographically larger `roomKey`
   - per-frame evaluation is acceptable in editor mode while bounds count remains small; optimize later only if needed.
 
 ## Data Model / Contracts
@@ -83,6 +87,7 @@ The current data model allows non-unique puzzle identifiers across rooms (for ex
  * 4) Unlinked puzzle object uses targetIds: [] (or omitted by explicit rule), never sentinel values.
  * 5) Runtime may append metadata, but must not overwrite persisted objectId/sourceRoomKey/targetIds.
  * 6) Legacy targetGate/key-based links are migration-only compatibility paths.
+ * 7) Room-at-pointer overlap resolution uses documented deterministic precedence (never first-array-match behavior).
  */
 ```
 
@@ -123,6 +128,7 @@ The current data model allows non-unique puzzle identifiers across rooms (for ex
 - Save-time enforcement: decide whether validation errors block save or permit warning-only save during transition.
 - Performance: determine whether indexed lookup maps by `objectId` are needed at load time to avoid repeated linear scans in large streamed scenes.
 - Bounds precedence policy: choose and document final deterministic overlap precedence rule if non-overlap cannot be guaranteed in authored/runtime effective bounds.
+  - Decision (2026-05-27): non-base > base, then highest `offsetX`, then lexicographic `roomKey`.
 
 ## Acceptance Criteria
 
@@ -136,3 +142,4 @@ The current data model allows non-unique puzzle identifiers across rooms (for ex
 - Legacy room data can load without crash during migration window, with canonical fields present after migration/backfill.
 - At least one integration test (or equivalent playtest checklist) verifies correct binding after stream-in + stream-out + reload cycle.
 - Editor room-at-pointer resolves to intended room key in seam/transition regions according to explicit effective bounds policy (including deterministic overlap behavior if overlap exists).
+- Overlap resolution outcome is stable across frames and independent of streamed-room registration order.
